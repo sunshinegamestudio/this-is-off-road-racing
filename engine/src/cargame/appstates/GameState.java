@@ -47,7 +47,7 @@ import jme3tools.savegame.SaveGame;
 
 import java.util.logging.Level;
 
-import cargame.core.PlatformGame;
+import cargame.core.CarGame;
 import cargame.entities.*;
 import cargame.other.TrackStatistics;
 
@@ -93,9 +93,9 @@ public class GameState extends AbstractAppState implements ActionListener {
     boolean up = false;
     boolean down = false;
     
-    private PlatformGame game = null;
+    private CarGame game = null;
     
-    public GameState(PlatformGame game) {
+    public GameState(CarGame game) {
     	this.game = game;
 
         this.game.getLogger().log(Level.SEVERE, "GameState created.");
@@ -248,6 +248,8 @@ public class GameState extends AbstractAppState implements ActionListener {
     public void update(float tpf) {
         super.update(tpf);
 
+        this.game.getLogger().log(Level.SEVERE, "GameState-update: super updated.");
+        
         int fps = (int) game.getTimer().getFrameRate();
         fpsText.setText("Frames per second: "+fps);
         
@@ -302,6 +304,8 @@ public class GameState extends AbstractAppState implements ActionListener {
          * Some methods don't work. Find another way for this or ask tutorial writer for correction.
          */
 
+        this.game.getLogger().log(Level.SEVERE, "GameState-update: begin update nodes.");
+        
         // simple update and root node
         //player.update(tpf);
         //simpleEnemy.update(tpf);

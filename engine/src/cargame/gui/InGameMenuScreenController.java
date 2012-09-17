@@ -24,7 +24,7 @@ import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 
-import cargame.core.PlatformGame;
+import cargame.core.CarGame;
 import cargame.appstates.GameState;
 
 /**
@@ -69,6 +69,6 @@ import cargame.appstates.GameState;
         public void exit()  {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("exit");
-            PlatformGame.getApp().stop();
+            CarGame.getApp().stop();
         }
     }

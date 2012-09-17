@@ -42,7 +42,7 @@ import cargame.appstates.MainMenuState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
 
-public class PlatformGame extends Application {
+public class CarGame extends Application {
 
     protected ThreadingType threadingType = ThreadingType.SEQUENTIAL;
     public BroadphaseType broadphaseType = BroadphaseType.DBVT;
@@ -57,13 +57,13 @@ public class PlatformGame extends Application {
         private Logger logger;
         private FileHandler fh;
 
-        static PlatformGame thisApp;
+        static CarGame thisApp;
 	
-	public PlatformGame() {
+	public CarGame() {
 		thisApp=this;
 	}
 
-        public static PlatformGame getApp()  {
+        public static CarGame getApp()  {
             return thisApp;
         }
 
@@ -79,14 +79,14 @@ public class PlatformGame extends Application {
     
     @Override
     public void start(){
-        logger = Logger.getLogger(PlatformGame.class.getName());
+        logger = Logger.getLogger(CarGame.class.getName());
         /*
         try {
             fh = new FileHandler("PlatformGame_log.xml");
         } catch (IOException ex) {
-            Logger.getLogger(PlatformGame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CarGame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SecurityException ex) {
-            Logger.getLogger(PlatformGame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CarGame.class.getName()).log(Level.SEVERE, null, ex);
         }
          * Temperary disabled filehandler for readonly filesystem on Android.
          */
@@ -212,6 +212,6 @@ public class PlatformGame extends Application {
 	
 	
 	public static void main(String... args) {
-		new PlatformGame().start();
+		new CarGame().start();
 	}
 }
