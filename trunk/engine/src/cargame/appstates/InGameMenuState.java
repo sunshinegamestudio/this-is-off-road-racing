@@ -38,7 +38,7 @@ import de.lessvoid.nifty.screen.*;
 
 import java.util.logging.Level;
 
-import cargame.core.PlatformGame;
+import cargame.core.CarGame;
 
 public class InGameMenuState extends AbstractAppState implements ActionListener{
 
@@ -51,9 +51,9 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
     
-    private PlatformGame game = null;
+    private CarGame game = null;
     
-    public InGameMenuState(PlatformGame game) {
+    public InGameMenuState(CarGame game) {
     	this.game = game;
 
         this.game.getLogger().log(Level.SEVERE, "InGameMenuState created.");
