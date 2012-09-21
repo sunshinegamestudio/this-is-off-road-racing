@@ -31,7 +31,12 @@ import com.jme3.input.ChaseCamera;
 import com.jme3.input.FlyByCamera;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
+import com.jme3.input.controls.AnalogListener;
+import com.jme3.input.Joystick;
 import com.jme3.input.controls.KeyTrigger;
+import com.jme3.input.JoyInput;
+import com.jme3.input.controls.JoyAxisTrigger;
+import com.jme3.input.controls.JoyButtonTrigger;
 import com.jme3.material.Material;
 import com.jme3.material.RenderState;
 import com.jme3.math.Vector3f;
@@ -51,7 +56,7 @@ import cargame.core.CarGame;
 import cargame.entities.*;
 import cargame.other.TrackStatistics;
 
-public class GameState extends AbstractAppState implements ActionListener {
+public class GameState extends AbstractAppState implements ActionListener, AnalogListener   {
 
     protected Node rootNode = new Node("Root Node");
     protected Node guiNode = new Node("Gui Node");
@@ -87,7 +92,9 @@ public class GameState extends AbstractAppState implements ActionListener {
     //private SimpleEnemy simpleEnemy;
     
     private TrackStatistics trackStatistics;
-   
+
+    Joystick[] joysticks = null;
+    
     boolean left = false;
     boolean right = false;
     boolean up = false;
@@ -148,6 +155,7 @@ public class GameState extends AbstractAppState implements ActionListener {
              * 
              */
 
+            // tpf in het in de stuurwaarden verwerken !!!
             if (name.equals("Lefts")) {
                 if (value)
                     { player.steer(.1f);}
@@ -173,6 +181,16 @@ public class GameState extends AbstractAppState implements ActionListener {
             }
     }
 
+    public void onAnalog(String name, float value, float tpf) {
+        /*
+        if (name.equals("LeftStick Up")) {
+                player.accelerate(-800 * tpf);}
+                else
+                    { player.accelerate(800 * tpf);}
+         * 
+         */
+    }
+
     private void setupKeys() {
         game.getInputManager().addMapping("Lefts",  new KeyTrigger(KeyInput.KEY_LEFT));
         game.getInputManager().addMapping("Rights", new KeyTrigger(KeyInput.KEY_RIGHT));
@@ -184,6 +202,83 @@ public class GameState extends AbstractAppState implements ActionListener {
         game.getInputManager().addListener(this, "Ups");
         game.getInputManager().addListener(this, "Downs");
         game.getInputManager().addListener(this, "Jumps");
+    }
+    
+    private void setupJoystick()    {
+        joysticks = game.getInputManager().getJoysticks();
+        if (joysticks == null)
+            throw new IllegalStateException("Cannot find any joysticks!");
+            //hudTextHeader.setText("Cannot find any joysticks!");
+                         
+        for (Joystick joy : joysticks){
+            System.out.println(joy.toString());
+            //hudTextHeader.setText(joy.getName()+" with "+joy.getButtonCount()+" buttons and "+joy.getAxisCount()+" axes");
+        }
+ 
+        //for (Joystick joy : joysticks){
+        //    System.out.println(joy.getAxisCount());
+        //    System.out.println(joy.getButtonCount());
+        //}
+         
+        // DPAD
+        game.getInputManager().addMapping("DPAD Left", new JoyAxisTrigger(0, JoyInput.AXIS_POV_X, true));
+        game.getInputManager().addMapping("DPAD Right", new JoyAxisTrigger(0, JoyInput.AXIS_POV_X, false));
+        game.getInputManager().addMapping("DPAD Down", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, true));
+        game.getInputManager().addMapping("DPAD Up", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, false));
+        // Buttons
+        game.getInputManager().addMapping("Button A", new JoyButtonTrigger(0, 0));
+        game.getInputManager().addMapping("Button B", new JoyButtonTrigger(0, 1));
+        game.getInputManager().addMapping("Button X", new JoyButtonTrigger(0, 2));
+        game.getInputManager().addMapping("Button Y", new JoyButtonTrigger(0, 3));
+        game.getInputManager().addMapping("Trigger L1", new JoyButtonTrigger(0, 4));
+        game.getInputManager().addMapping("Trigger R1", new JoyButtonTrigger(0, 5));
+        game.getInputManager().addMapping("Select", new JoyButtonTrigger(0, 6));
+        game.getInputManager().addMapping("Start", new JoyButtonTrigger(0, 7));
+        game.getInputManager().addMapping("LStick Click", new JoyButtonTrigger(0, 8));
+        game.getInputManager().addMapping("RStick Click", new JoyButtonTrigger(0, 9));
+ 
+         
+        game.getInputManager().addListener(this,  "DPAD Left",
+                                        "DPAD Right",
+                                        "DPAD Down",
+                                        "DPAD Up",
+                                         
+                                        "Button A",
+                                        "Button B",
+                                        "Button X",
+                                        "Button Y",
+                                        "Trigger L1",
+                                        "Trigger R1",
+                                        "Select",
+                                        "Start",
+                                        "LStick Click",
+                                        "RStick Click"
+                                        );
+        game.getInputManager().addMapping("6th axis negative", new JoyAxisTrigger(0, 5, true));
+        game.getInputManager().addMapping("6th axis positive", new JoyAxisTrigger(0, 5, false));
+        game.getInputManager().addMapping("Trigger R2", new JoyAxisTrigger(0, 4, true));
+        game.getInputManager().addMapping("Trigger L2", new JoyAxisTrigger(0, 4, false));
+        game.getInputManager().addMapping("RightStick Left", new JoyAxisTrigger(0, 3, true));
+        game.getInputManager().addMapping("RightStick Right", new JoyAxisTrigger(0, 3, false));
+        game.getInputManager().addMapping("RightStick Down", new JoyAxisTrigger(0, 2, false));
+        game.getInputManager().addMapping("RightStick Up", new JoyAxisTrigger(0, 2, true));
+        game.getInputManager().addMapping("LeftStick Left", new JoyAxisTrigger(0, 1, true));
+        game.getInputManager().addMapping("LeftStick Right", new JoyAxisTrigger(0, 1, false));
+        game.getInputManager().addMapping("LeftStick Down", new JoyAxisTrigger(0, 0, false));
+        game.getInputManager().addMapping("LeftStick Up", new JoyAxisTrigger(0, 0, true));
+        game.getInputManager().addListener(this,  "LeftStick Left",
+                                        "LeftStick Right",   
+                                        "LeftStick Down",
+                                        "LeftStick Up",
+                                        "RightStick Left",
+                                        "RightStick Right",
+                                        "RightStick Down",
+                                        "RightStick Up",
+                                        "Trigger R2",
+                                        "Trigger L2",
+                                        "6th axis negative",
+                                        "6th axis positive"
+                                        );
     }
 
     public void loadText(){
