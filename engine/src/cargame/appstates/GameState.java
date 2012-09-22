@@ -183,9 +183,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     public void onAnalog(String name, float value, float tpf) {
         /*
         if (name.equals("LeftStick Up")) {
-                player.accelerate(-800 * tpf);}
+                player.accelerate(-800);}
                 else
-                    { player.accelerate(800 * tpf);}
+                    { player.accelerate(800);}
          * 
          */
     }
