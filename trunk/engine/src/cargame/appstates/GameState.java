@@ -155,7 +155,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
              * 
              */
 
-            // tpf in het in de stuurwaarden verwerken !!!
             if (name.equals("Lefts")) {
                 if (value)
                     { player.steer(.1f);}
@@ -445,7 +444,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         }
 
         setupKeys();
-
+        //setupJoystick();
+        
         // Add a simple Box
         /*
         Box boxshape1 = new Box(new Vector3f(-3f,1.1f,0f), 1f,1f,1f);
