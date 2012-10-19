@@ -39,6 +39,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import cargame.appstates.MainMenuState;
+import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
 
@@ -50,9 +51,10 @@ public class CarGame extends Application {
     public Vector3f worldMax = new Vector3f(10000f, 10000f, 10000f);
 
 
-	private GameState te = null;
-	private MainMenuState ms = null;
-	private InGameMenuState is = null;
+	private GameState gameState = null;
+	private MainMenuState menuState = null;
+	private TrackSelectorState trackSelectorState = null;
+	private InGameMenuState inGameMenuState = null;
         private BulletAppState bulletAppState = null;
         private Logger logger;
         private FileHandler fh;
@@ -122,13 +124,14 @@ public class CarGame extends Application {
 
 		// Create the States
                 bulletAppState = new BulletAppState();
-                ms = new MainMenuState(this);
-		te = new GameState(this);
-                is = new InGameMenuState(this);
+                menuState = new MainMenuState(this);
+                trackSelectorState = new TrackSelectorState(this);
+		gameState = new GameState(this);
+                inGameMenuState = new InGameMenuState(this);
 		
 		// Attach MenuState
                 getStateManager().attach(bulletAppState);
-		getStateManager().attach(ms);
+		getStateManager().attach(menuState);
     }
 	
 	
@@ -187,12 +190,17 @@ public class CarGame extends Application {
     }
 
 	public void loadMenu() {
-                this.enqueue(new ChangeStateTask(te,ms,viewPort,stateManager));
+                this.enqueue(new ChangeStateTask(gameState,menuState,viewPort,stateManager));
+        }
+
+        
+	public void loadTrackSelector() {
+                this.enqueue(new ChangeStateTask(menuState,trackSelectorState,viewPort,stateManager));
         }
 	
 	
 	public void loadGame() {
-                this.enqueue(new ChangeStateTask(ms,te,viewPort,stateManager));
+                this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
 	}
 	
 	
