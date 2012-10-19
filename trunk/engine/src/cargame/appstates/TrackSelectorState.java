@@ -40,7 +40,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 
-public class MainMenuState extends AbstractAppState implements ActionListener{
+public class TrackSelectorState extends AbstractAppState implements ActionListener{
 
     protected Node rootNode = new Node("Root Node");
     protected Node guiNode = new Node("Gui Node");
@@ -53,10 +53,10 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
     
     private CarGame game = null;
     
-    public MainMenuState(CarGame game) {
+    public TrackSelectorState(CarGame game) {
     	this.game = game;
 
-        this.game.getLogger().log(Level.SEVERE, "MainMenuState created.");
+        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
     
     public void onAction(String name, boolean value, float tpf) {
@@ -86,7 +86,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
             game.getGUIViewPort());
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("Interface/MainMenu.xml", "MainMenuScreen");
+        nifty.fromXml("Interface/TrackSelectorMenu.xml", "TrackSelectorScreen");
 
         // attach the nifty display to the gui view port as a processor
         game.getGUIViewPort().addProcessor(niftyDisplay);
@@ -140,7 +140,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
         game.getViewPort().attachScene(rootNode);
         game.getGUIViewPort().attachScene(guiNode);
 
-        this.game.getLogger().log(Level.SEVERE, "MainMenuState attached.");
+        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState attached.");
     }
 
     @Override
@@ -156,7 +156,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
         game.getViewPort().detachScene(rootNode);
         game.getGUIViewPort().detachScene(guiNode);
 
-        this.game.getLogger().log(Level.SEVERE, "MainMenuState detached.");
+        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState detached.");
     }
 
     @Override

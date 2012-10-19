@@ -31,7 +31,7 @@ import cargame.appstates.GameState;
  *
  * @author Vortex
  */
-    public class MainMenuScreenController implements ScreenController   {
+    public class TrackSelectorScreenController implements ScreenController   {
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
             // First try this, before removing this code !!!
@@ -63,7 +63,7 @@ import cargame.appstates.GameState;
             /*
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
-            CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().loadGame();
         }
 
         public void exit()  {
