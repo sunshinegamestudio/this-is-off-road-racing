@@ -80,10 +80,7 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
     }
 
     private void loadMenu() {
-        niftyDisplay = new NiftyJmeDisplay(game.getAssetManager(),
-            game.getInputManager(),
-            game.getAudioRenderer(),
-            game.getGUIViewPort());
+        niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
         nifty.fromXml("Interface/InGameMenu.xml", "InGameMenuScreen");
