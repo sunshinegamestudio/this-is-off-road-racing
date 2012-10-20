@@ -207,7 +207,7 @@ public class CarGame extends Application {
         }
 	
 	
-	public void loadGame() {
+	public void loadGame(String track) {
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
 	}
 	
