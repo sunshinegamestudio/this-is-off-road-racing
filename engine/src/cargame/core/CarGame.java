@@ -42,6 +42,7 @@ import cargame.appstates.MainMenuState;
 import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
+import com.jme3.niftygui.NiftyJmeDisplay;
 
 public class CarGame extends Application {
 
@@ -58,6 +59,7 @@ public class CarGame extends Application {
         private BulletAppState bulletAppState = null;
         private Logger logger;
         private FileHandler fh;
+        private NiftyJmeDisplay niftyDisplay;
 
         static CarGame thisApp;
 	
@@ -121,7 +123,13 @@ public class CarGame extends Application {
                 // Get renderer capabilities
                 Collection<Caps> caps = renderer.getCaps();
                 getLogger().log(Level.SEVERE, "Renderer capabilities {0}: " + caps.toString());
-
+                
+                // Create NiftyDisplay
+                niftyDisplay = new NiftyJmeDisplay(getAssetManager(),
+                getInputManager(),
+                getAudioRenderer(),
+                getGUIViewPort());
+    
 		// Create the States
                 bulletAppState = new BulletAppState();
                 menuState = new MainMenuState(this);
@@ -217,7 +225,10 @@ public class CarGame extends Application {
 	public Timer getTimer() {
 		return timer;
 	}
-	
+
+        public NiftyJmeDisplay getNiftyDisplay()    {
+            return niftyDisplay;
+        }
 	
 	public static void main(String... args) {
 		new CarGame().start();
