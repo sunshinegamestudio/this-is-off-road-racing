@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package cargame.core;
 
 import java.io.IOException;
-import cargame.core.statetasks.ChangeStateTask;
 import com.jme3.app.Application;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.BulletAppState.ThreadingType;
@@ -42,6 +41,8 @@ import cargame.appstates.MainMenuState;
 import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
+import cargame.core.statetasks.ChangeStateTask;
+import cargame.core.statetasks.ChangeTrackTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
 
 public class CarGame extends Application {
@@ -62,6 +63,8 @@ public class CarGame extends Application {
         private NiftyJmeDisplay niftyDisplay;
 
         static CarGame thisApp;
+
+        private String track;
 	
 	public CarGame() {
 		thisApp=this;
@@ -208,6 +211,7 @@ public class CarGame extends Application {
 	
 	
 	public void loadGame(String track) {
+                this.enqueue(new ChangeTrackTask(track, this));
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
 	}
 	
@@ -229,7 +233,14 @@ public class CarGame extends Application {
         public NiftyJmeDisplay getNiftyDisplay()    {
             return niftyDisplay;
         }
-	
+
+        public String getTrack()    {
+            return track;
+        }
+    public void setTrack(String track) {
+        this.track=track;
+    }
+
 	public static void main(String... args) {
 		new CarGame().start();
 	}
