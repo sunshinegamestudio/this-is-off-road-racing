@@ -63,11 +63,11 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
         if (!value)
             return;
         // Load other state
-        game.loadGame();
+        game.loadGame("Default");
     }
 
     public void start() {
-        game.loadGame();
+        game.loadGame("Default");
     }
     
     public void loadFPSText(){
