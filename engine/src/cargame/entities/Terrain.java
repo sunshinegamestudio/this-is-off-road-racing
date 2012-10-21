@@ -43,7 +43,8 @@ public class Terrain extends Entity {
 
         // Load selected track
         //Node terrain = (Node) assetManager.loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
-        Node terrain = (Node) assetManager.loadModel("Scenes/terrain_1.j3o");
+        //Node terrain = (Node) assetManager.loadModel("Scenes/terrain_1.j3o");
+        Node terrain = (Node) assetManager.loadModel("Tracks/Beach Resort/Scenes/terrain_1.j3o");
 
         terrain.setLocalTranslation(new Vector3f(0,-1,10));
         terrain.updateGeometricState();
