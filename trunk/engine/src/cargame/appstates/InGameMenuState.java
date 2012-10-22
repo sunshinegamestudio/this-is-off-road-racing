@@ -71,7 +71,7 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
     }
     
     public void loadFPSText(){
-    	menuFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
+    	menuFont = game.getAssetManager().loadFont("General/Interface/Fonts/Default.fnt");
     	menuText = new BitmapText(menuFont, false);
     	menuText.setSize(menuFont.getCharSet().getRenderedSize());
     	menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
@@ -83,7 +83,7 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("Interface/InGameMenu.xml", "InGameMenuScreen");
+        nifty.fromXml("General/Interface/InGameMenu.xml", "InGameMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
         game.getGUIViewPort().addProcessor(niftyDisplay);
