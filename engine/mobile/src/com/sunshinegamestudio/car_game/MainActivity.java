@@ -15,7 +15,7 @@ public class MainActivity extends AndroidHarness{
  
     public MainActivity(){
         // Set the application class to run
-        appClass = "cargame.core.PlatformGame";
+        appClass = "cargame.core.CarGame";
         // Try ConfigType.FASTEST; or ConfigType.LEGACY if you have problems
         eglConfigType = ConfigType.BEST;
         // Exit Dialog title & message
