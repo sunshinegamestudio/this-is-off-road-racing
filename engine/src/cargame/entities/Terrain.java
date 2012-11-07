@@ -20,15 +20,19 @@ package cargame.entities;
 
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.PhysicsSpace;
+import com.jme3.bullet.collision.shapes.BoxCollisionShape;
 import com.jme3.math.Vector3f;
 
 import com.jme3.bullet.collision.shapes.CompoundCollisionShape;
+import com.jme3.bullet.control.RigidBodyControl;
 //import com.jme3.bullet.nodes.PhysicsNode;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.shape.Box;
 
 /**
  *
@@ -41,6 +45,28 @@ public class Terrain extends Entity {
         //com.jme3.terrain
         //BufferGeomap
 
+        /** Create a temperairy ground for Android Test track */
+        //if (track=="Android Test")  {
+            Node boxNode = new Node();
+            Box box = new Box( Vector3f.ZERO, 100,1,100);
+            RigidBodyControl rigidBody = new RigidBodyControl();
+            
+            Geometry red = new Geometry("Box", box);
+            Material mat2 = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+            mat2.setColor("Color", ColorRGBA.Red);
+            red.setMaterial(mat2);
+            red.move(0,-2,0);
+            boxNode.attachChild(red);
+            
+            BoxCollisionShape boxShape = new BoxCollisionShape(new Vector3f(100,0.1f,100));
+            rigidBody.setCollisionShape(boxShape);
+            rigidBody.setMass(0);
+            boxNode.addControl(rigidBody);
+            
+            getParent().attachChild(boxNode);
+            getPhysicsSpace().addAll(boxNode);
+        //}
+        
         // Load selected track
         Node terrain = (Node) assetManager.loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
 
