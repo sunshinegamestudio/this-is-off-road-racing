@@ -69,10 +69,11 @@ public class CarPlayer extends Entity  {
         final float mass = 400;
 
         //Load model and get chassis Geometry
-        carNode = (Node)assetManager.loadModel("Models/Ferrari/Car.scene");
-        //carNode = (Node)assetManager.loadModel("Models/car_2/car_2.j3o");
+        // carNode = (Node)assetManager.loadModel("General/Models/Ferrari/Car.scene");
+        carNode = (Node)assetManager.loadModel("General/Models/car_2/car_2.j3o");
         carNode.setShadowMode(ShadowMode.Cast);
-        Geometry chasis = findGeom(carNode, "Car");
+        // Geometry chasis = findGeom(carNode, "Car");
+        Geometry chasis = findGeom(carNode, "chassis");
         BoundingBox box = (BoundingBox) chasis.getModelBound();
 
         //Create a hull collision shape for the chassis
@@ -93,7 +94,8 @@ public class CarPlayer extends Entity  {
         Vector3f wheelDirection = new Vector3f(0, -1, 0);
         Vector3f wheelAxle = new Vector3f(-1, 0, 0);
 
-        Geometry wheel_fr = findGeom(carNode, "WheelFrontRight");
+        // Geometry wheel_fr = findGeom(carNode, "WheelFrontRight");
+        Geometry wheel_fr = findGeom(carNode, "wheel_fr");
         wheel_fr.center();
         box = (BoundingBox) wheel_fr.getModelBound();
         wheelRadius = box.getYExtent();
@@ -102,19 +104,22 @@ public class CarPlayer extends Entity  {
         player.addWheel(wheel_fr.getParent(), box.getCenter().add(0, -front_wheel_h, 0),
                 wheelDirection, wheelAxle, 0.2f, wheelRadius, true);
 
-        Geometry wheel_fl = findGeom(carNode, "WheelFrontLeft");
+        // Geometry wheel_fl = findGeom(carNode, "WheelFrontLeft");
+        Geometry wheel_fl = findGeom(carNode, "wheel_fl");
         wheel_fl.center();
         box = (BoundingBox) wheel_fl.getModelBound();
         player.addWheel(wheel_fl.getParent(), box.getCenter().add(0, -front_wheel_h, 0),
                 wheelDirection, wheelAxle, 0.2f, wheelRadius, true);
 
-        Geometry wheel_br = findGeom(carNode, "WheelBackRight");
+        // Geometry wheel_br = findGeom(carNode, "WheelBackRight");
+        Geometry wheel_br = findGeom(carNode, "wheel_br");
         wheel_br.center();
         box = (BoundingBox) wheel_br.getModelBound();
         player.addWheel(wheel_br.getParent(), box.getCenter().add(0, -back_wheel_h, 0),
                 wheelDirection, wheelAxle, 0.2f, wheelRadius, false);
 
-        Geometry wheel_bl = findGeom(carNode, "WheelBackLeft");
+        // Geometry wheel_bl = findGeom(carNode, "WheelBackLeft");
+        Geometry wheel_bl = findGeom(carNode, "wheel_bl");
         wheel_bl.center();
         box = (BoundingBox) wheel_bl.getModelBound();
         player.addWheel(wheel_bl.getParent(), box.getCenter().add(0, -back_wheel_h, 0),
