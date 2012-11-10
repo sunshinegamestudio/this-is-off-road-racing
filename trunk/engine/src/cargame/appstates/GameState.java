@@ -335,7 +335,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         guiNode.setQueueBucket(Bucket.Gui);
         guiNode.setCullHint(CullHint.Never);
 
-        game.getPhysicsSpace().enableDebug(game.getAssetManager());
+        // game.getPhysicsSpace().enableDebug(game.getAssetManager());
     }
 
     @Override

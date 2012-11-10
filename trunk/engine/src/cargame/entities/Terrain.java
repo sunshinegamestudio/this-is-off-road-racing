@@ -21,7 +21,6 @@ package cargame.entities;
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.bullet.collision.shapes.BoxCollisionShape;
-import com.jme3.math.Vector3f;
 
 import com.jme3.bullet.collision.shapes.CompoundCollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
@@ -29,6 +28,7 @@ import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
@@ -57,6 +57,7 @@ public class Terrain extends Entity {
             red.setMaterial(mat2);
             red.move(0,-2,0);
             boxNode.attachChild(red);
+            boxNode.move(new Vector3f(0, -5, 0));
             
             BoxCollisionShape boxShape = new BoxCollisionShape(new Vector3f(100,0.1f,100));
             rigidBody.setCollisionShape(boxShape);
