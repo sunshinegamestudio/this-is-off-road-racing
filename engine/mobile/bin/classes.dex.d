@@ -11,6 +11,7 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\jME3-plugins.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\nifty-default-controls.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\jME3-niftygui.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\jME3-core.jar \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\CarGame.jar \
 F:\Program Files (x86)\Android\android-sdk\tools\support\annotations.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\j-ogg-vorbisd.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\nifty-style-black.jar \
