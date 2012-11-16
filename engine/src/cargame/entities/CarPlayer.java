@@ -70,7 +70,7 @@ public class CarPlayer extends Entity  {
 
         //Load model and get chassis Geometry
         // carNode = (Node)assetManager.loadModel("General/Models/Ferrari/Car.scene");
-        carNode = (Node)assetManager.loadModel("General/Models/car_2/car_2.j3o");
+        carNode = (Node)assetManager.loadModel("Vehicles/Race Car/Models/car_2.j3o");
         carNode.setShadowMode(ShadowMode.Cast);
         // Geometry chasis = findGeom(carNode, "Car");
         Geometry chasis = findGeom(carNode, "chassis");
