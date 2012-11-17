@@ -55,6 +55,8 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.*;
 import cargame.other.TrackStatistics;
+import com.jme3.niftygui.NiftyJmeDisplay;
+import de.lessvoid.nifty.Nifty;
 
 public class GameState extends AbstractAppState implements ActionListener, AnalogListener   {
 
@@ -99,6 +101,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     boolean right = false;
     boolean up = false;
     boolean down = false;
+
+    private NiftyJmeDisplay niftyDisplay = null;
+    private Nifty nifty = null;
     
     private CarGame game = null;
     
@@ -325,6 +330,16 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         guiNode.attachChild(currentTimeText);
     }
 
+    private void loadMenu() {
+        niftyDisplay = game.getNiftyDisplay();
+        nifty = niftyDisplay.getNifty();
+
+        nifty.fromXml("General/Interface/GameHUD.xml", "GameHUD");
+
+        // attach the nifty display to the gui view port as a processor
+        game.getGUIViewPort().addProcessor(niftyDisplay);
+    }
+
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
@@ -428,6 +443,11 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     public void stateAttached(AppStateManager stateManager) {
         // Load game
 
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+        game.getInputManager().setCursorVisible(true);
+        
         loadText();
 
         if (game.getInputManager() != null){
@@ -511,7 +531,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         rootNode.detachAllChildren();
         guiNode.detachAllChildren();
 
-    	game.getInputManager().removeListener(this);
+        game.getInputManager().setCursorVisible(false);
+        game.getGUIViewPort().removeProcessor(niftyDisplay);
+        game.getInputManager().removeListener(this);
         // if(flyCam != null) flyCam.setEnabled(false);
         // if(chaseCam != null) chaseCam.setEnabled(false);
     	
