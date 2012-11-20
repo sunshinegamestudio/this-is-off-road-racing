@@ -447,8 +447,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         if(niftyDisplay != null)    {
             game.getGUIViewPort().addProcessor(niftyDisplay);
         }
-        //game.getInputManager().setCursorVisible(true);
-        game.getInputManager().setCursorVisible(false);
+        game.getInputManager().setCursorVisible(true);
         
         loadText();
 
