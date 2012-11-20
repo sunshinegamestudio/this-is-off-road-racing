@@ -31,7 +31,7 @@ import cargame.appstates.GameState;
  *
  * @author Vortex
  */
-    public class GameHUDScreenController1 implements ScreenController   {
+    public class GameHUDScreenController implements ScreenController   {
         private int gas;
         private int brake;
         private int left;
