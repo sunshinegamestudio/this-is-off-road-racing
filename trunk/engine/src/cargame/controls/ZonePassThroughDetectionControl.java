@@ -47,8 +47,8 @@ public class ZonePassThroughDetectionControl extends GhostControl implements Phy
     }    
     
     public void collision(PhysicsCollisionEvent event) {
-        System.out.println("NodeA: " + event.getNodeA().getName());
-        System.out.println("NodeB: " + event.getNodeB().getName());
+        // System.out.println("NodeA: " + event.getNodeA().getName());
+        // System.out.println("NodeB: " + event.getNodeB().getName());
         
         if ("Box".equals(event.getNodeA().getName()) || "Box".equals(event.getNodeB().getName())) {
             if ("bullet".equals(event.getNodeA().getName()) || "bullet".equals(event.getNodeB().getName())) {
@@ -59,7 +59,7 @@ public class ZonePassThroughDetectionControl extends GhostControl implements Phy
         if ("vehicleNode".equals(event.getNodeA().getName()) && "startingpoint_1-ogremesh".equals(event.getNodeB().getName()) || 
                 "startingpoint_1-ogremesh".equals(event.getNodeA().getName()) && "vehicleNode".equals(event.getNodeB().getName()))
         {
-            System.out.println("Collison: vehicleNode-startingpoint_1-ogremesh");
+            // System.out.println("Collison: vehicleNode-startingpoint_1-ogremesh");
 
             // By collision op LevelExit -> onLevelExit = false;
             onLevelExit = true;
