@@ -32,7 +32,7 @@ import cargame.appstates.GameState;
  * @author Vortex
  */
     public class GameHUDScreenController implements ScreenController   {
-        private int gas;
+        private int accelerate;
         private int brake;
         private int left;
         private int right;
@@ -58,9 +58,9 @@ import cargame.appstates.GameState;
             System.out.println("onScreenEnd");
         }
 
-        public void gas() {
+        public void accelerateBrake_onClick(int x, int y)   {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("gas");
+            System.out.println("accelerateBrake_onClick: " + x + " "+ y);
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate
@@ -72,9 +72,9 @@ import cargame.appstates.GameState;
             // CarGame.getApp().loadTrackSelector();
         }
 
-        public void brake() {
+        public void accelerateBrake_onClickMouseMove(int x, int y)   {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("brake");
+            System.out.println("accelerateBrake_onClickMouseMove: " + x + " "+ y);
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate
@@ -86,9 +86,9 @@ import cargame.appstates.GameState;
             // CarGame.getApp().loadTrackSelector();
         }
 
-        public void left() {
+        public void accelerateBrake_onRelease()   {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("left");
+            System.out.println("accelerateBrake_onRelease");
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate
@@ -100,9 +100,37 @@ import cargame.appstates.GameState;
             // CarGame.getApp().loadTrackSelector();
         }
 
-        public void right() {
+        public void steer_onClick(int x, int y) {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("right");
+            System.out.println("steer_onClick: " + x + " "+ y);
+            /*
+            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
+             * Start new game from CarGame instead of directly from gamestate
+             */
+
+            /*
+             * Switch appstate with a Callable object (see jME forum + Desktop)
+             */
+            // CarGame.getApp().loadTrackSelector();
+        }
+
+        public void steer_onClickMouseMove(int x, int y) {
+            //throw new UnsupportedOperationException("Not supported yet.");
+            System.out.println("steer_onClickMouseMove: " + x + " "+ y);
+            /*
+            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
+             * Start new game from CarGame instead of directly from gamestate
+             */
+
+            /*
+             * Switch appstate with a Callable object (see jME forum + Desktop)
+             */
+            // CarGame.getApp().loadTrackSelector();
+        }
+
+        public void steer_onRelease() {
+            //throw new UnsupportedOperationException("Not supported yet.");
+            System.out.println("steer_onRelease");
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate

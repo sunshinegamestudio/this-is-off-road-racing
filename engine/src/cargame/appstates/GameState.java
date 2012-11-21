@@ -358,7 +358,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     public void update(float tpf) {
         super.update(tpf);
 
-        this.game.getLogger().log(Level.SEVERE, "GameState-update: super updated.");
+        this.game.getLogger().log(Level.INFO, "GameState-update: super updated.");
         
         int fps = (int) game.getTimer().getFrameRate();
         fpsText.setText("Frames per second: "+fps);
@@ -414,7 +414,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
          * Some methods don't work. Find another way for this or ask tutorial writer for correction.
          */
 
-        this.game.getLogger().log(Level.SEVERE, "GameState-update: begin update nodes.");
+        this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
         
         // simple update and root node
         //player.update(tpf);
