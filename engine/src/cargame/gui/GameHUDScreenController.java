@@ -26,16 +26,16 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
+import cargame.core.statetasks.ChangeTouchPressedStateTask;
+import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
 
 /**
  *
  * @author Vortex
  */
     public class GameHUDScreenController implements ScreenController   {
-        private int accelerate;
-        private int brake;
-        private int left;
-        private int right;
+        private float accelerateBrake;
+        private float steer;
         private int gearbox;
         
         public void MainMenuScreenController()  {
@@ -70,6 +70,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
         }
 
         public void accelerateBrake_onClickMouseMove(int x, int y)   {
@@ -84,6 +85,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
         }
 
         public void accelerateBrake_onRelease()   {
@@ -98,6 +100,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, 0, this));
         }
 
         public void steer_onClick(int x, int y) {
@@ -112,6 +115,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
         }
 
         public void steer_onClickMouseMove(int x, int y) {
@@ -126,6 +130,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
         }
 
         public void steer_onRelease() {
@@ -140,6 +145,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
+            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, 0, this));
         }
 
         public void gearbox() {
@@ -161,4 +167,46 @@ import cargame.appstates.GameState;
             System.out.println("exit");
             CarGame.getApp().stop();
         }
+
+    /**
+     * @return the accelerateBrake
+     */
+    public float getAccelerateBrake() {
+        return accelerateBrake;
+    }
+
+    /**
+     * @param accelerateBrake the accelerateBrake to set
+     */
+    public void setAccelerateBrake(float accelerateBrake) {
+        this.accelerateBrake = accelerateBrake;
+    }
+
+    /**
+     * @return the steer
+     */
+    public float getSteer() {
+        return steer;
+    }
+
+    /**
+     * @param steer the steer to set
+     */
+    public void setSteer(float steer) {
+        this.steer = steer;
+    }
+
+    /**
+     * @return the gearbox
+     */
+    public int getGearbox() {
+        return gearbox;
+    }
+
+    /**
+     * @param gearbox the gearbox to set
+     */
+    public void setGearbox(int gearbox) {
+        this.gearbox = gearbox;
+    }
     }

@@ -6,7 +6,7 @@
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
   <screen id="GameHUD" controller="cargame.gui.GameHUDScreenController">
     <layer id="layer" backgroundColor="#0000" childLayout="vertical">
-      <panel id="panel" height="15%" width="15%" align="left" valign="top" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
+      <panel id="panel" height="30%" width="15%" align="left" valign="top" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <interact onClick="accelerateBrake_onClick()" onClickMouseMove="accelerateBrake_onClickMouseMove()" onRelease="accelerateBrake_onRelease()"/>
         <effect>
           <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>
@@ -18,7 +18,7 @@
       </panel>
     </layer>
     <layer id="layer" backgroundColor="#0000" childLayout="vertical">
-      <panel id="panel" height="15%" width="15%" align="right" valign="bottom" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
+      <panel id="panel" height="15%" width="30%" align="right" valign="bottom" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <interact onClick="steer_onClick()" onClickMouseMove="steer_onClickMouseMove()" onRelease="steer_onRelease()"/>
         <effect>
           <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>

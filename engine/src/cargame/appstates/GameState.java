@@ -57,6 +57,7 @@ import cargame.entities.*;
 import cargame.other.TrackStatistics;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.screen.ScreenController;
 
 public class GameState extends AbstractAppState implements ActionListener, AnalogListener   {
 
@@ -160,6 +161,12 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
              * 
              */
 
+            // Get touch screen input ??? -> Naar update verplaatsen !!!
+            // Class<? extends ScreenController> screenController = nifty.getScreen("GameHUD").getScreenController().getClass();
+            // float accelerateBrake = screenController.getAccelarateBrake();
+            // float steer = screenController.getSteer();
+            // int gearbox = screenController.getGearbox();
+            
             if (name.equals("Lefts")) {
                 if (value)
                     { player.steer(.1f);}
