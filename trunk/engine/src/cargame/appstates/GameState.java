@@ -54,6 +54,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.*;
+import cargame.gui.GameHUDScreenController;
 import cargame.other.TrackStatistics;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
@@ -161,12 +162,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
              * 
              */
 
-            // Get touch screen input ??? -> Naar update verplaatsen !!!
-            // Class<? extends ScreenController> screenController = nifty.getScreen("GameHUD").getScreenController().getClass();
-            // float accelerateBrake = screenController.getAccelarateBrake();
-            // float steer = screenController.getSteer();
-            // int gearbox = screenController.getGearbox();
-            
             if (name.equals("Lefts")) {
                 if (value)
                     { player.steer(.1f);}
@@ -421,8 +416,14 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
          * Some methods don't work. Find another way for this or ask tutorial writer for correction.
          */
 
-        this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
+        // Get touch screen input ???
+        GameHUDScreenController gameHUDScreenController = (GameHUDScreenController) nifty.getScreen("GameHUD").getScreenController();
+        float accelerateBrake = gameHUDScreenController.getAccelerateBrake();
+        float steer = gameHUDScreenController.getSteer();
+        int gearbox = gameHUDScreenController.getGearbox();
         
+        this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
+
         // simple update and root node
         //player.update(tpf);
         //simpleEnemy.update(tpf);
