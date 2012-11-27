@@ -416,12 +416,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
          * Some methods don't work. Find another way for this or ask tutorial writer for correction.
          */
 
-        // Get touch screen input ???
-        GameHUDScreenController gameHUDScreenController = (GameHUDScreenController) nifty.getScreen("GameHUD").getScreenController();
-        float accelerateBrake = gameHUDScreenController.getAccelerateBrake();
-        float steer = gameHUDScreenController.getSteer();
-        int gearbox = gameHUDScreenController.getGearbox();
-        
         this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
 
         // simple update and root node
