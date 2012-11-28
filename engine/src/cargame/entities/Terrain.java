@@ -57,7 +57,7 @@ public class Terrain extends Entity {
             red.setMaterial(mat2);
             red.move(0,-2,0);
             boxNode.attachChild(red);
-            boxNode.move(new Vector3f(0, -5, 0));
+            //boxNode.move(new Vector3f(0, -15, 0));
             
             BoxCollisionShape boxShape = new BoxCollisionShape(new Vector3f(100,0.1f,100));
             rigidBody.setCollisionShape(boxShape);
