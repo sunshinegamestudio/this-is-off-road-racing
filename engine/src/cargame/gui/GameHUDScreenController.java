@@ -26,8 +26,6 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
-import cargame.core.statetasks.ChangeTouchPressedStateTask;
-import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
 
 /**
  *
@@ -35,8 +33,11 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
  */
     public class GameHUDScreenController implements ScreenController   {
         private float accelerateBrake;
+        private int accelerateBrakePos;
         private float steer;
+        private int steerPos;
         private int gearbox;
+        private GameState gameState;
         
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
@@ -70,7 +71,10 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
-            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
+            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
+            accelerateBrakePos = y;
+            accelerateBrake = 0;
+            gameState.onAnalog("LeftStick Up", accelerateBrake, 0);
             // Change -> Call the analog listener directly !!!
         }
 
@@ -86,7 +90,9 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
-            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
+            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
+            accelerateBrake = accelerateBrakePos - y;
+            gameState.onAnalog("LeftStick Up", accelerateBrake, 0);
             // Change -> Call the analog listener directly !!!
         }
 
@@ -102,7 +108,10 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
-            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, 0, this));
+            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, 0, this));
+            accelerateBrakePos = 0;
+            accelerateBrake = 0;
+            gameState.onAnalog("LeftStick Up", accelerateBrake, 0);
             // Change -> Call the analog listener directly !!!
         }
 
@@ -118,7 +127,7 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
-            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
+            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
             // Change -> Call the analog listener directly !!!
         }
 
@@ -134,7 +143,7 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
-            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
+            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
             // Change -> Call the analog listener directly !!!
         }
 
@@ -150,7 +159,7 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             // CarGame.getApp().loadTrackSelector();
-            CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, 0, this));
+            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, 0, this));
             // Change -> Call the analog listener directly !!!
         }
 
@@ -215,5 +224,9 @@ import cargame.core.statetasks.ChangeTouchPressedStateTask.TouchPressedKey;
      */
     public void setGearbox(int gearbox) {
         this.gearbox = gearbox;
+    }
+    
+    public void setGameState(GameState gameState)   {
+        this.gameState = gameState;
     }
     }
