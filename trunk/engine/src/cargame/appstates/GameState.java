@@ -188,13 +188,11 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     }
 
     public void onAnalog(String name, float value, float tpf) {
-        /*
+        
         if (name.equals("LeftStick Up")) {
                 player.accelerate(-800);}
                 else
                     { player.accelerate(800);}
-         * 
-         */
     }
 
     private void setupKeys() {
@@ -337,6 +335,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         nifty = niftyDisplay.getNifty();
 
         nifty.fromXml("General/Interface/GameHUD.xml", "GameHUD");
+        GameHUDScreenController gameHUDScreenController = (GameHUDScreenController)nifty.getScreen("GameHUD").getScreenController();
+        gameHUDScreenController.setGameState(this);
 
         // attach the nifty display to the gui view port as a processor
         game.getGUIViewPort().addProcessor(niftyDisplay);
