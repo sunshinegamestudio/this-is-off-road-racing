@@ -32,8 +32,10 @@ import cargame.appstates.GameState;
  * @author Vortex
  */
     public class GameHUDScreenController implements ScreenController   {
-        private float accelerateBrake;
-        private int accelerateBrakePos;
+        private float accelerate;
+        private int acceleratePos;
+        private float brake;
+        private int brakePos;        
         private float steer;
         private int steerPos;
         private int gearbox;
@@ -59,62 +61,46 @@ import cargame.appstates.GameState;
             System.out.println("onScreenEnd");
         }
 
-        public void accelerateBrake_onClick(int x, int y)   {
-            //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("accelerateBrake_onClick: " + x + " "+ y);
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
-
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
-            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
-            accelerateBrakePos = y;
-            accelerateBrake = 0;
-            gameState.onAnalog("LeftStick Up", accelerateBrake, 0);
-            // Change -> Call the analog listener directly !!!
+        public void accelerate_onClick(int x, int y)   {
+            System.out.println("accelerate_onClick: " + x + " "+ y);
+            acceleratePos = y;
+            accelerate = 0;
+            gameState.onAnalog("LeftStick Up", accelerate, 0);
         }
 
-        public void accelerateBrake_onClickMouseMove(int x, int y)   {
-            //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("accelerateBrake_onClickMouseMove: " + x + " "+ y);
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
-
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
-            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, y, this));
-            accelerateBrake = accelerateBrakePos - y;
-            gameState.onAnalog("LeftStick Up", accelerateBrake, 0);
-            // Change -> Call the analog listener directly !!!
+        public void accelerate_onClickMouseMove(int x, int y)   {
+            System.out.println("accelerate_onClickMouseMove: " + x + " "+ y);
+            accelerate = acceleratePos - y;
+            gameState.onAnalog("LeftStick Up", accelerate, 0);
         }
 
-        public void accelerateBrake_onRelease()   {
-            //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("accelerateBrake_onRelease");
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
-
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
-            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.ACCELARATE_BRAKE, 0, this));
-            accelerateBrakePos = 0;
-            accelerateBrake = 0;
-            gameState.onAnalog("LeftStick Up", accelerateBrake, 0);
-            // Change -> Call the analog listener directly !!!
+        public void accelerate_onRelease()   {
+            System.out.println("accelerate_onRelease");
+            acceleratePos = 0;
+            accelerate = 0;
+            gameState.onAnalog("LeftStick Up", accelerate, 0);
         }
 
+        public void brake_onClick(int x, int y)   {
+            System.out.println("brake_onClick: " + x + " "+ y);
+            brakePos = y;
+            brake = 0;
+            gameState.onAnalog("LeftStick Down", brake, 0);
+        }
+
+        public void brake_onClickMouseMove(int x, int y)   {
+            System.out.println("brake_onClickMouseMove: " + x + " "+ y);
+            brake = brakePos - y;
+            gameState.onAnalog("LeftStick Down", brake, 0);
+        }
+
+        public void brake_onRelease()   {
+            System.out.println("brake_onRelease");
+            brakePos = 0;
+            brake = 0;
+            gameState.onAnalog("LeftStick Down", brake, 0);
+        }
+        
         public void steer_onClick(int x, int y) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("steer_onClick: " + x + " "+ y);
@@ -185,17 +171,17 @@ import cargame.appstates.GameState;
         }
 
     /**
-     * @return the accelerateBrake
+     * @return the accelerate
      */
     public float getAccelerateBrake() {
-        return accelerateBrake;
+        return accelerate;
     }
 
     /**
-     * @param accelerateBrake the accelerateBrake to set
+     * @param accelerate the accelerate to set
      */
-    public void setAccelerateBrake(float accelerateBrake) {
-        this.accelerateBrake = accelerateBrake;
+    public void setAccelerateBrake(float accelerate) {
+        this.accelerate = accelerate;
     }
 
     /**
