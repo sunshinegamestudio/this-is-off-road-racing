@@ -36,8 +36,10 @@ import cargame.appstates.GameState;
         private int acceleratePos;
         private float brake;
         private int brakePos;        
-        private float steer;
-        private int steerPos;
+        private float steerLeft;
+        private int steerLeftPos;
+        private float steerRight;
+        private int steerRightPos;
         private int gearbox;
         private GameState gameState;
         
@@ -101,66 +103,49 @@ import cargame.appstates.GameState;
             gameState.onAnalog("LeftStick Down", brake, 0);
         }
         
-        public void steer_onClick(int x, int y) {
-            //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("steer_onClick: " + x + " "+ y);
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
-
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
-            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
-            // Change -> Call the analog listener directly !!!
+        public void steerLeft_onClick(int x, int y) {
+            System.out.println("steerLeft_onClick: " + x + " "+ y);
+            steerLeftPos = x;
+            steerLeft = 0;
+            gameState.onAnalog("RightStick Left", steerLeft, 0);
         }
 
-        public void steer_onClickMouseMove(int x, int y) {
-            //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("steer_onClickMouseMove: " + x + " "+ y);
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
-
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
-            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, x, this));
-            // Change -> Call the analog listener directly !!!
+        public void steerLeft_onClickMouseMove(int x, int y) {
+            System.out.println("steerLeft_onClickMouseMove: " + x + " "+ y);
+            steerLeft = steerLeftPos - x;
+            gameState.onAnalog("RightStick Left", steerLeft, 0);
         }
 
-        public void steer_onRelease() {
-            //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("steer_onRelease");
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
+        public void steerLeft_onRelease() {
+            System.out.println("steerLeft_onRelease");
+            steerLeftPos = 0;
+            steerLeft = 0;
+            gameState.onAnalog("RightStick Left", steerLeft, 0);
+        }
 
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
-            // CarGame.getApp().enqueue(new ChangeTouchPressedStateTask(TouchPressedKey.STEER, 0, this));
-            // Change -> Call the analog listener directly !!!
+        public void steerRight_onClick(int x, int y) {
+            System.out.println("steerRight_onClick: " + x + " "+ y);
+            steerRightPos = x;
+            steerRight = 0;
+            gameState.onAnalog("RightStick Right", steerLeft, 0);
+        }
+
+        public void steerRight_onClickMouseMove(int x, int y) {
+            System.out.println("steerRight_onClickMouseMove: " + x + " "+ y);
+            steerRight = steerRightPos - x;
+            gameState.onAnalog("RightStick Right", steerLeft, 0);
+        }
+
+        public void steerRight_onRelease() {
+            System.out.println("steerRight_onRelease");
+            steerRightPos = 0;
+            steerRight = 0;
+            gameState.onAnalog("RightStick Right", steerRight, 0);
         }
 
         public void gearbox() {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("gearbox");
-            /*
-            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
-             * Start new game from CarGame instead of directly from gamestate
-             */
-
-            /*
-             * Switch appstate with a Callable object (see jME forum + Desktop)
-             */
-            // CarGame.getApp().loadTrackSelector();
             // Change -> Call the action listener directly !!!
         }
 
@@ -173,29 +158,29 @@ import cargame.appstates.GameState;
     /**
      * @return the accelerate
      */
-    public float getAccelerateBrake() {
+    public float getAccelerate() {
         return accelerate;
     }
 
     /**
      * @param accelerate the accelerate to set
      */
-    public void setAccelerateBrake(float accelerate) {
+    public void setAccelerate(float accelerate) {
         this.accelerate = accelerate;
     }
 
     /**
      * @return the steer
      */
-    public float getSteer() {
-        return steer;
+    public float getSteerLeft() {
+        return steerLeft;
     }
 
     /**
      * @param steer the steer to set
      */
-    public void setSteer(float steer) {
-        this.steer = steer;
+    public void setSteerLeft(float steerLeft) {
+        this.steerLeft = steerLeft;
     }
 
     /**
