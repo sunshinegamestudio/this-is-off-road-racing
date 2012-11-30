@@ -188,11 +188,30 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     }
 
     public void onAnalog(String name, float value, float tpf) {
-        
-        if (name.equals("LeftStick Up")) {
-                player.accelerate(-800);}
+        if (name.equals("RightStick Left")) {
+                if (value != 0)
+                    { player.steer(.1f); }
+                else
+                    { player.steer(-.1f);}
+        }
+        else if (name.equals("RightStick Right")) {
+                if (value != 0)
+                    { player.steer(-.1f); }
+                else
+                    { player.steer(.1f);}
+        }
+        else if (name.equals("LeftStick Up")) {
+                if (value != 0)
+                    { player.accelerate(-800); }
                 else
                     { player.accelerate(800);}
+        }
+        else if (name.equals("LeftStick Down")) {
+                if (value != 0)
+                    { player.brake(800f); }
+                else
+                    { player.brake(-0f);}
+        }
     }
 
     private void setupKeys() {
