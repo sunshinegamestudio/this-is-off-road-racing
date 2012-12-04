@@ -73,14 +73,10 @@ import cargame.appstates.GameState;
         public void accelerate_onClickMouseMove(int x, int y)   {
             System.out.println("accelerate_onClickMouseMove: " + x + " "+ y);
 
-            /*
-            If (y < acceleratePos) {
+            if (y < acceleratePos) {
                 accelerate = acceleratePos - y;
+                gameState.onAnalog("LeftStick Up", accelerate, 0);
             }
-            */
-            
-            accelerate = acceleratePos - y;
-            gameState.onAnalog("LeftStick Up", accelerate, 0);
         }
 
         public void accelerate_onRelease()   {
