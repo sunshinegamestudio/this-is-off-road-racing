@@ -95,8 +95,11 @@ import cargame.appstates.GameState;
 
         public void brake_onClickMouseMove(int x, int y)   {
             System.out.println("brake_onClickMouseMove: " + x + " "+ y);
-            brake = brakePos - y;
-            gameState.onAnalog("LeftStick Down", brake, 0);
+
+            if (y > brakePos) {
+                brake = y - brakePos;
+                gameState.onAnalog("LeftStick Up", brake, 0);
+            }
         }
 
         public void brake_onRelease()   {
@@ -115,8 +118,11 @@ import cargame.appstates.GameState;
 
         public void steerLeft_onClickMouseMove(int x, int y) {
             System.out.println("steerLeft_onClickMouseMove: " + x + " "+ y);
-            steerLeft = steerLeftPos - x;
-            gameState.onAnalog("RightStick Left", steerLeft, 0);
+
+            if (x < steerLeftPos) {
+                steerLeft = x - steerLeftPos;
+                gameState.onAnalog("RightStick Left", steerLeft, 0);
+            }
         }
 
         public void steerLeft_onRelease() {
@@ -135,6 +141,12 @@ import cargame.appstates.GameState;
 
         public void steerRight_onClickMouseMove(int x, int y) {
             System.out.println("steerRight_onClickMouseMove: " + x + " "+ y);
+
+            if (x < steerRightPos) {
+                steerRight = steerRightPos - x;
+                gameState.onAnalog("RightStick Right", steerRight, 0);
+            }
+            
             steerRight = steerRightPos - x;
             gameState.onAnalog("RightStick Right", steerLeft, 0);
         }
