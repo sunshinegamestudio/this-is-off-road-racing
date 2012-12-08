@@ -30,6 +30,7 @@ import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
 import com.jme3.system.AppSettings;
 import com.jme3.system.JmeSystem;
+import com.jme3.system.Platform;
 import com.jme3.system.Timer;
 
 import java.util.Collection;
@@ -61,6 +62,10 @@ public class CarGame extends Application {
         private Logger logger;
         private FileHandler fh;
         private NiftyJmeDisplay niftyDisplay;
+        private boolean debugMode = false;
+        private boolean keyboardControlled = false;
+        private boolean joystickControlled = false;
+        private boolean touchscreenControlled = false;
 
         static CarGame thisApp;
 
@@ -132,6 +137,13 @@ public class CarGame extends Application {
                 getInputManager(),
                 getAudioRenderer(),
                 getGUIViewPort());
+                
+                // Switch debug mode on
+                // debugMode = true;
+                debugMode = false;
+                
+                // Init controls
+                initControls();
     
 		// Create the States
                 bulletAppState = new BulletAppState();
@@ -215,7 +227,29 @@ public class CarGame extends Application {
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
 	}
 	
-	
+	private void initControls() {
+            Platform platform = JmeSystem.getPlatform();
+            if (    platform.toString()=="Android_ARM5" ||
+                    platform.toString()=="Android_ARM6" ||
+                    platform.toString()=="Android_ARM7" ||
+                    platform.toString()=="Android_X86" )  {
+                        setKeyboardControlled(false);
+                        setJoystickControlled(true);
+                        setTouchscreenControlled(true);
+                }
+            else    {
+                if ( getDebugMode())   {
+                    setKeyboardControlled(true);
+                    setJoystickControlled(true);
+                    setTouchscreenControlled(true);
+                }
+                else    {
+                    setKeyboardControlled(true);
+                    setJoystickControlled(false);
+                    setTouchscreenControlled(false);
+                }
+            }
+        }
 	
 	public ViewPort getViewPort() {
 		return viewPort;
@@ -233,10 +267,57 @@ public class CarGame extends Application {
         public NiftyJmeDisplay getNiftyDisplay()    {
             return niftyDisplay;
         }
+        
+        public boolean getDebugMode()   {
+            return debugMode;
+        }
+
+    /**
+     * @return the keyboardControlled
+     */
+    public boolean isKeyboardControlled() {
+        return keyboardControlled;
+    }
+
+    /**
+     * @param keyboardControlled the keyboardControlled to set
+     */
+    public void setKeyboardControlled(boolean keyboardControlled) {
+        this.keyboardControlled = keyboardControlled;
+    }
+
+    /**
+     * @return the joystickControlled
+     */
+    public boolean isJoystickControlled() {
+        return joystickControlled;
+    }
+
+    /**
+     * @param joystickControlled the joystickControlled to set
+     */
+    public void setJoystickControlled(boolean joystickControlled) {
+        this.joystickControlled = joystickControlled;
+    }
+
+    /**
+     * @return the touchscreenControlled
+     */
+    public boolean isTouchscreenControlled() {
+        return touchscreenControlled;
+    }
+
+    /**
+     * @param touchscreenControlled the touchscreenControlled to set
+     */
+    public void setTouchscreenControlled(boolean touchscreenControlled) {
+        this.touchscreenControlled = touchscreenControlled;
+    }
 
         public String getTrack()    {
             return track;
         }
+        
     public void setTrack(String track) {
         this.track=track;
     }
