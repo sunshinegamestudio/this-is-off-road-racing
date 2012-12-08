@@ -124,93 +124,97 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             System.out.println("Name: " + name);
             System.out.println("Value: " + value);
 
-            if (name.equals("CARGAME_Exit")){
-                game.stop();
-            }else if (name.equals("CARGAME_LoadMenu")){
-                game.loadMenu();
-            }
+            if (CarGame.getApp().isKeyboardControlled())    {
+                if (name.equals("CARGAME_Exit")){
+                    game.stop();
+                }else if (name.equals("CARGAME_LoadMenu")){
+                    game.loadMenu();
+                }
 
-            //player.resetControls();
+                //player.resetControls();
 
-            /*
-            if (name.equals("Lefts")) {
-                if (value)
-                    { player.left(true);}
-                else
-                    { player.left(false);}
-            } else if (name.equals("Rights")) {
-                if (value)
-                    { player.right(true);}
-                else
-                    { player.right(false);}
-            } else if (name.equals("Ups")) {
-                if (value)
-                    { player.up(true);}
-                else
-                    { player.up(false);}
-            } else if (name.equals("Downs")) {
-                if (value)
-                    { player.down(true);}
-                else
-                    { player.down(false);}
-            } else if (name.equals("Jumps")) {
-                if (value)
-                    { player.jump(true);}
-                else
-                    { player.jump(false);}
-            }
-             * 
-             */
+                /*
+                if (name.equals("Lefts")) {
+                    if (value)
+                        { player.left(true);}
+                    else
+                        { player.left(false);}
+                } else if (name.equals("Rights")) {
+                    if (value)
+                        { player.right(true);}
+                    else
+                        { player.right(false);}
+                } else if (name.equals("Ups")) {
+                    if (value)
+                        { player.up(true);}
+                    else
+                        { player.up(false);}
+                } else if (name.equals("Downs")) {
+                    if (value)
+                        { player.down(true);}
+                    else
+                        { player.down(false);}
+                } else if (name.equals("Jumps")) {
+                    if (value)
+                        { player.jump(true);}
+                    else
+                        { player.jump(false);}
+                }
+                 * 
+                 */
 
-            if (name.equals("Lefts")) {
-                if (value)
-                    { player.steer(.1f);}
-                else
-                    { player.steer(-.1f);}
-            } else if (name.equals("Rights")) {
-                if (value)
-                    { player.steer(-.1f);}
-                else
-                    { player.steer(.1f);}
-            } else if (name.equals("Ups")) {
-                if (value)
-                    { player.accelerate(-800);}
-                else
-                    { player.accelerate(800);}
-            } else if (name.equals("Downs")) {
-                if (value)
-                    { player.brake(800f);}
-                else
-                    { player.brake(-0f);}
-            } else if (name.equals("Jumps")) {
-                //player.getNode().jump();
+                if (name.equals("Lefts")) {
+                    if (value)
+                        { player.steer(.1f);}
+                    else
+                        { player.steer(-.1f);}
+                } else if (name.equals("Rights")) {
+                    if (value)
+                        { player.steer(-.1f);}
+                    else
+                        { player.steer(.1f);}
+                } else if (name.equals("Ups")) {
+                    if (value)
+                        { player.accelerate(-800);}
+                    else
+                        { player.accelerate(800);}
+                } else if (name.equals("Downs")) {
+                    if (value)
+                        { player.brake(800f);}
+                    else
+                        { player.brake(-0f);}
+                } else if (name.equals("Jumps")) {
+                    //player.getNode().jump();
+                }
             }
-    }
+        }
 
     public void onAnalog(String name, float value, float tpf) {
-        if (name.equals("RightStick Left")) {
-                if (value != 0)
-                    { player.steer(.1f); }
-                else
-                    { player.steer(-.1f);}
-        }
-        else if (name.equals("RightStick Right")) {
-                if (value != 0)
-                    { player.steer(-.1f); }
-                else
-                    { player.steer(.1f);}
-        }
-        else if (name.equals("LeftStick Up")) {
-                if (value != 0)
-                    { player.accelerate(-800); }
-                else
-                    { player.accelerate(800);}
-        }
-        else if (name.equals("LeftStick Down")) {
-                if (value != 0)
-                    { player.brake(800f); }
-                else
-                    { player.brake(-0f);}
+        if (CarGame.getApp().isJoystickControlled())    {
+            if (name.equals("RightStick Left")) {
+                    if (value != 0)
+                        { player.steer(.1f); }
+                    else
+                        { player.steer(-.1f);}
+            }
+            else if (name.equals("RightStick Right")) {
+                    if (value != 0)
+                        { player.steer(-.1f); }
+                    else
+                        { player.steer(.1f);}
+            }
+            else if (name.equals("LeftStick Up")) {
+                    if (value != 0)
+                        { player.accelerate(-800); }
+                    else
+                        { player.accelerate(800);}
+            }
+            else if (name.equals("LeftStick Down")) {
+                    if (value != 0)
+                        { player.brake(800f); }
+                    else
+                        { player.brake(-0f);}
+            }
         }
     }
 
@@ -350,16 +354,18 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     }
 
     private void loadMenu() {
-        niftyDisplay = game.getNiftyDisplay();
-        nifty = niftyDisplay.getNifty();
+        if (CarGame.getApp().isTouchscreenControlled()) {
+            niftyDisplay = game.getNiftyDisplay();
+            nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/GameHUD.xml", "GameHUD");
-        GameHUDScreenController gameHUDScreenController = (GameHUDScreenController)nifty.getScreen("GameHUD").getScreenController();
-        gameHUDScreenController.setGameState(this);
+            nifty.fromXml("General/Interface/GameHUD.xml", "GameHUD");
+            GameHUDScreenController gameHUDScreenController = (GameHUDScreenController)nifty.getScreen("GameHUD").getScreenController();
+            gameHUDScreenController.setGameState(this);
 
-        // attach the nifty display to the gui view port as a processor
-        game.getGUIViewPort().addProcessor(niftyDisplay);
-    }
+            // attach the nifty display to the gui view port as a processor
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+}
 
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
