@@ -1,3 +1,3 @@
 # view AndroidManifest.xml #generated:4
--keep class com.sunshinegamestudio.car_game.MainActivity { <init>(...); }
+-keep class com.sunshinegamestudio.this_is_off_road_racing.MainActivity { <init>(...); }
 

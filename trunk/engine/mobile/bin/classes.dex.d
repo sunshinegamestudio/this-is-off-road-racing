@@ -4,7 +4,12 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestu
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\car_game\R$layout.class \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\car_game\R$string.class \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\car_game\R.class \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\this_is_off_road_racing\BuildConfig.class \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\this_is_off_road_racing\MainActivity.class \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\this_is_off_road_racing\R$attr.class \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\this_is_off_road_racing\R$layout.class \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\this_is_off_road_racing\R$string.class \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\classes\com\sunshinegamestudio\this_is_off_road_racing\R.class \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-jogg-e8b699551a2be043a404145b9b265404.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-android-01c52b6456063e02481c2a7238d0f19c.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-plugins-93891e2307eed0ca7a3129a9fb836a40.jar \
