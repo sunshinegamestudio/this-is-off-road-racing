@@ -39,6 +39,7 @@ Add your content here.  Format your content with:
   * Improved Android support
      * Improved driving controls
      * Basic terrain
+     * Basic Google Play Store page
 
 *V 0.2.2:*
   * Basic current/fastest laptime calculation
