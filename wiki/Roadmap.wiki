@@ -26,19 +26,26 @@ Add your content here.  Format your content with:
 = V 0.2.x =
 
 *V 0.2.0:*
+  * Basic track selector
   * Basic track
      * Create hill to force to drive a lap
      * Replace jME terrain texture with own terrain texture
   * Basic driving
+  * Basic Android support
+     * Basic driving controls
+
+*V 0.2.1:*
+  * Basic car
+  * Improved Android support
+     * Improved driving controls
+     * Basic terrain
+
+*V 0.2.2:*
   * Basic current/fastest laptime calculation
      * Rename LevelExitControl to ...
   * Load/save fastest laptime
 
-*V 0.2.1:*
-  * Basic Android support
-     * Basic build with no specific Android improvements
-
-*V 0.2.2:*
+*V 0.2.3:*
   * Basic logging
      * Initialisation
      * Video card capabilities
@@ -46,10 +53,10 @@ Add your content here.  Format your content with:
   * Fix the remaining issues
      * The gamestate switching doesn't work correct (ID: sqeeck-save-the-beavies -> 2)
 
-*V 0.2.3:*
+*V 0.2.4:*
   * Fix the remaining issues
 
-*V 0.2.4:*
+*V 0.2.5:*
   * Basic Android support
      * Basic build with no specific Android improvements (fix issues with starting)
 
