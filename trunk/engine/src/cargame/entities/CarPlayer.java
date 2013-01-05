@@ -128,6 +128,8 @@ public class CarPlayer extends Entity  {
         //player.attachDebugShape(assetManager);
         player.getWheel(2).setFrictionSlip(4);
         player.getWheel(3).setFrictionSlip(4);
+        
+        // carNode.move(0, 10, 0);
 
         getParent().attachChild(carNode);
         getPhysicsSpace().add(player);
