@@ -27,4 +27,9 @@ public class Time {
     private int minute;
     private int second;
     private int milisecond;
+    
+    public void setTime(long count, long countPerSecond)    {
+        // To implement
+        // See timer doc for bettes names
+    }
 }
