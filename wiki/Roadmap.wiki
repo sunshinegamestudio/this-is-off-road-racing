@@ -39,9 +39,9 @@ Add your content here.  Format your content with:
   * Basic current/fastest laptime calculation
      * Rename LevelExitControl to ZonePassThroughDetectionControl _(done)_
      * Display the time in hours/minutes/seconds/miliseconds
-  * Basic car
 
 *V 0.2.2:*
+  * Basic car
   * Load/save fastest laptime
   * Improved Android support
      * Improved driving controls
