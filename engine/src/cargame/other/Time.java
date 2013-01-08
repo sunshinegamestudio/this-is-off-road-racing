@@ -28,15 +28,15 @@ public class Time {
     private long second;
     private long milisecond;
     
-    public void setTime(long count, long resolution)    {
+    public void setTime(long time)    {
         // To implement
         // See timer doc for bettes names
         // Use timer.getTimeInSeconds() as parameter count
         // Count is in seconds
-        hour=(count/(60*60));
-        minute=(count/(60));
-        second=(count);
-        milisecond=(count-(
+        hour=(time/(60*60));
+        minute=(time/(60));
+        second=(time);
+        milisecond=(time-(
                 (hour*(60*60))+
                 (minute*(60)+
                 (second)))
