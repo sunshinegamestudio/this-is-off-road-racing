@@ -23,13 +23,21 @@ package cargame.other;
  * @author Vortex
  */
 public class Time {
-    private int hour;
-    private int minute;
-    private int second;
-    private int milisecond;
+    private long hour;
+    private long minute;
+    private long second;
+    private long milisecond;
     
-    public void setTime(long count, long countPerSecond)    {
+    public void setTime(long count, long resolution)    {
         // To implement
         // See timer doc for bettes names
+        hour=(count/(60*60));
+        minute=(count/(60));
+        second=(count);
+        milisecond=(count-(
+                (hour*(60*60))+
+                (minute*(60)+
+                (second)))
+                *1000);
     }
 }
