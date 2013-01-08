@@ -31,6 +31,8 @@ public class Time {
     public void setTime(long count, long resolution)    {
         // To implement
         // See timer doc for bettes names
+        // Use timer.getTimeInSeconds() as parameter count
+        // Count is in seconds
         hour=(count/(60*60));
         minute=(count/(60));
         second=(count);
