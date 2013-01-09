@@ -33,13 +33,65 @@ public class Time {
         // See timer doc for bettes names
         // Use timer.getTimeInSeconds() as parameter count
         // Count is in seconds
-        hour=(time/(60*60));
-        minute=(time/(60));
-        second=(time);
-        milisecond=(time-(
-                (hour*(60*60))+
-                (minute*(60)+
-                (second)))
-                *1000);
+        setHour(time/(60*60));
+        setMinute(time/(60));
+        setSecond(time);
+        setMilisecond(time - ((getHour()*(60*60)) + (getMinute() * (60) + (getSecond()))) * 1000);
+    }
+
+    /**
+     * @return the hour
+     */
+    public long getHour() {
+        return hour;
+    }
+
+    /**
+     * @param hour the hour to set
+     */
+    public void setHour(long hour) {
+        this.hour = hour;
+    }
+
+    /**
+     * @return the minute
+     */
+    public long getMinute() {
+        return minute;
+    }
+
+    /**
+     * @param minute the minute to set
+     */
+    public void setMinute(long minute) {
+        this.minute = minute;
+    }
+
+    /**
+     * @return the second
+     */
+    public long getSecond() {
+        return second;
+    }
+
+    /**
+     * @param second the second to set
+     */
+    public void setSecond(long second) {
+        this.second = second;
+    }
+
+    /**
+     * @return the milisecond
+     */
+    public long getMilisecond() {
+        return milisecond;
+    }
+
+    /**
+     * @param milisecond the milisecond to set
+     */
+    public void setMilisecond(long milisecond) {
+        this.milisecond = milisecond;
     }
 }
