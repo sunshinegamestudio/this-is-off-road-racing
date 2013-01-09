@@ -55,6 +55,7 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.*;
 import cargame.gui.GameHUDScreenController;
+import cargame.other.Time;
 import cargame.other.TrackStatistics;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
@@ -76,8 +77,11 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private boolean newLap = false;
     private int currentLap = 0;
     private long fastestLapTime = 0;
+    private Time fastestLapTimeTime;
     private long currentLapTime = 0;
+    private Time currentLapTimeTime;
     private long lastLapTime = 0;
+    private Time lastLapTimeTime;
     private long currentTime = 0;
     
     private boolean isOnStartingPoint = true;
