@@ -224,6 +224,7 @@ public class CarGame extends Application {
 	
 	public void loadGame(String track) {
             // Only load track "AndroidTest" on Android for now (until TerraMonkey works on Android).
+            /*
             Platform platform = JmeSystem.getPlatform();
             if (    platform.toString()=="Android_ARM5" ||
                     platform.toString()=="Android_ARM6" ||
@@ -231,6 +232,7 @@ public class CarGame extends Application {
                     platform.toString()=="Android_X86" )  {
                         track="Android Test";
                 }
+                */
                 
                 this.enqueue(new ChangeTrackTask(track, this));
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
