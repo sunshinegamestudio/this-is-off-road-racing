@@ -81,8 +81,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private long currentLapTime = 0;
     private Time currentLapTimeTime;
     private long lastLapTime = 0;
-    private Time lastLapTimeTime;
     private long currentTime = 0;
+    private Time currentTimeTime;
     
     private boolean isOnStartingPoint = true;
             
@@ -432,9 +432,15 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         
         // Update HUD
         currentLapText.setText("Current Lap: " + currentLap);
+        fastestLapTimeTime.setTime(fastestLapTime);
         fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTime);
+        // fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTimeTime.getHour() + ":" + fastestLapTimeTime.getMinute() + ":" + fastestLapTimeTime.getSecond() + ":" + fastestLapTimeTime.getMilisecond());
+        currentLapTimeTime.setTime(currentLapTime);
         currentLapTimeText.setText("Current LapTime: " + currentLapTime);
+        // currentLapTimeText.setText("Current LapTime: " + currentLapTimeTime.getHour() + ":" + currentLapTimeTime.getMinute() + ":" + currentLapTimeTime.getSecond() + ":" + currentLapTimeTime.getMilisecond());
+        currentTimeTime.setTime(currentTime);
         currentTimeText.setText("Current Time: " + currentTime);
+        // currentTimeText.setText("Current Time: " + currentTimeTime.getHour() + ":" + currentTimeTime.getMinute() + ":" + currentTimeTime.getSecond() + ":" + currentTimeTime.getMilisecond());
 
         // Replace flyCam with ChaseCamera (see example TestChaseCamera.jave) !!!!!!!!!!!!!!!!!!!1
 
@@ -521,6 +527,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        
+        fastestLapTimeTime = new Time();
+        currentLapTimeTime = new Time();
+        currentTimeTime = new Time();
 
         // Load the fastest laptime (still to implement !!!)
         /*
