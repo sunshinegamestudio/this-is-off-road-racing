@@ -1,6 +1,6 @@
 /*
-CarGame, a game where you can drive with a car.
-Copyright (C) 2010  Vortex GameStudio
+This Is Off Road Racing, a game where you can drive off road.
+Copyright (C) 2010 - 2013  Sunshine GameStudio
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
