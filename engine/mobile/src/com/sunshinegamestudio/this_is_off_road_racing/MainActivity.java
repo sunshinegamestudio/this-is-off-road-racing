@@ -3,6 +3,7 @@ package com.sunshinegamestudio.this_is_off_road_racing;
 import com.jme3.app.AndroidHarness;
 import android.content.pm.ActivityInfo;
 import com.jme3.system.android.AndroidConfigChooser.ConfigType;
+import com.jme3.renderer.android.TextureUtil;
  
 public class MainActivity extends AndroidHarness{
  
@@ -26,9 +27,13 @@ public class MainActivity extends AndroidHarness{
         // Choose screen orientation
         screenOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
         // Invert the MouseEvents X (default = true)
-        mouseEventsInvertX = true;
+        // mouseEventsInvertX = true;
+        mouseEventsInvertX = false;
         // Invert the MouseEvents Y (default = true)
-        mouseEventsInvertY = true;
+        // mouseEventsInvertY = true;
+        mouseEventsInvertY = false;
+        // Disable texture compression to avoid black textures
+        TextureUtil.ENABLE_COMPRESSION = false;
     }
  
 }
