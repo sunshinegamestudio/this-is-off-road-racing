@@ -1,6 +1,6 @@
 /*
-CarGame, a game where you can drive with a car.
-Copyright (C) 2010  Vortex GameStudio
+This Is Off Road Racing, a game where you can drive off road.
+Copyright (C) 2010 - 2013  Sunshine GameStudio
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,10 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.other;
 
-/**
- *
- * @author Vortex
- */
 public class Time {
     private long hour;
     private long minute;
