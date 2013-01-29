@@ -47,6 +47,7 @@ public class Terrain extends Entity {
 
         /** Create a temperairy ground for Android Test track */
         //if (track=="Android Test")  {
+        /*
             Node boxNode = new Node();
             Box box = new Box( Vector3f.ZERO, 100,1,100);
             RigidBodyControl rigidBody = new RigidBodyControl();
@@ -66,6 +67,7 @@ public class Terrain extends Entity {
             
             getParent().attachChild(boxNode);
             getPhysicsSpace().addAll(boxNode);
+        */
         //}
         
         // Load selected track
