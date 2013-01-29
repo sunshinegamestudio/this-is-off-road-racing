@@ -48,10 +48,6 @@ import com.jme3.scene.shape.Box;
 import com.jme3.shadow.BasicShadowRenderer;
 import com.jme3.texture.Texture.WrapMode;
 
-/**
- *
- * @author Vortex
- */
 public class CarPlayer extends Entity  {
     private VehicleControl player;
     private VehicleWheel fr, fl, br, bl;
