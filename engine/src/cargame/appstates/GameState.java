@@ -179,9 +179,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
                         { player.steer(.1f);}
                 } else if (name.equals("Ups")) {
                     if (value)
-                        { player.accelerate(-800);}
-                    else
                         { player.accelerate(800);}
+                    else
+                        { player.accelerate(-800);}
                 } else if (name.equals("Downs")) {
                     if (value)
                         { player.brake(800f);}
