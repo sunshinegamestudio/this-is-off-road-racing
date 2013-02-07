@@ -94,8 +94,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private Terrain terrain;
     private StartingPoint startingPoint;
     //private Terrain_node terrain_node;
-    private CarPlayer player;
-    //private SimpleCarPlayer player;
+    //private CarPlayer player;
+    private SimpleCarPlayer player;
     //private CharacterPlayer player;
     //private SimpleEnemy simpleEnemy;
     
@@ -179,9 +179,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
                         { player.steer(.1f);}
                 } else if (name.equals("Ups")) {
                     if (value)
-                        { player.accelerate(800);}
-                    else
                         { player.accelerate(-800);}
+                    else
+                        { player.accelerate(800);}
                 } else if (name.equals("Downs")) {
                     if (value)
                         { player.brake(800f);}
@@ -382,7 +382,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         guiNode.setCullHint(CullHint.Never);
         loadMenu();
 
-        game.getPhysicsSpace().enableDebug(game.getAssetManager());
+        // game.getPhysicsSpace().enableDebug(game.getAssetManager());
     }
 
     @Override
@@ -523,8 +523,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
         startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //terrain_node = new Terrain_node(game.getCamera(), game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        //player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
         
