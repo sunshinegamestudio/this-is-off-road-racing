@@ -65,7 +65,7 @@ public class SimpleCarPlayer extends Entity  {
         //Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/WireColor.j3md");
         //mat.setColor("Color", ColorRGBA.Red);
         Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.getAdditionalRenderState().setWireframe(true);
+        //mat.getAdditionalRenderState().setWireframe(true);
         mat.setColor("Color", ColorRGBA.Red);
 
         
@@ -134,6 +134,15 @@ public class SimpleCarPlayer extends Entity  {
                 wheelDirection, wheelAxle, restLength, radius, true);
 
         //vehicle.attachDebugShape(assetManager);
+        
+        Box chassisMesh = new Box(1.2f, 0.5f, 2.4f);
+        Geometry chassisGeometry = new Geometry("chassis", chassisMesh);
+        chassisGeometry.setMaterial(mat);
+        Node chassisNode = new Node("chassisNode");
+        chassisNode.move(0, 0.5f, 0);
+        chassisNode.attachChild(chassisGeometry);
+        vehicleNode.attachChild(chassisNode);
+        
         getParent().attachChild(vehicleNode);
 
         getPhysicsSpace().add(vehicle);
