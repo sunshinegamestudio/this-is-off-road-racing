@@ -40,6 +40,7 @@ Add your content here.  Format your content with:
      * Rename LevelExitControl to ZonePassThroughDetectionControl _(done)_
      * Display the time in hours/minutes/seconds/miliseconds
   * Basic car
+  * Basic license acceptence screen
 
 *V 0.2.2:*
   * Load/save fastest laptime
