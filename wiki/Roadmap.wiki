@@ -35,7 +35,7 @@ Add your content here.  Format your content with:
      * Basic driving controls
 
 *V 0.2.1:*
-  * Change the license in the source files from ... to Sunshine GameStudio
+  * Change the license in the source files from ... to Sunshine GameStudio (all projects)
   * Basic current/fastest laptime calculation
      * Rename LevelExitControl to ZonePassThroughDetectionControl _(done)_
      * Display the time in hours/minutes/seconds/miliseconds
