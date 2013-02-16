@@ -33,12 +33,18 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import com.jme3.system.JmeSystem;
+import com.jme3.system.Platform;
+import com.jme3.texture.Texture;
 
 /**
  *
  * @author Vortex
  */
 public class Terrain extends Entity {
+    
+    private Node terrain_geo;
+
     public Terrain(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
@@ -72,7 +78,7 @@ public class Terrain extends Entity {
         
         // Load selected track
         Node terrain = (Node) assetManager.loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
-
+      
         terrain.setLocalTranslation(new Vector3f(0,-1,10));
         terrain.updateGeometricState();
 
@@ -81,9 +87,23 @@ public class Terrain extends Entity {
         //mat3.setColor("m_Color", ColorRGBA.Red);
         //terrain.attachDebugShape(mat3);
 
-
         getParent().attachChild(terrain);
         getPhysicsSpace().addAll(terrain);
+
+        Platform platform = JmeSystem.getPlatform();
+        if (    platform.toString()=="Android_ARM5" ||
+                platform.toString()=="Android_ARM6" ||
+                platform.toString()=="Android_ARM7" ||
+                platform.toString()=="Android_X86" )  {
+            terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
+            if(terrain_geo != null)    {
+                Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+                // mat.setColor("Color", ColorRGBA.Red);
+                Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+                mat.setTexture("ColorMap", default_text);
+                terrain_geo.setMaterial(mat);
+            }
+        }
     }
 
 }
