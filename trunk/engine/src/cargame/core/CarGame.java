@@ -212,6 +212,11 @@ public class CarGame extends Application {
         DETACHED
     }
 
+	public void loadLicenseAcceptanceState() {
+                // this.enqueue(new ChangeStateTask(gameState,menuState,viewPort,stateManager));
+        }
+
+        
 	public void loadMenu() {
                 this.enqueue(new ChangeStateTask(gameState,menuState,viewPort,stateManager));
         }
