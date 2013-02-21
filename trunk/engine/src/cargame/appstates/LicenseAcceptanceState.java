@@ -56,7 +56,7 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
     public LicenseAcceptanceState(CarGame game) {
     	this.game = game;
 
-        this.game.getLogger().log(Level.SEVERE, "InGameMenuState created.");
+        this.game.getLogger().log(Level.SEVERE, "LicenceAcceptanceState created.");
     }
     
     public void onAction(String name, boolean value, float tpf) {
