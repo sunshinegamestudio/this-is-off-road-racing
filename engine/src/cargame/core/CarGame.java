@@ -42,6 +42,7 @@ import cargame.appstates.MainMenuState;
 import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
+import cargame.appstates.LicenseAcceptanceState;
 import cargame.core.statetasks.ChangeStateTask;
 import cargame.core.statetasks.ChangeTrackTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
@@ -54,7 +55,8 @@ public class CarGame extends Application {
     public Vector3f worldMax = new Vector3f(10000f, 10000f, 10000f);
 
 
-	private GameState gameState = null;
+        private LicenseAcceptanceState licenseAcceptanceState = null;
+        private GameState gameState = null;
 	private MainMenuState menuState = null;
 	private TrackSelectorState trackSelectorState = null;
 	private InGameMenuState inGameMenuState = null;
@@ -147,6 +149,7 @@ public class CarGame extends Application {
     
 		// Create the States
                 bulletAppState = new BulletAppState();
+                licenseAcceptanceState = new LicenseAcceptanceState(this);
                 menuState = new MainMenuState(this);
                 trackSelectorState = new TrackSelectorState(this);
 		gameState = new GameState(this);
