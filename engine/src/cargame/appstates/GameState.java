@@ -93,12 +93,13 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private float steer_dig_v = .1f;
     private float steer_dig_nv = -.1f;
     
-    private float acceleration_ana_v = -800;
-    private float acceleration_ana_nv = 800;
-    private float brake_ana_v = 800f;
-    private float brake_ana_nv = -0f;
-    private float steer_ana_v = .1f;
-    private float steer_ana_nv = -.1f;
+    private float sensitivity = 0.2f;
+    private float acceleration_ana_v = (-800 * sensitivity);
+    private float acceleration_ana_nv = (800 * sensitivity);
+    private float brake_ana_v = (800f * sensitivity);
+    private float brake_ana_nv = (-0f * sensitivity);
+    private float steer_ana_v = (.1f * sensitivity);
+    private float steer_ana_nv = (-.1f * sensitivity);
             
     // protected FlyByCamera flyCam;
     // protected ChaseCamera chaseCam;
