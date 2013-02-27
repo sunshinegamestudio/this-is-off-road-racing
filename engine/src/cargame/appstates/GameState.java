@@ -93,7 +93,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private float steer_dig_v = .1f;
     private float steer_dig_nv = -.1f;
     
-    private float sensitivity = 0.2f;
+    private float sensitivity = 0.1f;
     private float acceleration_ana_v = (-800 * sensitivity);
     private float acceleration_ana_nv = (800 * sensitivity);
     private float brake_ana_v = (800f * sensitivity);
@@ -181,27 +181,27 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
                 }
                  * 
                  */
-
+                
                 if (name.equals("Lefts")) {
                     if (value)
-                        { player.steer(.1f);}
+                        { player.steer(steer_dig_v);}
                     else
-                        { player.steer(-.1f);}
+                        { player.steer(steer_dig_nv);}
                 } else if (name.equals("Rights")) {
                     if (value)
-                        { player.steer(-.1f);}
+                        { player.steer(-steer_dig_v);}
                     else
-                        { player.steer(.1f);}
+                        { player.steer(-steer_dig_nv);}
                 } else if (name.equals("Ups")) {
                     if (value)
-                        { player.accelerate(-800);}
+                        { player.accelerate(acceleration_dig_v);}
                     else
-                        { player.accelerate(800);}
+                        { player.accelerate(acceleration_dig_nv);}
                 } else if (name.equals("Downs")) {
                     if (value)
-                        { player.brake(800f);}
+                        { player.brake(brake_dig_v);}
                     else
-                        { player.brake(-0f);}
+                        { player.brake(brake_dig_nv);}
                 } else if (name.equals("Jumps")) {
                     //player.getNode().jump();
                 }
@@ -212,27 +212,27 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         if (CarGame.getApp().isJoystickControlled())    {
             if (name.equals("RightStick Left")) {
                     if (value != 0)
-                        { player.steer(.1f); }
+                        { player.steer(steer_ana_v); }
                     else
-                        { player.steer(-.1f);}
+                        { player.steer(steer_ana_nv);}
             }
             else if (name.equals("RightStick Right")) {
                     if (value != 0)
-                        { player.steer(-.1f); }
+                        { player.steer(-steer_ana_v); }
                     else
-                        { player.steer(.1f);}
+                        { player.steer(-steer_ana_nv);}
             }
             else if (name.equals("LeftStick Up")) {
                     if (value != 0)
-                        { player.accelerate(-800); }
+                        { player.accelerate(acceleration_ana_v); }
                     else
-                        { player.accelerate(800);}
+                        { player.accelerate(acceleration_ana_nv);}
             }
             else if (name.equals("LeftStick Down")) {
                     if (value != 0)
-                        { player.brake(800f); }
+                        { player.brake(brake_ana_v); }
                     else
-                        { player.brake(-0f);}
+                        { player.brake(brake_ana_nv);}
             }
         }
     }
