@@ -220,7 +220,8 @@ public class CarGame extends Application {
         }
 
         
-	public void loadMenu() {
+        // Add a parameter so the previous state can also be the LicenseAcceptance state.
+        public void loadMenu() {
                 this.enqueue(new ChangeStateTask(gameState,menuState,viewPort,stateManager));
         }
 
