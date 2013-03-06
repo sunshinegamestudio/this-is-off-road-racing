@@ -38,6 +38,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.jme3.app.state.AbstractAppState;
 import cargame.appstates.MainMenuState;
 import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
@@ -157,7 +158,8 @@ public class CarGame extends Application {
 		
 		// Attach MenuState
                 getStateManager().attach(bulletAppState);
-		getStateManager().attach(menuState);
+		// getStateManager().attach(menuState);
+		getStateManager().attach(licenseAcceptanceState);
     }
 	
 	
@@ -218,11 +220,15 @@ public class CarGame extends Application {
 	public void loadLicenseAcceptanceState() {
                 // this.enqueue(new ChangeStateTask(gameState,menuState,viewPort,stateManager));
         }
+        
+        public void loadLicenseAcceptanceState_return()  {
+            loadMenu(licenseAcceptanceState);
+        }
 
         
         // Add a parameter so the previous state can also be the LicenseAcceptance state.
-        public void loadMenu() {
-                this.enqueue(new ChangeStateTask(gameState,menuState,viewPort,stateManager));
+        public void loadMenu(AbstractAppState previousState) {
+                this.enqueue(new ChangeStateTask(previousState,menuState,viewPort,stateManager));
         }
 
         

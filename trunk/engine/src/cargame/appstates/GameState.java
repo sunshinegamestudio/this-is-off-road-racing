@@ -147,7 +147,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
                 if (name.equals("CARGAME_Exit")){
                     game.stop();
                 }else if (name.equals("CARGAME_LoadMenu")){
-                    game.loadMenu();
+                    game.loadMenu(this);
                 }
 
                 //player.resetControls();
