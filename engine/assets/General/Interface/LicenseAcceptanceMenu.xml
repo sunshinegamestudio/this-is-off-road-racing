@@ -25,7 +25,7 @@
             <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
           </effect>
           <!-- text id="text" font="aurulent-sans-17.fnt" color="#000f" text="License text, very long text GPL V 3" align="center" valign="center" wrap="true" / -->
-          <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="License text, very long text GPL V 3" align="center" valign="center" wrap="true" />
+          <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="License text, very long text GPL V 3 n b n b n b n b" align="center" valign="center" wrap="true" />
         </panel>
       </control>
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
