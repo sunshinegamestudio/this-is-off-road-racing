@@ -25,7 +25,7 @@ Add your content here.  Format your content with:
 
 = V 0.2.x =
 
-*V 0.2.0:*
+*V 0.2.0:* _(done)_
   * Basic track selector
   * Basic track
      * Create hill to force to drive a lap
