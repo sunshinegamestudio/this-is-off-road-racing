@@ -40,6 +40,7 @@ Add your content here.  Format your content with:
      * Display the time in hours/minutes/seconds/miliseconds _(done)_
   * Basic car _(done)_
   * Improved Android support _(done)_
+     * Basic terrain
 
 *V 0.2.2:*
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
@@ -48,7 +49,6 @@ Add your content here.  Format your content with:
   * Load/save fastest laptime
   * Improved Android support
      * Improved driving controls
-     * Basic terrain
      * Basic Google Play Store page
 
 *V 0.2.3:*
