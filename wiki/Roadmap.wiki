@@ -40,7 +40,7 @@ Add your content here.  Format your content with:
      * Display the time in hours/minutes/seconds/miliseconds _(done)_
   * Basic car _(done)_
   * Improved Android support _(done)_
-     * Basic terrain
+     * Basic terrain _(done)_
 
 *V 0.2.2:*
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
