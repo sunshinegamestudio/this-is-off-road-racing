@@ -143,6 +143,9 @@ public class SimpleCarPlayer extends Entity  {
         chassisNode.attachChild(chassisGeometry);
         vehicleNode.attachChild(chassisNode);
         
+        // Create wheelMesh
+        // Attach wheelMesh
+        
         getParent().attachChild(vehicleNode);
 
         getPhysicsSpace().add(vehicle);
