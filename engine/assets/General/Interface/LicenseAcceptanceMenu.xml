@@ -17,7 +17,7 @@
         <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="License Acceptance" align="center" valign="center" />
       </panel>
       <control id="scrollbar" name="scrollPanel" horizontal="false" height="25%">
-        <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
+        <panel id="panel" height="25%" width="90%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true" >
           <!-- interact onClick="exit()"/ -->
           <effect>
             <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>
@@ -25,7 +25,7 @@
             <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
           </effect>
           <!-- text id="text" font="aurulent-sans-17.fnt" color="#000f" text="License text, very long text GPL V 3" align="center" valign="center" wrap="true" / -->
-          <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="License text, very long text GPL V 3 n b n b n b n b nnnnnnnnnnnnnnnnnnnnnnnnnnnn nnnnnnnnnnnnnnnnnnnnnnnnn nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" align="center" valign="center" wrap="true" />
+          <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="This program comes with ABSOLUTELY NO WARRANTY. Use it at your own risk. The author is not responseble for ANY DAMAGE that occurs by running this program." align="center" valign="center" wrap="true" />
         </panel>
       </control>
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
