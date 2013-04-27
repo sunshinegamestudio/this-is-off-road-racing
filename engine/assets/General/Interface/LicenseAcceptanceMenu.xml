@@ -35,7 +35,7 @@
             <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
           </effect>
           <!-- text id="text" font="aurulent-sans-17.fnt" color="#000f" text="License text, very long text GPL V 3" align="center" valign="center" wrap="true" / -->
-          <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="Use it at your own risk." align="center" valign="center" wrap="true" />
+          <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="Use it at your OWN RISK." align="center" valign="center" wrap="true" />
         </panel>
         <panel id="panel" height="7%" width="90%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true" >
           <!-- interact onClick="exit()"/ -->
