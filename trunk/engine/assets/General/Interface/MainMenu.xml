@@ -25,7 +25,7 @@
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="Start" align="center" valign="center" /-->
         <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="Start" align="center" valign="center" />
       </panel>
-      <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
+      <panel id="panel" height="25%" width="90%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <!-- interact onClick="startLicenseView()"/ -->
         <effect>
           <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>
@@ -33,7 +33,7 @@
           <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
         </effect>
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="Start" align="center" valign="center" /-->
-        <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="License" align="center" valign="center" />
+        <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="License: GPL v3 - http://this-is-off-road-racing.googlecode.com/files/gpl-3.0.txt" align="center" valign="center" />
       </panel>
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <interact onClick="exit()"/>
