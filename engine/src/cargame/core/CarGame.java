@@ -59,6 +59,7 @@ public class CarGame extends Application {
         private LicenseAcceptanceState licenseAcceptanceState = null;
         private GameState gameState = null;
 	private MainMenuState menuState = null;
+        // private LicenseViewMenuState licenseViewMenuState = null;
 	private TrackSelectorState trackSelectorState = null;
 	private InGameMenuState inGameMenuState = null;
         private BulletAppState bulletAppState = null;
@@ -231,6 +232,9 @@ public class CarGame extends Application {
                 this.enqueue(new ChangeStateTask(previousState,menuState,viewPort,stateManager));
         }
 
+        public void loadLicenseViewMenu(AbstractAppState previousState) {
+                // this.enqueue(new ChangeStateTask(previousState,licenseViewMenuState,viewPort,stateManager));
+        }
         
 	public void loadTrackSelector() {
                 this.enqueue(new ChangeStateTask(menuState,trackSelectorState,viewPort,stateManager));
