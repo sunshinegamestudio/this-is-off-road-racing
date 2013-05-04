@@ -64,6 +64,20 @@ import cargame.core.CarGame;
             // CarGame.getApp().loadLicenseAcceptanceState_return();
         }
 
+        public void back() {
+            //throw new UnsupportedOperationException("Not supported yet.");
+            System.out.println("back");
+            /*
+            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
+             * Start new game from CarGame instead of directly from gamestate
+             */
+
+            /*
+             * Switch appstate with a Callable object (see jME forum + Desktop)
+             */
+            // CarGame.getApp().loadLicenseViewMenuState_return();
+        }
+
         public void exit()  {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("exit");
