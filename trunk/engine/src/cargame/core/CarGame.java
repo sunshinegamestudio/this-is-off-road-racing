@@ -40,6 +40,7 @@ import java.util.logging.Logger;
 
 import com.jme3.app.state.AbstractAppState;
 import cargame.appstates.MainMenuState;
+import cargame.appstates.LicenseViewMenuState;
 import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
@@ -59,7 +60,7 @@ public class CarGame extends Application {
         private LicenseAcceptanceState licenseAcceptanceState = null;
         private GameState gameState = null;
 	private MainMenuState menuState = null;
-        // private LicenseViewMenuState licenseViewMenuState = null;
+        private LicenseViewMenuState licenseViewMenuState = null;
 	private TrackSelectorState trackSelectorState = null;
 	private InGameMenuState inGameMenuState = null;
         private BulletAppState bulletAppState = null;
@@ -153,6 +154,7 @@ public class CarGame extends Application {
                 bulletAppState = new BulletAppState();
                 licenseAcceptanceState = new LicenseAcceptanceState(this);
                 menuState = new MainMenuState(this);
+                licenseViewMenuState = new LicenseViewMenuState(this);
                 trackSelectorState = new TrackSelectorState(this);
 		gameState = new GameState(this);
                 inGameMenuState = new InGameMenuState(this);
@@ -233,7 +235,7 @@ public class CarGame extends Application {
         }
 
         public void loadLicenseViewMenu(AbstractAppState previousState) {
-                // this.enqueue(new ChangeStateTask(previousState,licenseViewMenuState,viewPort,stateManager));
+                this.enqueue(new ChangeStateTask(previousState,licenseViewMenuState,viewPort,stateManager));
         }
         
 	public void loadTrackSelector() {
