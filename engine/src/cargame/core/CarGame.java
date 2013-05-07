@@ -237,6 +237,10 @@ public class CarGame extends Application {
         public void loadLicenseViewMenu(AbstractAppState previousState) {
                 this.enqueue(new ChangeStateTask(previousState,licenseViewMenuState,viewPort,stateManager));
         }
+
+        public void loadLicenseViewMenu_return() {
+            loadMenu(licenseViewMenuState);
+        }
         
 	public void loadTrackSelector() {
                 this.enqueue(new ChangeStateTask(menuState,trackSelectorState,viewPort,stateManager));
