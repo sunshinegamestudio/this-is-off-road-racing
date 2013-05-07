@@ -75,7 +75,7 @@ import cargame.core.CarGame;
             /*
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
-            // CarGame.getApp().loadLicenseViewMenuState_return();
+            CarGame.getApp().loadLicenseViewMenuState_return();
         }
 
         public void exit()  {
