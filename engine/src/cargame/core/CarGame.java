@@ -234,6 +234,12 @@ public class CarGame extends Application {
                 this.enqueue(new ChangeStateTask(previousState,menuState,viewPort,stateManager));
         }
 
+        public void loadMenu_return(String returnValue) {
+                if (returnValue=="loadLicenseViewMenu") {
+                    loadLicenseViewMenu(menuState);
+                }
+        }
+        
         public void loadLicenseViewMenu(AbstractAppState previousState) {
                 this.enqueue(new ChangeStateTask(previousState,licenseViewMenuState,viewPort,stateManager));
         }

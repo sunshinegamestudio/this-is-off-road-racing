@@ -65,6 +65,10 @@ import cargame.appstates.GameState;
              */
             CarGame.getApp().loadTrackSelector();
         }
+        
+        public void loadLicenseViewMenu()   {
+            CarGame.getApp().loadMenu_return("loadLicenseViewMenu");
+        }
 
         public void exit()  {
             //throw new UnsupportedOperationException("Not supported yet.");
