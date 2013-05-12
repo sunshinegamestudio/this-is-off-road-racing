@@ -144,6 +144,7 @@ public class SimpleCarPlayer extends Entity  {
         vehicleNode.attachChild(chassisNode);
         
         // Create wheelMesh
+        // Cylinder wheelMesh = new Cylinder(16, 16, radius, radius * 0.6f, true);
         // Attach wheelMesh
         
         getParent().attachChild(vehicleNode);
