@@ -134,7 +134,8 @@ public class SimpleCarPlayer extends Entity  {
                 wheelDirection, wheelAxle, restLength, radius, true);
 
         //vehicle.attachDebugShape(assetManager);
-        
+
+        // Visual code samenvoegen met physics code !!!!!!!!!!
         Box chassisMesh = new Box(1.2f, 0.5f, 2.4f);
         Geometry chassisGeometry = new Geometry("chassis", chassisMesh);
         chassisGeometry.setMaterial(mat);
@@ -145,6 +146,12 @@ public class SimpleCarPlayer extends Entity  {
         
         // Create wheelMesh
         // Cylinder wheelMesh = new Cylinder(16, 16, radius, radius * 0.6f, true);
+        // Node node1 = new Node("wheel 1 node");
+        // Geometry wheels1 = new Geometry("wheel 1", wheelMesh);
+        // node1.attachChild(wheels1);
+        // wheels1.rotate(0, FastMath.HALF_PI, 0);
+        // wheels1.setMaterial(mat);
+        // vehicle.addWheel(wheels1, new Vector3f(-xOff, yOff, zOff), wheelDirection, wheelAxle, restLength, radius, false);
         // Attach wheelMesh
         
         getParent().attachChild(vehicleNode);
