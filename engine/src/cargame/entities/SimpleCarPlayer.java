@@ -68,6 +68,9 @@ public class SimpleCarPlayer extends Entity  {
         //mat.getAdditionalRenderState().setWireframe(true);
         mat.setColor("Color", ColorRGBA.Red);
 
+        Material matBlue = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+        //mat.getAdditionalRenderState().setWireframe(true);
+        matBlue.setColor("Color", ColorRGBA.Blue);
         
         //create a compound shape and attach the BoxCollisionShape for the car body at 0,1,0
         //this shifts the effective center of mass of the BoxCollisionShape to 0,-1,0
@@ -114,43 +117,37 @@ public class SimpleCarPlayer extends Entity  {
         Geometry wheels1 = new Geometry("wheel 1", wheelMesh);
         node1.attachChild(wheels1);
         wheels1.rotate(0, FastMath.HALF_PI, 0);
-        wheels1.setMaterial(mat);
+        wheels1.setMaterial(matBlue);
         vehicle.addWheel(wheels1, new Vector3f(-xOff, yOff, zOff),
                 wheelDirection, wheelAxle, restLength, radius, false);
-        // create wheel 1 visual presentation here !!!
-        // Create wheelMesh
-        // Cylinder wheelMesh = new Cylinder(16, 16, radius, radius * 0.6f, true);
-        // Node node1 = new Node("wheel 1 node");
-        // Geometry wheels1 = new Geometry("wheel 1", wheelMesh);
-        // node1.attachChild(wheels1);
-        // wheels1.rotate(0, FastMath.HALF_PI, 0);
-        // wheels1.setMaterial(mat);
-        // vehicle.addWheel(wheels1, new Vector3f(-xOff, yOff, zOff), wheelDirection, wheelAxle, restLength, radius, false);
-        // Attach wheelMesh
+        vehicleNode.attachChild(node1);
 
         Node node2 = new Node("wheel 2 node");
         Geometry wheels2 = new Geometry("wheel 2", wheelMesh);
         node2.attachChild(wheels2);
         wheels2.rotate(0, FastMath.HALF_PI, 0);
-        wheels2.setMaterial(mat);
+        wheels2.setMaterial(matBlue);
         vehicle.addWheel(wheels2, new Vector3f(xOff, yOff, zOff),
                 wheelDirection, wheelAxle, restLength, radius, false);
+        vehicleNode.attachChild(node2);
 
         Node node3 = new Node("wheel 3 node");
         Geometry wheels3 = new Geometry("wheel 3", wheelMesh);
         node3.attachChild(wheels3);
         wheels3.rotate(0, FastMath.HALF_PI, 0);
-        wheels3.setMaterial(mat);
+        wheels3.setMaterial(matBlue);
         vehicle.addWheel(wheels3, new Vector3f(-xOff, yOff, -zOff),
                 wheelDirection, wheelAxle, restLength, radius, true);
+        vehicleNode.attachChild(node3);
 
         Node node4 = new Node("wheel 4 node");
         Geometry wheels4 = new Geometry("wheel 4", wheelMesh);
         node4.attachChild(wheels4);
         wheels4.rotate(0, FastMath.HALF_PI, 0);
-        wheels4.setMaterial(mat);
+        wheels4.setMaterial(matBlue);
         vehicle.addWheel(wheels4, new Vector3f(xOff, yOff, -zOff),
                 wheelDirection, wheelAxle, restLength, radius, true);
+        vehicleNode.attachChild(node4);
 
         //vehicle.attachDebugShape(assetManager);
 
