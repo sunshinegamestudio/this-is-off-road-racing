@@ -79,7 +79,16 @@ public class SimpleCarPlayer extends Entity  {
         vehicleNode=new Node("vehicleNode");
         vehicle = new VehicleControl(compoundShape, 800);
         vehicleNode.addControl(vehicle);
-
+        
+        // create chassis visual presentation
+        Box chassisMesh = new Box(1.2f, 0.5f, 2.4f);
+        Geometry chassisGeometry = new Geometry("chassis", chassisMesh);
+        chassisGeometry.setMaterial(mat);
+        Node chassisNode = new Node("chassisNode");
+        chassisNode.move(0, 0.5f, 0);
+        chassisNode.attachChild(chassisGeometry);
+        vehicleNode.attachChild(chassisNode);
+        
         //setting suspension values for wheels, this can be a bit tricky
         //see also https://docs.google.com/Doc?docid=0AXVUZ5xw6XpKZGNuZG56a3FfMzU0Z2NyZnF4Zmo&hl=en
         float stiffness = 60.0f;//200=f1 car
@@ -108,6 +117,16 @@ public class SimpleCarPlayer extends Entity  {
         wheels1.setMaterial(mat);
         vehicle.addWheel(wheels1, new Vector3f(-xOff, yOff, zOff),
                 wheelDirection, wheelAxle, restLength, radius, false);
+        // create wheel 1 visual presentation here !!!
+        // Create wheelMesh
+        // Cylinder wheelMesh = new Cylinder(16, 16, radius, radius * 0.6f, true);
+        // Node node1 = new Node("wheel 1 node");
+        // Geometry wheels1 = new Geometry("wheel 1", wheelMesh);
+        // node1.attachChild(wheels1);
+        // wheels1.rotate(0, FastMath.HALF_PI, 0);
+        // wheels1.setMaterial(mat);
+        // vehicle.addWheel(wheels1, new Vector3f(-xOff, yOff, zOff), wheelDirection, wheelAxle, restLength, radius, false);
+        // Attach wheelMesh
 
         Node node2 = new Node("wheel 2 node");
         Geometry wheels2 = new Geometry("wheel 2", wheelMesh);
@@ -135,25 +154,6 @@ public class SimpleCarPlayer extends Entity  {
 
         //vehicle.attachDebugShape(assetManager);
 
-        // Visual code samenvoegen met physics code !!!!!!!!!!
-        Box chassisMesh = new Box(1.2f, 0.5f, 2.4f);
-        Geometry chassisGeometry = new Geometry("chassis", chassisMesh);
-        chassisGeometry.setMaterial(mat);
-        Node chassisNode = new Node("chassisNode");
-        chassisNode.move(0, 0.5f, 0);
-        chassisNode.attachChild(chassisGeometry);
-        vehicleNode.attachChild(chassisNode);
-        
-        // Create wheelMesh
-        // Cylinder wheelMesh = new Cylinder(16, 16, radius, radius * 0.6f, true);
-        // Node node1 = new Node("wheel 1 node");
-        // Geometry wheels1 = new Geometry("wheel 1", wheelMesh);
-        // node1.attachChild(wheels1);
-        // wheels1.rotate(0, FastMath.HALF_PI, 0);
-        // wheels1.setMaterial(mat);
-        // vehicle.addWheel(wheels1, new Vector3f(-xOff, yOff, zOff), wheelDirection, wheelAxle, restLength, radius, false);
-        // Attach wheelMesh
-        
         getParent().attachChild(vehicleNode);
 
         getPhysicsSpace().add(vehicle);
