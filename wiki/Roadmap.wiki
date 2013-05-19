@@ -52,7 +52,7 @@ Add your content here.  Format your content with:
      * Basic Google Play Store page
      * Only use unshaded material for Android
        * Replace terrain lightning material with unshaded material
-       * Export all models with shadeless (unshaded) material
+       * Modify all models so they use shadeless (unshaded) material (Blender)
 
 *V 0.2.3:*
   * Basic logging
