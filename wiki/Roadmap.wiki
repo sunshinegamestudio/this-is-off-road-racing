@@ -45,6 +45,7 @@ Add your content here.  Format your content with:
 *V 0.2.2:*
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
   * Improved car
+    * Add wheels
   * Basic license acceptence screen (start) and license view screen (from main menu)
   * Load/save fastest laptime
   * Improved Android support
