@@ -67,6 +67,7 @@ public class CarGame extends Application {
         private Logger logger;
         private FileHandler fh;
         private NiftyJmeDisplay niftyDisplay;
+        private String platform;
         private boolean debugMode = false;
         private boolean keyboardControlled = false;
         private boolean joystickControlled = false;
@@ -309,6 +310,20 @@ public class CarGame extends Application {
         public NiftyJmeDisplay getNiftyDisplay()    {
             return niftyDisplay;
         }
+
+    /**
+     * @return the platform
+     */
+    public String getPlatform() {
+        return platform;
+    }
+
+    /**
+     * @param platform the platform to set
+     */
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
         
         public boolean getDebugMode()   {
             return debugMode;
