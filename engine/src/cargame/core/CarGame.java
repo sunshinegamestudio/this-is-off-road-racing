@@ -312,6 +312,19 @@ public class CarGame extends Application {
         }
 
     /**
+     * @detect the platform
+     */
+    public void detectPlatform() {
+        Platform platform = JmeSystem.getPlatform();
+        if (platform.toString().contains("Android"))    {
+            this.platform="Android";
+        }
+        else    {
+            this.platform="Unknown";
+        }
+    }
+
+    /**
      * @return the platform
      */
     public String getPlatform() {
