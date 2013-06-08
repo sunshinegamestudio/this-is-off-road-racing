@@ -144,6 +144,9 @@ public class CarGame extends Application {
                 getAudioRenderer(),
                 getGUIViewPort());
                 
+                // Detect the platform
+                detectPlatform();
+                
                 // Switch debug mode on
                 // debugMode = true;
                 debugMode = false;
