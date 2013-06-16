@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.entities;
 
+import cargame.core.CarGame;
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.bullet.collision.shapes.BoxCollisionShape;
@@ -90,11 +91,7 @@ public class Terrain extends Entity {
         getParent().attachChild(terrain);
         getPhysicsSpace().addAll(terrain);
 
-        Platform platform = JmeSystem.getPlatform();
-        if (    platform.toString()=="Android_ARM5" ||
-                platform.toString()=="Android_ARM6" ||
-                platform.toString()=="Android_ARM7" ||
-                platform.toString()=="Android_X86" )  {
+        if (CarGame.getApp().getPlatform()=="Android")  {
             terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
             if(terrain_geo != null)    {
                 Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");

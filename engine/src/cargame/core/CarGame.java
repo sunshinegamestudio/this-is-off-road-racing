@@ -274,7 +274,6 @@ public class CarGame extends Application {
 	}
 	
 	private void initControls() {
-            Platform platform = JmeSystem.getPlatform();
             if (getPlatform()=="Android")    {
                         setKeyboardControlled(false);
                         setJoystickControlled(true);
