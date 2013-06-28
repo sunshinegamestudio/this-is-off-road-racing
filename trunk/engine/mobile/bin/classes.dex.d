@@ -22,10 +22,9 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\j-ogg-vorbisd-065
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\nifty-style-black-9b1c8eda8d4db861719576f16f8d0ab2.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\j-ogg-oggd-09ab7a29becb9d7568525c63cc6e1ec3.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\eventbus-da2b8fe3faac3dfc4a63a0c675da6848.jar \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\assets-e282cf045c97e418399bc324634d21d9.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-bullet-16c1fddf2c99d7d943dd3d5760012752.jar \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-terrain-f79da5de55cb1049925f8b0db0494a0d.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-effects-86a6cd1a0df7b9c70a34d9bf17d8a7a2.jar \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-terrain-f79da5de55cb1049925f8b0db0494a0d.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\xmlpull-xpp3-a7b57b6bcc58369813dd0432e7db415c.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\jME3-networking-398a7c353635a826ebf796ffec3a9b2b.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\bin\dexedLibs\nifty-f03f8a94ccf003a9c9885b2016b1a097.jar \
