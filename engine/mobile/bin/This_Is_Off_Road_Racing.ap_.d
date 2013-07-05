@@ -196,7 +196,6 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Beach Resort\Text
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Beach Resort\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend1.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Beach Resort\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend2.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\General \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\Interface \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\MatDefs \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\Materials \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\Models \

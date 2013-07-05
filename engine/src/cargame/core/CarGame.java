@@ -68,7 +68,8 @@ public class CarGame extends Application {
         private FileHandler fh;
         private NiftyJmeDisplay niftyDisplay;
         private String platform;
-        private boolean debugMode = false;
+        //private boolean debugMode = false;
+        private boolean debugMode = true;
         private boolean keyboardControlled = false;
         private boolean joystickControlled = false;
         private boolean touchscreenControlled = false;
@@ -146,10 +147,6 @@ public class CarGame extends Application {
                 
                 // Detect the platform
                 detectPlatform();
-                
-                // Switch debug mode on
-                // debugMode = true;
-                debugMode = false;
                 
                 // Init controls
                 initControls();
