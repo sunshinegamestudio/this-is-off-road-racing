@@ -19,4 +19,5 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\jME3-terrain.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\xmlpull-xpp3.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\jME3-networking.jar \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\nifty.jar \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\armeabi\libbulletjme.so \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\libs\armeabi-v7a\libbulletjme.so \
