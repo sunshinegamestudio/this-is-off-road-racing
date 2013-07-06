@@ -99,10 +99,6 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\General\Textures\terrain
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\General\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend2.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\META-INF\MANIFEST.MF \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha\Beach Resort-terrain-Beach Resort-alphablend0.png \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha\Beach Resort-terrain-Beach Resort-alphablend1.png \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha\Beach Resort-terrain-Beach Resort-alphablend2.png \
-G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend0.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend1.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend2.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Android Test \
@@ -196,6 +192,7 @@ G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Beach Resort\Text
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Beach Resort\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend1.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Beach Resort\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend2.png \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\General \
+G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\Interface \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\MatDefs \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\Materials \
 G:\Development\GameDev\jMP\CarGame\engine\mobile\assets\Tracks\Grass Hill\Models \

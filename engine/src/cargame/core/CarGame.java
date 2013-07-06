@@ -68,8 +68,8 @@ public class CarGame extends Application {
         private FileHandler fh;
         private NiftyJmeDisplay niftyDisplay;
         private String platform;
-        //private boolean debugMode = false;
-        private boolean debugMode = true;
+        private boolean debugMode = false;
+        // private boolean debugMode = true;
         private boolean keyboardControlled = false;
         private boolean joystickControlled = false;
         private boolean touchscreenControlled = false;

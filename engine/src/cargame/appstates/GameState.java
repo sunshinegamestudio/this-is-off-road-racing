@@ -55,6 +55,7 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.*;
 import cargame.gui.GameHUDScreenController;
+import cargame.gui.GameHUDScreenController_Digital;
 import cargame.other.Time;
 import cargame.other.TrackStatistics;
 import com.jme3.niftygui.NiftyJmeDisplay;
@@ -378,8 +379,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             nifty = niftyDisplay.getNifty();
 
             nifty.fromXml("General/Interface/GameHUD.xml", "GameHUD");
-            GameHUDScreenController gameHUDScreenController = (GameHUDScreenController)nifty.getScreen("GameHUD").getScreenController();
-            gameHUDScreenController.setGameState(this);
+            // GameHUDScreenController gameHUDScreenController = (GameHUDScreenController)nifty.getScreen("GameHUD").getScreenController();
+            // gameHUDScreenController.setGameState(this);
+            GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
+            gameHUDScreenController_Digital.setGameState(this);
 
             // attach the nifty display to the gui view port as a processor
             game.getGUIViewPort().addProcessor(niftyDisplay);
