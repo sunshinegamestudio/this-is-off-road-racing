@@ -272,8 +272,13 @@ public class CarGame extends Application {
 	
 	private void initControls() {
             if (getPlatform()=="Android")    {
-                        setKeyboardControlled(false);
-                        setJoystickControlled(true);
+                        // For analog controls
+                        // setKeyboardControlled(false);
+                        // setJoystickControlled(true);
+                        // For Digital controls
+                        setKeyboardControlled(true);
+                        setJoystickControlled(false);
+                        // For touchscreen controls
                         setTouchscreenControlled(true);
                 }
             else    {
