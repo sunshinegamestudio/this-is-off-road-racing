@@ -43,25 +43,30 @@ Add your content here.  Format your content with:
      * Basic terrain _(done)_
 
 *V 0.2.2:*
-  * Change the license in the source files from ... to Sunshine GameStudio (all projects)
+  * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
   * Improved car
     * Add wheels
   * Basic license acceptence screen (start) and license view screen (from main menu)
-  * Load/save fastest laptime
   * Improved Android support
      * Improved driving controls
+       * Use digital driving controls instead of analog driving controls
      * Basic Google Play Store page
      * Only use unshaded material for Android
        * Replace terrain lightning material with unshaded material
        * Modify all models so they use shadeless (unshaded) material (Blender)
 
 *V 0.2.3:*
+  * Change the license in the source files from ... to Sunshine GameStudio (all projects)
   * Basic logging
      * Initialisation
      * Video card capabilities
      * AppState creation/attaching/detachting
+  * Load/save fastest laptime
   * Fix the remaining issues
      * The gamestate switching doesn't work correct (ID: sqeeck-save-the-beavies -> 2)
+  * Improved Android support
+     * Improved driving controls
+       * Use analog driving controls instead of digital driving controls
 
 *V 0.2.4:*
   * Fix the remaining issues
