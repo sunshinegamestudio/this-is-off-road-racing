@@ -69,6 +69,9 @@ import cargame.appstates.GameState;
 
         public void accelerate_onClickMouseMove(int x, int y)   {
         }
+        
+        public void accelerate_onClickRepeat(int x, int y)   {
+        }
 
         public void accelerate_onRelease()   {
         }
