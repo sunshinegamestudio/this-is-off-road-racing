@@ -67,43 +67,48 @@ import cargame.appstates.GameState;
             gameState.onAction("Ups", true, 0);
         }
 
-        public void accelerate_onClickMouseMove(int x, int y)   {
-        }
-        
         public void accelerate_onClickRepeat(int x, int y)   {
+            gameState.onAction("Ups", true, 0);
         }
 
         public void accelerate_onRelease()   {
+            gameState.onAction("Ups", false, 0);
         }
 
         public void brake_onClick(int x, int y)   {
             gameState.onAction("Downs", true, 0);
         }
 
-        public void brake_onClickMouseMove(int x, int y)   {
+        public void brake_onClickRepeat(int x, int y)   {
+            // gameState.onAction("Downs", true, 0);
         }
 
         public void brake_onRelease()   {
+            gameState.onAction("Downs", false, 0);
         }
         
         public void steerLeft_onClick(int x, int y) {
             gameState.onAction("Lefts", true, 0);
         }
 
-        public void steerLeft_onClickMouseMove(int x, int y) {
+        public void steerLeft_onClickRepeat(int x, int y) {
+            gameState.onAction("Lefts", true, 0);
         }
 
         public void steerLeft_onRelease() {
+            gameState.onAction("Lefts", false, 0);
         }
 
         public void steerRight_onClick(int x, int y) {
             gameState.onAction("Rights", true, 0);
         }
 
-        public void steerRight_onClickMouseMove(int x, int y) {
+        public void steerRight_onClickRepeat(int x, int y) {
+            gameState.onAction("Rights", true, 0);
         }
 
         public void steerRight_onRelease() {
+            gameState.onAction("Rights", false, 0);
         }
 
         public void gearbox() {
