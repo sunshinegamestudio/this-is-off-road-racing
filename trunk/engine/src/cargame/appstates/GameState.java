@@ -383,6 +383,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             GameHUDScreenController_Analog gameHUDScreenController_Analog = (GameHUDScreenController_Analog)nifty.getScreen("GameHUD").getScreenController();
             gameHUDScreenController_Analog.setGameState(this);
             */
+
             
             nifty.fromXml("General/Interface/GameHUD_Digital.xml", "GameHUD");
             GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();

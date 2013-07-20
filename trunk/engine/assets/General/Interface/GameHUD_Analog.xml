@@ -4,7 +4,7 @@
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
   <!-- start screen -->
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
-  <screen id="GameHUD" controller="cargame.gui.GameHUDScreenController_Digital">
+  <screen id="GameHUD" controller="cargame.gui.GameHUDScreenController_Analog">
     <layer id="layer" backgroundColor="#0000" childLayout="vertical">
       <panel id="panel" height="30%" width="15%" align="left" valign="top" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <interact onClick="accelerate_onClick()" onClickMouseMove="accelerate_onClickMouseMove()" onRelease="accelerate_onRelease()"/>
