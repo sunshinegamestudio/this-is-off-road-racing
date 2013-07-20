@@ -68,8 +68,8 @@ public class CarGame extends Application {
         private FileHandler fh;
         private NiftyJmeDisplay niftyDisplay;
         private String platform;
-        // private boolean debugMode = false;
-        private boolean debugMode = true;
+        private boolean debugMode = false;
+        // private boolean debugMode = true;
         private boolean keyboardControlled = false;
         private boolean joystickControlled = false;
         private boolean touchscreenControlled = false;
@@ -282,13 +282,25 @@ public class CarGame extends Application {
                         setKeyboardControlled(true);
                         setJoystickControlled(false);
                         
+                        
                         // For touchscreen controls
                         setTouchscreenControlled(true);
                 }
             else    {
                 if ( getDebugMode())   {
+                    // For analog controls
+                    /*
+                    setKeyboardControlled(false);
+                    setJoystickControlled(true);
+                    */
+
+                    // For Digital controls
+                    
                     setKeyboardControlled(true);
                     setJoystickControlled(false);
+                    
+
+                    // For touchscreen controls
                     setTouchscreenControlled(true);
                 }
                 else    {

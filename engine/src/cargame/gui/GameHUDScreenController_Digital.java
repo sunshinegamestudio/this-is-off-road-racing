@@ -80,7 +80,7 @@ import cargame.appstates.GameState;
         }
 
         public void brake_onClickRepeat(int x, int y)   {
-            // gameState.onAction("Downs", true, 0);
+            gameState.onAction("Downs", true, 0);
         }
 
         public void brake_onRelease()   {
