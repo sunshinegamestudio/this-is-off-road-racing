@@ -96,7 +96,9 @@ public class Terrain extends Entity {
             if(terrain_geo != null)    {
                 Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
                 // mat.setColor("Color", ColorRGBA.Red);
-                Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+                String texture_1 = terrain_geo.getUserData("texture_1");
+                // Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+                Texture default_text = assetManager.loadTexture(texture_1);
                 mat.setTexture("ColorMap", default_text);
                 terrain_geo.setMaterial(mat);
             }
