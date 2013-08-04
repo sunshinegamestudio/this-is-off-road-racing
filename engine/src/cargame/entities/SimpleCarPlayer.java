@@ -58,6 +58,7 @@ public class SimpleCarPlayer extends Entity  {
     private final float brakeForce = 100.0f;
     private float steeringValue = 0;
     private float accelerationValue = 0;
+    private int gear = 1;
     private Vector3f jumpForce = new Vector3f(0, 3000, 0);
 
     public SimpleCarPlayer(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
@@ -168,13 +169,35 @@ public class SimpleCarPlayer extends Entity  {
     }
 
     public void accelerate(float accelerationValue)  {
-        this.accelerationValue+=accelerationValue;
+        if(getGear()>0)  {
+            this.accelerationValue+=accelerationValue;
+        }
+        else if (getGear()<0)    {
+            this.accelerationValue-=accelerationValue;
+        }
         vehicle.accelerate(this.accelerationValue);
-
     }
 
     public void brake(float brakingValue)  {
-        vehicle.brake(brakingValue);
+        if(getGear()>0)  {
+            vehicle.brake(brakingValue);
+        }
+        else if (getGear()<0)    {
+            vehicle.brake(-brakingValue);
+        }
+    }
 
+    /**
+     * @return the gear
+     */
+    public int getGear() {
+        return gear;
+    }
+
+    /**
+     * @param gear the gear to set
+     */
+    public void setGear(int gear) {
+        this.gear = gear;
     }
 }

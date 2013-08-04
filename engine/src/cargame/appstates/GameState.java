@@ -203,6 +203,18 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
                         { player.brake(brake_dig_v);}
                     else
                         { player.brake(brake_dig_nv);}
+                } else if (name.equals("Gears")) {
+                    if (value)  {
+                        if(player.getGear()>0)  {
+                            player.setGear(-1);
+                        }
+                        else if(player.getGear()<0)  {
+                            player.setGear(1);
+                        }
+                        else    {
+                            player.setGear(1);
+                        }
+                    }
                 } else if (name.equals("Jumps")) {
                     //player.getNode().jump();
                 }
@@ -243,11 +255,13 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         game.getInputManager().addMapping("Rights", new KeyTrigger(KeyInput.KEY_RIGHT));
         game.getInputManager().addMapping("Ups",    new KeyTrigger(KeyInput.KEY_UP));
         game.getInputManager().addMapping("Downs",  new KeyTrigger(KeyInput.KEY_DOWN));
+        game.getInputManager().addMapping("Gears",  new KeyTrigger(KeyInput.KEY_R));
         game.getInputManager().addMapping("Jumps",  new KeyTrigger(KeyInput.KEY_SPACE));
         game.getInputManager().addListener(this, "Lefts");
         game.getInputManager().addListener(this, "Rights");
         game.getInputManager().addListener(this, "Ups");
         game.getInputManager().addListener(this, "Downs");
+        game.getInputManager().addListener(this, "Gears");
         game.getInputManager().addListener(this, "Jumps");
     }
     
