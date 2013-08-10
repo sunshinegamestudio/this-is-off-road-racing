@@ -92,7 +92,7 @@ public class Terrain extends Entity {
         getPhysicsSpace().addAll(terrain);
 
         if (CarGame.getApp().getPlatform()=="Android")  {
-            // if (android.os.Build.VERSION.SDK_INT<android.os.Build.VERSION.ICE_CREAM_SANDWITCH)    {
+            // if (android.os.Build.VERSION.SDK_INT<android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH)    {
                 terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
                 if(terrain_geo != null)    {
                     Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
