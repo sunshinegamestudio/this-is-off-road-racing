@@ -73,6 +73,13 @@ public class CarGame extends Application {
         private boolean keyboardControlled = false;
         private boolean joystickControlled = false;
         private boolean touchscreenControlled = false;
+        private int AndroidApiLevel_System = 0;
+        /*
+        public enum AndroidApiLevel_Type   {
+            ICE_CREAM_SANDWITCH ( 14 )
+        };
+        * Need a good solution for this...
+        */
 
         static CarGame thisApp;
 
@@ -219,6 +226,20 @@ public class CarGame extends Application {
         SEQUENTIAL,
         PARALLEL,
         DETACHED
+    }
+
+    /**
+     * @return the AndroidApiLevel_System
+     */
+    public int getAndroidApiLevel_System() {
+        return AndroidApiLevel_System;
+    }
+
+    /**
+     * @param AndroidApiLevel_System the AndroidApiLevel_System to set
+     */
+    public void setAndroidApiLevel_System(int AndroidApiLevel_System) {
+        this.AndroidApiLevel_System = AndroidApiLevel_System;
     }
 
 	public void loadLicenseAcceptanceState() {
