@@ -2,8 +2,10 @@ package com.sunshinegamestudio.this_is_off_road_racing;
  
 import com.jme3.app.AndroidHarness;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import com.jme3.system.android.AndroidConfigChooser.ConfigType;
 import com.jme3.renderer.android.TextureUtil;
+import cargame.core.CarGame;
  
 public class MainActivity extends AndroidHarness{
  
@@ -35,5 +37,11 @@ public class MainActivity extends AndroidHarness{
         // Disable texture compression to avoid black textures
         TextureUtil.ENABLE_COMPRESSION = false;
     }
- 
+
+    public void onCreate(Bundle savedInstanceState)  {
+        super.onCreate(savedInstanceState);
+        
+        CarGame.getApp().setAndroidApiLevel_System(android.os.Build.VERSION.SDK_INT);
+    }
+
 }
