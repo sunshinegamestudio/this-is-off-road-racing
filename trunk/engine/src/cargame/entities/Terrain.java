@@ -92,19 +92,22 @@ public class Terrain extends Entity {
         getPhysicsSpace().addAll(terrain);
 
         if (CarGame.getApp().getPlatform()=="Android")  {
-            if (CarGame.getApp().getAndroidApiLevel_System()<14)    {
-                terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
-                if(terrain_geo != null)    {
-                    Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-                    // mat.setColor("Color", ColorRGBA.Red);
-                    String texture_1 = terrain_geo.getUserData("texture_1");
-                    // Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
-                    Texture default_text = assetManager.loadTexture(texture_1);
-                    mat.setTexture("ColorMap", default_text);
-                    terrain_geo.setMaterial(mat);
+            terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
+            if(terrain_geo != null)    {
+                Material mat = null;
+                if (CarGame.getApp().getAndroidApiLevel_System()<14)    {
+                    mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
                 }
-            }
+                else    {
+                    mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Lighting.j3md");
+                }
+                // mat.setColor("Color", ColorRGBA.Red);
+                String texture_1 = terrain_geo.getUserData("texture_1");
+                // Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+                Texture default_text = assetManager.loadTexture(texture_1);
+                mat.setTexture("ColorMap", default_text);
+                terrain_geo.setMaterial(mat);
+                }
         }
     }
-
 }
