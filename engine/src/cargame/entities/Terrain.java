@@ -99,7 +99,9 @@ public class Terrain extends Entity {
                     mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
                 }
                 else    {
-                    mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Lighting.j3md");
+                    // mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+                    // Temperairy fix until a ColorMap is added to the material (see error in emulator).
+                    mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
                 }
                 // mat.setColor("Color", ColorRGBA.Red);
                 String texture_1 = terrain_geo.getUserData("texture_1");
