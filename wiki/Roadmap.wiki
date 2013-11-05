@@ -43,19 +43,22 @@ Add your content here.  Format your content with:
      * Basic terrain _(done)_
 
 *V 0.2.2:*
-  * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
-  * Improved car
-    * Add wheels
-  * Basic license acceptence screen (start) and license view screen (from main menu)
+  * Basic license acceptance screen (start)
+  * Improved tracks
+     * Grass Hill
+       * Created level boundaries with raised terrain borders
   * Improved Android support
      * Improved driving controls
-       * Use digital driving controls instead of analog driving controls
-     * Basic Google Play Store page
+       * Improved analog driving controls
      * Only use unshaded material for Android
        * Replace terrain lightning material with unshaded material
-       * Modify all models so they use shadeless (unshaded) material (Blender)
 
 *V 0.2.3:*
+  * Basic license view screen (from main menu)
+  * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
+
+  * Improved car
+    * Add wheels
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
   * Basic logging
      * Initialisation
@@ -67,6 +70,8 @@ Add your content here.  Format your content with:
   * Improved Android support
      * Improved driving controls
        * Use analog driving controls instead of digital driving controls
+       * Modify all models so they use shadeless (unshaded) material (Blender) (maybe withdrawn feature)
+     * Basic Google Play Store page
 
 *V 0.2.4:*
   * Fix the remaining issues
