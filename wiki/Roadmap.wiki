@@ -42,7 +42,7 @@ Add your content here.  Format your content with:
   * Improved Android support _(done)_
      * Basic terrain _(done)_
 
-*V 0.2.2:*
+*V 0.2.2:* _(done)_
   * Basic license acceptance screen (start)
   * Improved tracks
      * Grass Hill
@@ -69,7 +69,6 @@ Add your content here.  Format your content with:
      * The gamestate switching doesn't work correct (ID: sqeeck-save-the-beavies -> 2)
   * Improved Android support
      * Improved driving controls
-       * Use analog driving controls instead of digital driving controls
      * Basic Google Play Store page
 
 *V 0.2.4:*
