@@ -80,4 +80,4 @@ Add your content here.  Format your content with:
 
 
 
-The content of the releases are subject to change and can be changed without notice.
+The content of the releases is subject to change and can be changed without notice.
