@@ -74,30 +74,10 @@ Add your content here.  Format your content with:
 *V 0.2.4:*
   * Fix the remaining issues
 
-*V 0.2.5:*
-  * Basic Android support
-     * Basic build with no specific Android improvements (fix issues with starting)
-
 = V 0.3.x =
 
 *V 0.3.0:*
-  * Basic shooting (???)
-
-= V 0.4.x =
-
-*V 0.4.0:*
-  * Detailed hole object (???)
-  * Basic ball/hole detection (???)
-
-= V 0.5.x =
-
-*V 0.5.0:*
-  * Basic menu's (???)
-
-= V 0.6.x =
-
-*V 0.6.0:*
-  * Basic game logic (???)
+  * To be defined.
 
 
 The content of the releases are subject to change and can be changed without notice.
