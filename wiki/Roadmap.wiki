@@ -56,7 +56,6 @@ Add your content here.  Format your content with:
 *V 0.2.3:*
   * Basic license view screen (from main menu)
   * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
-
   * Improved car
     * Add wheels
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
@@ -78,6 +77,7 @@ Add your content here.  Format your content with:
 
 *V 0.3.0:*
   * To be defined.
+
 
 
 The content of the releases are subject to change and can be changed without notice.
