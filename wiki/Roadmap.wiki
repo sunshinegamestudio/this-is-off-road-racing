@@ -56,6 +56,9 @@ Add your content here.  Format your content with:
        * Replace terrain lightning material with unshaded material
 
 *V 0.2.3:*
+  * Basic results screen (after race)
+
+*V 0.2.4:*
   * Basic license view screen (from main menu)
   * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
@@ -70,7 +73,7 @@ Add your content here.  Format your content with:
      * Improved driving controls
      * Basic Google Play Store page
 
-*V 0.2.4:*
+*V 0.2.5:*
   * Fix the remaining issues
 
 = V 0.3.x =
