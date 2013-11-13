@@ -32,6 +32,8 @@ import cargame.appstates.GameState;
  * @author Vortex
  */
     public class TrackSelectorScreenController implements ScreenController   {
+        private Screen screen;
+        
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
             // First try this, before removing this code !!!
@@ -40,6 +42,7 @@ import cargame.appstates.GameState;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
+            this.screen=screen;
         }
 
         public void onStartScreen() {
@@ -63,6 +66,10 @@ import cargame.appstates.GameState;
             /*
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
+            
+            // panelLoading.text="Loading".
+            // screen.findElementByName("panelLoading").
+            
             CarGame.getApp().loadGame(track);
         }
 
