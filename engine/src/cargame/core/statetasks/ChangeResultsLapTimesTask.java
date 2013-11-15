@@ -25,28 +25,30 @@ import com.jme3.renderer.ViewPort;
 import java.util.concurrent.Callable;
 
 import cargame.core.CarGame;
+import cargame.appstates.ResultsMenuState;
 
 public class ChangeResultsLapTimesTask implements Callable
 {
-    private String track;
-    private CarGame game;
-    private AppState results;
+    private ResultsMenuState resultsMenuState;
     private long lap0;
     private long lap1;
     private long lap2;
     private long lap3;
 
-    public ChangeResultsLapTimesTask(String track, CarGame game)
+    public ChangeResultsLapTimesTask(ResultsMenuState resultsMenuState, long lap0, long lap1, long lap2, long lap3)
     {
-        this.track=track;
-        this.game=game;
+        this.resultsMenuState=resultsMenuState;
+        this.lap0=lap0;
+        this.lap1=lap1;
+        this.lap2=lap2;
+        this.lap3=lap3;
     }
 
     public Object call() throws Exception
     {
-        System.out.println("ChangeTrackeTask called");
+        System.out.println("ChangeResultsLapTimesTask called");
 
-        game.setTrack(track);
+        // resultsMenuState.setLapTimes(lap0, lap1, lap2, lap3);
 
         return null;
     }

@@ -136,7 +136,7 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         
         game.getViewPort().attachScene(rootNode);
         game.getGUIViewPort().attachScene(guiNode);
-
+        
         this.game.getLogger().log(Level.SEVERE, "MainMenuState attached.");
     }
 
@@ -158,5 +158,9 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
 
     @Override
     public void render(RenderManager rm) {
+    }
+    
+    public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {
+        // ScreenController.setLapTimes(lap0, lap1, lap2, lap3);
     }
 }

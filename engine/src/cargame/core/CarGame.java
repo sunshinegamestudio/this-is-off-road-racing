@@ -45,8 +45,10 @@ import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
 import cargame.appstates.LicenseAcceptanceState;
+import cargame.appstates.ResultsMenuState;
 import cargame.core.statetasks.ChangeStateTask;
 import cargame.core.statetasks.ChangeTrackTask;
+import cargame.core.statetasks.ChangeResultsLapTimesTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
 
 public class CarGame extends Application {
@@ -63,6 +65,7 @@ public class CarGame extends Application {
         private LicenseViewMenuState licenseViewMenuState = null;
 	private TrackSelectorState trackSelectorState = null;
 	private InGameMenuState inGameMenuState = null;
+	private ResultsMenuState resultsMenuState = null;
         private BulletAppState bulletAppState = null;
         private Logger logger;
         private FileHandler fh;
@@ -166,6 +169,7 @@ public class CarGame extends Application {
                 trackSelectorState = new TrackSelectorState(this);
 		gameState = new GameState(this);
                 inGameMenuState = new InGameMenuState(this);
+                resultsMenuState = new ResultsMenuState(this);
 		
 		// Attach MenuState
                 getStateManager().attach(bulletAppState);
@@ -290,6 +294,15 @@ public class CarGame extends Application {
                 this.enqueue(new ChangeTrackTask(track, this));
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
 	}
+        
+        public void loadGame_return(long lap0, long lap1, long lap2, long lap3) {
+            loadResultsMenu(lap0, lap1, lap2, lap3);
+        }
+        
+        public void loadResultsMenu(long lap0, long lap1, long lap2, long lap3) {
+            this.enqueue(new ChangeResultsLapTimesTask(resultsMenuState, lap0, lap1, lap2, lap3));
+            this.enqueue(new ChangeStateTask(gameState,resultsMenuState,viewPort,stateManager));
+        }
 	
 	private void initControls() {
             if (getPlatform()=="Android")    {
