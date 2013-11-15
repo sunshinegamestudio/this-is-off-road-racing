@@ -32,6 +32,9 @@ import cargame.appstates.GameState;
  * @author Vortex
  */
     public class ResultsMenuScreenController implements ScreenController   {
+        private long lapTimes[];
+        private int maxLaps = 4;
+
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
             // First try this, before removing this code !!!
@@ -40,6 +43,11 @@ import cargame.appstates.GameState;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
+            
+            lapTimes = new long[10];
+            for(int i=0; i<maxLaps; i++)    {
+                lapTimes[i] = 0;
+            }
         }
 
         public void onStartScreen() {
@@ -68,6 +76,13 @@ import cargame.appstates.GameState;
         
         public void loadLicenseViewMenu()   {
             // CarGame.getApp().loadMenu_return("loadLicenseViewMenu");
+        }
+        
+        public void setLapTimes(long lap0, long lap1, long lap2, long lap3) {
+            lapTimes[0]=lap0;
+            lapTimes[1]=lap1;
+            lapTimes[2]=lap2;
+            lapTimes[3]=lap3;
         }
 
         public void exit()  {
