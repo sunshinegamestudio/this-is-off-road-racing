@@ -56,6 +56,7 @@ Add your content here.  Format your content with:
        * Replace terrain lightning material with unshaded material
 
 *V 0.2.3:*
+  * Loading indicator (in track selector)
   * Basic results screen (after race)
 
 *V 0.2.4:*
