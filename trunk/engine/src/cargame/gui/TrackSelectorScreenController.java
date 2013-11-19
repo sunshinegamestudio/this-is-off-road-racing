@@ -23,6 +23,9 @@ import com.jme3.app.state.AppState;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import de.lessvoid.nifty.elements.Element;
+import de.lessvoid.nifty.elements.render.TextRenderer;
+import de.lessvoid.xml.xpp3.Attributes;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
@@ -33,6 +36,8 @@ import cargame.appstates.GameState;
  */
     public class TrackSelectorScreenController implements ScreenController   {
         private Screen screen;
+        private Element textLoading;
+        private Attributes attributesPanelLoading = null;
         
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
@@ -67,9 +72,8 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             
-            // panelLoading.text="Loading".
-            // screen.findElementByName("panelLoading").
-            
+            screen.findElementByName("panelLoading_text").getRenderer(TextRenderer.class).setText("Loading");
+
             CarGame.getApp().loadGame(track);
         }
 
