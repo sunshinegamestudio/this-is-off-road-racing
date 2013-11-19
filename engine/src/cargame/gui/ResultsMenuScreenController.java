@@ -23,6 +23,7 @@ import com.jme3.app.state.AppState;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import de.lessvoid.nifty.elements.render.TextRenderer;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
@@ -32,6 +33,7 @@ import cargame.appstates.GameState;
  * @author Vortex
  */
     public class ResultsMenuScreenController implements ScreenController   {
+        private Screen screen;
         private long lapTimes[];
         private int maxLaps = 4;
 
@@ -43,6 +45,8 @@ import cargame.appstates.GameState;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
+
+            this.screen=screen;
             
             lapTimes = new long[10];
             for(int i=0; i<maxLaps; i++)    {
@@ -83,6 +87,11 @@ import cargame.appstates.GameState;
             lapTimes[1]=lap1;
             lapTimes[2]=lap2;
             lapTimes[3]=lap3;
+            
+            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Result 0");
+            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Result 1");
+            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Result 2");
+            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Result 3");
         }
 
         public void exit()  {
