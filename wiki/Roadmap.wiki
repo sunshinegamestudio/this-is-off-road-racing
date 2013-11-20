@@ -56,10 +56,11 @@ Add your content here.  Format your content with:
        * Replace terrain lightning material with unshaded material
 
 *V 0.2.3:*
-  * Loading indicator (in track selector)
   * Basic results screen (after race)
+  * Basic icon (to start the application)
 
 *V 0.2.4:*
+  * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
   * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
   * Change the license in the source files from ... to Sunshine GameStudio (all projects)
