@@ -72,8 +72,6 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             
-            screen.findElementByName("panelLoading_text").getRenderer(TextRenderer.class).setText("Loading");
-
             CarGame.getApp().loadGame(track);
         }
 
