@@ -70,6 +70,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     protected BitmapText fpsText;
     protected BitmapText menuText;
     protected BitmapText currentLapText;
+    protected BitmapText maxLapsText;
     protected BitmapText fastestLapTimeText;
     protected BitmapText currentLapTimeText;
     protected BitmapText currentTimeText;
@@ -366,9 +367,15 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
          */
         currentLapText = new BitmapText(guiFont, false);
         currentLapText.setSize(guiFont.getCharSet().getRenderedSize());
-        currentLapText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-80, 0);
+        currentLapText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-100, 0);
         currentLapText.setText("Current Lap: ");
         guiNode.attachChild(currentLapText);
+
+        maxLapsText = new BitmapText(guiFont, false);
+        maxLapsText.setSize(guiFont.getCharSet().getRenderedSize());
+        maxLapsText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-80, 0);
+        maxLapsText.setText("Max Laps: ");
+        guiNode.attachChild(maxLapsText);
 
         fastestLapTimeText = new BitmapText(guiFont, false);
         fastestLapTimeText.setSize(guiFont.getCharSet().getRenderedSize());
@@ -472,6 +479,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         
         // Update HUD
         currentLapText.setText("Current Lap: " + currentLap);
+        maxLapsText.setText("Max Laps: " + maxLaps);
         fastestLapTimeTime.setTime(fastestLapTime / game.getTimer().getResolution());
         // fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTime);
         fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTimeTime.getHour() + ":" + fastestLapTimeTime.getMinute() + ":" + fastestLapTimeTime.getSecond() + ":" + fastestLapTimeTime.getMilisecond());
