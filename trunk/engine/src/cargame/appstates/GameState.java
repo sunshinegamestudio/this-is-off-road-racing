@@ -522,6 +522,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         game.getCamera().setLocation(camLocation);
         game.getCamera().lookAt(player.getNode().getWorldTranslation(), Vector3f.UNIT_Y);
+
+        if(currentLap>=maxLaps) {
+            game.loadResultsMenu(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
+        }
     }
     
     
@@ -626,7 +630,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         guiNode.detachAllChildren();
 
         game.getInputManager().setCursorVisible(false);
-        game.getGUIViewPort().removeProcessor(niftyDisplay);
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().removeProcessor(niftyDisplay);
+        }
         game.getInputManager().removeListener(this);
         // if(flyCam != null) flyCam.setEnabled(false);
         // if(chaseCam != null) chaseCam.setEnabled(false);
