@@ -63,11 +63,11 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         if (!value)
             return;
         // Load other state
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
 
     public void start() {
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
     
     public void loadFPSText(){
