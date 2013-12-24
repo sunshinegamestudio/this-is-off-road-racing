@@ -78,8 +78,8 @@ import cargame.appstates.GameState;
             // CarGame.getApp().loadTrackSelector();
         }
         
-        public void loadLicenseViewMenu()   {
-            // CarGame.getApp().loadMenu_return("loadLicenseViewMenu");
+        public void proceed()   {
+            CarGame.getApp().loadResultsMenu_return();
         }
         
         public void setLapTimes(long lap0, long lap1, long lap2, long lap3) {
@@ -88,10 +88,10 @@ import cargame.appstates.GameState;
             lapTimes[2]=lap2;
             lapTimes[3]=lap3;
             
-            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Result 0");
-            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Result 1");
-            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Result 2");
-            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Result 3");
+            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Result 0" + lapTimes[0]);
+            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Result 1" + lapTimes[1]);
+            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Result 2" + lapTimes[2]);
+            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Result 3" + lapTimes[3]);
         }
 
         public void exit()  {
