@@ -303,6 +303,10 @@ public class CarGame extends Application {
             this.enqueue(new ChangeResultsLapTimesTask(resultsMenuState, lap0, lap1, lap2, lap3));
             this.enqueue(new ChangeStateTask(gameState,resultsMenuState,viewPort,stateManager));
         }
+        
+        public void loadResultsMenu_return()    {
+            loadMenu(resultsMenuState);
+        }
 	
 	private void initControls() {
             if (getPlatform()=="Android")    {
