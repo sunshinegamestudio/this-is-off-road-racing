@@ -48,7 +48,7 @@ public class ChangeResultsLapTimesTask implements Callable
     {
         System.out.println("ChangeResultsLapTimesTask called");
 
-        // resultsMenuState.setLapTimes(lap0, lap1, lap2, lap3);
+        resultsMenuState.setLapTimes(lap0, lap1, lap2, lap3);
 
         return null;
     }

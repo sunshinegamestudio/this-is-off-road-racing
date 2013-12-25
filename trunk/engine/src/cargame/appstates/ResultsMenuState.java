@@ -39,6 +39,7 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
+import cargame.gui.ResultsMenuScreenController;
 
 public class ResultsMenuState extends AbstractAppState implements ActionListener{
 
@@ -50,6 +51,7 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
+    private ResultsMenuScreenController resultsMenuScreenController;
     
     private CarGame game = null;
     
@@ -84,6 +86,7 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         nifty = niftyDisplay.getNifty();
 
         nifty.fromXml("General/Interface/ResultsMenu.xml", "ResultsMenuScreen");
+        resultsMenuScreenController = (ResultsMenuScreenController)(ScreenController)nifty.getScreen("ResultsMenuScreen").getScreenController();
 
         // attach the nifty display to the gui view port as a processor
         game.getGUIViewPort().addProcessor(niftyDisplay);
@@ -161,6 +164,6 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
     }
     
     public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {
-        // ScreenController.setLapTimes(lap0, lap1, lap2, lap3);
+        // resultsMenuScreenController.setLapTimes(lap0, lap1, lap2, lap3);
     }
 }
