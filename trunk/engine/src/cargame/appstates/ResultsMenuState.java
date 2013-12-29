@@ -52,11 +52,19 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
     private ResultsMenuScreenController resultsMenuScreenController;
+
+    private long lapTimes[];
+    private int maxLaps = 4;
     
     private CarGame game = null;
     
     public ResultsMenuState(CarGame game) {
     	this.game = game;
+        
+        lapTimes = new long[10];
+        for(int i=0; i<maxLaps; i++)    {
+            lapTimes[i] = 0;
+        }
 
         this.game.getLogger().log(Level.SEVERE, "MainMenuState created.");
     }
@@ -87,9 +95,10 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
 
         nifty.fromXml("General/Interface/ResultsMenu.xml", "ResultsMenuScreen");
         resultsMenuScreenController = (ResultsMenuScreenController)(ScreenController)nifty.getScreen("ResultsMenuScreen").getScreenController();
-
         // attach the nifty display to the gui view port as a processor
         game.getGUIViewPort().addProcessor(niftyDisplay);
+    
+        resultsMenuScreenController.setLapTimes(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
     }
 
     @Override
@@ -131,7 +140,7 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
     @Override
     public void stateAttached(AppStateManager stateManager) {
         // Load mainmenu
-
+        
         if(niftyDisplay != null)    {
             game.getGUIViewPort().addProcessor(niftyDisplay);
         }
@@ -164,6 +173,9 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
     }
     
     public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {
-        // resultsMenuScreenController.setLapTimes(lap0, lap1, lap2, lap3);
+        lapTimes[0]=lap0;
+        lapTimes[1]=lap1;
+        lapTimes[2]=lap2;
+        lapTimes[3]=lap3;
     }
 }
