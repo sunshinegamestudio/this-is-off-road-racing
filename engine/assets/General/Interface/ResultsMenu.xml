@@ -13,7 +13,7 @@
           <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
         </effect>
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="PlatformGame" align="center" valign="center" /-->
-        <text id="result_0" font="aurulent-sans-16.fnt" color="#000f" text="Results" align="center" valign="center" />
+        <text id="results" font="aurulent-sans-16.fnt" color="#000f" text="Results" align="center" valign="center" />
       </panel>
       <panel id="panel" height="15%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <interact onClick="start()"/>
@@ -23,7 +23,7 @@
           <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
         </effect>
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="Start" align="center" valign="center" /-->
-        <text id="result_1" font="aurulent-sans-16.fnt" color="#000f" text="Lap 1: " align="center" valign="center" />
+        <text id="result_0" font="aurulent-sans-16.fnt" color="#000f" text="Lap 1: " align="center" valign="center" />
       </panel>
       <panel id="panel" height="15%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <effect>
@@ -32,7 +32,7 @@
           <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
         </effect>
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="Start" align="center" valign="center" /-->
-        <text id="result_2" font="aurulent-sans-16.fnt" color="#000f" text="Lap 2: " align="center" valign="center" />
+        <text id="result_1" font="aurulent-sans-16.fnt" color="#000f" text="Lap 2: " align="center" valign="center" />
       </panel>
       <panel id="panel" height="15%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <effect>
@@ -41,7 +41,7 @@
           <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
         </effect>
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="Exit" align="center" valign="center" /-->
-        <text id="result_3" font="aurulent-sans-16.fnt" color="#000f" text="Lap 3: " align="center" valign="center" />
+        <text id="result_2" font="aurulent-sans-16.fnt" color="#000f" text="Lap 3: " align="center" valign="center" />
       </panel>
       <panel id="panel" height="15%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <effect>
@@ -50,7 +50,7 @@
           <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
         </effect>
         <!--text id="text" font="aurulent-sans-17.fnt" color="#000f" text="Exit" align="center" valign="center" /-->
-        <text id="text" font="aurulent-sans-16.fnt" color="#000f" text="Lap 4: " align="center" valign="center" />
+        <text id="result_3" font="aurulent-sans-16.fnt" color="#000f" text="Lap 4: " align="center" valign="center" />
       </panel>
       <panel id="panel" height="15%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <!-- interact onClick="proceed()"/ -->

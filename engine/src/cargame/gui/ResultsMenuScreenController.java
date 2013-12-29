@@ -35,6 +35,10 @@ import cargame.appstates.GameState;
     public class ResultsMenuScreenController implements ScreenController   {
         private Screen screen;
         private long lapTimes[];
+        private long lap0;
+        private long lap1;
+        private long lap2;
+        private long lap3;
         private int maxLaps = 4;
 
         public void MainMenuScreenController()  {
@@ -57,6 +61,11 @@ import cargame.appstates.GameState;
         public void onStartScreen() {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("onScreenStart");
+            
+            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Lap 0: " + lap0);
+            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Lap 1: " + lap1);
+            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Lap 2: " + lap2);
+            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Lap 3: " + lap3);
         }
 
         public void onEndScreen() {
@@ -83,15 +92,17 @@ import cargame.appstates.GameState;
         }
         
         public void setLapTimes(long lap0, long lap1, long lap2, long lap3) {
+            /*
             lapTimes[0]=lap0;
             lapTimes[1]=lap1;
             lapTimes[2]=lap2;
             lapTimes[3]=lap3;
+            */
             
-            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Result 0" + lapTimes[0]);
-            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Result 1" + lapTimes[1]);
-            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Result 2" + lapTimes[2]);
-            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Result 3" + lapTimes[3]);
+            this.lap0=lap0;
+            this.lap1=lap1;
+            this.lap2=lap2;
+            this.lap3=lap3;
         }
 
         public void exit()  {
