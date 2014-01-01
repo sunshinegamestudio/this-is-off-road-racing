@@ -457,6 +457,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             // Calculate the current laptime
             currentLapTime = game.getTimer().getTime() - lastLapTime;
             
+            // Set the current currentLapTime in the lapTimes array
+            lapTimes[currentLap]=currentLapTime;
+            
             // Check if there is a new fastest laptime
             if ((fastestLapTime > currentLapTime) || (currentLap == 0))
             {
