@@ -65,7 +65,7 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
         }
-
+        
         this.game.getLogger().log(Level.SEVERE, "MainMenuState created.");
     }
     
@@ -98,7 +98,8 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         // attach the nifty display to the gui view port as a processor
         game.getGUIViewPort().addProcessor(niftyDisplay);
     
-        resultsMenuScreenController.setLapTimes(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
+        long timerResolution = game.getTimer().getResolution();
+        resultsMenuScreenController.setLapTimes(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3], timerResolution);
     }
 
     @Override

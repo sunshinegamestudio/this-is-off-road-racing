@@ -27,6 +27,7 @@ import de.lessvoid.nifty.elements.render.TextRenderer;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
+import cargame.other.Time;
 
 /**
  *
@@ -39,6 +40,10 @@ import cargame.appstates.GameState;
         private long lap1;
         private long lap2;
         private long lap3;
+        private Time lap0Time;
+        private Time lap1Time;
+        private Time lap2Time;
+        private Time lap3Time;
         private int maxLaps = 4;
 
         public void MainMenuScreenController()  {
@@ -62,10 +67,10 @@ import cargame.appstates.GameState;
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("onScreenStart");
             
-            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Lap 0: " + lap0);
-            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Lap 1: " + lap1);
-            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Lap 2: " + lap2);
-            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Lap 3: " + lap3);
+            screen.findElementByName("result_0").getRenderer(TextRenderer.class).setText("Lap 0: " + lap0Time.getHour() + ":" + lap0Time.getMinute() + ":" + lap0Time.getSecond() + ":" + lap0Time.getMilisecond());
+            screen.findElementByName("result_1").getRenderer(TextRenderer.class).setText("Lap 1: " + lap1Time.getHour() + ":" + lap1Time.getMinute() + ":" + lap1Time.getSecond() + ":" + lap1Time.getMilisecond());
+            screen.findElementByName("result_2").getRenderer(TextRenderer.class).setText("Lap 2: " + lap2Time.getHour() + ":" + lap2Time.getMinute() + ":" + lap2Time.getSecond() + ":" + lap2Time.getMilisecond());
+            screen.findElementByName("result_3").getRenderer(TextRenderer.class).setText("Lap 3: " + lap3Time.getHour() + ":" + lap3Time.getMinute() + ":" + lap3Time.getSecond() + ":" + lap3Time.getMilisecond());
         }
 
         public void onEndScreen() {
@@ -91,7 +96,7 @@ import cargame.appstates.GameState;
             CarGame.getApp().loadResultsMenu_return();
         }
         
-        public void setLapTimes(long lap0, long lap1, long lap2, long lap3) {
+        public void setLapTimes(long lap0, long lap1, long lap2, long lap3, long timerResolution) {
             /*
             lapTimes[0]=lap0;
             lapTimes[1]=lap1;
@@ -103,6 +108,15 @@ import cargame.appstates.GameState;
             this.lap1=lap1;
             this.lap2=lap2;
             this.lap3=lap3;
+            
+            lap0Time = new Time();
+            lap1Time = new Time();
+            lap2Time = new Time();
+            lap3Time = new Time();
+            lap0Time.setTime(this.lap0 / timerResolution);
+            lap1Time.setTime(this.lap1 / timerResolution);
+            lap2Time.setTime(this.lap2 / timerResolution);
+            lap3Time.setTime(this.lap3 / timerResolution);
         }
 
         public void exit()  {
