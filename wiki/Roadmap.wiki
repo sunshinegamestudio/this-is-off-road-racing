@@ -56,8 +56,8 @@ Add your content here.  Format your content with:
        * Replace terrain lightning material with unshaded material
 
 *V 0.2.3:*
-  * Basic results screen (after race)
-  * Basic application title
+  * Basic results screen (after race) _(done)_
+  * Basic application title _(done)_
 
 *V 0.2.4:*
   * Basic icon (to start the application)
