@@ -129,12 +129,15 @@ public class CarGame extends Application {
         if (settings == null)
             setSettings(new AppSettings(true));
 
+        // set the application title
+        settings.setTitle("This Is Off-Road Racing");
+
         // show settings dialog
         if (!JmeSystem.showSettingsDialog(settings, false)) {
             getLogger().log(Level.SEVERE, "jME system initialisation error");
             return;
         }
-
+        
         super.start();
     }
 	
