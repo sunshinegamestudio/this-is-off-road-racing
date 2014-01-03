@@ -57,9 +57,10 @@ Add your content here.  Format your content with:
 
 *V 0.2.3:*
   * Basic results screen (after race)
-  * Basic icon (to start the application)
+  * Basic application title
 
 *V 0.2.4:*
+  * Basic icon (to start the application)
   * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
   * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
