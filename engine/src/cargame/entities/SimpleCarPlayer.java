@@ -65,13 +65,31 @@ public class SimpleCarPlayer extends Entity  {
         super(assetManager, parent, physicsSpace);
         //Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/WireColor.j3md");
         //mat.setColor("Color", ColorRGBA.Red);
+        /*
         Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
         //mat.getAdditionalRenderState().setWireframe(true);
         mat.setColor("Color", ColorRGBA.Red);
+        * Unshaded materials; should be removed later.
+        * /
 
+        /*
         Material matBlue = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
         //mat.getAdditionalRenderState().setWireframe(true);
         matBlue.setColor("Color", ColorRGBA.Blue);
+        * Unshaded materials; should be removed later.
+        */
+
+        Material mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+        mat.setBoolean("UseMaterialColors",true);
+        mat.setColor("Diffuse", ColorRGBA.Red);
+        // mat.setColor("Specular",ColorRGBA.Red);
+        // mat.setFloat("Shininess", 64f);
+
+        Material matBlue = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+        matBlue.setBoolean("UseMaterialColors",true);
+        matBlue.setColor("Diffuse", ColorRGBA.Blue);
+        // matBlue.setColor("Specular",ColorRGBA.Blue);
+        // matBlue.setFloat("Shininess", 64f);
         
         //create a compound shape and attach the BoxCollisionShape for the car body at 0,1,0
         //this shifts the effective center of mass of the BoxCollisionShape to 0,-1,0
