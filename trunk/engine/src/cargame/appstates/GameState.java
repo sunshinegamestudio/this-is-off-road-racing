@@ -78,8 +78,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
     private boolean newLap = false;
     private int currentLap = 0;
-    private int maxLaps = 4;
-    // private int maxLaps = 1;
+    // private int maxLaps = 4;
+    private int maxLaps = 1;
     private long fastestLapTime = 0;
     private Time fastestLapTimeTime;
     private long currentLapTime = 0;
@@ -584,6 +584,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
         
+        currentLap = 0;
         lapTimes = new long[10];
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
