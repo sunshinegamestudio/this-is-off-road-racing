@@ -151,4 +151,9 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
     @Override
     public void render(RenderManager rm) {
     }
+
+    @Override
+    public void cleanup() {
+        super.cleanup();
+    }
 }
