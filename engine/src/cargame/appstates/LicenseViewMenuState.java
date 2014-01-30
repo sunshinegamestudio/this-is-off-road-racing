@@ -151,4 +151,10 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
     @Override
     public void render(RenderManager rm) {
     }
+    
+    @Override
+    public void cleanup() {
+        super.cleanup();
+}
+    
 }
