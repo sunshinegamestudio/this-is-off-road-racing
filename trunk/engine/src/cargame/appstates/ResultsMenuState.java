@@ -96,7 +96,7 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         nifty.fromXml("General/Interface/ResultsMenu.xml", "ResultsMenuScreen");
         resultsMenuScreenController = (ResultsMenuScreenController)(ScreenController)nifty.getScreen("ResultsMenuScreen").getScreenController();
         // attach the nifty display to the gui view port as a processor
-        game.getGUIViewPort().addProcessor(niftyDisplay);
+        // game.getGUIViewPort().addProcessor(niftyDisplay);
     
         long timerResolution = game.getTimer().getResolution();
         resultsMenuScreenController.setLapTimes(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3], timerResolution);
@@ -121,6 +121,13 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
 
         game.getInputManager().addListener(this, "CARGAME_Exit1");
 
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+        game.getInputManager().setCursorVisible(true);
+        
+        game.getViewPort().attachScene(rootNode);
+        game.getGUIViewPort().attachScene(guiNode);
     }
 
     @Override
@@ -137,27 +144,13 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         guiNode.updateGeometricState();
     }
     
-    
     @Override
-    public void stateAttached(AppStateManager stateManager) {
-        // Load mainmenu
-        
-        if(niftyDisplay != null)    {
-            game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
-        game.getInputManager().setCursorVisible(true);
-        
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
-        
-        this.game.getLogger().log(Level.SEVERE, "MainMenuState attached.");
+    public void render(RenderManager rm) {
     }
 
     @Override
-    public void stateDetached(AppStateManager stateManager) {
-        // Unload mainmenu
-        //rootNode.detachAllChildren();
-        //guiNode.detachAllChildren();
+    public void cleanup() {
+        super.cleanup();
 
         game.getInputManager().setCursorVisible(false);
         game.getGUIViewPort().removeProcessor(niftyDisplay);
@@ -165,12 +158,6 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
     	
         game.getViewPort().detachScene(rootNode);
         game.getGUIViewPort().detachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "MainMenuState detached.");
-    }
-
-    @Override
-    public void render(RenderManager rm) {
     }
     
     public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {

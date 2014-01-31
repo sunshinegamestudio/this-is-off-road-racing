@@ -63,11 +63,11 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
         if (!value)
             return;
         // Load other state
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
 
     public void start() {
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
     
     public void loadFPSText(){
@@ -86,7 +86,7 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
         nifty.fromXml("General/Interface/TrackSelectorMenu.xml", "TrackSelectorScreen");
 
         // attach the nifty display to the gui view port as a processor
-        game.getGUIViewPort().addProcessor(niftyDisplay);
+        // game.getGUIViewPort().addProcessor(niftyDisplay);
     }
 
     @Override
@@ -108,6 +108,13 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
 
         game.getInputManager().addListener(this, "CARGAME_Exit1");
 
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+        game.getInputManager().setCursorVisible(true);
+        
+        game.getViewPort().attachScene(rootNode);
+        game.getGUIViewPort().attachScene(guiNode);
     }
 
     @Override
@@ -124,27 +131,13 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
         guiNode.updateGeometricState();
     }
     
+    @Override
+    public void render(RenderManager rm) {
+    }
     
     @Override
-    public void stateAttached(AppStateManager stateManager) {
-        // Load mainmenu
-
-        if(niftyDisplay != null)    {
-            game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
-        game.getInputManager().setCursorVisible(true);
-        
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState attached.");
-    }
-
-    @Override
-    public void stateDetached(AppStateManager stateManager) {
-        // Unload mainmenu
-        //rootNode.detachAllChildren();
-        //guiNode.detachAllChildren();
+    public void cleanup() {
+        super.cleanup();
 
         game.getInputManager().setCursorVisible(false);
         game.getGUIViewPort().removeProcessor(niftyDisplay);
@@ -152,11 +145,5 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
     	
         game.getViewPort().detachScene(rootNode);
         game.getGUIViewPort().detachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState detached.");
-    }
-
-    @Override
-    public void render(RenderManager rm) {
     }
 }
