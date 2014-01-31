@@ -415,7 +415,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             
 
             // attach the nifty display to the gui view port as a processor
-            game.getGUIViewPort().addProcessor(niftyDisplay);
+            // game.getGUIViewPort().addProcessor(niftyDisplay);
         }
 }
 
@@ -431,6 +431,96 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         loadMenu();
 
         // game.getPhysicsSpace().enableDebug(game.getAssetManager());
+        
+        // Load game
+
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+        game.getInputManager().setCursorVisible(true);
+        
+        loadText();
+
+        if (game.getInputManager() != null){
+            /*
+            flyCam = new FlyByCamera(game.getCamera());
+            flyCam.setMoveSpeed(5f);
+            flyCam.registerWithInput(game.getInputManager());
+             * Replaced with ChaseCam
+             */
+            //chaseCam = new ChaseCamera(game.getCamera(), player.getNode(), game.getInputManager());
+
+            game.getInputManager().addMapping("CARGAME_Exit", new KeyTrigger(KeyInput.KEY_ESCAPE));
+            game.getInputManager().addMapping("CARGAME_LoadMenu", new KeyTrigger(KeyInput.KEY_M));
+        }
+
+        setupKeys();
+        //setupJoystick();
+        
+        // Add a simple Box
+        /*
+        Box boxshape1 = new Box(new Vector3f(-3f,1.1f,0f), 1f,1f,1f);
+        Geometry cube = new Geometry("My Textured Box", boxshape1);
+        Material mat_stl = new Material(game.getAssetManager(), "Common/MatDefs/Misc/SimpleTextured.j3md");
+        //Texture tex_ml = game.getAssetManager().loadTexture("Interface/Logo/Monkey.jpg");
+        //mat_stl.setTexture("m_ColorMap", tex_ml);
+        cube.setMaterial(mat_stl);
+        rootNode.attachChild(cube);
+         *
+         */
+
+        String track = game.getTrack();
+        
+        sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
+        //terrain_node = new Terrain_node(game.getCamera(), game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
+        //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        
+        currentLap = 0;
+        lapTimes = new long[10];
+        for(int i=0; i<maxLaps; i++)    {
+            lapTimes[i] = 0;
+        }
+        fastestLapTimeTime = new Time();
+        currentLapTimeTime = new Time();
+        currentTimeTime = new Time();
+
+        // Load the fastest laptime (still to implement !!!)
+        /*
+        try {
+        trackStatistics = (TrackStatistics) SaveGame.loadGame("com/sunshinegamestudio/cargame", "Default_Track");
+        } catch (NullPointerException nullPointerException) {
+            trackStatistics = new TrackStatistics();
+            trackStatistics.setFastestLapTime(fastestLapTime);
+            SaveGame.saveGame("com/sunshinegamestudio/cargame", "Default_Track", trackStatistics);
+        }
+        trackStatistics = (TrackStatistics) SaveGame.loadGame("com/sunshinegamestudio/cargame", "Default_Track");
+        fastestLapTime = trackStatistics.getFastestLapTime();
+         * Temperairy disabled until fixed
+         */
+
+        /*
+        if (game.getInputManager() != null){
+            chaseCam = new ChaseCamera(game.getCamera(), player.getNode(), game.getInputManager());
+        }
+         *
+         */
+
+        game.getInputManager().addListener(this, "CARGAME_Exit",
+                "CARGAME_LoadMenu");
+        
+        // if(flyCam != null) flyCam.setEnabled(true);
+        // if(chaseCam != null) chaseCam.setEnabled(true);
+    	
+        game.getViewPort().attachScene(rootNode);
+        game.getGUIViewPort().attachScene(guiNode);
+        
+        //lapTime.reset();
     }
 
     @Override
@@ -531,105 +621,15 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.loadResultsMenu(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
         }
     }
-    
-    
+
     @Override
-    public void stateAttached(AppStateManager stateManager) {
-        // Load game
-
-        if(niftyDisplay != null)    {
-            game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
-        game.getInputManager().setCursorVisible(true);
-        
-        loadText();
-
-        if (game.getInputManager() != null){
-            /*
-            flyCam = new FlyByCamera(game.getCamera());
-            flyCam.setMoveSpeed(5f);
-            flyCam.registerWithInput(game.getInputManager());
-             * Replaced with ChaseCam
-             */
-            //chaseCam = new ChaseCamera(game.getCamera(), player.getNode(), game.getInputManager());
-
-            game.getInputManager().addMapping("CARGAME_Exit", new KeyTrigger(KeyInput.KEY_ESCAPE));
-            game.getInputManager().addMapping("CARGAME_LoadMenu", new KeyTrigger(KeyInput.KEY_M));
-        }
-
-        setupKeys();
-        //setupJoystick();
-        
-        // Add a simple Box
-        /*
-        Box boxshape1 = new Box(new Vector3f(-3f,1.1f,0f), 1f,1f,1f);
-        Geometry cube = new Geometry("My Textured Box", boxshape1);
-        Material mat_stl = new Material(game.getAssetManager(), "Common/MatDefs/Misc/SimpleTextured.j3md");
-        //Texture tex_ml = game.getAssetManager().loadTexture("Interface/Logo/Monkey.jpg");
-        //mat_stl.setTexture("m_ColorMap", tex_ml);
-        cube.setMaterial(mat_stl);
-        rootNode.attachChild(cube);
-         *
-         */
-
-        String track = game.getTrack();
-        
-        sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
-        //terrain_node = new Terrain_node(game.getCamera(), game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        //player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
-        //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        
-        currentLap = 0;
-        lapTimes = new long[10];
-        for(int i=0; i<maxLaps; i++)    {
-            lapTimes[i] = 0;
-        }
-        fastestLapTimeTime = new Time();
-        currentLapTimeTime = new Time();
-        currentTimeTime = new Time();
-
-        // Load the fastest laptime (still to implement !!!)
-        /*
-        try {
-        trackStatistics = (TrackStatistics) SaveGame.loadGame("com/sunshinegamestudio/cargame", "Default_Track");
-        } catch (NullPointerException nullPointerException) {
-            trackStatistics = new TrackStatistics();
-            trackStatistics.setFastestLapTime(fastestLapTime);
-            SaveGame.saveGame("com/sunshinegamestudio/cargame", "Default_Track", trackStatistics);
-        }
-        trackStatistics = (TrackStatistics) SaveGame.loadGame("com/sunshinegamestudio/cargame", "Default_Track");
-        fastestLapTime = trackStatistics.getFastestLapTime();
-         * Temperairy disabled until fixed
-         */
-
-        /*
-        if (game.getInputManager() != null){
-            chaseCam = new ChaseCamera(game.getCamera(), player.getNode(), game.getInputManager());
-        }
-         *
-         */
-
-        game.getInputManager().addListener(this, "CARGAME_Exit",
-                "CARGAME_LoadMenu");
-        
-        // if(flyCam != null) flyCam.setEnabled(true);
-        // if(chaseCam != null) chaseCam.setEnabled(true);
-    	
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
-        
-        //lapTime.reset();
-
-        this.game.getLogger().log(Level.SEVERE, "GameState attached.");
+    public void render(RenderManager rm) {
     }
 
     @Override
-    public void stateDetached(AppStateManager stateManager) {
+    public void cleanup() {
+        super.cleanup();
+
         // Unload game
         rootNode.detachAllChildren();
         guiNode.detachAllChildren();
@@ -644,12 +644,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     	
         game.getViewPort().detachScene(rootNode);
         game.getGUIViewPort().detachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "GameState detached.");
-    }
-
-    @Override
-    public void render(RenderManager rm) {
     }
     
     private boolean checkForNewLap()   {

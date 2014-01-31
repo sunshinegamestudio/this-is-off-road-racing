@@ -63,11 +63,11 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         if (!value)
             return;
         // Load other state
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
 
     public void start() {
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
     
     public void loadFPSText(){
@@ -86,7 +86,7 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         nifty.fromXml("General/Interface/InGameMenu.xml", "InGameMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
-        game.getGUIViewPort().addProcessor(niftyDisplay);
+        // game.getGUIViewPort().addProcessor(niftyDisplay);
     }
 
     @Override
@@ -105,6 +105,16 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         if (game.getInputManager() != null){
             game.getInputManager().addMapping("CARGAME_Exit1", new KeyTrigger(KeyInput.KEY_ESCAPE));
         }
+
+        game.getInputManager().addListener(this, "CARGAME_Exit1");
+
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+        game.getInputManager().setCursorVisible(true);
+        
+        game.getViewPort().attachScene(rootNode);
+        game.getGUIViewPort().attachScene(guiNode);
     }
 
     @Override
@@ -121,34 +131,19 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         guiNode.updateGeometricState();
     }
     
-    
     @Override
-    public void stateAttached(AppStateManager stateManager) {
-        game.getInputManager().addListener(this, "CARGAME_Exit1");
-        if(niftyDisplay != null)    {
-            game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
-        game.getInputManager().setCursorVisible(true);
-        
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "InGameMenuState attached.");
+    public void render(RenderManager rm) {
     }
 
     @Override
-    public void stateDetached(AppStateManager stateManager) {
+    public void cleanup() {
+        super.cleanup();
+
         game.getInputManager().setCursorVisible(false);
         game.getGUIViewPort().removeProcessor(niftyDisplay);
         game.getInputManager().removeListener(this);
     	
         game.getViewPort().detachScene(rootNode);
         game.getGUIViewPort().detachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "InGameMenuState detached.");
-    }
-
-    @Override
-    public void render(RenderManager rm) {
     }
 }

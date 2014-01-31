@@ -63,11 +63,11 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         if (!value)
             return;
         // Load other state
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
 
     public void start() {
-        game.loadGame("Default");
+        // game.loadGame("Default");
     }
     
     public void loadFPSText(){
@@ -86,7 +86,7 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         nifty.fromXml("General/Interface/LicenseViewMenu.xml", "LicenseViewMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
-        game.getGUIViewPort().addProcessor(niftyDisplay);
+        // game.getGUIViewPort().addProcessor(niftyDisplay);
     }
 
     @Override
@@ -105,6 +105,15 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         if (game.getInputManager() != null){
             game.getInputManager().addMapping("CARGAME_Exit1", new KeyTrigger(KeyInput.KEY_ESCAPE));
         }
+
+        game.getInputManager().addListener(this, "CARGAME_Exit1");
+        if(niftyDisplay != null)    {
+            game.getGUIViewPort().addProcessor(niftyDisplay);
+        }
+        game.getInputManager().setCursorVisible(true);
+        
+        game.getViewPort().attachScene(rootNode);
+        game.getGUIViewPort().attachScene(guiNode);
     }
 
     @Override
@@ -121,33 +130,6 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         guiNode.updateGeometricState();
     }
     
-    
-    @Override
-    public void stateAttached(AppStateManager stateManager) {
-        game.getInputManager().addListener(this, "CARGAME_Exit1");
-        if(niftyDisplay != null)    {
-            game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
-        game.getInputManager().setCursorVisible(true);
-        
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "LicenseViewMenuState attached.");
-    }
-
-    @Override
-    public void stateDetached(AppStateManager stateManager) {
-        game.getInputManager().setCursorVisible(false);
-        game.getGUIViewPort().removeProcessor(niftyDisplay);
-        game.getInputManager().removeListener(this);
-    	
-        game.getViewPort().detachScene(rootNode);
-        game.getGUIViewPort().detachScene(guiNode);
-
-        this.game.getLogger().log(Level.SEVERE, "LicenseViewMenuState detached.");
-    }
-
     @Override
     public void render(RenderManager rm) {
     }
@@ -155,6 +137,13 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
     @Override
     public void cleanup() {
         super.cleanup();
-}
+
+        game.getInputManager().setCursorVisible(false);
+        game.getGUIViewPort().removeProcessor(niftyDisplay);
+        game.getInputManager().removeListener(this);
+    	
+        game.getViewPort().detachScene(rootNode);
+        game.getGUIViewPort().detachScene(guiNode);
+    }
     
 }
