@@ -20,6 +20,7 @@ package cargame.core;
 
 import java.io.IOException;
 import com.jme3.app.Application;
+import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.BulletAppState.ThreadingType;
 import com.jme3.bullet.PhysicsSpace;
@@ -52,6 +53,7 @@ import cargame.core.statetasks.ChangeResultsLapTimesTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
 
 public class CarGame extends Application {
+// public class CarGame extends SimpleApplication {
 
     protected ThreadingType threadingType = ThreadingType.SEQUENTIAL;
     public BroadphaseType broadphaseType = BroadphaseType.DBVT;
@@ -143,6 +145,8 @@ public class CarGame extends Application {
 	
 	@Override
     public void initialize() {
+	// @Override
+    // public void simpleInitApp() {
                 getLogger().log(Level.SEVERE, "Start initialization");
             
                 // initialize the standard environment first
