@@ -21,6 +21,7 @@ package cargame.core;
 import java.io.IOException;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.BulletAppState.ThreadingType;
 import com.jme3.bullet.PhysicsSpace;
@@ -52,8 +53,8 @@ import cargame.core.statetasks.ChangeTrackTask;
 import cargame.core.statetasks.ChangeResultsLapTimesTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
 
-public class CarGame extends Application {
-// public class CarGame extends SimpleApplication {
+// public class CarGame extends Application {
+public class CarGame extends SimpleApplication {
 
     protected ThreadingType threadingType = ThreadingType.SEQUENTIAL;
     public BroadphaseType broadphaseType = BroadphaseType.DBVT;
@@ -128,30 +129,34 @@ public class CarGame extends Application {
         
         // set some default settings in-case
         // settings dialog is not shown
+        /*
         if (settings == null)
             setSettings(new AppSettings(true));
+        */
 
         // set the application title
-        settings.setTitle("This Is Off-Road Racing");
+        // settings.setTitle("This Is Off-Road Racing");
 
         // show settings dialog
+        /*
         if (!JmeSystem.showSettingsDialog(settings, false)) {
             getLogger().log(Level.SEVERE, "jME system initialisation error");
             return;
         }
+        */
         
         super.start();
     }
 	
-	@Override
-    public void initialize() {
 	// @Override
-    // public void simpleInitApp() {
+    // public void initialize() {
+	@Override
+    public void simpleInitApp() {
+                // initialize the standard environment first
+		// super.initialize();
+
                 getLogger().log(Level.SEVERE, "Start initialization");
             
-                // initialize the standard environment first
-		super.initialize();
-
                 // Get renderer capabilities
                 Collection<Caps> caps = renderer.getCaps();
                 getLogger().log(Level.SEVERE, "Renderer capabilities {0}: " + caps.toString());
@@ -177,7 +182,12 @@ public class CarGame extends Application {
 		gameState = new GameState(this);
                 inGameMenuState = new InGameMenuState(this);
                 resultsMenuState = new ResultsMenuState(this);
-		
+
+                // Detach unneeded States
+                setDisplayFps(false);
+                setDisplayStatView(false);
+                stateManager.detach(stateManager.getState(FlyCamAppState.class));
+                
 		// Attach MenuState
                 getStateManager().attach(bulletAppState);
 		// getStateManager().attach(menuState);
@@ -185,14 +195,14 @@ public class CarGame extends Application {
     }
 	
 	
-	@Override
-    public void update() {
+    @Override
+    public void simpleUpdate(float tpf) {
         if (speed == 0 || paused) {
             return;
         }
 
-        super.update();
-        float tpf = timer.getTimePerFrame() * speed;
+        // super.update();
+        // float tpf = timer.getTimePerFrame() * speed;
 
         // update states
         stateManager.update(tpf);
@@ -203,6 +213,7 @@ public class CarGame extends Application {
         simpleRender(renderManager);
     }
 
+    @Override
     public void simpleRender(RenderManager rm) {
     }
 
@@ -454,7 +465,8 @@ public class CarGame extends Application {
         this.track=track;
     }
 
-	public static void main(String... args) {
-		new CarGame().start();
-	}
+    public static void main(String[] args) {
+        CarGame app = new CarGame();
+        app.start();
+    }
 }
