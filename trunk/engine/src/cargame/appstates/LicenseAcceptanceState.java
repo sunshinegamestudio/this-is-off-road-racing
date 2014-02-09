@@ -42,8 +42,10 @@ import cargame.core.CarGame;
 
 public class LicenseAcceptanceState extends AbstractAppState implements ActionListener{
 
-    protected Node rootNode = new Node("Root Node");
-    protected Node guiNode = new Node("Gui Node");
+    // protected Node rootNode = new Node("Root Node");
+    private Node rootNode;
+    // protected Node guiNode = new Node("Gui Node");
+    private Node guiNode;
 
     protected BitmapText menuText;
     protected BitmapFont menuFont;
@@ -55,6 +57,9 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
     
     public LicenseAcceptanceState(CarGame game) {
     	this.game = game;
+        
+        rootNode = this.game.getRootNode();
+        guiNode = this.game.getGuiNode();
 
         this.game.getLogger().log(Level.SEVERE, "LicenceAcceptanceState created.");
     }
@@ -112,8 +117,8 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
         }
         game.getInputManager().setCursorVisible(true);
         
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
+        // game.getViewPort().attachScene(rootNode);
+        // game.getGUIViewPort().attachScene(guiNode);
     }
 
     @Override
@@ -142,7 +147,7 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
         game.getGUIViewPort().removeProcessor(niftyDisplay);
         game.getInputManager().removeListener(this);
     	
-        game.getViewPort().detachScene(rootNode);
-        game.getGUIViewPort().detachScene(guiNode);
+        // game.getViewPort().detachScene(rootNode);
+        // game.getGUIViewPort().detachScene(guiNode);
     }
 }
