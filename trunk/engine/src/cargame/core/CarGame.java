@@ -197,20 +197,24 @@ public class CarGame extends SimpleApplication {
 	
     @Override
     public void simpleUpdate(float tpf) {
+        /*
         if (speed == 0 || paused) {
             return;
         }
+        */
 
         // super.update();
         // float tpf = timer.getTimePerFrame() * speed;
 
         // update states
-        stateManager.update(tpf);
+        // stateManager.update(tpf);
 
         // render states
+        /*
         stateManager.render(renderManager);
         renderManager.render(tpf, context.isRenderable());
         simpleRender(renderManager);
+        */
     }
 
     @Override
