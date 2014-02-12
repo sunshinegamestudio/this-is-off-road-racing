@@ -42,8 +42,10 @@ import cargame.core.CarGame;
 
 public class InGameMenuState extends AbstractAppState implements ActionListener{
 
-    protected Node rootNode = new Node("Root Node");
-    protected Node guiNode = new Node("Gui Node");
+    // protected Node rootNode = new Node("Root Node");
+    private Node rootNode;
+    // protected Node guiNode = new Node("Gui Node");
+    private Node guiNode;
 
     protected BitmapText menuText;
     protected BitmapFont menuFont;
@@ -55,6 +57,9 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
     
     public InGameMenuState(CarGame game) {
     	this.game = game;
+
+        rootNode = this.game.getRootNode();
+	guiNode = this.game.getGuiNode();
 
         this.game.getLogger().log(Level.SEVERE, "InGameMenuState created.");
     }
@@ -113,8 +118,8 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         }
         game.getInputManager().setCursorVisible(true);
         
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
+        // game.getViewPort().attachScene(rootNode);
+        // game.getGUIViewPort().attachScene(guiNode);
     }
 
     @Override
@@ -143,7 +148,7 @@ public class InGameMenuState extends AbstractAppState implements ActionListener{
         game.getGUIViewPort().removeProcessor(niftyDisplay);
         game.getInputManager().removeListener(this);
     	
-        game.getViewPort().detachScene(rootNode);
-        game.getGUIViewPort().detachScene(guiNode);
+        // game.getViewPort().detachScene(rootNode);
+        // game.getGUIViewPort().detachScene(guiNode);
     }
 }
