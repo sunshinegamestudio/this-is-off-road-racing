@@ -64,8 +64,10 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 public class GameState extends AbstractAppState implements ActionListener, AnalogListener   {
 
-    protected Node rootNode = new Node("Root Node");
-    protected Node guiNode = new Node("Gui Node");
+    // protected Node rootNode = new Node("Root Node");
+    private Node rootNode;
+    // protected Node guiNode = new Node("Gui Node");
+    private Node guiNode;
 
     protected BitmapText fpsText;
     protected BitmapText menuText;
@@ -135,6 +137,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     
     public GameState(CarGame game) {
     	this.game = game;
+
+        rootNode = this.game.getRootNode();
+	guiNode = this.game.getGuiNode();
 
         this.game.getLogger().log(Level.SEVERE, "GameState created.");
     }
@@ -517,8 +522,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // if(flyCam != null) flyCam.setEnabled(true);
         // if(chaseCam != null) chaseCam.setEnabled(true);
     	
-        game.getViewPort().attachScene(rootNode);
-        game.getGUIViewPort().attachScene(guiNode);
+        // game.getViewPort().attachScene(rootNode);
+        // game.getGUIViewPort().attachScene(guiNode);
         
         //lapTime.reset();
     }
@@ -642,8 +647,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // if(flyCam != null) flyCam.setEnabled(false);
         // if(chaseCam != null) chaseCam.setEnabled(false);
     	
-        game.getViewPort().detachScene(rootNode);
-        game.getGUIViewPort().detachScene(guiNode);
+        // game.getViewPort().detachScene(rootNode);
+        // game.getGUIViewPort().detachScene(guiNode);
     }
     
     private boolean checkForNewLap()   {
