@@ -130,10 +130,12 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
         menuText.setText("Press [Escape] to go to the Game-State");
 
         // simple update and root node
+        /*
         rootNode.updateLogicalState(tpf);
         guiNode.updateLogicalState(tpf);
         rootNode.updateGeometricState();
         guiNode.updateGeometricState();
+        */
     }
     
     @Override
