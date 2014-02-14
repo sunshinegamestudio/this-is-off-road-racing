@@ -127,24 +127,6 @@ public class CarGame extends SimpleApplication {
 
         // getLogger().addHandler(fh);
         
-        // set some default settings in-case
-        // settings dialog is not shown
-        /*
-        if (settings == null)
-            setSettings(new AppSettings(true));
-        */
-
-        // set the application title
-        // settings.setTitle("This Is Off-Road Racing");
-
-        // show settings dialog
-        /*
-        if (!JmeSystem.showSettingsDialog(settings, false)) {
-            getLogger().log(Level.SEVERE, "jME system initialisation error");
-            return;
-        }
-        */
-        
         super.start();
     }
 	
@@ -197,24 +179,6 @@ public class CarGame extends SimpleApplication {
 	
     @Override
     public void simpleUpdate(float tpf) {
-        /*
-        if (speed == 0 || paused) {
-            return;
-        }
-        */
-
-        // super.update();
-        // float tpf = timer.getTimePerFrame() * speed;
-
-        // update states
-        // stateManager.update(tpf);
-
-        // render states
-        /*
-        stateManager.render(renderManager);
-        renderManager.render(tpf, context.isRenderable());
-        simpleRender(renderManager);
-        */
     }
 
     @Override
@@ -470,7 +434,10 @@ public class CarGame extends SimpleApplication {
     }
 
     public static void main(String[] args) {
+        AppSettings settings = new AppSettings(true);
+        settings.setTitle("This Is Off-Road Racing");
         CarGame app = new CarGame();
+        app.setSettings(settings);
         app.start();
     }
 }
