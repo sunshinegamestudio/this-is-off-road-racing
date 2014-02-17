@@ -186,39 +186,6 @@ public class CarGame extends SimpleApplication {
     }
 
     /**
-     * @return the threadingType
-     */
-    public ThreadingType getThreadingType() {
-        return threadingType;
-    }
-
-    /**
-     * @param threadingType the threadingType to set
-     */
-    public void setThreadingType(ThreadingType threadingType) {
-        this.threadingType = threadingType;
-    }
-
-    public void setBroadphaseType(BroadphaseType broadphaseType) {
-        this.broadphaseType = broadphaseType;
-    }
-
-    public void setWorldMin(Vector3f worldMin) {
-        this.worldMin = worldMin;
-    }
-
-    public void setWorldMax(Vector3f worldMax) {
-        this.worldMax = worldMax;
-    }
-
-    public enum ThreadingType {
-
-        SEQUENTIAL,
-        PARALLEL,
-        DETACHED
-    }
-
-    /**
      * @return the AndroidApiLevel_System
      */
     public int getAndroidApiLevel_System() {
