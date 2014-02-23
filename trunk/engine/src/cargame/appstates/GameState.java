@@ -80,8 +80,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
     private boolean newLap = false;
     private int currentLap = 0;
-    // private int maxLaps = 4;
-    private int maxLaps = 1;
+    private int maxLaps = 4;
+    // private int maxLaps = 1;
     private long fastestLapTime = 0;
     private Time fastestLapTimeTime;
     private long currentLapTime = 0;
