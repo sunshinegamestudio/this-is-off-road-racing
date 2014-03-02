@@ -59,9 +59,10 @@ Add your content here.  Format your content with:
   * Basic results screen (after race) _(done)_
   * Basic application title _(done)_
   * Lighting materials for car _(done)_
-  * Created with jMonkeyEngine on main menu
+  * Refactoring _(done)_
 
 *V 0.2.4:*
+  * Created with jMonkeyEngine on main menu
   * Basic icon (to start the application)
   * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
