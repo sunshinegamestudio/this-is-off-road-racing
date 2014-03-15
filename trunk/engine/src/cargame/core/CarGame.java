@@ -53,15 +53,7 @@ import cargame.core.statetasks.ChangeTrackTask;
 import cargame.core.statetasks.ChangeResultsLapTimesTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
 
-// public class CarGame extends Application {
 public class CarGame extends SimpleApplication {
-
-    protected ThreadingType threadingType = ThreadingType.SEQUENTIAL;
-    public BroadphaseType broadphaseType = BroadphaseType.DBVT;
-    public Vector3f worldMin = new Vector3f(-10000f, -10000f, -10000f);
-    public Vector3f worldMax = new Vector3f(10000f, 10000f, 10000f);
-
-
         private LicenseAcceptanceState licenseAcceptanceState = null;
         private GameState gameState = null;
 	private MainMenuState menuState = null;
