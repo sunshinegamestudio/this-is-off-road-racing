@@ -126,16 +126,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
     public void update(float tpf) {
         super.update(tpf);
 
-        
         menuText.setText("Press [Escape] to go to the Game-State");
-
-        // simple update and root node
-        /*
-        rootNode.updateLogicalState(tpf);
-        guiNode.updateLogicalState(tpf);
-        rootNode.updateGeometricState();
-        guiNode.updateGeometricState();
-        */
     }
     
     @Override

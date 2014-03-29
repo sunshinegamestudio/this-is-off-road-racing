@@ -600,17 +600,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
 
-        // simple update and root node
-        //player.update(tpf);
-        //simpleEnemy.update(tpf);
-
-        /*
-        rootNode.updateLogicalState(tpf);
-        guiNode.updateLogicalState(tpf);
-        rootNode.updateGeometricState();
-        guiNode.updateGeometricState();
-        */
-
         // Place the camera behind the player
         Vector3f direction = player.getNode().getLocalRotation().getRotationColumn(2);
         Vector3f direction2 = player.getNode().getLocalRotation().getRotationColumn(1);

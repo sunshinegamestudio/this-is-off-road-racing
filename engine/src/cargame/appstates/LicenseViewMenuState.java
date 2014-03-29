@@ -125,16 +125,7 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
     public void update(float tpf) {
         super.update(tpf);
 
-        
         menuText.setText("Press [Escape] to go to the Game-State");
-
-        // simple update and root node
-        /*
-        rootNode.updateLogicalState(tpf);
-        guiNode.updateLogicalState(tpf);
-        rootNode.updateGeometricState();
-        guiNode.updateGeometricState();
-        */
     }
     
     @Override
