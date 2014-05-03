@@ -49,6 +49,8 @@ public class BoxCollisionShapeEnt extends Entity {
     public BoxCollisionShapeEnt(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
+        // Implement this as a Control !!!
+
         for(int i=0; i<256; i++) {
             boxNode = (Node)getParent().getChild(i);
             if(boxNode != null)    {
@@ -56,7 +58,7 @@ public class BoxCollisionShapeEnt extends Entity {
                 if(boxCollisionShapeEnt=="true")    {
                     RigidBodyControl rigidBody = new RigidBodyControl();
 
-                    BoxCollisionShape boxShape = new BoxCollisionShape(new Vector3f(100,0.1f,100));
+                    BoxCollisionShape boxShape = new BoxCollisionShape(boxNode.getLocalScale());
                     rigidBody.setCollisionShape(boxShape);
                     rigidBody.setMass(0);
                     boxNode.addControl(rigidBody);
