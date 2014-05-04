@@ -40,7 +40,7 @@ import com.jme3.texture.Texture;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class BoxCollisionShapeEnt extends Entity {
     
