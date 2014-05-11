@@ -64,11 +64,10 @@ Add your content here.  Format your content with:
 *V 0.2.4:*
   * Improved track "Beach Resort"
   * Joystick/gamepad support
+  * Created with jMonkeyEngine on main menu
   * OS X JDK requirement notice in readme.txt
-  * ???
 
 *V 0.2.5:*
-  * Created with jMonkeyEngine on main menu
   * Basic icon (to start the application)
   * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
