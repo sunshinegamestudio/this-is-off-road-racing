@@ -55,13 +55,19 @@ Add your content here.  Format your content with:
      * Only use unshaded material for Android
        * Replace terrain lightning material with unshaded material
 
-*V 0.2.3:*
+*V 0.2.3:* _(done)_
   * Basic results screen (after race) _(done)_
   * Basic application title _(done)_
   * Lighting materials for car _(done)_
   * Refactoring _(done)_
 
 *V 0.2.4:*
+  * Improved track "Beach Resort"
+  * Joystick/gamepad support
+  * OS X JDK requirement notice in readme.txt
+  * ???
+
+*V 0.2.5:*
   * Created with jMonkeyEngine on main menu
   * Basic icon (to start the application)
   * Loading indicator (in track selector)
