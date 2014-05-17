@@ -66,6 +66,10 @@ import cargame.appstates.GameState;
             CarGame.getApp().loadTrackSelector();
         }
         
+        public void selectController()   {
+            CarGame.getApp().loadMenu_return("selectCotroller");
+        }
+
         public void loadLicenseViewMenu()   {
             CarGame.getApp().loadMenu_return("loadLicenseViewMenu");
         }
