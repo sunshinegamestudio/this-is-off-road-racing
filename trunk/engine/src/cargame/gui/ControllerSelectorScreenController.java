@@ -72,7 +72,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             
-            CarGame.getApp().loadGame(track);
+            CarGame.getApp().loadControllerSelector_return();
         }
 
         public void exit()  {
