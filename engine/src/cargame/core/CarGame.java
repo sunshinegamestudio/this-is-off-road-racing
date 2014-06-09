@@ -43,6 +43,7 @@ import java.util.logging.Logger;
 import com.jme3.app.state.AbstractAppState;
 import cargame.appstates.MainMenuState;
 import cargame.appstates.LicenseViewMenuState;
+import cargame.appstates.ControllerSelectorState;
 import cargame.appstates.TrackSelectorState;
 import cargame.appstates.InGameMenuState;
 import cargame.appstates.GameState;
@@ -58,6 +59,7 @@ public class CarGame extends SimpleApplication {
         private GameState gameState = null;
 	private MainMenuState menuState = null;
         private LicenseViewMenuState licenseViewMenuState = null;
+        private ControllerSelectorState controllerSelectorState = null;
 	private TrackSelectorState trackSelectorState = null;
 	private InGameMenuState inGameMenuState = null;
 	private ResultsMenuState resultsMenuState = null;
@@ -152,6 +154,7 @@ public class CarGame extends SimpleApplication {
                 licenseAcceptanceState = new LicenseAcceptanceState(this);
                 menuState = new MainMenuState(this);
                 licenseViewMenuState = new LicenseViewMenuState(this);
+                controllerSelectorState = new ControllerSelectorState(this);
                 trackSelectorState = new TrackSelectorState(this);
 		gameState = new GameState(this);
                 inGameMenuState = new InGameMenuState(this);
@@ -209,14 +212,25 @@ public class CarGame extends SimpleApplication {
                 if (returnValue=="loadLicenseViewMenu") {
                     loadLicenseViewMenu(menuState);
                 }
+                else if(returnValue=="loadControlerSelector")  {
+                    loadControllerSelector();
+                }
         }
-        
+
         public void loadLicenseViewMenu(AbstractAppState previousState) {
                 this.enqueue(new ChangeStateTask(previousState,licenseViewMenuState,viewPort,stateManager));
         }
 
         public void loadLicenseViewMenuState_return() {
             loadMenu(licenseViewMenuState);
+        }
+        
+        public void loadControllerSelector() {
+                this.enqueue(new ChangeStateTask(menuState,controllerSelectorState,viewPort,stateManager));
+        }
+
+        public void loadControllerSelector_return() {
+            loadMenu(controllerSelectorState);
         }
         
 	public void loadTrackSelector() {

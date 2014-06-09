@@ -4,7 +4,7 @@
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
   <!-- start screen -->
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
-  <screen id="ControllerSelectorMenuScreen" controller="cargame.gui.ControllerSelectorMenuScreenController">
+  <screen id="ControllerSelectorScreen" controller="cargame.gui.ControllerSelectorScreenController">
     <layer id="layer" backgroundColor="#003f" childLayout="vertical">
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <effect>
