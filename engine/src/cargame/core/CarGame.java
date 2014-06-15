@@ -50,6 +50,7 @@ import cargame.appstates.GameState;
 import cargame.appstates.LicenseAcceptanceState;
 import cargame.appstates.ResultsMenuState;
 import cargame.core.statetasks.ChangeStateTask;
+import cargame.core.statetasks.ChangeControllerTask;
 import cargame.core.statetasks.ChangeTrackTask;
 import cargame.core.statetasks.ChangeResultsLapTimesTask;
 import com.jme3.niftygui.NiftyJmeDisplay;
@@ -83,6 +84,7 @@ public class CarGame extends SimpleApplication {
 
         static CarGame thisApp;
 
+        private String controller;
         private String track;
 	
 	public CarGame() {
@@ -230,7 +232,7 @@ public class CarGame extends SimpleApplication {
         }
 
         public void loadControllerSelector_return(String controller) {
-            // this.enqueue(new ChangeControllerTask(controller, this));
+            this.enqueue(new ChangeControllerTask(controller, this));
             loadMenu(controllerSelectorState);
         }
         
@@ -399,6 +401,20 @@ public class CarGame extends SimpleApplication {
         this.touchscreenControlled = touchscreenControlled;
     }
 
+    /**
+     * @return the controller
+     */
+    public String getController() {
+        return controller;
+    }
+
+    /**
+     * @param controller the controller to set
+     */
+    public void setController(String controller) {
+        this.controller = controller;
+    }
+    
         public String getTrack()    {
             return track;
         }
