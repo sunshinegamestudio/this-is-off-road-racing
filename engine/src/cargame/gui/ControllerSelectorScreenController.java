@@ -75,9 +75,9 @@ import cargame.appstates.GameState;
             CarGame.getApp().loadControllerSelector_return(controller);
         }
 
-        public void exit()  {
+        public void back()  {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("exit");
-            CarGame.getApp().stop();
+            System.out.println("back");
+            CarGame.getApp().loadControllerSelector_return("");
         }
     }

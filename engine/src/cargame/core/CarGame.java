@@ -232,7 +232,9 @@ public class CarGame extends SimpleApplication {
         }
 
         public void loadControllerSelector_return(String controller) {
-            this.enqueue(new ChangeControllerTask(controller, this));
+            if(controller.isEmpty()==false) {
+                this.enqueue(new ChangeControllerTask(controller, this));
+            }
             loadMenu(controllerSelectorState);
         }
         
