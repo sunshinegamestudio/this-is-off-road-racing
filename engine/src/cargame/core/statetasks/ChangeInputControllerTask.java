@@ -26,12 +26,12 @@ import java.util.concurrent.Callable;
 
 import cargame.core.CarGame;
 
-public class ChangeControllerTask implements Callable
+public class ChangeInputControllerTask implements Callable
 {
     private String controller;
     private CarGame game;
 
-    public ChangeControllerTask(String controller, CarGame game)
+    public ChangeInputControllerTask(String controller, CarGame game)
     {
         this.controller=this.controller;
         this.game=game;
