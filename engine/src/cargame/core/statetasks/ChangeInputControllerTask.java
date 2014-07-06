@@ -28,12 +28,12 @@ import cargame.core.CarGame;
 
 public class ChangeInputControllerTask implements Callable
 {
-    private String controller;
+    private String inputController;
     private CarGame game;
 
-    public ChangeInputControllerTask(String controller, CarGame game)
+    public ChangeInputControllerTask(String inputController, CarGame game)
     {
-        this.controller=this.controller;
+        this.inputController=inputController;
         this.game=game;
     }
 
@@ -41,7 +41,7 @@ public class ChangeInputControllerTask implements Callable
     {
         System.out.println("ChangeControllerTask called");
 
-        game.setController(controller);
+        game.setInputController(inputController);
 
         return null;
     }
