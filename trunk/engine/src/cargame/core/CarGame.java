@@ -84,7 +84,7 @@ public class CarGame extends SimpleApplication {
 
         static CarGame thisApp;
 
-        private String controller;
+        private String inputController;
         private String track;
 	
 	public CarGame() {
@@ -404,17 +404,17 @@ public class CarGame extends SimpleApplication {
     }
 
     /**
-     * @return the controller
+     * @return the inputController
      */
-    public String getController() {
-        return controller;
+    public String getInputController() {
+        return inputController;
     }
 
     /**
-     * @param controller the controller to set
+     * @param inputController the inputController to set
      */
-    public void setController(String controller) {
-        this.controller = controller;
+    public void setInputController(String inputController) {
+        this.inputController = inputController;
     }
     
         public String getTrack()    {
