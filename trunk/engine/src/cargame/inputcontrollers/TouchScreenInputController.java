@@ -40,6 +40,8 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
+import cargame.gui.GameHUDScreenController_Analog;
+import cargame.gui.GameHUDScreenController_Digital;
 
 public class TouchScreenInputController extends AbstractAppState implements ActionListener{
 
@@ -89,9 +91,20 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/ControllerSelectorMenu.xml", "ControllerSelectorScreen");
+        /*
+        nifty.fromXml("General/Interface/GameHUD_Analog.xml", "GameHUD");
+        GameHUDScreenController_Analog gameHUDScreenController_Analog = (GameHUDScreenController_Analog)nifty.getScreen("GameHUD").getScreenController();
+        gameHUDScreenController_Analog.setGameState(this);
+        */
 
-        // attach the nifty display to the gui view port as a processor
+        /*
+        nifty.fromXml("General/Interface/GameHUD_Digital.xml", "GameHUD");
+        GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
+        gameHUDScreenController_Digital.setGameState(this);
+        * Use digital controls!!!
+        */
+
+            // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
     }
 
