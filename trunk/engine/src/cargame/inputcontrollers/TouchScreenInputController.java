@@ -40,6 +40,7 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
+import cargame.entities.SimpleCarPlayer;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
 
@@ -57,9 +58,28 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     private Nifty nifty = null;
     
     private CarGame game = null;
+    private GameState gamestate;
+    private SimpleCarPlayer player;
+
+    private float acceleration_dig_v = -800;
+    private float acceleration_dig_nv = 800;
+    private float brake_dig_v = 800f;
+    private float brake_dig_nv = -0f;
+    private float steer_dig_v = .1f;
+    private float steer_dig_nv = -.1f;
     
+    private float sensitivity = 0.1f;
+    private float acceleration_ana_v = (-800 * sensitivity);
+    private float acceleration_ana_nv = (800 * sensitivity);
+    private float brake_ana_v = (800f * sensitivity);
+    private float brake_ana_nv = (-0f * sensitivity);
+    private float steer_ana_v = (.1f * sensitivity);
+    private float steer_ana_nv = (-.1f * sensitivity);
+
     public TouchScreenInputController(CarGame game) {
     	this.game = game;
+        gamestate = game.getStateManager().getState(GameState.class);
+        player=gamestate.getPlayer();
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
@@ -72,6 +92,42 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
             return;
         // Load other state
         // game.loadGame("Default");
+        
+        if (name.equals("Lefts")) {
+            if (value)
+                { player.steer(steer_dig_v);}
+            else
+                { player.steer(steer_dig_nv);}
+        } else if (name.equals("Rights")) {
+            if (value)
+                { player.steer(-steer_dig_v);}
+            else
+                { player.steer(-steer_dig_nv);}
+        } else if (name.equals("Ups")) {
+            if (value)
+                { player.accelerate(acceleration_dig_v);}
+            else
+                { player.accelerate(acceleration_dig_nv);}
+        } else if (name.equals("Downs")) {
+            if (value)
+                { player.brake(brake_dig_v);}
+            else
+                { player.brake(brake_dig_nv);}
+        } else if (name.equals("Gears")) {
+            if (value)  {
+                if(player.getGear()>0)  {
+                    player.setGear(-1);
+                }
+                else if(player.getGear()<0)  {
+                    player.setGear(1);
+                }
+                else    {
+                    player.setGear(1);
+                }
+            }
+        } else if (name.equals("Jumps")) {
+            //player.getNode().jump();
+        }
     }
 
     public void start() {

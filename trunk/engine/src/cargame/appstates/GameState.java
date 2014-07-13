@@ -641,6 +641,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // game.getViewPort().detachScene(rootNode);
         // game.getGUIViewPort().detachScene(guiNode);
     }
+
+    public SimpleCarPlayer getPlayer() {
+        return player;
+    }
     
     private boolean checkForNewLap()   {
         if((isOnStartingPoint == false) && (startingPoint.isOnStartinPoint() == true))    {
