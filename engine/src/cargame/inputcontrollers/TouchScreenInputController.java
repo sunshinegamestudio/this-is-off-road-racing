@@ -190,6 +190,9 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         
         // game.getViewPort().attachScene(rootNode);
         // game.getGUIViewPort().attachScene(guiNode);
+
+        // Initialise/setup input bindings here?
+        // ...
     }
 
     @Override
