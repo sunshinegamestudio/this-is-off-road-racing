@@ -46,14 +46,6 @@ import cargame.gui.GameHUDScreenController_Digital;
 
 public class TouchScreenInputController extends AbstractAppState implements ActionListener{
 
-    // protected Node rootNode = new Node("Root Node");
-    private Node rootNode;
-    // protected Node guiNode = new Node("Gui Node");
-    private Node guiNode;
-
-    protected BitmapText menuText;
-    protected BitmapFont menuFont;
-
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
     
@@ -81,9 +73,6 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         gamestate = game.getStateManager().getState(GameState.class);
         player=gamestate.getPlayer();
 
-        rootNode = this.game.getRootNode();
-	guiNode = this.game.getGuiNode();
-        
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
     
@@ -130,19 +119,6 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         }
     }
 
-    public void start() {
-        // game.loadGame("Default");
-    }
-    
-    public void loadFPSText(){
-    	menuFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-    	menuText = new BitmapText(menuFont, false);
-    	menuText.setSize(menuFont.getCharSet().getRenderedSize());
-    	menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
-    	//menuText.setText("Frames per second");
-        guiNode.attachChild(menuText);
-    }
-
     private void loadMenu() {
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
@@ -150,15 +126,12 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         /*
         nifty.fromXml("General/Interface/GameHUD_Analog.xml", "GameHUD");
         GameHUDScreenController_Analog gameHUDScreenController_Analog = (GameHUDScreenController_Analog)nifty.getScreen("GameHUD").getScreenController();
-        gameHUDScreenController_Analog.setGameState(this);
+        gameHUDScreenController_Analog.setGameState(gamestate);
         */
 
-        /*
         nifty.fromXml("General/Interface/GameHUD_Digital.xml", "GameHUD");
         GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
-        gameHUDScreenController_Digital.setGameState(this);
-        * Use digital controls!!!
-        */
+        gameHUDScreenController_Digital.setGameState(gamestate);
 
             // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
@@ -168,12 +141,6 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
         
-        // enable depth test and back-face culling for performance
-        app.getRenderer().applyRenderState(RenderState.DEFAULT);
-
-        guiNode.setQueueBucket(Bucket.Gui);
-        guiNode.setCullHint(CullHint.Never);
-        loadFPSText();
         loadMenu();
 
         // Init input
@@ -186,11 +153,7 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         if(niftyDisplay != null)    {
             game.getGUIViewPort().addProcessor(niftyDisplay);
         }
-        game.getInputManager().setCursorVisible(true);
         
-        // game.getViewPort().attachScene(rootNode);
-        // game.getGUIViewPort().attachScene(guiNode);
-
         // Initialise/setup input bindings here?
         // ...
     }
@@ -198,8 +161,6 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     @Override
     public void update(float tpf) {
         super.update(tpf);
-
-        menuText.setText("Press [Escape] to go to the Game-State");
     }
     
     @Override
@@ -210,11 +171,7 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     public void cleanup() {
         super.cleanup();
 
-        game.getInputManager().setCursorVisible(false);
         game.getGUIViewPort().removeProcessor(niftyDisplay);
         game.getInputManager().removeListener(this);
-    	
-        // game.getViewPort().detachScene(rootNode);
-        // game.getGUIViewPort().detachScene(guiNode);
     }
 }
