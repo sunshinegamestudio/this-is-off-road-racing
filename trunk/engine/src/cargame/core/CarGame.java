@@ -290,7 +290,7 @@ public class CarGame extends SimpleApplication {
                 }
             else    {
                 if ( getDebugMode())   {
-                    // For analog controls
+                    // For Analog controls
                     /*
                     setKeyboardControlled(false);
                     setJoystickControlled(true);
