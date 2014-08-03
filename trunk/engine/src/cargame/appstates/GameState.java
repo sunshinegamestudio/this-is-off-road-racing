@@ -461,6 +461,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         setupKeys();
         //setupJoystick();
+
+        /*
+         * Initialize InputController here
+         */
         
         // Add a simple Box
         /*
@@ -634,6 +638,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         if(niftyDisplay != null)    {
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
+        /*
+         * Cleanup InputListener here.
+         */
         game.getInputManager().removeListener(this);
         // if(flyCam != null) flyCam.setEnabled(false);
         // if(chaseCam != null) chaseCam.setEnabled(false);
