@@ -273,6 +273,7 @@ public class CarGame extends SimpleApplication {
         }
 	
 	private void initControls() {
+            // isControlled() API.
             if (getPlatform()=="Android")    {
                         // For analog controls
                         /*
@@ -310,6 +311,11 @@ public class CarGame extends SimpleApplication {
                     setJoystickControlled(false);
                     setTouchscreenControlled(false);
                 }
+            }
+            
+            // InputController API.
+            if (getPlatform()=="Android")    {
+                setInputController("TouchScreen");
             }
         }
 	
