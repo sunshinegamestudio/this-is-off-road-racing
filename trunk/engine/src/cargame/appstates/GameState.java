@@ -56,6 +56,9 @@ import cargame.core.CarGame;
 import cargame.entities.*;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
+import cargame.inputcontrollers.JoystickInputController;
+import cargame.inputcontrollers.KeyboardInputController;
+import cargame.inputcontrollers.TouchScreenInputController;
 import cargame.other.Time;
 import cargame.other.TrackStatistics;
 import com.jme3.niftygui.NiftyJmeDisplay;
@@ -68,7 +71,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private Node rootNode;
     // protected Node guiNode = new Node("Gui Node");
     private Node guiNode;
-
+    
     protected BitmapText fpsText;
     protected BitmapText menuText;
     protected BitmapText currentLapText;
@@ -123,6 +126,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     
     private TrackStatistics trackStatistics;
 
+    AbstractAppState inputController;
+
     Joystick[] joysticks = null;
     
     boolean left = false;
@@ -140,7 +145,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
-
+        
         this.game.getLogger().log(Level.SEVERE, "GameState created.");
     }
     
@@ -462,9 +467,20 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         setupKeys();
         //setupJoystick();
 
-        /*
-         * Initialize InputController here
-         */
+        
+        // Initialize InputController here
+        if(game.getInputController()=="Joystick/Gamepad")   {
+            JoystickInputController inputController = new JoystickInputController(game);
+        }
+        else if(game.getInputController()=="Keyboard")   {
+            KeyboardInputController inputController = new KeyboardInputController(game);
+        }
+        else if(game.getInputController()=="Touch Screen")   {
+            TouchScreenInputController inputController = new TouchScreenInputController(game);
+        }
+        if(inputController != null)   {
+            game.getStateManager().attach(inputController);
+        }
         
         // Add a simple Box
         /*
@@ -638,9 +654,12 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         if(niftyDisplay != null)    {
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
-        /*
-         * Cleanup InputListener here.
-         */
+
+        // Cleanup InputListener here.
+        if(inputController != null)   {
+            game.getStateManager().detach(inputController);
+        }
+
         game.getInputManager().removeListener(this);
         // if(flyCam != null) flyCam.setEnabled(false);
         // if(chaseCam != null) chaseCam.setEnabled(false);
