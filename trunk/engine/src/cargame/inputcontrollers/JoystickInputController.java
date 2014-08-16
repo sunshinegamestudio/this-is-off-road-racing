@@ -27,6 +27,9 @@ import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
+import com.jme3.input.JoyInput;
+import com.jme3.input.controls.JoyAxisTrigger;
+import com.jme3.input.controls.JoyButtonTrigger;
 import com.jme3.material.RenderState;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import com.jme3.renderer.RenderManager;
@@ -57,13 +60,14 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     private float steer_dig_v = .1f;
     private float steer_dig_nv = -.1f;
     
-    private float sensitivity = 0.1f;
+    // private float sensitivity = 0.1f;
+    private float sensitivity = 0.002f;
     private float acceleration_ana_v = (-800 * sensitivity);
     private float acceleration_ana_nv = (800 * sensitivity);
     private float brake_ana_v = (800f * sensitivity);
     private float brake_ana_nv = (-0f * sensitivity);
-    private float steer_ana_v = (.1f * sensitivity);
-    private float steer_ana_nv = (-.1f * sensitivity);
+    private float steer_ana_v = (.1f * sensitivity * 16);
+    private float steer_ana_nv = (-.1f * sensitivity * 16);
 
     public JoystickInputController(CarGame game) {
     	this.game = game;
@@ -74,7 +78,9 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     }
     
     public void onAnalog(String name, float value, float tpf) {
-            if (name.equals("RightStick Left")) {
+        player=gamestate.getPlayer();
+        if(player != null)  {
+         if (name.equals("RightStick Left")) {
                     if (value != 0)
                         { player.steer(steer_ana_v); }
                     else
@@ -98,6 +104,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                     else
                         { player.brake(brake_ana_nv);}
             }
+        }
     }
     
     @Override
@@ -105,14 +112,74 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
         super.initialize(stateManager, app);
 
         // Init input
+        /*
         if (game.getInputManager() != null){
             game.getInputManager().addMapping("CARGAME_Exit1", new KeyTrigger(KeyInput.KEY_ESCAPE));
         }
 
         game.getInputManager().addListener(this, "CARGAME_Exit1");
+        */
 
         // Initialise/setup input bindings here?
-        // ...
+        // DPAD
+        game.getInputManager().addMapping("DPAD Left", new JoyAxisTrigger(0, JoyInput.AXIS_POV_X, true));
+        game.getInputManager().addMapping("DPAD Right", new JoyAxisTrigger(0, JoyInput.AXIS_POV_X, false));
+        game.getInputManager().addMapping("DPAD Down", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, true));
+        game.getInputManager().addMapping("DPAD Up", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, false));
+        // Buttons
+        game.getInputManager().addMapping("Button A", new JoyButtonTrigger(0, 0));
+        game.getInputManager().addMapping("Button B", new JoyButtonTrigger(0, 1));
+        game.getInputManager().addMapping("Button X", new JoyButtonTrigger(0, 2));
+        game.getInputManager().addMapping("Button Y", new JoyButtonTrigger(0, 3));
+        game.getInputManager().addMapping("Trigger L1", new JoyButtonTrigger(0, 4));
+        game.getInputManager().addMapping("Trigger R1", new JoyButtonTrigger(0, 5));
+        game.getInputManager().addMapping("Select", new JoyButtonTrigger(0, 6));
+        game.getInputManager().addMapping("Start", new JoyButtonTrigger(0, 7));
+        game.getInputManager().addMapping("LStick Click", new JoyButtonTrigger(0, 8));
+        game.getInputManager().addMapping("RStick Click", new JoyButtonTrigger(0, 9));
+ 
+         
+        game.getInputManager().addListener(this,  "DPAD Left",
+                                        "DPAD Right",
+                                        "DPAD Down",
+                                        "DPAD Up",
+                                         
+                                        "Button A",
+                                        "Button B",
+                                        "Button X",
+                                        "Button Y",
+                                        "Trigger L1",
+                                        "Trigger R1",
+                                        "Select",
+                                        "Start",
+                                        "LStick Click",
+                                        "RStick Click"
+                                        );
+        game.getInputManager().addMapping("6th axis negative", new JoyAxisTrigger(0, 5, true));
+        game.getInputManager().addMapping("6th axis positive", new JoyAxisTrigger(0, 5, false));
+        game.getInputManager().addMapping("Trigger R2", new JoyAxisTrigger(0, 4, true));
+        game.getInputManager().addMapping("Trigger L2", new JoyAxisTrigger(0, 4, false));
+        game.getInputManager().addMapping("RightStick Left", new JoyAxisTrigger(0, 3, true));
+        game.getInputManager().addMapping("RightStick Right", new JoyAxisTrigger(0, 3, false));
+        game.getInputManager().addMapping("RightStick Down", new JoyAxisTrigger(0, 2, false));
+        game.getInputManager().addMapping("RightStick Up", new JoyAxisTrigger(0, 2, true));
+        game.getInputManager().addMapping("LeftStick Left", new JoyAxisTrigger(0, 1, true));
+        game.getInputManager().addMapping("LeftStick Right", new JoyAxisTrigger(0, 1, false));
+        game.getInputManager().addMapping("LeftStick Down", new JoyAxisTrigger(0, 0, false));
+        game.getInputManager().addMapping("LeftStick Up", new JoyAxisTrigger(0, 0, true));
+        game.getInputManager().addListener(this,  "LeftStick Left",
+                                        "LeftStick Right",   
+                                        "LeftStick Down",
+                                        "LeftStick Up",
+                                        "RightStick Left",
+                                        "RightStick Right",
+                                        "RightStick Down",
+                                        "RightStick Up",
+                                        "Trigger R2",
+                                        "Trigger L2",
+                                        "6th axis negative",
+                                        "6th axis positive"
+                                        );
     }
 
     @Override
