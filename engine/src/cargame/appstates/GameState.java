@@ -408,9 +408,11 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     }
 
     private void loadMenu() {
+        /*
         if (CarGame.getApp().isTouchscreenControlled()) {
             niftyDisplay = game.getNiftyDisplay();
             nifty = niftyDisplay.getNifty();
+            */
 
             /*
             nifty.fromXml("General/Interface/GameHUD_Analog.xml", "GameHUD");
@@ -418,15 +420,15 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             gameHUDScreenController_Analog.setGameState(this);
             */
 
-            
+            /*
             nifty.fromXml("General/Interface/GameHUD_Digital.xml", "GameHUD");
             GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
             gameHUDScreenController_Digital.setGameState(this);
-            
+            */
 
             // attach the nifty display to the gui view port as a processor
             // game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
+        // }
 }
 
     @Override
@@ -464,19 +466,19 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getInputManager().addMapping("CARGAME_LoadMenu", new KeyTrigger(KeyInput.KEY_M));
         }
 
-        setupKeys();
-        //setupJoystick();
+        // setupKeys();
+        // setupJoystick();
 
         
         // Initialize InputController here
-        if(game.getInputController()=="Joystick/Gamepad")   {
-            JoystickInputController inputController = new JoystickInputController(game);
+        if("Joystick/Gamepad".equals(game.getInputController()))   {
+            inputController = new JoystickInputController(game);
         }
-        else if(game.getInputController()=="Keyboard")   {
-            KeyboardInputController inputController = new KeyboardInputController(game);
+        else if("Keyboard".equals(game.getInputController()))   {
+            inputController = new KeyboardInputController(game);
         }
-        else if(game.getInputController()=="Touch Screen")   {
-            TouchScreenInputController inputController = new TouchScreenInputController(game);
+        else if("Touch Screen".equals(game.getInputController()))   {
+            inputController = new TouchScreenInputController(game);
         }
         if(inputController != null)   {
             game.getStateManager().attach(inputController);

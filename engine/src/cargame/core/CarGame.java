@@ -317,6 +317,9 @@ public class CarGame extends SimpleApplication {
             if (getPlatform()=="Android")    {
                 setInputController("TouchScreen");
             }
+            else    {
+                setInputController("Keyboard");
+            }
         }
 	
 	public ViewPort getViewPort() {
