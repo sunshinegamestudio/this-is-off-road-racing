@@ -96,21 +96,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     
     private boolean isOnStartingPoint = true;
 
-    private float acceleration_dig_v = -800;
-    private float acceleration_dig_nv = 800;
-    private float brake_dig_v = 800f;
-    private float brake_dig_nv = -0f;
-    private float steer_dig_v = .1f;
-    private float steer_dig_nv = -.1f;
-    
-    private float sensitivity = 0.1f;
-    private float acceleration_ana_v = (-800 * sensitivity);
-    private float acceleration_ana_nv = (800 * sensitivity);
-    private float brake_ana_v = (800f * sensitivity);
-    private float brake_ana_nv = (-0f * sensitivity);
-    private float steer_ana_v = (.1f * sensitivity);
-    private float steer_ana_nv = (-.1f * sensitivity);
-            
     // protected FlyByCamera flyCam;
     // protected ChaseCamera chaseCam;
 
@@ -127,13 +112,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private TrackStatistics trackStatistics;
 
     AbstractAppState inputController;
-
-    Joystick[] joysticks = null;
-    
-    boolean left = false;
-    boolean right = false;
-    boolean up = false;
-    boolean down = false;
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
@@ -165,195 +143,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
                     game.loadMenu(this);
                 }
 
-                //player.resetControls();
-
-                /*
-                if (name.equals("Lefts")) {
-                    if (value)
-                        { player.left(true);}
-                    else
-                        { player.left(false);}
-                } else if (name.equals("Rights")) {
-                    if (value)
-                        { player.right(true);}
-                    else
-                        { player.right(false);}
-                } else if (name.equals("Ups")) {
-                    if (value)
-                        { player.up(true);}
-                    else
-                        { player.up(false);}
-                } else if (name.equals("Downs")) {
-                    if (value)
-                        { player.down(true);}
-                    else
-                        { player.down(false);}
-                } else if (name.equals("Jumps")) {
-                    if (value)
-                        { player.jump(true);}
-                    else
-                        { player.jump(false);}
-                }
-                 * 
-                 */
-                
-                if (name.equals("Lefts")) {
-                    if (value)
-                        { player.steer(steer_dig_v);}
-                    else
-                        { player.steer(steer_dig_nv);}
-                } else if (name.equals("Rights")) {
-                    if (value)
-                        { player.steer(-steer_dig_v);}
-                    else
-                        { player.steer(-steer_dig_nv);}
-                } else if (name.equals("Ups")) {
-                    if (value)
-                        { player.accelerate(acceleration_dig_v);}
-                    else
-                        { player.accelerate(acceleration_dig_nv);}
-                } else if (name.equals("Downs")) {
-                    if (value)
-                        { player.brake(brake_dig_v);}
-                    else
-                        { player.brake(brake_dig_nv);}
-                } else if (name.equals("Gears")) {
-                    if (value)  {
-                        if(player.getGear()>0)  {
-                            player.setGear(-1);
-                        }
-                        else if(player.getGear()<0)  {
-                            player.setGear(1);
-                        }
-                        else    {
-                            player.setGear(1);
-                        }
-                    }
-                } else if (name.equals("Jumps")) {
-                    //player.getNode().jump();
-                }
             }
         }
 
     public void onAnalog(String name, float value, float tpf) {
-        if (CarGame.getApp().isJoystickControlled())    {
-            if (name.equals("RightStick Left")) {
-                    if (value != 0)
-                        { player.steer(steer_ana_v); }
-                    else
-                        { player.steer(steer_ana_nv);}
-            }
-            else if (name.equals("RightStick Right")) {
-                    if (value != 0)
-                        { player.steer(-steer_ana_v); }
-                    else
-                        { player.steer(-steer_ana_nv);}
-            }
-            else if (name.equals("LeftStick Up")) {
-                    if (value != 0)
-                        { player.accelerate(acceleration_ana_v); }
-                    else
-                        { player.accelerate(acceleration_ana_nv);}
-            }
-            else if (name.equals("LeftStick Down")) {
-                    if (value != 0)
-                        { player.brake(brake_ana_v); }
-                    else
-                        { player.brake(brake_ana_nv);}
-            }
-        }
-    }
-
-    private void setupKeys() {
-        game.getInputManager().addMapping("Lefts",  new KeyTrigger(KeyInput.KEY_LEFT));
-        game.getInputManager().addMapping("Rights", new KeyTrigger(KeyInput.KEY_RIGHT));
-        game.getInputManager().addMapping("Ups",    new KeyTrigger(KeyInput.KEY_UP));
-        game.getInputManager().addMapping("Downs",  new KeyTrigger(KeyInput.KEY_DOWN));
-        game.getInputManager().addMapping("Gears",  new KeyTrigger(KeyInput.KEY_R));
-        game.getInputManager().addMapping("Jumps",  new KeyTrigger(KeyInput.KEY_SPACE));
-        game.getInputManager().addListener(this, "Lefts");
-        game.getInputManager().addListener(this, "Rights");
-        game.getInputManager().addListener(this, "Ups");
-        game.getInputManager().addListener(this, "Downs");
-        game.getInputManager().addListener(this, "Gears");
-        game.getInputManager().addListener(this, "Jumps");
-    }
-    
-    private void setupJoystick()    {
-        joysticks = game.getInputManager().getJoysticks();
-        if (joysticks == null)
-            throw new IllegalStateException("Cannot find any joysticks!");
-            //hudTextHeader.setText("Cannot find any joysticks!");
-                         
-        for (Joystick joy : joysticks){
-            System.out.println(joy.toString());
-            //hudTextHeader.setText(joy.getName()+" with "+joy.getButtonCount()+" buttons and "+joy.getAxisCount()+" axes");
-        }
- 
-        //for (Joystick joy : joysticks){
-        //    System.out.println(joy.getAxisCount());
-        //    System.out.println(joy.getButtonCount());
-        //}
-         
-        // DPAD
-        game.getInputManager().addMapping("DPAD Left", new JoyAxisTrigger(0, JoyInput.AXIS_POV_X, true));
-        game.getInputManager().addMapping("DPAD Right", new JoyAxisTrigger(0, JoyInput.AXIS_POV_X, false));
-        game.getInputManager().addMapping("DPAD Down", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, true));
-        game.getInputManager().addMapping("DPAD Up", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, false));
-        // Buttons
-        game.getInputManager().addMapping("Button A", new JoyButtonTrigger(0, 0));
-        game.getInputManager().addMapping("Button B", new JoyButtonTrigger(0, 1));
-        game.getInputManager().addMapping("Button X", new JoyButtonTrigger(0, 2));
-        game.getInputManager().addMapping("Button Y", new JoyButtonTrigger(0, 3));
-        game.getInputManager().addMapping("Trigger L1", new JoyButtonTrigger(0, 4));
-        game.getInputManager().addMapping("Trigger R1", new JoyButtonTrigger(0, 5));
-        game.getInputManager().addMapping("Select", new JoyButtonTrigger(0, 6));
-        game.getInputManager().addMapping("Start", new JoyButtonTrigger(0, 7));
-        game.getInputManager().addMapping("LStick Click", new JoyButtonTrigger(0, 8));
-        game.getInputManager().addMapping("RStick Click", new JoyButtonTrigger(0, 9));
- 
-         
-        game.getInputManager().addListener(this,  "DPAD Left",
-                                        "DPAD Right",
-                                        "DPAD Down",
-                                        "DPAD Up",
-                                         
-                                        "Button A",
-                                        "Button B",
-                                        "Button X",
-                                        "Button Y",
-                                        "Trigger L1",
-                                        "Trigger R1",
-                                        "Select",
-                                        "Start",
-                                        "LStick Click",
-                                        "RStick Click"
-                                        );
-        game.getInputManager().addMapping("6th axis negative", new JoyAxisTrigger(0, 5, true));
-        game.getInputManager().addMapping("6th axis positive", new JoyAxisTrigger(0, 5, false));
-        game.getInputManager().addMapping("Trigger R2", new JoyAxisTrigger(0, 4, true));
-        game.getInputManager().addMapping("Trigger L2", new JoyAxisTrigger(0, 4, false));
-        game.getInputManager().addMapping("RightStick Left", new JoyAxisTrigger(0, 3, true));
-        game.getInputManager().addMapping("RightStick Right", new JoyAxisTrigger(0, 3, false));
-        game.getInputManager().addMapping("RightStick Down", new JoyAxisTrigger(0, 2, false));
-        game.getInputManager().addMapping("RightStick Up", new JoyAxisTrigger(0, 2, true));
-        game.getInputManager().addMapping("LeftStick Left", new JoyAxisTrigger(0, 1, true));
-        game.getInputManager().addMapping("LeftStick Right", new JoyAxisTrigger(0, 1, false));
-        game.getInputManager().addMapping("LeftStick Down", new JoyAxisTrigger(0, 0, false));
-        game.getInputManager().addMapping("LeftStick Up", new JoyAxisTrigger(0, 0, true));
-        game.getInputManager().addListener(this,  "LeftStick Left",
-                                        "LeftStick Right",   
-                                        "LeftStick Down",
-                                        "LeftStick Up",
-                                        "RightStick Left",
-                                        "RightStick Right",
-                                        "RightStick Down",
-                                        "RightStick Up",
-                                        "Trigger R2",
-                                        "Trigger L2",
-                                        "6th axis negative",
-                                        "6th axis positive"
-                                        );
     }
 
     public void loadText(){
@@ -408,27 +201,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     }
 
     private void loadMenu() {
-        /*
-        if (CarGame.getApp().isTouchscreenControlled()) {
-            niftyDisplay = game.getNiftyDisplay();
-            nifty = niftyDisplay.getNifty();
-            */
-
-            /*
-            nifty.fromXml("General/Interface/GameHUD_Analog.xml", "GameHUD");
-            GameHUDScreenController_Analog gameHUDScreenController_Analog = (GameHUDScreenController_Analog)nifty.getScreen("GameHUD").getScreenController();
-            gameHUDScreenController_Analog.setGameState(this);
-            */
-
-            /*
-            nifty.fromXml("General/Interface/GameHUD_Digital.xml", "GameHUD");
-            GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
-            gameHUDScreenController_Digital.setGameState(this);
-            */
-
-            // attach the nifty display to the gui view port as a processor
-            // game.getGUIViewPort().addProcessor(niftyDisplay);
-        // }
 }
 
     @Override
@@ -465,10 +237,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getInputManager().addMapping("CARGAME_Exit", new KeyTrigger(KeyInput.KEY_ESCAPE));
             game.getInputManager().addMapping("CARGAME_LoadMenu", new KeyTrigger(KeyInput.KEY_M));
         }
-
-        // setupKeys();
-        // setupJoystick();
-
         
         // Initialize InputController here
         if("Joystick/Gamepad".equals(game.getInputController()))   {
@@ -484,18 +252,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getStateManager().attach(inputController);
         }
         
-        // Add a simple Box
-        /*
-        Box boxshape1 = new Box(new Vector3f(-3f,1.1f,0f), 1f,1f,1f);
-        Geometry cube = new Geometry("My Textured Box", boxshape1);
-        Material mat_stl = new Material(game.getAssetManager(), "Common/MatDefs/Misc/SimpleTextured.j3md");
-        //Texture tex_ml = game.getAssetManager().loadTexture("Interface/Logo/Monkey.jpg");
-        //mat_stl.setTexture("m_ColorMap", tex_ml);
-        cube.setMaterial(mat_stl);
-        rootNode.attachChild(cube);
-         *
-         */
-
+        // Attach third person camera to StateManager here !!!
+        
         String track = game.getTrack();
         
         sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
