@@ -415,6 +415,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
 
+        // Cleanup ThirdPersonCameraState here !!!
+        
         // Cleanup InputListener here.
         if(inputController != null)   {
             game.getStateManager().detach(inputController);
