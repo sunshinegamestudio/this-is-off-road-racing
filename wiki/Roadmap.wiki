@@ -62,12 +62,17 @@ Add your content here.  Format your content with:
   * Refactoring _(done)_
 
 *V 0.2.4:*
-  * Improved track "Beach Resort"
   * Joystick/gamepad support
-  * Created with jMonkeyEngine on main menu
-  * OS X JDK requirement notice in readme.txt
+  * Refactored GameState (multiple AppStates)
 
 *V 0.2.5:*
+  * Fixed laptime counting (laptime+=tpf)
+  * 1 checkpoint
+  * Created with jMonkeyEngine on main menu
+  * Improved track "Beach Resort"
+  * OS X JDK requirement notice in readme.txt (not needed)
+
+*V 0.2.6:*
   * Basic icon (to start the application)
   * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
@@ -84,7 +89,7 @@ Add your content here.  Format your content with:
      * Improved driving controls
      * Basic Google Play Store page
 
-*V 0.2.5:*
+*V 0.2.7:*
   * Fix the remaining issues
 
 = V 0.3.x =
