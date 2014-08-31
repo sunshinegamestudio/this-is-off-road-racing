@@ -111,7 +111,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     
     private TrackStatistics trackStatistics;
 
-    AbstractAppState inputController;
+    private AbstractAppState inputController;
+    private ThirdPersonCameraState thirdPersonCameraState;
+    private FPSState fpsState;
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
@@ -150,25 +152,15 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     }
 
     public void loadText(){
-        guiFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        fpsText = new BitmapText(guiFont, false);
-        fpsText.setSize(guiFont.getCharSet().getRenderedSize());
-        fpsText.setLocalTranslation(0, fpsText.getLineHeight(), 0);
-        //fpsText.setText("Frames per second");
-        guiNode.attachChild(fpsText);
-        
-        menuText = new BitmapText(guiFont, false);
-        menuText.setSize(guiFont.getCharSet().getRenderedSize());
-        menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
-        menuText.setText("Press [M] to go back to the Menu");
-        guiNode.attachChild(menuText);
-        
         /*
         currentLapText;
         fastestLapTimeText;
         currentLapTimeText;
          * Create all the BitmapText.
          */
+
+        guiFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
+        menuText = new BitmapText(guiFont, false);
         currentLapText = new BitmapText(guiFont, false);
         currentLapText.setSize(guiFont.getCharSet().getRenderedSize());
         currentLapText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-100, 0);
@@ -253,6 +245,12 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         }
         
         // Attach third person camera to StateManager here !!!
+        thirdPersonCameraState = new ThirdPersonCameraState(game);
+        game.getStateManager().attach(thirdPersonCameraState);
+        
+        // Attach FPS state to StateManager here !!!
+        fpsState = new FPSState(game);
+        game.getStateManager().attach(fpsState);
         
         String track = game.getTrack();
         
@@ -313,9 +311,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         super.update(tpf);
 
         this.game.getLogger().log(Level.INFO, "GameState-update: super updated.");
-        
-        int fps = (int) game.getTimer().getFrameRate();
-        fpsText.setText("Frames per second: "+fps);
         
         // Set isOnStartingPoint to false, only if the player was already on startingPoint
         if(isOnStartingPoint == true)   {
@@ -380,18 +375,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
 
-        // Place the camera behind the player
-        Vector3f direction = player.getNode().getLocalRotation().getRotationColumn(2);
-        Vector3f direction2 = player.getNode().getLocalRotation().getRotationColumn(1);
-
-        float yDirection = direction2.y;
-        float xDirection = direction.x;
-        float zDirection = direction.z;
-
-        Vector3f camLocation = new Vector3f(player.getNode().getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+4f, player.getNode().getWorldTranslation().z + (zDirection*10));
-
-        game.getCamera().setLocation(camLocation);
-        game.getCamera().lookAt(player.getNode().getWorldTranslation(), Vector3f.UNIT_Y);
+        // Place the camera behind the player.
+        // Now in ThirdPersonCameraState.
 
         if(currentLap>=maxLaps) {
             game.loadResultsMenu(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
@@ -415,13 +400,17 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
 
+        // Cleanup FPSState here !!!
+        game.getStateManager().detach(fpsState);
+        
         // Cleanup ThirdPersonCameraState here !!!
+        game.getStateManager().detach(thirdPersonCameraState);
         
         // Cleanup InputListener here.
         if(inputController != null)   {
             game.getStateManager().detach(inputController);
         }
-
+        
         game.getInputManager().removeListener(this);
         // if(flyCam != null) flyCam.setEnabled(false);
         // if(chaseCam != null) chaseCam.setEnabled(false);
