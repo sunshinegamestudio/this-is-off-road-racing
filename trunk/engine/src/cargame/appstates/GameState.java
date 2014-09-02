@@ -114,6 +114,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private AbstractAppState inputController;
     private ThirdPersonCameraState thirdPersonCameraState;
     private FPSState fpsState;
+    private StartingPointState startingPointState;
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
