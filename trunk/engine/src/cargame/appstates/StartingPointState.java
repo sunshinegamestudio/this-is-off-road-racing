@@ -40,6 +40,7 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
+import cargame.entities.StartingPoint;
 import cargame.entities.SimpleCarPlayer;
 
 public class StartingPointState extends AbstractAppState    {
@@ -49,13 +50,13 @@ public class StartingPointState extends AbstractAppState    {
     // protected Node guiNode = new Node("Gui Node");
     private Node guiNode;
 
-    private SimpleCarPlayer player;
     private CarGame game = null;
 
-    private BitmapFont guiFont;
-    private BitmapText fpsText;
-    private BitmapText menuText;
-
+    private StartingPoint startingPoint;
+    private SimpleCarPlayer player;
+    
+    private boolean isOnStartingPoint = true;
+    
     public StartingPointState(CarGame game) {
     	this.game = game;
 
@@ -68,27 +69,20 @@ public class StartingPointState extends AbstractAppState    {
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
-        
-        guiFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        fpsText = new BitmapText(guiFont, false);
-        fpsText.setSize(guiFont.getCharSet().getRenderedSize());
-        fpsText.setLocalTranslation(0, fpsText.getLineHeight(), 0);
-        //fpsText.setText("Frames per second");
-        guiNode.attachChild(fpsText);
-        
-        menuText = new BitmapText(guiFont, false);
-        menuText.setSize(guiFont.getCharSet().getRenderedSize());
-        menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
-        menuText.setText("Press [M] to go back to the Menu");
-        guiNode.attachChild(menuText);
+
+        startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
     }
 
     @Override
     public void update(float tpf) {
         super.update(tpf);
 
-        int fps = (int) game.getTimer().getFrameRate();
-        fpsText.setText("Frames per second: "+fps);
+        // Set isOnStartingPoint to false, only if the player was already on startingPoint
+        if(isOnStartingPoint == true)   {
+            if(startingPoint.isOnStartinPoint() == false)  {
+                isOnStartingPoint = false;
+            }
+        }
     }
     
     @Override
@@ -100,7 +94,6 @@ public class StartingPointState extends AbstractAppState    {
         super.cleanup();
     }
 
-    /*
     private boolean checkForNewLap()   {
         if((isOnStartingPoint == false) && (startingPoint.isOnStartinPoint() == true))    {
             isOnStartingPoint = true;
@@ -109,5 +102,4 @@ public class StartingPointState extends AbstractAppState    {
             return false;
         }
     }
-    */
 }
