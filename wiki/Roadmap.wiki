@@ -64,6 +64,7 @@ Add your content here.  Format your content with:
 *V 0.2.4:*
   * Joystick/gamepad support
   * Refactored GameState (multiple AppStates)
+  * Fixed removing of lights ( http://hub.jmonkeyengine.org/forum/topic/how-to-destroy-an-appstate-object/ )
 
 *V 0.2.5:*
   * Fixed laptime counting (laptime+=tpf)
