@@ -245,13 +245,17 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getStateManager().attach(inputController);
         }
         
-        // Attach third person camera to StateManager here !!!
-        thirdPersonCameraState = new ThirdPersonCameraState(game);
-        game.getStateManager().attach(thirdPersonCameraState);
-        
         // Attach FPS state to StateManager here !!!
         fpsState = new FPSState(game);
         game.getStateManager().attach(fpsState);
+
+        // Attach StartingPoint state to StateManager here !!!
+        startingPointState = new StartingPointState(game);
+        game.getStateManager().attach(startingPointState);
+
+        // Attach third person camera to StateManager here !!!
+        thirdPersonCameraState = new ThirdPersonCameraState(game);
+        game.getStateManager().attach(thirdPersonCameraState);
         
         String track = game.getTrack();
         
@@ -313,15 +317,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         this.game.getLogger().log(Level.INFO, "GameState-update: super updated.");
         
-        // Set isOnStartingPoint to false, only if the player was already on startingPoint
-        if(isOnStartingPoint == true)   {
-            if(startingPoint.isOnStartinPoint() == false)  {
-                isOnStartingPoint = false;
-            }
-        }
+        // To StartingPointState
         
         // Check for new lap
-         newLap = checkForNewLap();
+         newLap = startingPointState.checkForNewLap();
         
         if (newLap == true)
         {
@@ -401,11 +400,14 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
 
-        // Cleanup FPSState here !!!
-        game.getStateManager().detach(fpsState);
-        
         // Cleanup ThirdPersonCameraState here !!!
         game.getStateManager().detach(thirdPersonCameraState);
+        
+        // Cleanup StartingPoint state to StateManager here !!!
+        game.getStateManager().detach(startingPointState);
+        
+        // Cleanup FPSState here !!!
+        game.getStateManager().detach(fpsState);
         
         // Cleanup InputListener here.
         if(inputController != null)   {

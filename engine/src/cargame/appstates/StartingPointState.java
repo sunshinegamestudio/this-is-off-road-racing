@@ -94,7 +94,7 @@ public class StartingPointState extends AbstractAppState    {
         super.cleanup();
     }
 
-    private boolean checkForNewLap()   {
+    public boolean checkForNewLap()   {
         if((isOnStartingPoint == false) && (startingPoint.isOnStartinPoint() == true))    {
             isOnStartingPoint = true;
             return true;
