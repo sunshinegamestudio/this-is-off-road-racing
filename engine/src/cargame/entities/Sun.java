@@ -30,11 +30,17 @@ import com.jme3.scene.Node;
  * @author Vortex
  */
 public class Sun extends Entity {
+    DirectionalLight sun;
+    
     public Sun(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
-        DirectionalLight sun = new DirectionalLight();
+        sun = new DirectionalLight();
         sun.setDirection(new Vector3f(-0.1f, -0.7f, -1).normalizeLocal());
         getParent().addLight(sun);
+    }
+    
+    public void cleanup()   {
+        getParent().removeLight(sun);
     }
 }

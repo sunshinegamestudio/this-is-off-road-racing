@@ -72,30 +72,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     // protected Node guiNode = new Node("Gui Node");
     private Node guiNode;
     
-    protected BitmapText fpsText;
-    protected BitmapText menuText;
-    protected BitmapText currentLapText;
-    protected BitmapText maxLapsText;
-    protected BitmapText fastestLapTimeText;
-    protected BitmapText currentLapTimeText;
-    protected BitmapText currentTimeText;
-    protected BitmapFont guiFont;
-
-    private boolean newLap = false;
-    private int currentLap = 0;
-    private int maxLaps = 4;
-    // private int maxLaps = 1;
-    private long fastestLapTime = 0;
-    private Time fastestLapTimeTime;
-    private long currentLapTime = 0;
-    private Time currentLapTimeTime;
-    private long lastLapTime = 0;
-    private long currentTime = 0;
-    private Time currentTimeTime;
-    private long lapTimes[];
-    
-    private boolean isOnStartingPoint = true;
-
     // protected FlyByCamera flyCam;
     // protected ChaseCamera chaseCam;
 
@@ -109,12 +85,12 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     //private CharacterPlayer player;
     //private SimpleEnemy simpleEnemy;
     
-    private TrackStatistics trackStatistics;
-
     private AbstractAppState inputController;
-    private ThirdPersonCameraState thirdPersonCameraState;
     private FPSState fpsState;
     private StartingPointState startingPointState;
+    private LapTimesState lapTimesState;
+    private ThirdPersonCameraState thirdPersonCameraState;
+    private CheckEndOfRaceState checkEndOfRaceState;
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
@@ -152,50 +128,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     public void onAnalog(String name, float value, float tpf) {
     }
 
-    public void loadText(){
-        /*
-        currentLapText;
-        fastestLapTimeText;
-        currentLapTimeText;
-         * Create all the BitmapText.
-         */
-
-        guiFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        menuText = new BitmapText(guiFont, false);
-        currentLapText = new BitmapText(guiFont, false);
-        currentLapText.setSize(guiFont.getCharSet().getRenderedSize());
-        currentLapText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-100, 0);
-        currentLapText.setText("Current Lap: ");
-        guiNode.attachChild(currentLapText);
-
-        maxLapsText = new BitmapText(guiFont, false);
-        maxLapsText.setSize(guiFont.getCharSet().getRenderedSize());
-        maxLapsText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-80, 0);
-        maxLapsText.setText("Max Laps: ");
-        guiNode.attachChild(maxLapsText);
-
-        fastestLapTimeText = new BitmapText(guiFont, false);
-        fastestLapTimeText.setSize(guiFont.getCharSet().getRenderedSize());
-        fastestLapTimeText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-60, 0);
-        fastestLapTimeText.setText("Fastest Lap: ");
-        guiNode.attachChild(fastestLapTimeText);
-        
-        currentLapTimeText = new BitmapText(guiFont, false);
-        currentLapTimeText.setSize(guiFont.getCharSet().getRenderedSize());
-        currentLapTimeText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-40, 0);
-        currentLapTimeText.setText("Current Lap: ");
-        guiNode.attachChild(currentLapTimeText);
-
-        currentTimeText = new BitmapText(guiFont, false);
-        currentTimeText.setSize(guiFont.getCharSet().getRenderedSize());
-        currentTimeText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f)-20, 0);
-        currentTimeText.setText("Current Time: ");
-        guiNode.attachChild(currentTimeText);
-    }
-
-    private void loadMenu() {
-}
-
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
@@ -205,7 +137,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         guiNode.setQueueBucket(Bucket.Gui);
         guiNode.setCullHint(CullHint.Never);
-        loadMenu();
+        // loadMenu();
 
         // game.getPhysicsSpace().enableDebug(game.getAssetManager());
         
@@ -216,7 +148,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         }
         game.getInputManager().setCursorVisible(true);
         
-        loadText();
+        // loadText();
 
         if (game.getInputManager() != null){
             /*
@@ -253,9 +185,17 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         startingPointState = new StartingPointState(game);
         game.getStateManager().attach(startingPointState);
 
+        // Attach LapTimes state to StateManager here !!!
+        lapTimesState = new LapTimesState(game);
+        game.getStateManager().attach(lapTimesState);
+
         // Attach third person camera to StateManager here !!!
         thirdPersonCameraState = new ThirdPersonCameraState(game);
         game.getStateManager().attach(thirdPersonCameraState);
+
+        // Attach check end of race state to StateManager here !!!
+        checkEndOfRaceState = new CheckEndOfRaceState(game);
+        game.getStateManager().attach(checkEndOfRaceState);
         
         String track = game.getTrack();
         
@@ -268,29 +208,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        
-        currentLap = 0;
-        lapTimes = new long[10];
-        for(int i=0; i<maxLaps; i++)    {
-            lapTimes[i] = 0;
-        }
-        fastestLapTimeTime = new Time();
-        currentLapTimeTime = new Time();
-        currentTimeTime = new Time();
-
-        // Load the fastest laptime (still to implement !!!)
-        /*
-        try {
-        trackStatistics = (TrackStatistics) SaveGame.loadGame("com/sunshinegamestudio/cargame", "Default_Track");
-        } catch (NullPointerException nullPointerException) {
-            trackStatistics = new TrackStatistics();
-            trackStatistics.setFastestLapTime(fastestLapTime);
-            SaveGame.saveGame("com/sunshinegamestudio/cargame", "Default_Track", trackStatistics);
-        }
-        trackStatistics = (TrackStatistics) SaveGame.loadGame("com/sunshinegamestudio/cargame", "Default_Track");
-        fastestLapTime = trackStatistics.getFastestLapTime();
-         * Temperairy disabled until fixed
-         */
 
         /*
         if (game.getInputManager() != null){
@@ -318,69 +235,16 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         this.game.getLogger().log(Level.INFO, "GameState-update: super updated.");
         
         // To StartingPointState
-        
-        // Check for new lap
-         newLap = startingPointState.checkForNewLap();
-        
-        if (newLap == true)
-        {
-            // Calculate the current laptime
-            currentLapTime = game.getTimer().getTime() - lastLapTime;
-            
-            // Set the current currentLapTime in the lapTimes array
-            lapTimes[currentLap]=currentLapTime;
-            
-            // Check if there is a new fastest laptime
-            if ((fastestLapTime > currentLapTime) || (currentLap == 0))
-            {
-                // Make the current laptime the fastest laptime
-                fastestLapTime = currentLapTime;
-                // Save the fastest laptime (still to implement !!!)
-                /*
-                trackStatistics.setFastestLapTime(fastestLapTime);
-                SaveGame.saveGame("com/sunshinegamestudio/cargame", "Default_Track", trackStatistics);
-                 * Temperairy disabled until fixed
-                 */
-            }
 
-            // Set the last laptime and increment the current lap
-            lastLapTime = currentLapTime;
-            currentLap = currentLap + 1;
-        }
-        
-        // Update current time
-        currentTime = game.getTimer().getTime() - currentLapTime;
-        
-        // Update HUD
-        currentLapText.setText("Current Lap: " + currentLap);
-        maxLapsText.setText("Max Laps: " + maxLaps);
-        fastestLapTimeTime.setTime(fastestLapTime / game.getTimer().getResolution());
-        // fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTime);
-        fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTimeTime.getHour() + ":" + fastestLapTimeTime.getMinute() + ":" + fastestLapTimeTime.getSecond() + ":" + fastestLapTimeTime.getMilisecond());
-        currentLapTimeTime.setTime(currentLapTime / game.getTimer().getResolution());
-        // currentLapTimeText.setText("Current LapTime: " + currentLapTime);
-        currentLapTimeText.setText("Current LapTime: " + currentLapTimeTime.getHour() + ":" + currentLapTimeTime.getMinute() + ":" + currentLapTimeTime.getSecond() + ":" + currentLapTimeTime.getMilisecond());
-        currentTimeTime.setTime(currentTime / game.getTimer().getResolution());
-        // currentTimeText.setText("Current Time: " + currentTime);
-        currentTimeText.setText("Current Time: " + currentTimeTime.getHour() + ":" + currentTimeTime.getMinute() + ":" + currentTimeTime.getSecond() + ":" + currentTimeTime.getMilisecond());
-
-        // Replace flyCam with ChaseCamera (see example TestChaseCamera.jave) !!!!!!!!!!!!!!!!!!!1
-
-        /*
-        Vector3f camDir = flyCam.getDirection().clone().multLocal(0.6f);
-        Vector3f camLeft = flyCam.getLeft().clone().multLocal(0.4f);
-        flyCam.setLocation(player.getNode().getLocalTranslation());
-         * Some methods don't work. Find another way for this or ask tutorial writer for correction.
-         */
+        // To LapTimesState
 
         this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
 
         // Place the camera behind the player.
         // Now in ThirdPersonCameraState.
 
-        if(currentLap>=maxLaps) {
-            game.loadResultsMenu(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
-        }
+            // Check the end of the race.
+            // Now in CheckEndOfRaceState.
     }
 
     @Override
@@ -392,6 +256,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         super.cleanup();
 
         // Unload game
+        sun.cleanup();
         rootNode.detachAllChildren();
         guiNode.detachAllChildren();
 
@@ -400,8 +265,14 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
 
+        // Cleanup check end of race to StateManager here !!!
+        game.getStateManager().detach(checkEndOfRaceState);
+        
         // Cleanup ThirdPersonCameraState here !!!
         game.getStateManager().detach(thirdPersonCameraState);
+
+        // Attach LapTimes state to StateManager here !!!
+        game.getStateManager().detach(lapTimesState);
         
         // Cleanup StartingPoint state to StateManager here !!!
         game.getStateManager().detach(startingPointState);
@@ -426,12 +297,4 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         return player;
     }
     
-    private boolean checkForNewLap()   {
-        if((isOnStartingPoint == false) && (startingPoint.isOnStartinPoint() == true))    {
-            isOnStartingPoint = true;
-            return true;
-        }   else    {
-            return false;
-        }
-    }
 }
