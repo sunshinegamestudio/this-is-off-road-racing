@@ -69,13 +69,18 @@ public class LapTimesState extends AbstractAppState    {
     private int maxLaps = 4;
     // private int maxLaps = 1;
     private long fastestLapTime = 0;
+    // private float fastestLapTime = 0;
     private Time fastestLapTimeTime;
     private long currentLapTime = 0;
+    // private float currentLapTime = 0;
     private Time currentLapTimeTime;
     private long lastLapTime = 0;
+    // private float lastLapTime = 0;
     private long currentTime = 0;
+    // private float currentTime = 0;
     private Time currentTimeTime;
     private long lapTimes[];
+    // private float lapTimes[];
     
     public LapTimesState(CarGame game) {
     	this.game = game;
@@ -177,6 +182,7 @@ public class LapTimesState extends AbstractAppState    {
         {
             // Calculate the current laptime
             currentLapTime = game.getTimer().getTime() - lastLapTime;
+            // currentLapTime+=tpf;
             
             // Set the current currentLapTime in the lapTimes array
             lapTimes[currentLap]=currentLapTime;

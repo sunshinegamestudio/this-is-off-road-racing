@@ -55,27 +55,11 @@ public class CheckEndOfRaceState extends AbstractAppState    {
     
     private LapTimesState lapTimesState;
 
-    private BitmapText fpsText;
-    private BitmapText menuText;
-    private BitmapText currentLapText;
-    private BitmapText maxLapsText;
-    private BitmapText fastestLapTimeText;
-    private BitmapText currentLapTimeText;
-    private BitmapText currentTimeText;
-    private BitmapFont guiFont;
-
-    private boolean newLap = false;
     // private int currentLap = 0;
     // private int maxLaps = 4;
     // private int maxLaps = 1;
-    private long fastestLapTime = 0;
-    private Time fastestLapTimeTime;
-    private long currentLapTime = 0;
-    private Time currentLapTimeTime;
-    private long lastLapTime = 0;
-    private long currentTime = 0;
-    private Time currentTimeTime;
     private long lapTimes[];
+    // private float lapTimes[];
     
     private int currentLap = 0;
     private int maxLaps = 4;
@@ -99,6 +83,7 @@ public class CheckEndOfRaceState extends AbstractAppState    {
         maxLaps = lapTimesState.getMaxLaps();
 
         lapTimes = new long[10];
+        // lapTimes = new float[10];
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
         }
