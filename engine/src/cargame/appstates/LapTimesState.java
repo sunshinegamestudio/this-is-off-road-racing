@@ -234,5 +234,9 @@ public class LapTimesState extends AbstractAppState    {
     public int getMaxLaps() {
         return maxLaps;
     }
+    
+    public long getLapTime(int i)   {
+        return lapTimes[i];
+    }
 
 }
