@@ -97,6 +97,11 @@ public class CheckEndOfRaceState extends AbstractAppState    {
         
         currentLap = lapTimesState.getCurrentLap();
         maxLaps = lapTimesState.getMaxLaps();
+
+        lapTimes = new long[10];
+        for(int i=0; i<maxLaps; i++)    {
+            lapTimes[i] = 0;
+        }
     }
 
     @Override
@@ -105,6 +110,10 @@ public class CheckEndOfRaceState extends AbstractAppState    {
         
         currentLap = lapTimesState.getCurrentLap();
 
+        for(int i=0; i<maxLaps; i++)    {
+            lapTimes[i] = lapTimesState.getLapTime(i);
+        }
+        
         if(currentLap>=maxLaps) {
             game.loadResultsMenu(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
         }
