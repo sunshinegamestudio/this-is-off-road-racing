@@ -24,9 +24,10 @@ public class Time {
     private long second;
     private long milisecond;
     
+    // public void setTime(float time)    {
     public void setTime(long time)    {
         // To implement
-        // See timer doc for bettes names
+        // See timer doc for better names
         // Use timer.getTimeInSeconds() as parameter count
         // Count is in seconds
         setHour(time/(60*60));

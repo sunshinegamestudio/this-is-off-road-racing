@@ -31,9 +31,13 @@ public class ChangeResultsLapTimesTask implements Callable
 {
     private ResultsMenuState resultsMenuState;
     private long lap0;
+    // private float lap0;
     private long lap1;
+    // private float lap1;
     private long lap2;
+    // private float lap2;
     private long lap3;
+    // private float lap3;
 
     public ChangeResultsLapTimesTask(ResultsMenuState resultsMenuState, long lap0, long lap1, long lap2, long lap3)
     {
