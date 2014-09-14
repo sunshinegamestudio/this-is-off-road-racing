@@ -79,6 +79,9 @@ import java.util.List;
 import jme3tools.converters.ImageToAwt;
 
 import cargame.controls.PassThroughZoneDetectionControl;
+
+import com.jme3.app.Application;
+import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.collision.shapes.HullCollisionShape;
 import com.jme3.bullet.control.GhostControl;
 
@@ -86,7 +89,7 @@ import com.jme3.bullet.control.GhostControl;
  *
  * @author Vortex
  */
-public class StartingPoint extends Entity  {
+public class PassThroughZone extends Entity_AppState  {
 static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.HALF_PI, Vector3f.UNIT_Y);
     //camera
     private Camera cam;
@@ -99,7 +102,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
     private GhostControl ghostControl;
     private PassThroughZoneDetectionControl levelExitControl;
     
-    public StartingPoint(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam) {
+    public PassThroughZone(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam) {
         super(assetManager, parent, physicsSpace);
 
         this.cam = cam;
@@ -136,6 +139,11 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
        
     }
 
+    @Override
+    public void initialize(AppStateManager stateManager, Application app) {
+        super.initialize(stateManager, app);
+    }
+    
     public boolean isOnStartinPoint()    {
         return levelExitControl.isOnLevelExit();
     }
