@@ -55,8 +55,8 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
     private Nifty nifty = null;
     private ResultsMenuScreenController resultsMenuScreenController;
 
-    private long lapTimes[];
-    // private float lapTimes[];
+    // private long lapTimes[];
+    private float lapTimes[];
     private int maxLaps = 4;
     
     private CarGame game = null;
@@ -67,8 +67,8 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
         
-        lapTimes = new long[10];
-        // lapTimes = new float[10];
+        // lapTimes = new long[10];
+        lapTimes = new float[10];
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
         }
@@ -160,8 +160,8 @@ public class ResultsMenuState extends AbstractAppState implements ActionListener
         // game.getGUIViewPort().detachScene(guiNode);
     }
     
-    public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {
-    // public void setLapTimes (float lap0, float lap1, float lap2, float lap3)    {
+    // public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {
+    public void setLapTimes (float lap0, float lap1, float lap2, float lap3)    {
         lapTimes[0]=lap0;
         lapTimes[1]=lap1;
         lapTimes[2]=lap2;

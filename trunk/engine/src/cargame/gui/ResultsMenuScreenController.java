@@ -35,11 +35,16 @@ import cargame.other.Time;
  */
     public class ResultsMenuScreenController implements ScreenController   {
         private Screen screen;
-        private long lapTimes[];
-        private long lap0;
-        private long lap1;
-        private long lap2;
-        private long lap3;
+        // private long lapTimes[];
+        private float lapTimes[];
+        // private long lap0;
+        private float lap0;
+        // private long lap1;
+        private float lap1;
+        // private long lap2;
+        private float lap2;
+        // private long lap3;
+        private float lap3;
         private Time lap0Time;
         private Time lap1Time;
         private Time lap2Time;
@@ -57,7 +62,8 @@ import cargame.other.Time;
 
             this.screen=screen;
             
-            lapTimes = new long[10];
+            // lapTimes = new long[10];
+            lapTimes = new float[10];
             for(int i=0; i<maxLaps; i++)    {
                 lapTimes[i] = 0;
             }
@@ -96,7 +102,8 @@ import cargame.other.Time;
             CarGame.getApp().loadResultsMenu_return();
         }
         
-        public void setLapTimes(long lap0, long lap1, long lap2, long lap3, long timerResolution) {
+        // public void setLapTimes(long lap0, long lap1, long lap2, long lap3, long timerResolution) {
+        public void setLapTimes(float lap0, float lap1, float lap2, float lap3, long timerResolution) {
             /*
             lapTimes[0]=lap0;
             lapTimes[1]=lap1;

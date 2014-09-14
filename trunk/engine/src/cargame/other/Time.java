@@ -24,16 +24,17 @@ public class Time {
     private long second;
     private long milisecond;
     
-    // public void setTime(float time)    {
-    public void setTime(long time)    {
+    // public void setTime(long time)    {
+    public void setTime(float time)    {
         // To implement
         // See timer doc for better names
         // Use timer.getTimeInSeconds() as parameter count
         // Count is in seconds
-        setHour(time/(60*60));
-        setMinute(time/(60));
-        setSecond(time);
-        setMilisecond(time - ((getHour()*(60*60)) + (getMinute() * (60) + (getSecond()))) * 1000);
+
+        setHour((long)time/(60*60));
+        setMinute((long)time/(60));
+        setSecond((long)time);
+        setMilisecond((long)time - ((getHour()*(60*60)) + (getMinute() * (60) + (getSecond()))) * 1000);
     }
 
     /**
