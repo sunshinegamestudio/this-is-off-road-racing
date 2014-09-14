@@ -29,12 +29,12 @@ import com.jme3.math.Vector3f;
  *
  * @author Vortex
  */
-public class ZonePassThroughDetectionControl extends GhostControl implements PhysicsTickListener, PhysicsCollisionListener   {
+public class PassThroughZoneDetectionControl extends GhostControl implements PhysicsTickListener, PhysicsCollisionListener   {
     private PhysicsSpace physicsSpace;
     
     private boolean onLevelExit = false;
 
-    public ZonePassThroughDetectionControl(PhysicsSpace physicsSpace) {
+    public PassThroughZoneDetectionControl(PhysicsSpace physicsSpace) {
         this.physicsSpace = physicsSpace;
     }
     
