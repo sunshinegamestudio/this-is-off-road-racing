@@ -58,8 +58,8 @@ public class CheckEndOfRaceState extends AbstractAppState    {
     // private int currentLap = 0;
     // private int maxLaps = 4;
     // private int maxLaps = 1;
-    private long lapTimes[];
-    // private float lapTimes[];
+    // private long lapTimes[];
+    private float lapTimes[];
     
     private int currentLap = 0;
     private int maxLaps = 4;
@@ -82,8 +82,8 @@ public class CheckEndOfRaceState extends AbstractAppState    {
         currentLap = lapTimesState.getCurrentLap();
         maxLaps = lapTimesState.getMaxLaps();
 
-        lapTimes = new long[10];
-        // lapTimes = new float[10];
+        // lapTimes = new long[10];
+        lapTimes = new float[10];
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
         }

@@ -30,16 +30,17 @@ import cargame.appstates.ResultsMenuState;
 public class ChangeResultsLapTimesTask implements Callable
 {
     private ResultsMenuState resultsMenuState;
-    private long lap0;
-    // private float lap0;
-    private long lap1;
-    // private float lap1;
-    private long lap2;
-    // private float lap2;
-    private long lap3;
-    // private float lap3;
+    // private long lap0;
+    private float lap0;
+    // private long lap1;
+    private float lap1;
+    // private long lap2;
+    private float lap2;
+    // private long lap3;
+    private float lap3;
 
-    public ChangeResultsLapTimesTask(ResultsMenuState resultsMenuState, long lap0, long lap1, long lap2, long lap3)
+    // public ChangeResultsLapTimesTask(ResultsMenuState resultsMenuState, long lap0, long lap1, long lap2, long lap3)
+    public ChangeResultsLapTimesTask(ResultsMenuState resultsMenuState, float lap0, float lap1, float lap2, float lap3)
     {
         this.resultsMenuState=resultsMenuState;
         this.lap0=lap0;

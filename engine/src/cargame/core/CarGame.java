@@ -259,12 +259,13 @@ public class CarGame extends SimpleApplication {
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
 	}
         
-        public void loadGame_return(long lap0, long lap1, long lap2, long lap3) {
+        // public void loadGame_return(long lap0, long lap1, long lap2, long lap3) {
+        public void loadGame_return(float lap0, float lap1, float lap2, float lap3) {
             loadResultsMenu(lap0, lap1, lap2, lap3);
         }
         
         // public void loadResultsMenu(float lap0, float lap1, float lap2, float lap3) {
-        public void loadResultsMenu(long lap0, long lap1, long lap2, long lap3) {
+        public void loadResultsMenu(float lap0, float lap1, float lap2, float lap3) {
             this.enqueue(new ChangeResultsLapTimesTask(resultsMenuState, lap0, lap1, lap2, lap3));
             this.enqueue(new ChangeStateTask(gameState,resultsMenuState,viewPort,stateManager));
         }

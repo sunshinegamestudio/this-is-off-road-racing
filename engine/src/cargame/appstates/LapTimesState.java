@@ -68,19 +68,19 @@ public class LapTimesState extends AbstractAppState    {
     private int currentLap = 0;
     private int maxLaps = 4;
     // private int maxLaps = 1;
-    private long fastestLapTime = 0;
-    // private float fastestLapTime = 0;
+    // private long fastestLapTime = 0;
+    private float fastestLapTime = 0;
     private Time fastestLapTimeTime;
-    private long currentLapTime = 0;
-    // private float currentLapTime = 0;
+    // private long currentLapTime = 0;
+    private float currentLapTime = 0;
     private Time currentLapTimeTime;
-    private long lastLapTime = 0;
-    // private float lastLapTime = 0;
-    private long currentTime = 0;
-    // private float currentTime = 0;
+    // private long lastLapTime = 0;
+    private float lastLapTime = 0;
+    // private long currentTime = 0;
+    private float currentTime = 0;
     private Time currentTimeTime;
-    private long lapTimes[];
-    // private float lapTimes[];
+    // private long lapTimes[];
+    private float lapTimes[];
     
     public LapTimesState(CarGame game) {
     	this.game = game;
@@ -100,7 +100,8 @@ public class LapTimesState extends AbstractAppState    {
         loadText();
         
         currentLap = 0;
-        lapTimes = new long[10];
+        // lapTimes = new long[10];
+        lapTimes = new float[10];
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
         }
@@ -241,7 +242,8 @@ public class LapTimesState extends AbstractAppState    {
         return maxLaps;
     }
     
-    public long getLapTime(int i)   {
+    // public long getLapTime(int i)   {
+    public float getLapTime(int i)   {
         return lapTimes[i];
     }
 
