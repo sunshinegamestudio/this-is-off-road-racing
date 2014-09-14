@@ -68,7 +68,7 @@ Add your content here.  Format your content with:
 
 *V 0.2.5:*
   * Refactored GameState (multiple AppStates)
-  * Fixed laptime counting (laptime+=tpf)
+  * Fixed laptime counting (laptime+=tpf) _(done)_
   * 1 checkpoint
   * Created with jMonkeyEngine on main menu
   * Improved track "Beach Resort"
