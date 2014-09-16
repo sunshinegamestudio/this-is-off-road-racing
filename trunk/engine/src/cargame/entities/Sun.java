@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.entities;
 
+import com.jme3.app.Application;
+import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.math.Vector3f;
@@ -29,18 +31,27 @@ import com.jme3.scene.Node;
  *
  * @author Vortex
  */
-public class Sun extends Entity {
+public class Sun extends Entity_AppState {
     DirectionalLight sun;
     
     public Sun(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
+    }
+
+    @Override
+    public void initialize(AppStateManager stateManager, Application app) {
+        super.initialize(stateManager, app);
+
         sun = new DirectionalLight();
         sun.setDirection(new Vector3f(-0.1f, -0.7f, -1).normalizeLocal());
         getParent().addLight(sun);
     }
-    
+
+    @Override
     public void cleanup()   {
+        super.cleanup();
+        
         getParent().removeLight(sun);
     }
 }

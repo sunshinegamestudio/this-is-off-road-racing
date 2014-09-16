@@ -97,7 +97,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
     private RigidBodyControl rigidBodyControl;
 
     private GhostControl ghostControl;
-    private PassThroughZoneDetectionControl levelExitControl;
+    private PassThroughZoneDetectionControl passThroughZoneDetectionControl;
     
     public StartingPoint(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam) {
         super(assetManager, parent, physicsSpace);
@@ -127,17 +127,17 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
             getPhysicsSpace().add(ghostControl);
             startingpoint_geo.addControl(ghostControl);
         
-            levelExitControl = new PassThroughZoneDetectionControl(getPhysicsSpace());
-            //startingpoint_geo.addControl(levelExitControl);
+            passThroughZoneDetectionControl = new PassThroughZoneDetectionControl(getPhysicsSpace());
+            //startingpoint_geo.addControl(passThroughZoneDetectionControl);
 
-            getPhysicsSpace().addTickListener(levelExitControl);
-            getPhysicsSpace().addCollisionListener(levelExitControl);
+            getPhysicsSpace().addTickListener(passThroughZoneDetectionControl);
+            getPhysicsSpace().addCollisionListener(passThroughZoneDetectionControl);
         }
        
     }
 
     public boolean isOnStartinPoint()    {
-        return levelExitControl.isOnPassThroughZone();
+        return passThroughZoneDetectionControl.isOnPassThroughZone();
     }
         /*
     public Node getNode()   {

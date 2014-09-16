@@ -19,6 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package cargame.entities;
 
 import cargame.core.CarGame;
+import com.jme3.app.Application;
+import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.bullet.collision.shapes.BoxCollisionShape;
@@ -42,13 +44,22 @@ import com.jme3.texture.Texture;
  *
  * @author Vortex
  */
-public class Terrain extends Entity {
+public class Terrain extends Entity_AppState {
     
+    private Node terrain;
     private Node terrain_geo;
+    private String track;
 
     public Terrain(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
+        this.track = track;
+    }
+
+    @Override
+    public void initialize(AppStateManager stateManager, Application app) {
+        super.initialize(stateManager, app);
+        
         //com.jme3.terrain
         //BufferGeomap
 
@@ -78,7 +89,7 @@ public class Terrain extends Entity {
         //}
         
         // Load selected track
-        Node terrain = (Node) assetManager.loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
+        terrain = (Node) getAssetManager().loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
       
         terrain.setLocalTranslation(new Vector3f(0,-1,10));
         terrain.updateGeometricState();
@@ -100,7 +111,7 @@ public class Terrain extends Entity {
                     // mat.setColor("Color", ColorRGBA.Red);
                     String texture_1 = terrain_geo.getUserData("texture_1");
                     // Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
-                    Texture default_text = assetManager.loadTexture(texture_1);
+                    Texture default_text = getAssetManager().loadTexture(texture_1);
                     mat.setTexture("ColorMap", default_text);
                     terrain_geo.setMaterial(mat);
                 // }
@@ -114,5 +125,13 @@ public class Terrain extends Entity {
                 */
                 }
         }
+    }
+    
+    @Override
+    public void cleanup()   {
+        super.cleanup();
+        
+        getPhysicsSpace().removeAll(terrain);
+        getParent().detachChild(terrain);
     }
 }
