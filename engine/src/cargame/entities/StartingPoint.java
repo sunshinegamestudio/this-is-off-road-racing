@@ -137,7 +137,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
     }
 
     public boolean isOnStartinPoint()    {
-        return levelExitControl.isOnLevelExit();
+        return levelExitControl.isOnPassThroughZone();
     }
         /*
     public Node getNode()   {

@@ -55,6 +55,13 @@ public class Entity_AppState extends AbstractAppState {
         super.initialize(stateManager, app);
     }
     */
+
+    /*
+    @Override
+    public void cleanup() {
+        super.cleanup();
+    }
+    */
     
     /**
      * @return the assetManager
