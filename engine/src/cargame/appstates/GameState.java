@@ -181,6 +181,15 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         fpsState = new FPSState(game);
         game.getStateManager().attach(fpsState);
 
+        // Attach Sun state to StateManager here !!!
+        sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        game.getStateManager().attach(sun);
+
+        // Attach Terrain state to StateManager here !!!
+        String track = game.getTrack();
+        terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        game.getStateManager().attach(terrain);
+
         // Attach StartingPoint state to StateManager here !!!
         startingPointState = new StartingPointState(game);
         game.getStateManager().attach(startingPointState);
@@ -197,12 +206,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         checkEndOfRaceState = new CheckEndOfRaceState(game);
         game.getStateManager().attach(checkEndOfRaceState);
         
-        String track = game.getTrack();
-        
-        sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
+        //terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //terrain_node = new Terrain_node(game.getCamera(), game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
@@ -255,11 +262,6 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     public void cleanup() {
         super.cleanup();
 
-        // Unload game
-        sun.cleanup();
-        rootNode.detachAllChildren();
-        guiNode.detachAllChildren();
-
         game.getInputManager().setCursorVisible(false);
         if(niftyDisplay != null)    {
             game.getGUIViewPort().removeProcessor(niftyDisplay);
@@ -276,6 +278,12 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         
         // Cleanup StartingPoint state to StateManager here !!!
         game.getStateManager().detach(startingPointState);
+
+        // Cleanup Terrain state to StateManager here !!!
+        game.getStateManager().detach(terrain);
+        
+        // Cleanup Sun state to StateManager here !!!
+        game.getStateManager().detach(sun);
         
         // Cleanup FPSState here !!!
         game.getStateManager().detach(fpsState);
@@ -284,6 +292,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         if(inputController != null)   {
             game.getStateManager().detach(inputController);
         }
+
+        // Unload game
+        rootNode.detachAllChildren();
+        guiNode.detachAllChildren();
         
         game.getInputManager().removeListener(this);
         // if(flyCam != null) flyCam.setEnabled(false);
