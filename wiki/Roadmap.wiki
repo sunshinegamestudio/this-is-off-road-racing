@@ -70,6 +70,7 @@ Add your content here.  Format your content with:
   * Refactored GameState (multiple AppStates)
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * 1 checkpoint
+  * Correctly cleanup all object on GameState exit
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
   * OS X JDK requirement notice in readme.txt (not needed)
