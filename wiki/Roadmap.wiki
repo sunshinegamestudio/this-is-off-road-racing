@@ -71,6 +71,7 @@ Add your content here.  Format your content with:
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * 1 checkpoint
   * Correctly cleanup all object on GameState exit
+  * Exit to main menu when pressing Esc key in GameState _(done)_
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
   * OS X JDK requirement notice in readme.txt (not needed)
