@@ -50,6 +50,7 @@ public class ThirdPersonCameraState extends AbstractAppState    {
     private Node guiNode;
 
     private SimpleCarPlayer player;
+    private Node player_node;
     private CarGame game = null;
     
     public ThirdPersonCameraState(CarGame game) {
@@ -74,27 +75,32 @@ public class ThirdPersonCameraState extends AbstractAppState    {
 
         player = game.getStateManager().getState(GameState.class).getPlayer();
 
-        /*
-        Vector3f camDir = flyCam.getDirection().clone().multLocal(0.6f);
-        Vector3f camLeft = flyCam.getLeft().clone().multLocal(0.4f);
-        flyCam.setLocation(player.getNode().getLocalTranslation());
-         * Some methods don't work. Find another way for this or ask tutorial writer for correction.
-         */
+        if(player != null)  {
+            player_node = player.getNode();
+            if(player_node != null) {
+                /*
+                Vector3f camDir = flyCam.getDirection().clone().multLocal(0.6f);
+                Vector3f camLeft = flyCam.getLeft().clone().multLocal(0.4f);
+                flyCam.setLocation(player.getNode().getLocalTranslation());
+                 * Some methods don't work. Find another way for this or ask tutorial writer for correction.
+                 */
 
-        this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
+                this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
 
-        // Place the camera behind the player
-        Vector3f direction = player.getNode().getLocalRotation().getRotationColumn(2);
-        Vector3f direction2 = player.getNode().getLocalRotation().getRotationColumn(1);
+                // Place the camera behind the player
+                Vector3f direction = player_node.getLocalRotation().getRotationColumn(2);
+                Vector3f direction2 = player_node.getLocalRotation().getRotationColumn(1);
 
-        float yDirection = direction2.y;
-        float xDirection = direction.x;
-        float zDirection = direction.z;
+                float yDirection = direction2.y;
+                float xDirection = direction.x;
+                float zDirection = direction.z;
 
-        Vector3f camLocation = new Vector3f(player.getNode().getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+4f, player.getNode().getWorldTranslation().z + (zDirection*10));
+                Vector3f camLocation = new Vector3f(player_node.getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+4f, player.getNode().getWorldTranslation().z + (zDirection*10));
 
-        game.getCamera().setLocation(camLocation);
-        game.getCamera().lookAt(player.getNode().getWorldTranslation(), Vector3f.UNIT_Y);
+                game.getCamera().setLocation(camLocation);
+                game.getCamera().lookAt(player_node.getWorldTranslation(), Vector3f.UNIT_Y);
+            }
+        }
     }
     
     @Override

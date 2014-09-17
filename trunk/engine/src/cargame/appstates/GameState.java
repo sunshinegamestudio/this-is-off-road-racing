@@ -117,7 +117,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
             if (CarGame.getApp().isKeyboardControlled())    {
                 if (name.equals("CARGAME_Exit")){
-                    game.stop();
+                    // game.stop();
+                    // game.loadResultsMenu(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3]);
+                    game.loadResultsMenu_return();
                 }else if (name.equals("CARGAME_LoadMenu")){
                     game.loadMenu(this);
                 }
@@ -194,6 +196,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         startingPointState = new StartingPointState(game);
         game.getStateManager().attach(startingPointState);
 
+        // Attach SimpleCarPlayer state to StateManager here !!!
+        player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        game.getStateManager().attach(player);
+
         // Attach LapTimes state to StateManager here !!!
         lapTimesState = new LapTimesState(game);
         game.getStateManager().attach(lapTimesState);
@@ -205,14 +211,14 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // Attach check end of race state to StateManager here !!!
         checkEndOfRaceState = new CheckEndOfRaceState(game);
         game.getStateManager().attach(checkEndOfRaceState);
-        
+
         //sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //terrain_node = new Terrain_node(game.getCamera(), game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CharacterPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //simpleEnemy = new SimpleEnemy(player, game.getAssetManager(), rootNode, game.getPhysicsSpace());
 
@@ -275,6 +281,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         // Attach LapTimes state to StateManager here !!!
         game.getStateManager().detach(lapTimesState);
+
+        // Attach SimpleCarPlayer state to StateManager here !!!
+        game.getStateManager().detach(player);
         
         // Cleanup StartingPoint state to StateManager here !!!
         game.getStateManager().detach(startingPointState);
