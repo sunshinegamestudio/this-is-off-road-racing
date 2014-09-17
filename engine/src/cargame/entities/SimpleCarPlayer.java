@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.entities;
 
+import com.jme3.app.Application;
+import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bullet.PhysicsSpace;
@@ -51,7 +53,7 @@ import com.jme3.texture.Texture.WrapMode;
  *
  * @author Vortex
  */
-public class SimpleCarPlayer extends Entity  {
+public class SimpleCarPlayer extends Entity_AppState  {
     private VehicleControl vehicle;
     private Node vehicleNode;
     private final float accelerationForce = 1000.0f;
@@ -63,6 +65,12 @@ public class SimpleCarPlayer extends Entity  {
 
     public SimpleCarPlayer(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
+    }
+
+    @Override
+    public void initialize(AppStateManager stateManager, Application app) {
+        super.initialize(stateManager, app);
+    
         //Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/WireColor.j3md");
         //mat.setColor("Color", ColorRGBA.Red);
         /*
@@ -175,6 +183,11 @@ public class SimpleCarPlayer extends Entity  {
         getPhysicsSpace().add(vehicle);
     }
 
+    @Override
+    public void cleanup()   {
+        super.cleanup();
+    }
+    
     public Node getNode()   {
         return vehicleNode;
     }

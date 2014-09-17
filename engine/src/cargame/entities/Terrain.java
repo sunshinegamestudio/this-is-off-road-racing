@@ -131,7 +131,11 @@ public class Terrain extends Entity_AppState {
     public void cleanup()   {
         super.cleanup();
         
-        getPhysicsSpace().removeAll(terrain);
+        try {
+            getPhysicsSpace().removeAll(terrain);
+        } catch(NullPointerException e)    {
+
+        }
         getParent().detachChild(terrain);
     }
 }
