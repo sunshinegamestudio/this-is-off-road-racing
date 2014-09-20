@@ -59,6 +59,7 @@ import cargame.gui.GameHUDScreenController_Digital;
 import cargame.inputcontrollers.JoystickInputController;
 import cargame.inputcontrollers.KeyboardInputController;
 import cargame.inputcontrollers.TouchScreenInputController;
+import cargame.other.PhysicsSpacePrinter;
 import cargame.other.Time;
 import cargame.other.TrackStatistics;
 import com.jme3.niftygui.NiftyJmeDisplay;
@@ -91,6 +92,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private LapTimesState lapTimesState;
     private ThirdPersonCameraState thirdPersonCameraState;
     private CheckEndOfRaceState checkEndOfRaceState;
+    
+    private PhysicsSpacePrinter physicsSpacePrinter;
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
@@ -211,6 +214,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // Attach check end of race state to StateManager here !!!
         checkEndOfRaceState = new CheckEndOfRaceState(game);
         game.getStateManager().attach(checkEndOfRaceState);
+        
+        physicsSpacePrinter = new PhysicsSpacePrinter(game);
 
         //sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
@@ -301,6 +306,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         if(inputController != null)   {
             game.getStateManager().detach(inputController);
         }
+        
+        physicsSpacePrinter.print();
 
         // Unload game
         rootNode.detachAllChildren();
