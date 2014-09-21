@@ -218,9 +218,13 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         game.getStateManager().attach(checkEndOfRaceState);
         
         physicsSpacePrinter = new PhysicsSpacePrinter(game);
-        
+
         sceneGraphPrinter = new SceneGraphPrinter();
 
+        physicsSpacePrinter.print();
+
+        sceneGraphPrinter.print(rootNode);
+        
         //sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
@@ -312,7 +316,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         }
         
         physicsSpacePrinter.print();
-        
+
         sceneGraphPrinter.print(rootNode);
 
         // Unload game

@@ -23,6 +23,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.SceneGraphVisitor;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.control.Control;
 import java.util.logging.Level;
 
 public class SceneGraphPrinter  {
@@ -32,6 +33,12 @@ public class SceneGraphPrinter  {
         @Override
         public void visit(Spatial spatial)    {
             CarGame.getApp().getLogger().log(Level.SEVERE, spatial.getName());
+            
+            Control control;
+            for(int i=0; i<(spatial.getNumControls()); i++)  {
+                control = spatial.getControl(i);
+                CarGame.getApp().getLogger().log(Level.SEVERE, control.toString());
+            }
         }
     };
     
