@@ -35,6 +35,8 @@ public class PhysicsSpacePrinter {
     }
     
     public void print()    {
+        game.getLogger().log(Level.SEVERE, "PhysicsSpacePrinter:");
+
         List<PhysicsRigidBody> rigidBodyControls = (List<PhysicsRigidBody>) physicsSpace.getRigidBodyList();
         Iterator it = rigidBodyControls.listIterator();
         while(it.hasNext()) {

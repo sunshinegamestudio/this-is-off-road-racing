@@ -18,7 +18,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.other;
 
-public class SceneGraphPrinter {
-    public void print()    {
+import cargame.core.CarGame;
+import com.jme3.scene.Geometry;
+import com.jme3.scene.Node;
+import com.jme3.scene.SceneGraphVisitor;
+import com.jme3.scene.Spatial;
+import java.util.logging.Level;
+
+public class SceneGraphPrinter  {
+
+    SceneGraphVisitor sceneGraphPrinterVisitor = new SceneGraphVisitor() {
+    
+        @Override
+        public void visit(Spatial spatial)    {
+            CarGame.getApp().getLogger().log(Level.SEVERE, spatial.getName());
+        }
+    };
+    
+    public void print(Node node) {
+        CarGame.getApp().getLogger().log(Level.SEVERE, "SceneGraphPrinter:");
+        node.breadthFirstTraversal(sceneGraphPrinterVisitor);
     }
 }
