@@ -32,12 +32,12 @@ public class SceneGraphPrinter  {
     
         @Override
         public void visit(Spatial spatial)    {
-            CarGame.getApp().getLogger().log(Level.SEVERE, spatial.getName());
+            CarGame.getApp().getLogger().log(Level.SEVERE, "Spatial: " + spatial.getName());
             
             Control control;
             for(int i=0; i<(spatial.getNumControls()); i++)  {
                 control = spatial.getControl(i);
-                CarGame.getApp().getLogger().log(Level.SEVERE, control.toString());
+                CarGame.getApp().getLogger().log(Level.SEVERE, "Control: " + control.toString());
             }
         }
     };
