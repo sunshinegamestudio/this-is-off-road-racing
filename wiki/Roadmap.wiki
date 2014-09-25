@@ -70,8 +70,12 @@ Add your content here.  Format your content with:
   * Refactored GameState (multiple AppStates)
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * 1 checkpoint
+     * Implement 1 Checkpoint as PassThroughZoneState.
+     * Change StartingPointState/StartingPoint to PassThroughZoneState.
   * Correctly cleanup all object on GameState exit
   * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ )
+     * Implement detach_manual in GameState->cleanup.
+     * Implement cleanup_manual in GameState->AppStates.
   * Exit to main menu when pressing Esc key in GameState _(done)_
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
