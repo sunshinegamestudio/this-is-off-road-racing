@@ -93,8 +93,6 @@ Add your content here.  Format your content with:
      * AppState creation/attaching/detachting
   * Improved car
     * Add car model
-  * Improved car
-    * Add car model
   * Load/save fastest laptime
   * Fix the remaining issues
      * The gamestate switching doesn't work correct (ID: sqeeck-save-the-beavies -> 2)
