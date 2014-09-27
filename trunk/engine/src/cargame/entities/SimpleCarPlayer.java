@@ -56,6 +56,20 @@ import com.jme3.texture.Texture.WrapMode;
 public class SimpleCarPlayer extends Entity_AppState  {
     private VehicleControl vehicle;
     private Node vehicleNode;
+
+    private Box chassisMesh;
+    private Geometry chassisGeometry;
+    private Node chassisNode;
+
+    private Node node1;
+    private Geometry wheels1;
+    private Node node2;
+    private Geometry wheels2;
+    private Node node3;
+    private Geometry wheels3;
+    private Node node4;
+    private Geometry wheels4;
+    
     private final float accelerationForce = 1000.0f;
     private final float brakeForce = 100.0f;
     private float steeringValue = 0;
@@ -111,10 +125,10 @@ public class SimpleCarPlayer extends Entity_AppState  {
         vehicleNode.addControl(vehicle);
         
         // create chassis visual presentation
-        Box chassisMesh = new Box(1.2f, 0.5f, 2.4f);
-        Geometry chassisGeometry = new Geometry("chassis", chassisMesh);
+        chassisMesh = new Box(1.2f, 0.5f, 2.4f);
+        chassisGeometry = new Geometry("chassis", chassisMesh);
         chassisGeometry.setMaterial(mat);
-        Node chassisNode = new Node("chassisNode");
+        chassisNode = new Node("chassisNode");
         chassisNode.move(0, 0.5f, 0);
         chassisNode.attachChild(chassisGeometry);
         vehicleNode.attachChild(chassisNode);
@@ -140,8 +154,8 @@ public class SimpleCarPlayer extends Entity_AppState  {
 
         Cylinder wheelMesh = new Cylinder(16, 16, radius, radius * 0.6f, true);
 
-        Node node1 = new Node("wheel 1 node");
-        Geometry wheels1 = new Geometry("wheel 1", wheelMesh);
+        node1 = new Node("wheel 1 node");
+        wheels1 = new Geometry("wheel 1", wheelMesh);
         node1.attachChild(wheels1);
         wheels1.rotate(0, FastMath.HALF_PI, 0);
         wheels1.setMaterial(matBlue);
@@ -149,8 +163,8 @@ public class SimpleCarPlayer extends Entity_AppState  {
                 wheelDirection, wheelAxle, restLength, radius, false);
         vehicleNode.attachChild(node1);
 
-        Node node2 = new Node("wheel 2 node");
-        Geometry wheels2 = new Geometry("wheel 2", wheelMesh);
+        node2 = new Node("wheel 2 node");
+        wheels2 = new Geometry("wheel 2", wheelMesh);
         node2.attachChild(wheels2);
         wheels2.rotate(0, FastMath.HALF_PI, 0);
         wheels2.setMaterial(matBlue);
@@ -158,8 +172,8 @@ public class SimpleCarPlayer extends Entity_AppState  {
                 wheelDirection, wheelAxle, restLength, radius, false);
         vehicleNode.attachChild(node2);
 
-        Node node3 = new Node("wheel 3 node");
-        Geometry wheels3 = new Geometry("wheel 3", wheelMesh);
+        node3 = new Node("wheel 3 node");
+        wheels3 = new Geometry("wheel 3", wheelMesh);
         node3.attachChild(wheels3);
         wheels3.rotate(0, FastMath.HALF_PI, 0);
         wheels3.setMaterial(matBlue);
@@ -167,8 +181,8 @@ public class SimpleCarPlayer extends Entity_AppState  {
                 wheelDirection, wheelAxle, restLength, radius, true);
         vehicleNode.attachChild(node3);
 
-        Node node4 = new Node("wheel 4 node");
-        Geometry wheels4 = new Geometry("wheel 4", wheelMesh);
+        node4 = new Node("wheel 4 node");
+        wheels4 = new Geometry("wheel 4", wheelMesh);
         node4.attachChild(wheels4);
         wheels4.rotate(0, FastMath.HALF_PI, 0);
         wheels4.setMaterial(matBlue);
@@ -186,7 +200,27 @@ public class SimpleCarPlayer extends Entity_AppState  {
     @Override
     public void cleanup()   {
         super.cleanup();
-    }
+
+        getPhysicsSpace().remove(vehicle);
+        vehicleNode.removeControl(vehicle);
+
+        wheels1.removeFromParent();
+        node1.removeFromParent();
+        
+        wheels2.removeFromParent();
+        node1.removeFromParent();
+
+        wheels3.removeFromParent();
+        node3.removeFromParent();
+
+        wheels4.removeFromParent();
+        node4.removeFromParent();
+
+        chassisGeometry.removeFromParent();
+        chassisNode.removeFromParent();
+        
+        vehicleNode.removeFromParent();
+}
     
     public Node getNode()   {
         return vehicleNode;
