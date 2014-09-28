@@ -69,6 +69,8 @@ Add your content here.  Format your content with:
 *V 0.2.5:*
   * Refactored GameState (multiple AppStates)
   * Fixed laptime counting (laptime+=tpf) _(done)_
+  * Add BoxCollisionShapeControl via an AppState
+     * Check for user data in an AppState with a SceneGraphVisitor.
   * 1 checkpoint
      * Implement 1 Checkpoint as PassThroughZoneState.
      * Change StartingPointState/StartingPoint to PassThroughZoneState.
