@@ -78,7 +78,7 @@ Add your content here.  Format your content with:
      * Implement detach_manual in GameState->cleanup.
      * Implement cleanup_manual in GameState->AppStates.
   * Correctly cleanup all object on GameState exit
-  * Exit to main menu when pressing Esc key in GameState _(done)_
+  * Exit to main menu when pressing Esc key in GameState
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
   * OS X JDK requirement notice in readme.txt (not needed)
