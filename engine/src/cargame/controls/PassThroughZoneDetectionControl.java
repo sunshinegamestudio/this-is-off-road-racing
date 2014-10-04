@@ -32,14 +32,14 @@ import com.jme3.math.Vector3f;
 public class PassThroughZoneDetectionControl extends GhostControl implements PhysicsTickListener, PhysicsCollisionListener   {
     private PhysicsSpace physicsSpace;
     
-    private boolean onPassThroughZone = false;
+    private boolean onPassThroughDetectionZone = false;
 
     public PassThroughZoneDetectionControl(PhysicsSpace physicsSpace) {
         this.physicsSpace = physicsSpace;
     }
     
     public void prePhysicsTick(PhysicsSpace space, float f) {
-        onPassThroughZone = false;
+        onPassThroughDetectionZone = false;
     }
     
     public void physicsTick(PhysicsSpace space, float f){
@@ -61,8 +61,8 @@ public class PassThroughZoneDetectionControl extends GhostControl implements Phy
         {
             // System.out.println("Collison: vehicleNode-startingpoint_1-ogremesh");
 
-            // By collision op LevelExit -> onPassThroughZone = false;
-            onPassThroughZone = true;
+            // By collision op LevelExit -> onPassThroughDetectionZone = false;
+            onPassThroughDetectionZone = true;
             
             /*
             //Place Player1 and SimpleEnemy1 back, so they are not colliding !!!!!!!!!!!!
@@ -79,7 +79,7 @@ public class PassThroughZoneDetectionControl extends GhostControl implements Phy
         }
     }
     
-    public boolean isOnPassThroughZone() {
-        return onPassThroughZone;
+    public boolean isOnPassThroughDetectionZone() {
+        return onPassThroughDetectionZone;
     }
 }

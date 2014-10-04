@@ -89,7 +89,7 @@ import com.jme3.bullet.control.GhostControl;
  *
  * @author Vortex
  */
-public class PassThroughZone extends Entity_AppState  {
+public class PassThroughZoneDetection extends Entity_AppState  {
 static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.HALF_PI, Vector3f.UNIT_Y);
     //camera
     private Camera cam;
@@ -103,7 +103,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
     private GhostControl ghostControl;
     private PassThroughZoneDetectionControl passThroughZoneDetectionControl;
     
-    public PassThroughZone(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam, String geo_name) {
+    public PassThroughZoneDetection(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam, String geo_name) {
         super(assetManager, parent, physicsSpace);
 
         this.geo_name = geo_name;
@@ -158,8 +158,12 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
         passThroughZone_geo.removeControl(ghostControl);
     }
     
-    public boolean isOnPassThroughZone()    {
-        return passThroughZoneDetectionControl.isOnPassThroughZone();
+    public boolean isOnPassThroughDetectionZone()    {
+        if(passThroughZoneDetectionControl != null) {
+            return passThroughZoneDetectionControl.isOnPassThroughDetectionZone();
+        }   else  {
+            return false;
+        }
     }
         /*
     public Node getNode()   {
