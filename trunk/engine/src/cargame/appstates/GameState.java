@@ -91,6 +91,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private FPSState fpsState;
     private StartingPointState startingPointState;
     // private PassThroughZoneDetectionState startingPointState;
+    private BoxCollisionShapeControlState boxCollisionShapeControlState;
     private LapTimesState lapTimesState;
     private ThirdPersonCameraState thirdPersonCameraState;
     private CheckEndOfRaceState checkEndOfRaceState;
@@ -206,6 +207,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // Attach SimpleCarPlayer state to StateManager here !!!
         player = new SimpleCarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         game.getStateManager().attach(player);
+        
+        // Attach BoxCollisionShapeControlState state to StateManager here !!!
+        boxCollisionShapeControlState = new BoxCollisionShapeControlState(game);
+        game.getStateManager().attach(boxCollisionShapeControlState);
 
         // Attach LapTimes state to StateManager here !!!
         lapTimesState = new LapTimesState(game);
@@ -297,7 +302,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         // Attach LapTimes state to StateManager here !!!
         game.getStateManager().detach(lapTimesState);
 
-        // Attach SimpleCarPlayer state to StateManager here !!!
+        // Cleanup BoxCollisionShapeControlState state to StateManager here !!!
+        game.getStateManager().detach(boxCollisionShapeControlState);
+        
+        // Cleanup SimpleCarPlayer state to StateManager here !!!
         game.getStateManager().detach(player);
         
         // Cleanup StartingPoint state to StateManager here !!!
