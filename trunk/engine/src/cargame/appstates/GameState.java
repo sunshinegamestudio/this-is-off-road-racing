@@ -90,6 +90,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private AbstractAppState inputController;
     private FPSState fpsState;
     private StartingPointState startingPointState;
+    // private PassThroughZoneDetectionState startingPointState;
     private LapTimesState lapTimesState;
     private ThirdPersonCameraState thirdPersonCameraState;
     private CheckEndOfRaceState checkEndOfRaceState;
@@ -199,6 +200,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
         // Attach StartingPoint state to StateManager here !!!
         startingPointState = new StartingPointState(game);
+        // startingPointState = new PassThroughZoneDetectionState(game);
         game.getStateManager().attach(startingPointState);
 
         // Attach SimpleCarPlayer state to StateManager here !!!

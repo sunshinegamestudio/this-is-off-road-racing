@@ -137,7 +137,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
     }
 
     public boolean isOnStartinPoint()    {
-        return passThroughZoneDetectionControl.isOnPassThroughZone();
+        return passThroughZoneDetectionControl.isOnPassThroughDetectionZone();
     }
         /*
     public Node getNode()   {

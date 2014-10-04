@@ -177,52 +177,52 @@ public class LapTimesState extends AbstractAppState    {
         super.update(tpf);
 
         // Check for new lap
-        newLap = startingPointState.checkForNewLap();
-        
-        if (newLap == true)
-        {
-            // Calculate the current laptime
-            currentLapTime = game.getTimer().getTime() - lastLapTime;
-            // currentLapTime+=tpf;
-            
-            // Set the current currentLapTime in the lapTimes array
-            lapTimes[currentLap]=currentLapTime;
-            
-            // Check if there is a new fastest laptime
-            if ((fastestLapTime > currentLapTime) || (currentLap == 0))
+        if(startingPointState != null)  {
+            newLap = startingPointState.checkForNewLap();
+
+            if (newLap == true)
             {
-                // Make the current laptime the fastest laptime
-                fastestLapTime = currentLapTime;
-                // Save the fastest laptime (still to implement !!!)
-                /*
-                trackStatistics.setFastestLapTime(fastestLapTime);
-                SaveGame.saveGame("com/sunshinegamestudio/cargame", "Default_Track", trackStatistics);
-                 * Temperairy disabled until fixed
-                 */
+                // Calculate the current laptime
+                currentLapTime = game.getTimer().getTime() - lastLapTime;
+                // currentLapTime+=tpf;
+
+                // Set the current currentLapTime in the lapTimes array
+                lapTimes[currentLap]=currentLapTime;
+
+                // Check if there is a new fastest laptime
+                if ((fastestLapTime > currentLapTime) || (currentLap == 0))
+                {
+                    // Make the current laptime the fastest laptime
+                    fastestLapTime = currentLapTime;
+                    // Save the fastest laptime (still to implement !!!)
+                    /*
+                    trackStatistics.setFastestLapTime(fastestLapTime);
+                    SaveGame.saveGame("com/sunshinegamestudio/cargame", "Default_Track", trackStatistics);
+                     * Temperairy disabled until fixed
+                     */
+                }
+
+                // Set the last laptime and increment the current lap
+                lastLapTime = currentLapTime;
+                currentLap = currentLap + 1;
             }
 
-            // Set the last laptime and increment the current lap
-            lastLapTime = currentLapTime;
-            currentLap = currentLap + 1;
+            // Update current time
+            currentTime = game.getTimer().getTime() - currentLapTime;
+
+            // Update HUD
+            currentLapText.setText("Current Lap: " + currentLap);
+            maxLapsText.setText("Max Laps: " + maxLaps);
+            fastestLapTimeTime.setTime(fastestLapTime / game.getTimer().getResolution());
+            // fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTime);
+            fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTimeTime.getHour() + ":" + fastestLapTimeTime.getMinute() + ":" + fastestLapTimeTime.getSecond() + ":" + fastestLapTimeTime.getMilisecond());
+            currentLapTimeTime.setTime(currentLapTime / game.getTimer().getResolution());
+            // currentLapTimeText.setText("Current LapTime: " + currentLapTime);
+            currentLapTimeText.setText("Current LapTime: " + currentLapTimeTime.getHour() + ":" + currentLapTimeTime.getMinute() + ":" + currentLapTimeTime.getSecond() + ":" + currentLapTimeTime.getMilisecond());
+            currentTimeTime.setTime(currentTime / game.getTimer().getResolution());
+            // currentTimeText.setText("Current Time: " + currentTime);
+            currentTimeText.setText("Current Time: " + currentTimeTime.getHour() + ":" + currentTimeTime.getMinute() + ":" + currentTimeTime.getSecond() + ":" + currentTimeTime.getMilisecond());
         }
-        
-        // Update current time
-        currentTime = game.getTimer().getTime() - currentLapTime;
-        
-        // Update HUD
-        currentLapText.setText("Current Lap: " + currentLap);
-        maxLapsText.setText("Max Laps: " + maxLaps);
-        fastestLapTimeTime.setTime(fastestLapTime / game.getTimer().getResolution());
-        // fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTime);
-        fastestLapTimeText.setText("Fastest LapTime: " + fastestLapTimeTime.getHour() + ":" + fastestLapTimeTime.getMinute() + ":" + fastestLapTimeTime.getSecond() + ":" + fastestLapTimeTime.getMilisecond());
-        currentLapTimeTime.setTime(currentLapTime / game.getTimer().getResolution());
-        // currentLapTimeText.setText("Current LapTime: " + currentLapTime);
-        currentLapTimeText.setText("Current LapTime: " + currentLapTimeTime.getHour() + ":" + currentLapTimeTime.getMinute() + ":" + currentLapTimeTime.getSecond() + ":" + currentLapTimeTime.getMilisecond());
-        currentTimeTime.setTime(currentTime / game.getTimer().getResolution());
-        // currentTimeText.setText("Current Time: " + currentTime);
-        currentTimeText.setText("Current Time: " + currentTimeTime.getHour() + ":" + currentTimeTime.getMinute() + ":" + currentTimeTime.getSecond() + ":" + currentTimeTime.getMilisecond());
-
-
     }
     
     @Override
