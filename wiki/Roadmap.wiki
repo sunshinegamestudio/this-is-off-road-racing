@@ -71,7 +71,7 @@ Add your content here.  Format your content with:
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * Add BoxCollisionShapeControl via an AppState
      * Check for user data in an AppState with a SceneGraphVisitor.
-     * Implement VehicleControl CollisionShape as Capsule to prevent to have the Vehicle get stuck in the BoxCollisionShape (http://hub.jmonkeyengine.org/forum/topic/vehiclecontrol-stuck-in-wall/).
+     * Implement VehicleControl CollisionShape as a CapsuleCollisionShape to prevent to have the Vehicle get stuck in the BoxCollisionShape (http://hub.jmonkeyengine.org/forum/topic/vehiclecontrol-stuck-in-wall/).
   * 1 checkpoint
      * Implement 1 Checkpoint as PassThroughZoneState.
      * Change StartingPointState/StartingPoint to PassThroughZoneState.
