@@ -24,6 +24,7 @@ import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.bullet.collision.shapes.BoxCollisionShape;
+import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.collision.shapes.CompoundCollisionShape;
 import com.jme3.bullet.collision.shapes.MeshCollisionShape;
 import com.jme3.bullet.control.VehicleControl;
@@ -116,8 +117,10 @@ public class SimpleCarPlayer extends Entity_AppState  {
         //create a compound shape and attach the BoxCollisionShape for the car body at 0,1,0
         //this shifts the effective center of mass of the BoxCollisionShape to 0,-1,0
         CompoundCollisionShape compoundShape = new CompoundCollisionShape();
-        BoxCollisionShape box = new BoxCollisionShape(new Vector3f(1.2f, 0.5f, 2.4f));
-        compoundShape.addChildShape(box, new Vector3f(0, 1, 0));
+        // BoxCollisionShape box = new BoxCollisionShape(new Vector3f(1.2f, 0.5f, 2.4f));
+        CapsuleCollisionShape capsule = new CapsuleCollisionShape(1.2f, 2.4f, 2);
+        // compoundShape.addChildShape(box, new Vector3f(0, 1, 0));
+        compoundShape.addChildShape(capsule, new Vector3f(0, 1, 0));
 
         //create vehicle node
         vehicleNode=new Node("vehicleNode");
