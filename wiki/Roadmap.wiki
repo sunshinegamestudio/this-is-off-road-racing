@@ -82,6 +82,7 @@ Add your content here.  Format your content with:
   * Exit to main menu when pressing Esc key in GameState
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
+  * Fixed touch screen controls _(done)_
   * OS X JDK requirement notice in readme.txt (not needed)
 
 *V 0.2.6:*
