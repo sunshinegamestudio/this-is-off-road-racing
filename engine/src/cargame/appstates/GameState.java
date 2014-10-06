@@ -345,4 +345,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         return player;
     }
     
+    public AbstractAppState getInputController()    {
+        return inputController;
+    }
+    
 }

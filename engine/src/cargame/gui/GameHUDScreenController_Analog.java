@@ -26,6 +26,7 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
+import com.jme3.input.controls.ActionListener;
 
 /**
  *
@@ -42,6 +43,7 @@ import cargame.appstates.GameState;
         private int steerRightPos;
         private int gearbox;
         private GameState gameState;
+        private ActionListener touchScreenInputController;
         
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
@@ -51,6 +53,8 @@ import cargame.appstates.GameState;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
+
+            touchScreenInputController = (ActionListener)gameState.getInputController();
         }
 
         public void onStartScreen() {

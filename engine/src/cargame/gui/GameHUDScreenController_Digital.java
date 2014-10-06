@@ -26,6 +26,8 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
+import com.jme3.app.state.AbstractAppState;
+import com.jme3.input.controls.ActionListener;
 
 /**
  *
@@ -42,6 +44,7 @@ import cargame.appstates.GameState;
         private int steerRightPos;
         private int gearbox;
         private GameState gameState;
+        private ActionListener touchScreenInputController;
         
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
@@ -51,6 +54,8 @@ import cargame.appstates.GameState;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
+            
+            touchScreenInputController = (ActionListener)gameState.getInputController();
         }
 
         public void onStartScreen() {
@@ -64,51 +69,63 @@ import cargame.appstates.GameState;
         }
 
         public void accelerate_onClick(int x, int y)   {
-            gameState.onAction("Ups", true, 0);
+            // gameState.onAction("Ups", true, 0);
+            touchScreenInputController.onAction("Ups", true, 0.0f);
         }
 
         public void accelerate_onClickRepeat(int x, int y)   {
-            gameState.onAction("Ups", true, 0);
+            // gameState.onAction("Ups", true, 0);
+            touchScreenInputController.onAction("Ups", true, 0);
         }
 
         public void accelerate_onRelease()   {
-            gameState.onAction("Ups", false, 0);
+            // gameState.onAction("Ups", false, 0);
+            touchScreenInputController.onAction("Ups", false, 0);
         }
 
         public void brake_onClick(int x, int y)   {
-            gameState.onAction("Downs", true, 0);
+            // gameState.onAction("Downs", true, 0);
+            touchScreenInputController.onAction("Downs", true, 0);
         }
 
         public void brake_onClickRepeat(int x, int y)   {
-            gameState.onAction("Downs", true, 0);
+            // gameState.onAction("Downs", true, 0);
+            touchScreenInputController.onAction("Downs", true, 0);
         }
 
         public void brake_onRelease()   {
-            gameState.onAction("Downs", false, 0);
+            // gameState.onAction("Downs", false, 0);
+            touchScreenInputController.onAction("Downs", false, 0);
         }
         
         public void steerLeft_onClick(int x, int y) {
-            gameState.onAction("Lefts", true, 0);
+            // gameState.onAction("Lefts", true, 0);
+            touchScreenInputController.onAction("Lefts", true, 0);
         }
 
         public void steerLeft_onClickRepeat(int x, int y) {
-            gameState.onAction("Lefts", true, 0);
+            // gameState.onAction("Lefts", true, 0);
+            touchScreenInputController.onAction("Lefts", true, 0);
         }
 
         public void steerLeft_onRelease() {
-            gameState.onAction("Lefts", false, 0);
+            // gameState.onAction("Lefts", false, 0);
+            touchScreenInputController.onAction("Lefts", false, 0);
         }
 
         public void steerRight_onClick(int x, int y) {
-            gameState.onAction("Rights", true, 0);
+            // gameState.onAction("Rights", true, 0);
+            touchScreenInputController.onAction("Rights", true, 0);
         }
 
         public void steerRight_onClickRepeat(int x, int y) {
-            gameState.onAction("Rights", true, 0);
+            // gameState.onAction("Rights", true, 0);
+            touchScreenInputController.onAction("Rights", true, 0);
         }
 
         public void steerRight_onRelease() {
-            gameState.onAction("Rights", false, 0);
+            // gameState.onAction("Rights", false, 0);
+            touchScreenInputController.onAction("Rights", false, 0);
         }
 
         public void gearbox() {
