@@ -78,11 +78,16 @@ public class PassThroughZoneDetectionState extends AbstractAppState    {
     public void update(float tpf) {
         super.update(tpf);
 
-        // Set isOnPassThroughDetectionZone to false, only if the player was already on startingPoint
-        if(isOnPassThroughDetectionZone == true)   {
-            if(passThroughZoneDetection.isOnPassThroughDetectionZone() == false)  {
-                isOnPassThroughDetectionZone = false;
+        if(passThroughZoneDetection.isInitialized())    {
+            // Set isOnPassThroughDetectionZone to false, only if the player was already on startingPoint
+            if(isOnPassThroughDetectionZone == true)   {
+                if(passThroughZoneDetection.isOnPassThroughDetectionZone() == false)  {
+                    isOnPassThroughDetectionZone = false;
+                }
             }
+        }
+        else    {
+            isOnPassThroughDetectionZone = true;
         }
     }
     
