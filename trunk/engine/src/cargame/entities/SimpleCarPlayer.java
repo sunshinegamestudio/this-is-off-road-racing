@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.entities;
 
+import cargame.appstates.CleanupManualInterface;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
@@ -54,7 +55,9 @@ import com.jme3.texture.Texture.WrapMode;
  *
  * @author Vortex
  */
-public class SimpleCarPlayer extends Entity_AppState  {
+public class SimpleCarPlayer extends Entity_AppState implements CleanupManualInterface  {
+    private boolean cleanedupManual = false;
+
     private VehicleControl vehicle;
     private Node vehicleNode;
 
@@ -86,6 +89,8 @@ public class SimpleCarPlayer extends Entity_AppState  {
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
     
+        cleanedupManual = false;
+
         //Material mat = new Material(getAssetManager(), "Common/MatDefs/Misc/WireColor.j3md");
         //mat.setColor("Color", ColorRGBA.Red);
         /*
@@ -201,9 +206,7 @@ public class SimpleCarPlayer extends Entity_AppState  {
     }
 
     @Override
-    public void cleanup()   {
-        super.cleanup();
-
+    public void cleanupManual() {
         getPhysicsSpace().remove(vehicle);
         vehicleNode.removeControl(vehicle);
 
@@ -223,6 +226,17 @@ public class SimpleCarPlayer extends Entity_AppState  {
         chassisNode.removeFromParent();
         
         vehicleNode.removeFromParent();
+        
+        cleanedupManual=true;
+    }
+
+    @Override
+    public void cleanup()   {
+        super.cleanup();
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
 }
     
     public Node getNode()   {

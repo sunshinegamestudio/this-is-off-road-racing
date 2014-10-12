@@ -306,6 +306,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         game.getStateManager().detach(boxCollisionShapeControlState);
         
         // Cleanup SimpleCarPlayer state to StateManager here !!!
+        player.cleanupManual();
         game.getStateManager().detach(player);
         
         // Cleanup StartingPoint state to StateManager here !!!
