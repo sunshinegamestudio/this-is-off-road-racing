@@ -71,6 +71,7 @@ public class StartingPointState extends AbstractAppState    {
         super.initialize(stateManager, app);
 
         startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
+        startingPoint.initialize();
     }
 
     @Override
@@ -92,6 +93,8 @@ public class StartingPointState extends AbstractAppState    {
     @Override
     public void cleanup() {
         super.cleanup();
+        
+        startingPoint.cleanup();
     }
 
     public boolean checkForNewLap()   {

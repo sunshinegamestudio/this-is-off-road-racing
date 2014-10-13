@@ -79,6 +79,8 @@ import java.util.List;
 import jme3tools.converters.ImageToAwt;
 
 import cargame.controls.PassThroughZoneDetectionControl;
+import com.jme3.app.Application;
+import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.collision.shapes.HullCollisionShape;
 import com.jme3.bullet.control.GhostControl;
 
@@ -103,7 +105,9 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
         super(assetManager, parent, physicsSpace);
 
         this.cam = cam;
+    }
 
+    public void initialize() {
         //startingpoint_geo = getParent().getChild("startingpoint_1-ogremesh");
         startingpoint_geo = (Node)getParent().getChild("startingpoint_1-ogremesh");
         if(startingpoint_geo != null)    {
@@ -133,9 +137,16 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
             getPhysicsSpace().addTickListener(passThroughZoneDetectionControl);
             getPhysicsSpace().addCollisionListener(passThroughZoneDetectionControl);
         }
-       
     }
 
+    public void cleanup() {
+        getPhysicsSpace().removeTickListener(passThroughZoneDetectionControl);
+        getPhysicsSpace().removeCollisionListener(passThroughZoneDetectionControl);
+
+        getPhysicsSpace().remove(ghostControl);
+        startingpoint_geo.removeControl(ghostControl);
+    }
+    
     public boolean isOnStartinPoint()    {
         return passThroughZoneDetectionControl.isOnPassThroughDetectionZone();
     }
