@@ -72,20 +72,22 @@ Add your content here.  Format your content with:
   * Add BoxCollisionShapeControl via an AppState _(done)_
      * Check for user data in an AppState with a SceneGraphVisitor _(done)_
      * Implement VehicleControl CollisionShape as a CapsuleCollisionShape to prevent to have the vehicle get stuck in the BoxCollisionShape (http://hub.jmonkeyengine.org/forum/topic/vehiclecontrol-stuck-in-wall/) _(done)_
-  * 1 checkpoint
-     * Implement 1 Checkpoint as PassThroughZoneState.
-     * Change StartingPointState/StartingPoint to PassThroughZoneState.
   * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ )
      * Implement detach_manual in GameState->cleanup.
      * Implement cleanup_manual in GameState->AppStates.
   * Correctly cleanup all object on GameState exit
-  * Exit to main menu when pressing Esc key in GameState
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
   * Fixed touch screen controls _(done)_
   * OS X JDK requirement notice in readme.txt (not needed)
 
 *V 0.2.6:*
+  * 1 checkpoint
+     * Implement 1 Checkpoint as PassThroughZoneState.
+     * Change StartingPointState/StartingPoint to PassThroughZoneState.
+  * Exit to main menu when pressing Esc key in GameState
+
+*V 0.2.7:*
   * Basic icon (to start the application)
   * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
@@ -104,7 +106,7 @@ Add your content here.  Format your content with:
      * Improved driving controls
      * Basic Google Play Store page
 
-*V 0.2.7:*
+*V 0.2.8:*
   * Fix the remaining issues
 
 = V 0.3.x =
