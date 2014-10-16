@@ -44,7 +44,7 @@ import cargame.entities.StartingPoint;
 import cargame.entities.SimpleCarPlayer;
 import cargame.other.Time;
 
-public class CheckEndOfRaceState extends AbstractAppState    {
+public class CheckEndOfRaceState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -63,6 +63,8 @@ public class CheckEndOfRaceState extends AbstractAppState    {
     
     private int currentLap = 0;
     private int maxLaps = 4;
+
+    private boolean cleanedupManual = false;
     
     public CheckEndOfRaceState(CarGame game) {
     	this.game = game;
@@ -87,6 +89,8 @@ public class CheckEndOfRaceState extends AbstractAppState    {
         for(int i=0; i<maxLaps; i++)    {
             lapTimes[i] = 0;
         }
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -108,10 +112,19 @@ public class CheckEndOfRaceState extends AbstractAppState    {
     @Override
     public void render(RenderManager rm) {
     }
+
+    @Override
+    public void cleanupManual() {
+        // cleanup
+        cleanedupManual=true;
+    }
     
     @Override
     public void cleanup() {
         super.cleanup();
-    }
 
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
+    }
 }

@@ -46,7 +46,7 @@ import cargame.entities.SimpleCarPlayer;
 import com.jme3.scene.SceneGraphVisitor;
 import com.jme3.scene.Spatial;
 
-public class BoxCollisionShapeControlState extends AbstractAppState    {
+public class BoxCollisionShapeControlState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -54,6 +54,8 @@ public class BoxCollisionShapeControlState extends AbstractAppState    {
     private Node guiNode;
 
     private CarGame game = null;
+
+    private boolean cleanedupManual = false;
     
     public BoxCollisionShapeControlState(CarGame game) {
     	this.game = game;
@@ -107,6 +109,8 @@ public class BoxCollisionShapeControlState extends AbstractAppState    {
         super.initialize(stateManager, app);
 
         rootNode.breadthFirstTraversal(boxcol_initialize);
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -119,9 +123,19 @@ public class BoxCollisionShapeControlState extends AbstractAppState    {
     }
     
     @Override
+    public void cleanupManual() {
+        // cleanup
+        rootNode.breadthFirstTraversal(boxcol_cleanup);
+        
+        cleanedupManual=true;
+    }
+
+    @Override
     public void cleanup() {
         super.cleanup();
 
-        rootNode.breadthFirstTraversal(boxcol_cleanup);
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }
