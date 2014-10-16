@@ -294,15 +294,19 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         }
 
         // Cleanup check end of race to StateManager here !!!
+        checkEndOfRaceState.cleanupManual();
         game.getStateManager().detach(checkEndOfRaceState);
         
         // Cleanup ThirdPersonCameraState here !!!
+        thirdPersonCameraState.cleanupManual();
         game.getStateManager().detach(thirdPersonCameraState);
 
         // Attach LapTimes state to StateManager here !!!
+        lapTimesState.cleanupManual();
         game.getStateManager().detach(lapTimesState);
 
         // Cleanup BoxCollisionShapeControlState state to StateManager here !!!
+        boxCollisionShapeControlState.cleanupManual();
         game.getStateManager().detach(boxCollisionShapeControlState);
         
         // Cleanup SimpleCarPlayer state to StateManager here !!!

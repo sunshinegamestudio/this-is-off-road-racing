@@ -42,7 +42,7 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 
-public class ThirdPersonCameraState extends AbstractAppState    {
+public class ThirdPersonCameraState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -52,6 +52,8 @@ public class ThirdPersonCameraState extends AbstractAppState    {
     private SimpleCarPlayer player;
     private Node player_node;
     private CarGame game = null;
+
+    private boolean cleanedupManual = false;
     
     public ThirdPersonCameraState(CarGame game) {
     	this.game = game;
@@ -65,6 +67,8 @@ public class ThirdPersonCameraState extends AbstractAppState    {
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -106,9 +110,19 @@ public class ThirdPersonCameraState extends AbstractAppState    {
     @Override
     public void render(RenderManager rm) {
     }
+
+    @Override
+    public void cleanupManual() {
+        // cleanup
+        cleanedupManual=true;
+    }
     
     @Override
     public void cleanup() {
         super.cleanup();
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }

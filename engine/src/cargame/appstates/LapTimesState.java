@@ -44,7 +44,7 @@ import cargame.entities.StartingPoint;
 import cargame.entities.SimpleCarPlayer;
 import cargame.other.Time;
 
-public class LapTimesState extends AbstractAppState    {
+public class LapTimesState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -81,6 +81,8 @@ public class LapTimesState extends AbstractAppState    {
     private Time currentTimeTime;
     // private long lapTimes[];
     private float lapTimes[];
+
+    private boolean cleanedupManual = false;
     
     public LapTimesState(CarGame game) {
     	this.game = game;
@@ -123,6 +125,7 @@ public class LapTimesState extends AbstractAppState    {
          * Temperairy disabled until fixed
          */
 
+        cleanedupManual = false;
     }
 
     public void loadText(){
@@ -228,10 +231,20 @@ public class LapTimesState extends AbstractAppState    {
     @Override
     public void render(RenderManager rm) {
     }
+
+    @Override
+    public void cleanupManual() {
+        // cleanup
+        cleanedupManual=true;
+    }
     
     @Override
     public void cleanup() {
         super.cleanup();
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
     
     public int getCurrentLap()  {
