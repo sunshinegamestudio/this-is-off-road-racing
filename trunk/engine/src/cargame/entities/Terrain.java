@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.entities;
 
+import cargame.appstates.CleanupManualInterface;
 import cargame.core.CarGame;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
@@ -44,11 +45,13 @@ import com.jme3.texture.Texture;
  *
  * @author Vortex
  */
-public class Terrain extends Entity_AppState {
+public class Terrain extends Entity_AppState implements CleanupManualInterface {
     
     private Node terrain;
     private Node terrain_geo;
     private String track;
+
+    private boolean cleanedupManual = false;
 
     public Terrain(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
@@ -125,17 +128,29 @@ public class Terrain extends Entity_AppState {
                 */
                 }
         }
+
+        cleanedupManual = false;
     }
-    
+
     @Override
-    public void cleanup()   {
-        super.cleanup();
-        
+    public void cleanupManual() {
+        // cleanup
         try {
             getPhysicsSpace().removeAll(terrain);
         } catch(NullPointerException e)    {
 
         }
         getParent().detachChild(terrain);
+
+        cleanedupManual=true;
+    }
+    
+    @Override
+    public void cleanup()   {
+        super.cleanup();
+        
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }

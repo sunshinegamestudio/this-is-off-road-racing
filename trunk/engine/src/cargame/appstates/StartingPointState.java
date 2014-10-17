@@ -43,7 +43,7 @@ import cargame.core.CarGame;
 import cargame.entities.StartingPoint;
 import cargame.entities.SimpleCarPlayer;
 
-public class StartingPointState extends AbstractAppState    {
+public class StartingPointState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -57,6 +57,8 @@ public class StartingPointState extends AbstractAppState    {
     
     private boolean isOnStartingPoint = true;
     
+    private boolean cleanedupManual = false;
+
     public StartingPointState(CarGame game) {
     	this.game = game;
 
@@ -72,6 +74,8 @@ public class StartingPointState extends AbstractAppState    {
 
         startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         startingPoint.initialize();
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -89,12 +93,22 @@ public class StartingPointState extends AbstractAppState    {
     @Override
     public void render(RenderManager rm) {
     }
+
+    @Override
+    public void cleanupManual() {
+        // cleanup
+        startingPoint.cleanup();
+
+        cleanedupManual=true;
+    }
     
     @Override
     public void cleanup() {
         super.cleanup();
-        
-        startingPoint.cleanup();
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 
     public boolean checkForNewLap()   {

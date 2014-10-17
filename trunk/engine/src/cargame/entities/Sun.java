@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.entities;
 
+import cargame.appstates.CleanupManualInterface;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
@@ -31,9 +32,11 @@ import com.jme3.scene.Node;
  *
  * @author Vortex
  */
-public class Sun extends Entity_AppState {
+public class Sun extends Entity_AppState implements CleanupManualInterface {
     DirectionalLight sun;
     
+    private boolean cleanedupManual = false;
+
     public Sun(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
@@ -46,12 +49,24 @@ public class Sun extends Entity_AppState {
         sun = new DirectionalLight();
         sun.setDirection(new Vector3f(-0.1f, -0.7f, -1).normalizeLocal());
         getParent().addLight(sun);
+
+        cleanedupManual = false;
     }
 
     @Override
+    public void cleanupManual() {
+        // cleanup
+        getParent().removeLight(sun);
+
+        cleanedupManual=true;
+    }
+    
+    @Override
     public void cleanup()   {
         super.cleanup();
-        
-        getParent().removeLight(sun);
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }
