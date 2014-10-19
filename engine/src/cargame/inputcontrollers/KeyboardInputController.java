@@ -44,7 +44,7 @@ import cargame.entities.SimpleCarPlayer;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
 
-public class KeyboardInputController extends AbstractAppState implements ActionListener{
+public class KeyboardInputController extends AbstractAppState implements ActionListener, CleanupManualInterface {
 
     private CarGame game = null;
     private GameState gamestate;
@@ -64,6 +64,8 @@ public class KeyboardInputController extends AbstractAppState implements ActionL
     private float brake_ana_nv = (-0f * sensitivity);
     private float steer_ana_v = (.1f * sensitivity);
     private float steer_ana_nv = (-.1f * sensitivity);
+
+    private boolean cleanedupManual = false;
 
     public KeyboardInputController(CarGame game) {
     	this.game = game;
@@ -145,6 +147,8 @@ public class KeyboardInputController extends AbstractAppState implements ActionL
         game.getInputManager().addListener(this, "Downs");
         game.getInputManager().addListener(this, "Gears");
         game.getInputManager().addListener(this, "Jumps");
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -157,9 +161,19 @@ public class KeyboardInputController extends AbstractAppState implements ActionL
     }
     
     @Override
+    public void cleanupManual() {
+        // cleanup
+        game.getInputManager().removeListener(this);
+
+        cleanedupManual=true;
+    }
+
+    @Override
     public void cleanup() {
         super.cleanup();
 
-        game.getInputManager().removeListener(this);
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }
