@@ -78,6 +78,7 @@ Add your content here.  Format your content with:
   * Correctly cleanup all object on GameState exit
   * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
+  * Fixed driving controls so that it doesn't "remember" your last action
   * Fixed touch screen controls _(done)_
   * OS X JDK requirement notice in readme.txt (not needed)
 
