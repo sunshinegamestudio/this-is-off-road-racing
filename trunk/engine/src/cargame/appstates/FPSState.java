@@ -42,7 +42,7 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 
-public class FPSState extends AbstractAppState    {
+public class FPSState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -56,6 +56,8 @@ public class FPSState extends AbstractAppState    {
     private BitmapText fpsText;
     private BitmapText menuText;
 
+    private boolean cleanedupManual = false;
+    
     public FPSState(CarGame game) {
     	this.game = game;
 
@@ -81,6 +83,8 @@ public class FPSState extends AbstractAppState    {
         menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
         menuText.setText("Press [M] to go back to the Menu");
         guiNode.attachChild(menuText);
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -96,7 +100,17 @@ public class FPSState extends AbstractAppState    {
     }
     
     @Override
+    public void cleanupManual() {
+        // cleanup
+        cleanedupManual=true;
+    }
+
+    @Override
     public void cleanup() {
         super.cleanup();
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }

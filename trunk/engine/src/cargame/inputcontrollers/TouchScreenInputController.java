@@ -44,7 +44,7 @@ import cargame.entities.SimpleCarPlayer;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
 
-public class TouchScreenInputController extends AbstractAppState implements ActionListener{
+public class TouchScreenInputController extends AbstractAppState implements ActionListener, CleanupManualInterface  {
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
@@ -67,6 +67,8 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     private float brake_ana_nv = (-0f * sensitivity);
     private float steer_ana_v = (.1f * sensitivity);
     private float steer_ana_nv = (-.1f * sensitivity);
+
+    private boolean cleanedupManual = false;
 
     public TouchScreenInputController(CarGame game) {
     	this.game = game;
@@ -161,6 +163,8 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         
         // Initialise/setup input bindings here?
         // ...
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -173,10 +177,20 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     }
     
     @Override
+    public void cleanupManual() {
+        // cleanup
+        game.getGUIViewPort().removeProcessor(niftyDisplay);
+        game.getInputManager().removeListener(this);
+
+        cleanedupManual=true;
+    }
+
+    @Override
     public void cleanup() {
         super.cleanup();
 
-        game.getGUIViewPort().removeProcessor(niftyDisplay);
-        game.getInputManager().removeListener(this);
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }

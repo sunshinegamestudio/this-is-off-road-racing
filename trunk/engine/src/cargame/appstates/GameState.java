@@ -322,14 +322,16 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         game.getStateManager().detach(terrain);
         
         // Cleanup Sun state to StateManager here !!!
-        sun.cleanup();
+        sun.cleanupManual();
         game.getStateManager().detach(sun);
         
         // Cleanup FPSState here !!!
         game.getStateManager().detach(fpsState);
+        fpsState.cleanupManual();
         
         // Cleanup InputListener here.
         if(inputController != null)   {
+            // inputController.cleanupManual();
             game.getStateManager().detach(inputController);
         }
         

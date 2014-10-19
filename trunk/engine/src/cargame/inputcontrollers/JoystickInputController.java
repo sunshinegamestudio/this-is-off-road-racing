@@ -47,7 +47,7 @@ import cargame.entities.SimpleCarPlayer;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
 
-public class JoystickInputController extends AbstractAppState implements AnalogListener{
+public class JoystickInputController extends AbstractAppState implements AnalogListener, CleanupManualInterface {
 
     private CarGame game = null;
     private GameState gamestate;
@@ -68,6 +68,8 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     private float brake_ana_nv = (-0f * sensitivity);
     private float steer_ana_v = (.1f * sensitivity * 16);
     private float steer_ana_nv = (-.1f * sensitivity * 16);
+
+    private boolean cleanedupManual = false;
 
     public JoystickInputController(CarGame game) {
     	this.game = game;
@@ -180,6 +182,8 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                                         "6th axis negative",
                                         "6th axis positive"
                                         );
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -192,9 +196,19 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     }
     
     @Override
+    public void cleanupManual() {
+        // cleanup
+        game.getInputManager().removeListener(this);
+
+        cleanedupManual=true;
+    }
+
+    @Override
     public void cleanup() {
         super.cleanup();
 
-        game.getInputManager().removeListener(this);
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 }
