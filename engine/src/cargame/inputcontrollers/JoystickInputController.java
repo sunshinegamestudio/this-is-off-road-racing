@@ -79,32 +79,32 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
     
-    public void onAnalog(String name, float value, float tpf) {
+    public void onAnalog(String name, float intensity, float tpf) {
         player=gamestate.getPlayer();
         if(player != null)  {
          if (name.equals("RightStick Left")) {
-                    if (value != 0)
-                        { player.steer(steer_ana_v); }
-                    else
-                        { player.steer(steer_ana_nv);}
+                    if (intensity > 0) { 
+                        player.steer(steer_ana_v);
+                    }   else    { 
+                        player.steer(steer_ana_nv); }
             }
             else if (name.equals("RightStick Right")) {
-                    if (value != 0)
-                        { player.steer(-steer_ana_v); }
-                    else
-                        { player.steer(-steer_ana_nv);}
+                    if (intensity > 0) {
+                        player.steer(-steer_ana_v);
+                    }   else    {
+                        player.steer(-steer_ana_nv);}
             }
             else if (name.equals("LeftStick Up")) {
-                    if (value != 0)
-                        { player.accelerate(acceleration_ana_v); }
-                    else
-                        { player.accelerate(acceleration_ana_nv);}
+                    if (intensity > 0) {
+                        player.accelerate(acceleration_ana_v);
+                    }   else    {
+                        player.accelerate(acceleration_ana_nv);  }
             }
             else if (name.equals("LeftStick Down")) {
-                    if (value != 0)
-                        { player.brake(brake_ana_v); }
-                    else
-                        { player.brake(brake_ana_nv);}
+                    if (intensity > 0) {
+                        player.brake(brake_ana_v);
+                    }   else    {
+                        player.brake(brake_ana_nv); }
             }
         }
     }
