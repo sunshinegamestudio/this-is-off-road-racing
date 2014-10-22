@@ -87,25 +87,25 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         player=gamestate.getPlayer();
         if(player != null)  {
             if (name.equals("Lefts")) {
-                if (value)
-                    { player.steer(steer_dig_v);}
-                else
-                    { player.steer(steer_dig_nv);}
+                if (value)  {
+                    player.steer(steer_dig_v);
+                }   else    {
+                    player.steer(steer_dig_nv); }
             } else if (name.equals("Rights")) {
-                if (value)
-                    { player.steer(-steer_dig_v);}
-                else
-                    { player.steer(-steer_dig_nv);}
+                if (value)  {
+                    player.steer(-steer_dig_v);
+                }   else    { 
+                    player.steer(-steer_dig_nv);  }
             } else if (name.equals("Ups")) {
-                if (value)
-                    { player.accelerate(acceleration_dig_v);}
-                else
-                    { player.accelerate(acceleration_dig_nv);}
+                if (value)  {
+                    player.accelerate(acceleration_dig_v);
+                }   else    {
+                    player.accelerate(acceleration_dig_nv); }
             } else if (name.equals("Downs")) {
-                if (value)
-                    { player.brake(brake_dig_v);}
-                else
-                    { player.brake(brake_dig_nv);}
+                if (value)  {
+                    player.brake(brake_dig_v);
+                }   else    {
+                    player.brake(brake_dig_nv);   }
             } else if (name.equals("Gears")) {
                 if (value)  {
                     if(player.getGear()>0)  {
