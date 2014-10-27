@@ -250,6 +250,10 @@ public class SimpleCarPlayer extends Entity_AppState implements CleanupManualInt
         this.steeringValue+=steeringValue;
     }
     
+    public void processSteering()   {
+        vehicle.steer(this.steeringValue);
+    }
+    
     public void steer(float steeringValue)  {
         this.steeringValue+=steeringValue;
         vehicle.steer(this.steeringValue);
@@ -262,6 +266,10 @@ public class SimpleCarPlayer extends Entity_AppState implements CleanupManualInt
         else if (getGear()<0)    {
             this.accelerationValue-=accelerationValue;
         }
+    }
+    
+    public void processAcceleration()   {
+        vehicle.accelerate(this.accelerationValue);
     }
     
     public void accelerate(float accelerationValue)  {
