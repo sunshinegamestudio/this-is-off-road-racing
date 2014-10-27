@@ -80,25 +80,33 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     }
     
     public void onAnalog(String name, float intensity, float tpf) {
+        // this.game.getLogger().log(Level.SEVERE, name + " " + intensity + " " + tpf);
+
         player=gamestate.getPlayer();
         if(player != null)  {
          if (name.equals("RightStick Left")) {
                     if (intensity > 0) { 
-                        player.steer(steer_ana_v);
+                        player.addSteering(steer_ana_v);
                     }   else    { 
-                        player.steer(steer_ana_nv); }
+                        player.addSteering(steer_ana_nv);
+                    }
+                    player.processSteering();
             }
             else if (name.equals("RightStick Right")) {
                     if (intensity > 0) {
-                        player.steer(-steer_ana_v);
+                        player.addSteering(-steer_ana_v);
                     }   else    {
-                        player.steer(-steer_ana_nv);}
+                        player.addSteering(-steer_ana_nv);
+                    }
+                    player.processSteering();
             }
             else if (name.equals("LeftStick Up")) {
                     if (intensity > 0) {
-                        player.accelerate(acceleration_ana_v);
+                        player.addAcceleration(acceleration_ana_v);
                     }   else    {
-                        player.accelerate(acceleration_ana_nv);  }
+                        player.addAcceleration(acceleration_ana_nv);  
+                    }
+                    player.processAcceleration();
             }
             else if (name.equals("LeftStick Down")) {
                     if (intensity > 0) {
