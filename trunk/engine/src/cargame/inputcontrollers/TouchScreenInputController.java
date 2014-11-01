@@ -78,8 +78,8 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
     
-    public void onAction(String name, boolean value, float tpf) {
-        if (!value)
+    public void onAction(String name, boolean isPressed, float tpf) {
+        if (!isPressed)
             return;
         // Load other state
         // game.loadGame("Default");
@@ -87,27 +87,27 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         player=gamestate.getPlayer();
         if(player != null)  {
             if (name.equals("Lefts")) {
-                if (value)  {
+                if (isPressed)  {
                     player.steer(steer_dig_v);
                 }   else    {
                     player.steer(steer_dig_nv); }
             } else if (name.equals("Rights")) {
-                if (value)  {
+                if (isPressed)  {
                     player.steer(-steer_dig_v);
                 }   else    { 
                     player.steer(-steer_dig_nv);  }
             } else if (name.equals("Ups")) {
-                if (value)  {
+                if (isPressed)  {
                     player.accelerate(acceleration_dig_v);
                 }   else    {
                     player.accelerate(acceleration_dig_nv); }
             } else if (name.equals("Downs")) {
-                if (value)  {
+                if (isPressed)  {
                     player.brake(brake_dig_v);
                 }   else    {
                     player.brake(brake_dig_nv);   }
             } else if (name.equals("Gears")) {
-                if (value)  {
+                if (isPressed)  {
                     if(player.getGear()>0)  {
                         player.setGear(-1);
                     }
