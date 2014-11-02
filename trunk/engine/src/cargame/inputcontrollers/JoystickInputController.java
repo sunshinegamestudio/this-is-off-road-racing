@@ -46,8 +46,9 @@ import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
+import com.jme3.input.controls.ActionListener;
 
-public class JoystickInputController extends AbstractAppState implements AnalogListener, CleanupManualInterface {
+public class JoystickInputController extends AbstractAppState implements AnalogListener, ActionListener, CleanupManualInterface {
 
     private CarGame game = null;
     private GameState gamestate;
@@ -80,8 +81,6 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     }
     
     public void onAnalog(String name, float intensity, float tpf) {
-        // this.game.getLogger().log(Level.SEVERE, name + " " + intensity + " " + tpf);
-
         player=gamestate.getPlayer();
         if(player != null)  {
          if (name.equals("RightStick Left")) {
@@ -114,6 +113,27 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                     }   else    {
                         player.brake(brake_ana_nv); }
             }
+        }
+    }
+
+    public void onAction(String name, boolean isPressed, float tpf) {
+        if (name.equals("RightStick Left")) {
+                if (!isPressed) { 
+                    player.addSteering(steer_ana_nv);
+                }
+                player.processSteering();
+        }
+        else if (name.equals("RightStick Right")) {
+                if (!isPressed) {
+                    player.addSteering(-steer_ana_nv);
+                }
+                player.processSteering();
+        }
+        else if (name.equals("Ups")) {
+            if (!isPressed)  {
+                    player.addAcceleration(acceleration_ana_nv);  
+            }
+            player.processAcceleration();
         }
     }
     

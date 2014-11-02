@@ -76,11 +76,6 @@ public class KeyboardInputController extends AbstractAppState implements ActionL
     }
     
     public void onAction(String name, boolean isPressed, float tpf) {
-        if (!isPressed)
-            return;
-        // Load other state
-        // game.loadGame("Default");
-        
         player=gamestate.getPlayer();
         if(player != null)  {
             if (name.equals("Lefts")) {
