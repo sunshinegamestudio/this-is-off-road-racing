@@ -88,25 +88,35 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         if(player != null)  {
             if (name.equals("Lefts")) {
                 if (isPressed)  {
-                    player.steer(steer_dig_v);
+                    player.addSteering(steer_dig_v);
                 }   else    {
-                    player.steer(steer_dig_nv); }
-            } else if (name.equals("Rights")) {
+                    player.addSteering(steer_dig_nv);
+                }
+                player.processSteering();
+            }
+            else if (name.equals("Rights")) {
                 if (isPressed)  {
-                    player.steer(-steer_dig_v);
+                    player.addSteering(-steer_dig_v);
                 }   else    { 
-                    player.steer(-steer_dig_nv);  }
-            } else if (name.equals("Ups")) {
+                    player.addSteering(-steer_dig_nv);
+                }
+                player.processSteering();
+            }
+            else if (name.equals("Ups")) {
                 if (isPressed)  {
-                    player.accelerate(acceleration_dig_v);
+                    player.addAcceleration(acceleration_dig_v);
                 }   else    {
-                    player.accelerate(acceleration_dig_nv); }
-            } else if (name.equals("Downs")) {
+                    player.addAcceleration(acceleration_dig_nv);
+                }
+                player.processAcceleration();
+            }
+            else if (name.equals("Downs")) {
                 if (isPressed)  {
                     player.brake(brake_dig_v);
                 }   else    {
                     player.brake(brake_dig_nv);   }
-            } else if (name.equals("Gears")) {
+            }
+            else if (name.equals("Gears")) {
                 if (isPressed)  {
                     if(player.getGear()>0)  {
                         player.setGear(-1);
@@ -118,7 +128,8 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
                         player.setGear(1);
                     }
                 }
-            } else if (name.equals("Jumps")) {
+            }
+            else if (name.equals("Jumps")) {
                 //player.getNode().jump();
             }
         }
