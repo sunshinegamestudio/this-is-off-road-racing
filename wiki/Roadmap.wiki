@@ -67,6 +67,9 @@ Add your content here.  Format your content with:
   * Fixed removing of lights ( http://hub.jmonkeyengine.org/forum/topic/how-to-destroy-an-appstate-object/ ) _(done)_
 
 *V 0.2.5:*
+  * Select features from V 0.2.6.
+
+*V 0.2.6:*
   * Refactored GameState (multiple AppStates)
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * Add BoxCollisionShapeControl via an AppState _(done)_
@@ -82,13 +85,13 @@ Add your content here.  Format your content with:
   * Fixed touch screen controls _(done)_
   * OS X JDK requirement notice in readme.txt (not needed)
 
-*V 0.2.6:*
+*V 0.2.7:*
   * 1 checkpoint
      * Implement 1 Checkpoint as PassThroughZoneState.
      * Change StartingPointState/StartingPoint to PassThroughZoneState.
   * Exit to main menu when pressing Esc key in GameState
 
-*V 0.2.7:*
+*V 0.2.8:*
   * Basic icon (to start the application)
   * Loading indicator (in track selector)
   * Basic license view screen (from main menu)
@@ -107,7 +110,7 @@ Add your content here.  Format your content with:
      * Improved driving controls
      * Basic Google Play Store page
 
-*V 0.2.8:*
+*V 0.2.9:*
   * Fix the remaining issues
 
 = V 0.3.x =
