@@ -67,22 +67,28 @@ Add your content here.  Format your content with:
   * Fixed removing of lights ( http://hub.jmonkeyengine.org/forum/topic/how-to-destroy-an-appstate-object/ ) _(done)_
 
 *V 0.2.5:*
-  * Select features from V 0.2.6.
-
-*V 0.2.6:*
-  * Refactored GameState (multiple AppStates)
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * Add BoxCollisionShapeControl via an AppState _(done)_
      * Check for user data in an AppState with a SceneGraphVisitor _(done)_
      * Implement VehicleControl CollisionShape as a CapsuleCollisionShape to prevent to have the vehicle get stuck in the BoxCollisionShape (http://hub.jmonkeyengine.org/forum/topic/vehiclecontrol-stuck-in-wall/) _(done)_
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) (partially) _(done)_
+     * Implement detach_manual in GameState->cleanup.
+     * Implement cleanup_manual in GameState->AppStates.
+  * Correctly cleanup all object on GameState exit (partially) _(done)_
+  * Created with jMonkeyEngine on main menu _(done)_
+  * Improved track "Beach Resort" (partially) _(done)_
+  * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
+  * Fixed touch screen controls _(done)_
+
+*V 0.2.6:*
+  * Refactored GameState (multiple AppStates)
   * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ )
      * Implement detach_manual in GameState->cleanup.
      * Implement cleanup_manual in GameState->AppStates.
   * Correctly cleanup all object on GameState exit
-  * Created with jMonkeyEngine on main menu _(done)_
   * Improved track "Beach Resort"
   * Fixed driving controls so that it doesn't "remember" your last action
-  * Fixed touch screen controls _(done)_
   * OS X JDK requirement notice in readme.txt (not needed)
 
 *V 0.2.7:*
