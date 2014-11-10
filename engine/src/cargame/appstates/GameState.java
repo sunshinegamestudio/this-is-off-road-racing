@@ -168,6 +168,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
              */
             //chaseCam = new ChaseCamera(game.getCamera(), player.getNode(), game.getInputManager());
 
+            // game.getInputManager().deleteMapping("SIMPLEAPP_Exit");
             game.getInputManager().addMapping("CARGAME_Exit", new KeyTrigger(KeyInput.KEY_ESCAPE));
             game.getInputManager().addMapping("CARGAME_LoadMenu", new KeyTrigger(KeyInput.KEY_M));
         }
