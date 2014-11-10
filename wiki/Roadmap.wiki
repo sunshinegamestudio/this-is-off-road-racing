@@ -66,7 +66,7 @@ Add your content here.  Format your content with:
   * Refactored GameState (multiple AppStates) (partially) _(done)_
   * Fixed removing of lights ( http://hub.jmonkeyengine.org/forum/topic/how-to-destroy-an-appstate-object/ ) _(done)_
 
-*V 0.2.5:*
+*V 0.2.5:* _(done)_
   * Refactored GameState (multiple AppStates) (partially) _(done)_
   * Fixed laptime counting (laptime+=tpf) _(done)_
   * Add BoxCollisionShapeControl via an AppState _(done)_
