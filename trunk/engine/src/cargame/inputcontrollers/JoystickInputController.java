@@ -47,6 +47,7 @@ import cargame.entities.SimpleCarPlayer;
 import cargame.gui.GameHUDScreenController_Analog;
 import cargame.gui.GameHUDScreenController_Digital;
 import com.jme3.input.controls.ActionListener;
+import com.jme3.input.controls.InputListener;
 
 public class JoystickInputController extends AbstractAppState implements AnalogListener, ActionListener, CleanupManualInterface {
 
@@ -73,7 +74,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
     private boolean cleanedupManual = false;
 
     public JoystickInputController(CarGame game) {
-    	this.game = game;
+        this.game = game;
         gamestate = game.getStateManager().getState(GameState.class);
         player=gamestate.getPlayer();
 
@@ -167,8 +168,6 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
         game.getInputManager().addMapping("Start", new JoyButtonTrigger(0, 7));
         game.getInputManager().addMapping("LStick Click", new JoyButtonTrigger(0, 8));
         game.getInputManager().addMapping("RStick Click", new JoyButtonTrigger(0, 9));
- 
-         
         game.getInputManager().addListener(this,  "DPAD Left",
                                         "DPAD Right",
                                         "DPAD Down",
@@ -185,6 +184,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                                         "LStick Click",
                                         "RStick Click"
                                         );
+        
         game.getInputManager().addMapping("6th axis negative", new JoyAxisTrigger(0, 5, true));
         game.getInputManager().addMapping("6th axis positive", new JoyAxisTrigger(0, 5, false));
         game.getInputManager().addMapping("Trigger R2", new JoyAxisTrigger(0, 4, true));

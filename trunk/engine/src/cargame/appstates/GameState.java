@@ -332,7 +332,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         
         // Cleanup InputListener here.
         if(inputController != null)   {
-            // inputController.cleanupManual();
+            CleanupManualInterface inputControllerCleanupManual = (CleanupManualInterface)inputController;
+            inputControllerCleanupManual.cleanupManual();
             game.getStateManager().detach(inputController);
         }
         
