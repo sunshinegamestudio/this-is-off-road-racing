@@ -83,10 +83,10 @@ Add your content here.  Format your content with:
 
 *V 0.2.6:*
   * Refactored GameState (multiple AppStates)
-  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ )
-     * Implement detach_manual in GameState->cleanup.
-     * Implement cleanup_manual in GameState->AppStates.
-  * Correctly cleanup all object on GameState exit
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) _(done)_
+     * Implement detach_manual in GameState->cleanup. _(done)_
+     * Implement cleanup_manual in GameState->AppStates. _(done)_
+  * Correctly cleanup all object on GameState exit _(done)_
   * Improved track "Beach Resort"
   * Fixed driving controls so that it doesn't "remember" your last action
   * OS X JDK requirement notice in readme.txt (not needed)
