@@ -88,7 +88,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                     if (intensity > 0) { 
                         player.addSteering(steer_ana_v);
                     }   else    { 
-                        player.addSteering(steer_ana_nv);
+                        // player.addSteering(steer_ana_nv);
                     }
                     player.processSteering();
             }
@@ -96,7 +96,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                     if (intensity > 0) {
                         player.addSteering(-steer_ana_v);
                     }   else    {
-                        player.addSteering(-steer_ana_nv);
+                        // player.addSteering(-steer_ana_nv);
                     }
                     player.processSteering();
             }
@@ -104,7 +104,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                     if (intensity > 0) {
                         player.addAcceleration(acceleration_ana_v);
                     }   else    {
-                        player.addAcceleration(acceleration_ana_nv);  
+                        // player.addAcceleration(acceleration_ana_nv);  
                     }
                     player.processAcceleration();
             }
@@ -112,29 +112,30 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                     if (intensity > 0) {
                         player.brake(brake_ana_v);
                     }   else    {
-                        player.brake(brake_ana_nv); }
+                        player.brake(brake_ana_nv);
+                    }
             }
         }
     }
 
     public void onAction(String name, boolean isPressed, float tpf) {
         if (name.equals("RightStick Left")) {
-                if (!isPressed) { 
-                    player.addSteering(steer_ana_nv);
-                }
+            if (!isPressed) { 
+                player.addSteering(steer_ana_nv);
                 player.processSteering();
+            }
         }
         else if (name.equals("RightStick Right")) {
-                if (!isPressed) {
-                    player.addSteering(-steer_ana_nv);
-                }
+            if (!isPressed) {
+                player.addSteering(-steer_ana_nv);
                 player.processSteering();
+            }
         }
         else if (name.equals("Ups")) {
             if (!isPressed)  {
-                    player.addAcceleration(acceleration_ana_nv);  
+                player.addAcceleration(acceleration_ana_nv);  
+                player.processAcceleration();
             }
-            player.processAcceleration();
         }
     }
     
