@@ -131,12 +131,28 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                 player.processSteering();
             }
         }
-        else if (name.equals("Ups")) {
+        // else if (name.equals("Ups")) {
+        else if (name.equals("LeftStick Up")) {
             if (!isPressed)  {
                 player.addAcceleration(acceleration_ana_nv);  
                 player.processAcceleration();
             }
         }
+        /*
+        else if (name.equals("Button X")) {
+            if (isPressed)  {
+                if(player.getGear()>0)  {
+                    player.setGear(-1);
+                }
+                else if(player.getGear()<0)  {
+                    player.setGear(1);
+                }
+                else    {
+                    player.setGear(1);
+                }
+            }
+        }
+        */
     }
     
     @Override
