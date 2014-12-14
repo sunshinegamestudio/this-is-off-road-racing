@@ -246,6 +246,10 @@ public class SimpleCarPlayer extends Entity_AppState implements CleanupManualInt
     // Implement methods steer, accelerat and brake in interface Moveble
     // Derive (implements) Player from interface Moveble
     
+    public void setSteering(float steeringValue)    {
+        this.steeringValue=steeringValue;
+    }
+    
     public void addSteering(float steeringValue)    {
         this.steeringValue+=steeringValue;
     }
@@ -259,6 +263,10 @@ public class SimpleCarPlayer extends Entity_AppState implements CleanupManualInt
         vehicle.steer(this.steeringValue);
     }
 
+    public void setAcceleration(float accelerationValue)    {
+        this.accelerationValue=accelerationValue;
+    }
+    
     public void addAcceleration(float accelerationValue)    {
         if(getGear()>0)  {
             this.accelerationValue+=accelerationValue;
