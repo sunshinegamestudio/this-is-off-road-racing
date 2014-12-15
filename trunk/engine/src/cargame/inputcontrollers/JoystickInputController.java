@@ -86,7 +86,8 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
         if(player != null)  {
          if (name.equals("RightStick Left")) {
                     if (intensity > 0) { 
-                        player.addSteering(steer_ana_v);
+                        player.setSteering(steer_ana_v * intensity * 40000);
+                        // player.addSteering(steer_ana_v);
                     }   else    { 
                         // player.addSteering(steer_ana_nv);
                     }
@@ -94,7 +95,8 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
             }
             else if (name.equals("RightStick Right")) {
                     if (intensity > 0) {
-                        player.addSteering(-steer_ana_v);
+                        player.setSteering(-steer_ana_v * intensity * 40000);
+                        // player.addSteering(-steer_ana_v);
                     }   else    {
                         // player.addSteering(-steer_ana_nv);
                     }
@@ -102,6 +104,7 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
             }
             else if (name.equals("LeftStick Up")) {
                     if (intensity > 0) {
+                        // player.setAcceleration(acceleration_ana_v);
                         player.addAcceleration(acceleration_ana_v);
                     }   else    {
                         // player.addAcceleration(acceleration_ana_nv);  
@@ -141,7 +144,6 @@ public class JoystickInputController extends AbstractAppState implements AnalogL
                 player.processAcceleration();
             }
         }
-        
         else if (name.equals("Button X")) {
             if (isPressed)  {
                 if(player != null)    {
