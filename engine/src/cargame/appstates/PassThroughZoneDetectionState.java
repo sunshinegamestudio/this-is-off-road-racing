@@ -43,7 +43,7 @@ import cargame.core.CarGame;
 import cargame.entities.PassThroughZoneDetection;
 import cargame.entities.SimpleCarPlayer;
 
-public class PassThroughZoneDetectionState extends AbstractAppState    {
+public class PassThroughZoneDetectionState extends AbstractAppState implements CleanupManualInterface   {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -57,6 +57,8 @@ public class PassThroughZoneDetectionState extends AbstractAppState    {
     
     private boolean isOnPassThroughDetectionZone = true;
     
+    private boolean cleanedupManual = false;
+
     public PassThroughZoneDetectionState(CarGame game) {
     	this.game = game;
 
@@ -72,6 +74,8 @@ public class PassThroughZoneDetectionState extends AbstractAppState    {
 
         passThroughZoneDetection = new PassThroughZoneDetection(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera(), "startingpoint_1-ogremesh");
         game.getStateManager().attach(passThroughZoneDetection);
+
+        cleanedupManual = false;
     }
 
     @Override
@@ -96,10 +100,20 @@ public class PassThroughZoneDetectionState extends AbstractAppState    {
     }
     
     @Override
+    public void cleanupManual() {
+        // cleanup
+        game.getStateManager().detach(passThroughZoneDetection);
+
+        cleanedupManual=true;
+    }
+    
+    @Override
     public void cleanup() {
         super.cleanup();
 
-        game.getStateManager().detach(passThroughZoneDetection);
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
 
     public boolean checkForNewLap()   {
