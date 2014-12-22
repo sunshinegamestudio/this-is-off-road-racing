@@ -78,6 +78,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jme3tools.converters.ImageToAwt;
 
+import cargame.appstates.CleanupManualInterface;
 import cargame.controls.PassThroughZoneDetectionControl;
 
 import com.jme3.app.Application;
@@ -89,7 +90,7 @@ import com.jme3.bullet.control.GhostControl;
  *
  * @author Vortex
  */
-public class PassThroughZoneDetection extends Entity_AppState  {
+public class PassThroughZoneDetection extends Entity_AppState   implements CleanupManualInterface   {
 static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.HALF_PI, Vector3f.UNIT_Y);
     //camera
     private Camera cam;
@@ -102,6 +103,8 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
 
     private GhostControl ghostControl;
     private PassThroughZoneDetectionControl passThroughZoneDetectionControl;
+
+    private boolean cleanedupManual = false;
     
     public PassThroughZoneDetection(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam, String geo_name) {
         super(assetManager, parent, physicsSpace);
@@ -144,18 +147,30 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
 
             getPhysicsSpace().addTickListener(passThroughZoneDetectionControl);
             getPhysicsSpace().addCollisionListener(passThroughZoneDetectionControl);
+
+            cleanedupManual = false;
         }
     }
 
     @Override
-    public void cleanup() {
-        super.cleanup();
-        
+    public void cleanupManual() {
+        // cleanup
         getPhysicsSpace().removeTickListener(passThroughZoneDetectionControl);
         getPhysicsSpace().removeCollisionListener(passThroughZoneDetectionControl);
 
         getPhysicsSpace().remove(ghostControl);
         passThroughZone_geo.removeControl(ghostControl);
+        
+        cleanedupManual=true;
+    }
+    
+    @Override
+    public void cleanup() {
+        super.cleanup();
+        
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
     }
     
     public boolean isOnPassThroughDetectionZone()    {
