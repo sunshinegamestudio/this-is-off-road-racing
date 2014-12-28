@@ -102,6 +102,7 @@ public class PassThroughZoneDetectionState extends AbstractAppState implements C
     @Override
     public void cleanupManual() {
         // cleanup
+        passThroughZoneDetection.cleanupManual();
         game.getStateManager().detach(passThroughZoneDetection);
 
         cleanedupManual=true;

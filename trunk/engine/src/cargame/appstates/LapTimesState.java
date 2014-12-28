@@ -53,7 +53,8 @@ public class LapTimesState extends AbstractAppState implements CleanupManualInte
 
     private CarGame game = null;
     
-    private StartingPointState startingPointState;
+    // private StartingPointState passThroughZoneDetectionState = null;
+    private PassThroughZoneDetectionState passThroughZoneDetectionState = null;
 
     private BitmapText fpsText;
     private BitmapText menuText;
@@ -90,7 +91,8 @@ public class LapTimesState extends AbstractAppState implements CleanupManualInte
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
         
-        startingPointState = game.getStateManager().getState(StartingPointState.class);
+        // passThroughZoneDetectionState = game.getStateManager().getState(StartingPointState.class);
+        passThroughZoneDetectionState = game.getStateManager().getState(PassThroughZoneDetectionState.class);
         
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
@@ -180,8 +182,8 @@ public class LapTimesState extends AbstractAppState implements CleanupManualInte
         super.update(tpf);
 
         // Check for new lap
-        if(startingPointState != null)  {
-            newLap = startingPointState.checkForNewLap();
+        if(passThroughZoneDetectionState != null)  {
+            newLap = passThroughZoneDetectionState.checkForNewLap();
 
             if (newLap == true)
             {
