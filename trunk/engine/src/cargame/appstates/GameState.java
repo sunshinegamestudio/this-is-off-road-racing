@@ -91,6 +91,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private FPSState fpsState;
     // private StartingPointState startingPointState;
     private PassThroughZoneDetectionState startingPointState;
+    private PassThroughZoneDetectionState checkPointState;
     private BoxCollisionShapeControlState boxCollisionShapeControlState;
     private LapTimesState lapTimesState;
     private ThirdPersonCameraState thirdPersonCameraState;
