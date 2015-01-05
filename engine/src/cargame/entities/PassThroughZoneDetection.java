@@ -132,6 +132,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
             
             // GhostControl for new lap detection
             BoxCollisionShape boxCollisionShape = new BoxCollisionShape(new Vector3f(5.0f, 5.0f, 5.0f));
+            // BoxCollisionShape boxCollisionShape = new BoxCollisionShape(passThroughZone_geo.getLocalScale());
             //BoxCollisionShape boxCollisionShape = new BoxCollisionShape(new Vector3f(passThroughZone_geo.getWorldBound().getVolume(), passThroughZone_geo.getWorldBound().getVolume(), passThroughZone_geo.getWorldBound().getVolume()));
             ghostControl = new GhostControl(boxCollisionShape);
 
