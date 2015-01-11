@@ -88,6 +88,7 @@ Add your content here.  Format your content with:
      * Implement cleanup_manual in GameState->AppStates. _(done)_
   * Correctly cleanup all object on GameState exit _(done)_
   * Improved track "Beach Resort"
+  * Created a logo for the settings dialog _(done)_
   * Fixed driving controls so that it doesn't "remember" your last action
   * OS X JDK requirement notice in readme.txt (not needed)
 
