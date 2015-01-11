@@ -439,6 +439,7 @@ public class CarGame extends SimpleApplication {
     public static void main(String[] args) {
         AppSettings settings = new AppSettings(true);
         settings.setTitle("This Is Off-Road Racing");
+        settings.setSettingsDialogImage("General/Textures/Interface/logo.png");
         settings.setUseJoysticks(true);
         CarGame app = new CarGame();
         app.setSettings(settings);
