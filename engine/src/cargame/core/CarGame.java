@@ -273,7 +273,15 @@ public class CarGame extends SimpleApplication {
         public void loadResultsMenu_return()    {
             loadMenu(resultsMenuState);
         }
-	
+        
+        public void loadExitMenu()  {
+            
+        }
+
+        public void loadExitMenu_return()  {
+            
+        }
+        
 	private void initControls() {
             // isControlled() API.
             if (getPlatform()=="Android")    {
