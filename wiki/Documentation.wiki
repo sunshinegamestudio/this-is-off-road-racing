@@ -14,6 +14,6 @@ Add your content here.  Format your content with:
 
 Contents:
   * Architecture (MVC?)
-  * GUI
+  * GUI (AppState/Screen/ScreenController)
   * CleanManual
   * InputControllers
