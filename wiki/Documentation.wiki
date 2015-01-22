@@ -17,5 +17,5 @@ Contents:
   * GUI (AppState/Screen/ScreenController)
   * CleanupManual
     * StateManager normal order detach.
-    * Change behaviour to reverse order with CleanupManual.
+    * Change behaviour to reverse order detach with CleanupManual.
   * InputControllers
