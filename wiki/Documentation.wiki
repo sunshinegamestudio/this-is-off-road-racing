@@ -15,5 +15,7 @@ Add your content here.  Format your content with:
 Contents:
   * Architecture (MVC?)
   * GUI (AppState/Screen/ScreenController)
-  * CleanManual
+  * CleanupManual
+    * StateManager normal order detach.
+    * Change behaviour to reverse order with CleanupManual.
   * InputControllers
