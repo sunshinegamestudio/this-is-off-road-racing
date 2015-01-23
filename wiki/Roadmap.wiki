@@ -81,23 +81,30 @@ Add your content here.  Format your content with:
   * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
   * Fixed touch screen controls _(done)_
 
-*V 0.2.6:*
-  * Refactored GameState (multiple AppStates)
-  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) _(done)_
-     * Implement detach_manual in GameState->cleanup. _(done)_
-     * Implement cleanup_manual in GameState->AppStates. _(done)_
-  * Correctly cleanup all object on GameState exit _(done)_
-  * Improved track "Beach Resort"
+*V 0.2.6:* _(done)_
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) (partially) _(done)_
+     * Implement detach_manual in GameState->cleanup. (partially) _(done)_
+     * Implement cleanup_manual in GameState->AppStates. (partially) _(done)_
+  * Correctly cleanup all object on GameState exit (partially) _(done)_
+  * Improved track "Beach Resort" (partially) _(done)_
   * Created a logo for the settings dialog _(done)_
-  * Added an exit screen before exiting game mode
-  * Fixed driving controls so that it doesn't "remember" your last action
-  * OS X JDK requirement notice in readme.txt (not needed)
+  * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
 
 *V 0.2.7:*
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) (partially) _(done)_
+     * Implement detach_manual in GameState->cleanup. (partially) _(done)_
+     * Implement cleanup_manual in GameState->AppStates. (partially) _(done)_
+  * Correctly cleanup all object on GameState exit (partially) _(done)_
   * 1 checkpoint
      * Implement 1 Checkpoint as PassThroughZoneState.
      * Change StartingPointState/StartingPoint to PassThroughZoneState.
-  * Exit to main menu when pressing Esc key in GameState
+  * Added an exit screen before exiting game mode
+  * Improved track "Beach Resort" (partially) _(done)_
+  * Created a logo for the settings dialog _(done)_
+  * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
+  * OS X JDK requirement notice in readme.txt (not needed)
 
 *V 0.2.8:*
   * Basic icon (to start the application)
