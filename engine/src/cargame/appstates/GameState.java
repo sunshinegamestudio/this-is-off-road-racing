@@ -96,6 +96,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private LapTimesState lapTimesState;
     private ThirdPersonCameraState thirdPersonCameraState;
     private CheckEndOfRaceState checkEndOfRaceState;
+    private ExitMenuState exitMenuState;
     
     private PhysicsSpacePrinter physicsSpacePrinter;
     private SceneGraphPrinter sceneGraphPrinter;
