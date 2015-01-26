@@ -60,9 +60,9 @@ import cargame.appstates.GameState;
             System.out.println("onScreenEnd");
         }
 
-        public void start(String controller) {
+        public void start(String exit) {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("start: " + controller);
+            System.out.println("start: " + exit);
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate
@@ -72,7 +72,7 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             
-            CarGame.getApp().loadControllerSelector_return(controller);
+            CarGame.getApp().loadControllerSelector_return(exit);
         }
 
         public void back()  {
