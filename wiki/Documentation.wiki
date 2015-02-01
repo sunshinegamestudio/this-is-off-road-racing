@@ -14,8 +14,10 @@ Add your content here.  Format your content with:
 
 Contents:
   * Architecture (MVC?)
+    * Application (CarGame).
   * GUI (AppState/Screen/ScreenController)
   * CleanupManual
     * StateManager normal order detach.
     * Change behaviour to reverse order detach with CleanupManual.
   * InputControllers
+    * Diffent types of input.
