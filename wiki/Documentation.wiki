@@ -21,3 +21,11 @@ Contents:
     * Change behaviour to reverse order detach with CleanupManual.
   * InputControllers
     * Diffent types of input.
+  * Release procedure
+    * Create tag in SVN.
+    * Update local copy.
+    * Copy dist folder locally.
+    * Rename files.
+    * Edit readme.txt.
+    * Pack readme.txt in archives.
+    * Upload archives.
