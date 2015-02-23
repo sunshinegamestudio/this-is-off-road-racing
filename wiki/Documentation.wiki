@@ -19,8 +19,10 @@ Contents:
   * CleanupManual
     * StateManager normal order detach.
     * Change behaviour to reverse order detach with CleanupManual.
+  * Is...Controlled (deprecated)
+    * All input types in the GameState.
   * InputControllers
-    * Diffent types of input.
+    * All input types in seperate AppStates.
   * Release procedure
     * Create tag in SVN.
     * Update local copy.
