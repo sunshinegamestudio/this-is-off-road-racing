@@ -69,6 +69,17 @@ public class ExitMenuState extends AbstractAppState implements ActionListener{
             return;
         // Load other state
         // game.loadGame("Default");
+        
+        /*
+            if(exit=="Yes")
+            {
+                CarGame.getApp().loadControllerSelector_return(exit);
+            }
+            else
+            {
+                
+            }
+        */
     }
 
     public void start() {

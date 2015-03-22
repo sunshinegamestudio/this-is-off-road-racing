@@ -71,15 +71,8 @@ import cargame.appstates.GameState;
             /*
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
-
-            if(exit=="Yes")
-            {
-                CarGame.getApp().loadControllerSelector_return(exit);
-            }
-            else
-            {
-                
-            }
+            
+            // exitMenuState.action("exit", true, 0);
         }
 
         public void back()  {
