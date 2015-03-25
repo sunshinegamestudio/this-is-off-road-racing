@@ -104,6 +104,7 @@ Add your content here.  Format your content with:
   * Improved track "Beach Resort" (partially) _(done)_
   * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
   * OS X JDK requirement notice in readme.txt (not needed)
+  * Move away from GoogleCode to ...
 
 *V 0.2.8:*
   * Basic icon (to start the application)
