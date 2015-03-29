@@ -53,7 +53,7 @@ import com.jme3.texture.Texture.WrapMode;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class SimpleCarPlayer extends Entity_AppState implements CleanupManualInterface  {
     private boolean cleanedupManual = false;

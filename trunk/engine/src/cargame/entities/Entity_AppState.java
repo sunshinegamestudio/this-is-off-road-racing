@@ -36,7 +36,7 @@ import com.jme3.scene.Spatial;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Entity_AppState extends AbstractAppState {
     private AssetManager assetManager;

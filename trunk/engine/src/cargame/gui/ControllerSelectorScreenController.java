@@ -32,7 +32,7 @@ import cargame.appstates.GameState;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
     public class ControllerSelectorScreenController implements ScreenController   {
         private Screen screen;

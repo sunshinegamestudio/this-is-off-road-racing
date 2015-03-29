@@ -31,7 +31,7 @@ import com.jme3.input.controls.ActionListener;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
     public class GameHUDScreenController_Digital implements ScreenController   {
         private float accelerate;

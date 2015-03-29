@@ -24,7 +24,7 @@ import cargame.highscores.HighScore;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class HighScores {
 

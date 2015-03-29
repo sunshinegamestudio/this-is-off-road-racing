@@ -33,7 +33,7 @@ import com.jme3.scene.Spatial;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Entity {
     private AssetManager assetManager;
