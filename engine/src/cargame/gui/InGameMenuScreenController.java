@@ -29,7 +29,7 @@ import cargame.appstates.GameState;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
     public class InGameMenuScreenController implements ScreenController   {
         public void MainMenuScreenController()  {

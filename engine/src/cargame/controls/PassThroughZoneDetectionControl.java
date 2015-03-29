@@ -27,7 +27,7 @@ import com.jme3.math.Vector3f;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class PassThroughZoneDetectionControl extends GhostControl implements PhysicsTickListener, PhysicsCollisionListener   {
     private PhysicsSpace physicsSpace;

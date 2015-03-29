@@ -44,7 +44,7 @@ import jme3tools.converters.ImageToAwt;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Sky extends Entity {
     public Sky(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {

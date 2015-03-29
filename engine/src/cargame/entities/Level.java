@@ -43,7 +43,7 @@ import jme3tools.converters.ImageToAwt;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Level extends Entity {
     //terrain

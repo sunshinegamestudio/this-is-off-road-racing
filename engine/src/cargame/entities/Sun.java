@@ -30,7 +30,7 @@ import com.jme3.scene.Node;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Sun extends Entity_AppState implements CleanupManualInterface {
     DirectionalLight sun;

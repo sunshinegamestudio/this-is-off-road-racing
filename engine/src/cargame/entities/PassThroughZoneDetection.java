@@ -88,7 +88,7 @@ import com.jme3.bullet.control.GhostControl;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class PassThroughZoneDetection extends Entity_AppState   implements CleanupManualInterface   {
 static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.HALF_PI, Vector3f.UNIT_Y);

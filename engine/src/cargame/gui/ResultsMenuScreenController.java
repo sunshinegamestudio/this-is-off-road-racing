@@ -31,7 +31,7 @@ import cargame.other.Time;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
     public class ResultsMenuScreenController implements ScreenController   {
         private Screen screen;

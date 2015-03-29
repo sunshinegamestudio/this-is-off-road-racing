@@ -20,7 +20,7 @@ package cargame.highscores;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class HighScore {
     private int time;

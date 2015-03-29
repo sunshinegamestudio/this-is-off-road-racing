@@ -44,7 +44,7 @@ import jme3tools.converters.ImageToAwt;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Terrain_node extends Entity {
     //terrain

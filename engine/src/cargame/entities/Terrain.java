@@ -43,7 +43,7 @@ import com.jme3.texture.Texture;
 
 /**
  *
- * @author Vortex
+ * @author Sunshine GameStudio
  */
 public class Terrain extends Entity_AppState implements CleanupManualInterface {
     
