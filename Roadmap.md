@@ -1,0 +1,136 @@
+# Introduction #
+
+This is the roadmap for This Is Off-Road Racing.
+
+# Details #
+
+Add your content here.  Format your content with:
+  * Text in **bold** or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+# V 0.1.x #
+
+**V 0.1.0:**
+  * Create community project (GoogleCode)
+  * Repository
+    * Source code
+    * Tags
+  * Wiki _(done)_
+    * Roadmap
+  * Issue tracker
+  * Releases
+
+# V 0.2.x #
+
+**V 0.2.0:** _(done)_
+  * Basic track selector
+  * Basic track
+    * Create hill to force to drive a lap
+    * Replace jME terrain texture with own terrain texture
+  * Basic driving
+  * Basic Android support
+    * Basic driving controls
+
+**V 0.2.1:** _(done)_
+  * Basic current/fastest laptime calculation _(done)_
+    * Rename LevelExitControl to ZonePassThroughDetectionControl _(done)_
+    * Display the time in hours/minutes/seconds/miliseconds _(done)_
+  * Basic car _(done)_
+  * Improved Android support _(done)_
+    * Basic terrain _(done)_
+
+**V 0.2.2:** _(done)_
+  * Basic license acceptance screen (start)
+  * Improved tracks
+    * Grass Hill
+      * Created level boundaries with raised terrain borders
+  * Improved car
+    * Add wheels
+  * Improved Android support
+    * Improved driving controls
+      * Improved analog driving controls
+    * Only use unshaded material for Android
+      * Replace terrain lightning material with unshaded material
+
+**V 0.2.3:** _(done)_
+  * Basic results screen (after race) _(done)_
+  * Basic application title _(done)_
+  * Lighting materials for car _(done)_
+  * Refactoring _(done)_
+
+**V 0.2.4:** _(done)_
+  * Joystick/gamepad support _(done)_
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
+  * Fixed removing of lights ( http://hub.jmonkeyengine.org/forum/topic/how-to-destroy-an-appstate-object/ ) _(done)_
+
+**V 0.2.5:** _(done)_
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
+  * Fixed laptime counting (laptime+=tpf) _(done)_
+  * Add BoxCollisionShapeControl via an AppState _(done)_
+    * Check for user data in an AppState with a SceneGraphVisitor _(done)_
+    * Implement VehicleControl CollisionShape as a CapsuleCollisionShape to prevent to have the vehicle get stuck in the BoxCollisionShape (http://hub.jmonkeyengine.org/forum/topic/vehiclecontrol-stuck-in-wall/) _(done)_
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) (partially) _(done)_
+    * Implement detach\_manual in GameState->cleanup.
+    * Implement cleanup\_manual in GameState->AppStates.
+  * Correctly cleanup all object on GameState exit (partially) _(done)_
+  * Created with jMonkeyEngine on main menu _(done)_
+  * Improved track "Beach Resort" (partially) _(done)_
+  * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
+  * Fixed touch screen controls _(done)_
+
+**V 0.2.6:** _(done)_
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) (partially) _(done)_
+    * Implement detach\_manual in GameState->cleanup. (partially) _(done)_
+    * Implement cleanup\_manual in GameState->AppStates. (partially) _(done)_
+  * Correctly cleanup all object on GameState exit (partially) _(done)_
+  * Improved track "Beach Resort" (partially) _(done)_
+  * Created a logo for the settings dialog _(done)_
+  * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
+
+**V 0.2.7:**
+  * Refactored GameState (multiple AppStates) (partially) _(done)_
+  * Cleanup all GameState child AppStates in reverse order ( http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/ ) (partially) _(done)_
+    * Implement detach\_manual in GameState->cleanup. (partially) _(done)_
+    * Implement cleanup\_manual in GameState->AppStates. (partially) _(done)_
+  * Correctly cleanup all object on GameState exit (partially) _(done)_
+  * 1 checkpoint
+    * Implement 1 Checkpoint as PassThroughZoneState.
+    * Change StartingPointState/StartingPoint to PassThroughZoneState.
+  * Added an exit screen before exiting game mode
+  * Improved track "Beach Resort" (partially) _(done)_
+  * Fixed driving controls so that it doesn't "remember" your last action (partially) _(done)_
+  * OS X JDK requirement notice in readme.txt (not needed)
+  * Move away from GoogleCode to ...
+
+**V 0.2.8:**
+  * Basic icon (to start the application)
+  * Loading indicator (in track selector)
+  * Basic license view screen (from main menu)
+  * Change the license in the source files from ... to Sunshine GameStudio (This is off road racing)
+  * Change the license in the source files from ... to Sunshine GameStudio (all projects)
+  * Basic logging
+    * Initialisation
+    * Video card capabilities
+    * AppState creation/attaching/detachting
+  * Improved car
+    * Add car model
+  * Load/save fastest laptime
+  * Fix the remaining issues
+    * The gamestate switching doesn't work correct (ID: sqeeck-save-the-beavies -> 2)
+  * Improved Android support
+    * Improved driving controls
+    * Basic Google Play Store page
+
+**V 0.2.9:**
+  * Fix the remaining issues
+
+# V 0.3.x #
+
+**V 0.3.0:**
+  * To be defined.
+
+
+
+The content of the releases is subject to change and can be changed without notice.
