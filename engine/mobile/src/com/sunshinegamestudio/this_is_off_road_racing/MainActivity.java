@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import com.jme3.app.AndroidHarnessFragment;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
+import cargame.core.CarGame;
  
 public class MainActivity extends Activity {
     /*
@@ -40,6 +41,8 @@ public class MainActivity extends Activity {
  
         // uncomment the next line to add the default android profiler to the project
         //jmeFragment.getJmeApplication().setAppProfiler(new DefaultAndroidProfiler());
+
+        CarGame.getApp().setAndroidApiLevel_System(android.os.Build.VERSION.SDK_INT);
     }
  
  
