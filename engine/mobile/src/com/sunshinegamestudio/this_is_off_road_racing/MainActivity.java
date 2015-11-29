@@ -69,7 +69,8 @@ public class MainActivity extends Activity {
             maxResolutionDimension = -1;
  
             // Set input configuration settings
-            joystickEventsEnabled = false;
+            // joystickEventsEnabled = false;
+            joystickEventsEnabled = true;
             keyEventsEnabled = true;
             mouseEventsEnabled = true;
  
@@ -84,6 +85,28 @@ public class MainActivity extends Activity {
             // For example, if the image file name is "splash"...
             //     splashPicID = R.drawable.splash;
             splashPicID = 0;
+
+            /* Migrate this at a later stage !!!
+            // Set the application class to run
+            appClass = "cargame.core.CarGame";
+            // Try ConfigType.FASTEST; or ConfigType.LEGACY if you have problems
+            eglConfigType = ConfigType.BEST;
+            // Exit Dialog title & message
+            exitDialogTitle = "Exit?";
+            exitDialogMessage = "Press Yes";
+            // Enable verbose logging
+            eglConfigVerboseLogging = false;
+            // Choose screen orientation
+            screenOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+            // Invert the MouseEvents X (default = true)
+            // mouseEventsInvertX = true;
+            mouseEventsInvertX = false;
+            // Invert the MouseEvents Y (default = true)
+            // mouseEventsInvertY = true;
+            mouseEventsInvertY = false;
+            // Disable texture compression to avoid black textures
+            TextureUtil.ENABLE_COMPRESSION = false;
+            */
         }
     }
 }
