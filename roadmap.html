@@ -174,16 +174,6 @@
 <ul>
 <li>V 0.2.8:**</li></ul></li></ul>
 <pre>
- * Move away from GoogleCode to ...
-   * Check GoogleCode
-   * Migrate wiki branches to gh-pages branches (all projects)
-     * Pool Palace
-     * Sqeeck save the beavies
-     * This is off road racing
-   * Change links (all projects)
-     * Gh-pages
-     * Readme
-     * Splash screen
  * Upgrade to jME 3.1
    * Make audio/OpenAL problem notice in readme
    * Recreate project
@@ -194,8 +184,10 @@
      * Windowed mode is not working (only full screen).
      * Mouse pointer goes only half off the screen (y-axis):
        * Create a temporary menuitem to start the game. _(done)_
+     * MainMenu gives an exception while loading (Android):
+       * Probally due to new location of license (strange characters in URL (&...)).
  * Fix terrain on Android
-   * Create test project
+   * Create test project _(done)_
    * Disable unneeded code
    * Remove unneeded code
 
@@ -206,6 +198,16 @@
 <ul>
 <li>V 0.2.9:**</li></ul></li></ul>
 <pre>
+ * Move away from GoogleCode to ...
+   * Check GoogleCode
+   * Migrate wiki branches to gh-pages branches (all projects)
+     * Pool Palace
+     * Sqeeck save the beavies
+     * This is off road racing
+   * Change links (all projects)
+     * Gh-pages
+     * Readme
+     * Splash screen
  * Refactored GameState (multiple AppStates) (partially) _(done)_
  * Cleanup all GameState child AppStates in reverse order ( <a class="externallink" href="http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/" rel="nofollow" title="http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/">http://hub.jmonkeyengine.org/forum/topic/appstatemanager-cleanup-order/</a> ) (partially) _(done)_
    * Implement detach\_manual in GameState-&#62;cleanup. (partially) _(done)_
