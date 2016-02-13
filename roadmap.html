@@ -180,12 +180,13 @@
      * Android
        * Set API level to Android 4.1 (OpenAL audio renderer + fragment support + joystick/gamepad support) _(done)_
    * Solve the remaining issues
-     * Windowed mode is not working (only full screen) (desktop).
+     * Windowed mode is not working from SDK (only full screen) (probally application specific) (desktop).
        * Windows:
          * Workstation: not ok.
+         * System P: unknown.
        * OS X:
-         * Desktop: ok.
-       * Linux: unknown.
+         * Desktop: unknown.
+       * Linux:
          * No system available: unknown.
      * Mouse pointer goes only half off the screen (y-axis) (desktop):
        * Create a temporary menuitem to start the game. _(done)_
@@ -197,6 +198,7 @@
    * Create test project _(done)_
    * Disable unneeded code
    * Remove unneeded code
+ * Add an exit screen before exiting game mode
 
 
 </pre>
@@ -223,7 +225,6 @@
  * 1 checkpoint
    * Implement 1 Checkpoint as PassThroughZoneState.
    * Change StartingPointState/StartingPoint to PassThroughZoneState.
- * Added an exit screen before exiting game mode
  * Improved track &#34;Beach Resort&#34; (partially) _(done)_
  * Fixed driving controls so that it doesn&#39;t &#34;remember&#34; your last action (partially) _(done)_
  * OS X JDK requirement notice in readme.txt (not needed)
