@@ -159,8 +159,16 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
         getPhysicsSpace().removeTickListener(passThroughZoneDetectionControl);
         getPhysicsSpace().removeCollisionListener(passThroughZoneDetectionControl);
 
-        getPhysicsSpace().remove(ghostControl);
-        passThroughZone_geo.removeControl(ghostControl);
+        try {
+            getPhysicsSpace().remove(ghostControl);
+        }
+        catch(Exception e)  {
+        }
+        try {
+            passThroughZone_geo.removeControl(ghostControl);
+        }
+        catch(Exception e)  {
+        }
         
         cleanedupManual=true;
     }
