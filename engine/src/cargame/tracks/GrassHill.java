@@ -42,6 +42,9 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
+import com.jme3.scene.Spatial;
+import com.jme3.texture.Texture;
+import com.jme3.util.SkyFactory;
 
 public class GrassHill extends AbstractAppState implements CleanupManualInterface    {
 
@@ -72,19 +75,10 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
         
-        guiFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        fpsText = new BitmapText(guiFont, false);
-        fpsText.setSize(guiFont.getCharSet().getRenderedSize());
-        fpsText.setLocalTranslation(0, fpsText.getLineHeight(), 0);
-        //fpsText.setText("Frames per second");
-        guiNode.attachChild(fpsText);
+        createSkybox();
+        createTerrain();
+        createStartingPoint();
         
-        menuText = new BitmapText(guiFont, false);
-        menuText.setSize(guiFont.getCharSet().getRenderedSize());
-        menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
-        menuText.setText("Press [M] to go back to the Menu");
-        guiNode.attachChild(menuText);
-
         cleanedupManual = false;
     }
 
@@ -113,5 +107,60 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         if(cleanedupManual == false) {
             cleanupManual();
         }
+    }
+    
+    private void createSkybox()  {
+        /*
+        Texture west = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_west.jpg");
+        Texture east = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_east.jpg");
+        Texture north = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_north.jpg");
+        Texture south = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_south.jpg");
+        Texture up = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_up.jpg");
+        Texture down = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_down.jpg");
+
+        Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+        rootNode.attachChild(sky);
+        */
+    }
+
+    private void createTerrain() {
+        /*
+        // 1. Create terrain material and load four textures into it.
+        mat_terrain = new Material(assetManager, 
+            "Common/MatDefs/Terrain/Terrain.j3md");
+
+        // 1.2) Add GRASS texture into the red layer (Tex1).
+        Texture grass = assetManager.loadTexture(
+            "Textures/Terrain/splat/grass.jpg");
+        grass.setWrap(WrapMode.Repeat);
+        mat_terrain.setTexture("Tex1", grass);
+        mat_terrain.setFloat("Tex1Scale", 64f);
+
+        // 2. Create the height map
+        AbstractHeightMap heightmap = null;
+        Texture heightMapImage = assetManager.loadTexture(
+                "Textures/Terrain/splat/mountains512.png");
+        heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
+        heightmap.load();
+
+        // 2. Create the height map
+        AbstractHeightMap heightmap = null;
+        Texture heightMapImage = assetManager.loadTexture(
+                "Textures/Terrain/splat/mountains512.png");
+        heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
+        heightmap.load();
+        
+        quad.addControl(new RigidBodyControl(new HeightfieldCollisionShape(quad.getHeightMap(), terrain.getLocalScale()), 0));
+        bulletAppState.getPhysicsSpace().add(quad);
+
+
+        LoadHeightmap;
+        CreateTerrain;
+        SetTranslation;
+        CreatePhysics;
+        */
+    }
+
+    private void createStartingPoint() {
     }
 }
