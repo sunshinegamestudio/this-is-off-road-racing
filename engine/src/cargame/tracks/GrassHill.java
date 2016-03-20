@@ -42,6 +42,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
+import com.jme3.light.DirectionalLight;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
@@ -78,6 +79,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         createSkybox();
         createTerrain();
         createStartingPoint();
+        createLight();
         
         cleanedupManual = false;
     }
@@ -111,14 +113,14 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     
     private void createSkybox()  {
         /*
-        Texture west = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_west.jpg");
-        Texture east = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_east.jpg");
-        Texture north = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_north.jpg");
-        Texture south = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_south.jpg");
-        Texture up = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_up.jpg");
-        Texture down = assetManager.loadTexture("Textures/Sky/Lagoon/lagoon_down.jpg");
-
-        Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+        Texture west = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_w.jpg");
+        Texture east = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_e.jpg");
+        Texture north = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_n.jpg");
+        Texture south = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_s.jpg");
+        Texture top = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_t.jpg");
+        Texture bottom = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_b.jpg");
+        
+        Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, top, bottom);
         rootNode.attachChild(sky);
         */
     }
@@ -131,7 +133,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
 
         // 1.2) Add GRASS texture into the red layer (Tex1).
         Texture grass = assetManager.loadTexture(
-            "Textures/Terrain/splat/grass.jpg");
+            "Grass Hill/Textures/Terrain/simple/grass.jpg");
         grass.setWrap(WrapMode.Repeat);
         mat_terrain.setTexture("Tex1", grass);
         mat_terrain.setFloat("Tex1Scale", 64f);
@@ -139,14 +141,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         // 2. Create the height map
         AbstractHeightMap heightmap = null;
         Texture heightMapImage = assetManager.loadTexture(
-                "Textures/Terrain/splat/mountains512.png");
-        heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
-        heightmap.load();
-
-        // 2. Create the height map
-        AbstractHeightMap heightmap = null;
-        Texture heightMapImage = assetManager.loadTexture(
-                "Textures/Terrain/splat/mountains512.png");
+                "Grass Hill/Textures/Terrain/splat/mountains512.png");
         heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
         heightmap.load();
         
@@ -162,5 +157,16 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     }
 
     private void createStartingPoint() {
+        /*
+        Spatial startingpoint = assetManager.loadModel("Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
+        rootNode.attachChild(startingpoint);
+        */
+    }
+    
+    private void createLight()  {
+        // You must add a light to make the model visible
+        DirectionalLight sun = new DirectionalLight();
+        sun.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f));
+        rootNode.addLight(sun);
     }
 }
