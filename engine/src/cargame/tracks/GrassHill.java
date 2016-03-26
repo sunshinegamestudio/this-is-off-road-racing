@@ -42,9 +42,19 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
+import com.jme3.asset.AssetManager;
+import com.jme3.bullet.PhysicsSpace;
+import com.jme3.bullet.collision.shapes.HeightfieldCollisionShape;
+import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.light.DirectionalLight;
+import com.jme3.material.Material;
 import com.jme3.scene.Spatial;
+import com.jme3.terrain.Terrain;
+import com.jme3.terrain.geomipmap.TerrainQuad;
+import com.jme3.terrain.heightmap.AbstractHeightMap;
+import com.jme3.terrain.heightmap.ImageBasedHeightMap;
 import com.jme3.texture.Texture;
+import com.jme3.texture.Texture.WrapMode;
 import com.jme3.util.SkyFactory;
 
 public class GrassHill extends AbstractAppState implements CleanupManualInterface    {
@@ -54,20 +64,26 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     // protected Node guiNode = new Node("Gui Node");
     private Node guiNode;
 
-    private SimpleCarPlayer player;
     private CarGame game = null;
-
-    private BitmapFont guiFont;
-    private BitmapText fpsText;
-    private BitmapText menuText;
+    private AssetManager assetManager = null;
+    private Node parent = null;
+    private PhysicsSpace physicsSpace;
+    
+    private Material mat_terrain;
 
     private boolean cleanedupManual = false;
+    private TerrainQuad terrain;
     
-    public GrassHill(CarGame game) {
+    public GrassHill(CarGame game, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
     	this.game = game;
+        this.assetManager = assetManager;
+        this.parent = parent;
+        this.physicsSpace = physicsSpace;
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
+        
+        
         
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
@@ -87,9 +103,6 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     @Override
     public void update(float tpf) {
         super.update(tpf);
-
-        int fps = (int) game.getTimer().getFrameRate();
-        fpsText.setText("Frames per second: "+fps);
     }
     
     @Override
@@ -112,7 +125,6 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     }
     
     private void createSkybox()  {
-        /*
         Texture west = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_w.jpg");
         Texture east = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_e.jpg");
         Texture north = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_n.jpg");
@@ -121,12 +133,10 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         Texture bottom = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_b.jpg");
         
         Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, top, bottom);
-        rootNode.attachChild(sky);
-        */
+        parent.attachChild(sky);
     }
 
     private void createTerrain() {
-        /*
         // 1. Create terrain material and load four textures into it.
         mat_terrain = new Material(assetManager, 
             "Common/MatDefs/Terrain/Terrain.j3md");
@@ -145,26 +155,27 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
         heightmap.load();
         
-        quad.addControl(new RigidBodyControl(new HeightfieldCollisionShape(quad.getHeightMap(), terrain.getLocalScale()), 0));
-        bulletAppState.getPhysicsSpace().add(quad);
-
-
-        LoadHeightmap;
-        CreateTerrain;
-        SetTranslation;
-        CreatePhysics;
-        */
+        int patchSize = 65;
+        terrain = new TerrainQuad("my terrain", patchSize, 513, heightmap.getHeightMap());
+ 
+        /** 4. We give the terrain its material, position & scale it, and attach it. */
+        terrain.setMaterial(mat_terrain);
+        // terrain.setLocalTranslation(0, -100, 0);
+        // terrain.setLocalScale(2f, 1f, 2f);
+        parent.attachChild(terrain);        
+        
+        terrain.addControl(new RigidBodyControl(new HeightfieldCollisionShape(terrain.getHeightMap(), terrain.getLocalScale()), 0));
+        physicsSpace.add(terrain);
     }
 
     private void createStartingPoint() {
-        /*
         Spatial startingpoint = assetManager.loadModel("Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
-        rootNode.attachChild(startingpoint);
-        */
+        parent.attachChild(startingpoint);
     }
     
     private void createLight()  {
         // You must add a light to make the model visible
         // Create sun (DirectionalLight) here
+        // For now in GameState
     }
 }
