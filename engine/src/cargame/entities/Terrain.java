@@ -20,6 +20,7 @@ package cargame.entities;
 
 import cargame.appstates.CleanupManualInterface;
 import cargame.core.CarGame;
+import cargame.tracks.GrassHill;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
@@ -47,15 +48,20 @@ import com.jme3.texture.Texture;
  */
 public class Terrain extends Entity_AppState implements CleanupManualInterface {
     
+    private CarGame game;
+    private AppStateManager stateManager;
     private Node terrain;
     private Node terrain_geo;
     private String track;
+    private GrassHill grassHill;
 
     private boolean cleanedupManual = false;
 
     public Terrain(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
+        this.game = CarGame.getApp();
+        this.stateManager = game.getStateManager();
         this.track = track;
     }
 
@@ -92,18 +98,25 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         //}
         
         // Load selected track
-        terrain = (Node) getAssetManager().loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
-      
-        terrain.setLocalTranslation(new Vector3f(0,-1,10));
-        terrain.updateGeometricState();
+        if (track.matches("Grass Hill"))    {
+            grassHill = new GrassHill(game, super.getAssetManager(), super.getParent(), super.getPhysicsSpace());
+            stateManager.attach(grassHill);
+            
+        }
+        else    {
+            terrain = (Node) getAssetManager().loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
 
-        //Material mat3 = new Material(assetManager, "Common/MatDefs/Misc/WireColor.j3md");
-        //Material mat3 = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        //mat3.setColor("m_Color", ColorRGBA.Red);
-        //terrain.attachDebugShape(mat3);
+            terrain.setLocalTranslation(new Vector3f(0,-1,10));
+            terrain.updateGeometricState();
 
-        getParent().attachChild(terrain);
-        getPhysicsSpace().addAll(terrain);
+            //Material mat3 = new Material(assetManager, "Common/MatDefs/Misc/WireColor.j3md");
+            //Material mat3 = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+            //mat3.setColor("m_Color", ColorRGBA.Red);
+            //terrain.attachDebugShape(mat3);
+
+            getParent().attachChild(terrain);
+            getPhysicsSpace().addAll(terrain);
+        }
 
         if (CarGame.getApp().getPlatform()=="Android")  {
             terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
@@ -135,12 +148,18 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
     @Override
     public void cleanupManual() {
         // cleanup
-        try {
-            getPhysicsSpace().removeAll(terrain);
-        } catch(NullPointerException e)    {
-
+        if (track.matches("Grass Hill"))    {
+            grassHill.cleanupManual();
+            stateManager.detach(grassHill);
         }
-        getParent().detachChild(terrain);
+        else    {
+            try {
+                getPhysicsSpace().removeAll(terrain);
+            } catch(NullPointerException e)    {
+
+            }
+            getParent().detachChild(terrain);
+        }
 
         cleanedupManual=true;
     }

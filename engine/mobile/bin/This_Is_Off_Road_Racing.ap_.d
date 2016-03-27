@@ -260,6 +260,7 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Sky\Bright_2\bright_1_w.jpg \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain\simple \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain\splat \
+H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain\simple\flat.png \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain\simple\grass.jpg \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain\splat\alphamap.png \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain\splat\dirt.jpg \

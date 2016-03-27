@@ -43,14 +43,18 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 import com.jme3.asset.AssetManager;
+import com.jme3.bounding.BoundingBox;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.bullet.collision.shapes.HeightfieldCollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
+import com.jme3.renderer.Camera;
 import com.jme3.scene.Spatial;
 import com.jme3.terrain.Terrain;
+import com.jme3.terrain.geomipmap.TerrainLodControl;
 import com.jme3.terrain.geomipmap.TerrainQuad;
+import com.jme3.terrain.geomipmap.lodcalc.DistanceLodCalculator;
 import com.jme3.terrain.heightmap.AbstractHeightMap;
 import com.jme3.terrain.heightmap.ImageBasedHeightMap;
 import com.jme3.texture.Texture;
@@ -68,6 +72,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     private AssetManager assetManager = null;
     private Node parent = null;
     private PhysicsSpace physicsSpace;
+    private Camera camera;
     
     private Material mat_terrain;
 
@@ -79,11 +84,10 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         this.assetManager = assetManager;
         this.parent = parent;
         this.physicsSpace = physicsSpace;
+        this.camera = game.getCamera();
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
-        
-        
         
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
@@ -125,12 +129,12 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     }
     
     private void createSkybox()  {
-        Texture west = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_w.jpg");
-        Texture east = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_e.jpg");
-        Texture north = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_n.jpg");
-        Texture south = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_s.jpg");
-        Texture top = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_t.jpg");
-        Texture bottom = assetManager.loadTexture("Tracks/Grass Hill/Textures/Bright_2/bright_1_b.jpg");
+        Texture west = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_w.jpg");
+        Texture east = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_e.jpg");
+        Texture north = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_n.jpg");
+        Texture south = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_s.jpg");
+        Texture top = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_t.jpg");
+        Texture bottom = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_b.jpg");
         
         Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, top, bottom);
         parent.attachChild(sky);
@@ -143,21 +147,29 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
 
         // 1.2) Add GRASS texture into the red layer (Tex1).
         Texture grass = assetManager.loadTexture(
-            "Grass Hill/Textures/Terrain/simple/grass.jpg");
+            "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
         grass.setWrap(WrapMode.Repeat);
         mat_terrain.setTexture("Tex1", grass);
         mat_terrain.setFloat("Tex1Scale", 64f);
 
         // 2. Create the height map
         AbstractHeightMap heightmap = null;
+        // Texture heightMapImage = assetManager.loadTexture(
+                // "Tracks/Grass Hill/Textures/Terrain/splat/mountains512.png");
         Texture heightMapImage = assetManager.loadTexture(
-                "Grass Hill/Textures/Terrain/splat/mountains512.png");
+                "Tracks/Grass Hill/Textures/Terrain/simple/flat.png");
         heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
         heightmap.load();
         
         int patchSize = 65;
         terrain = new TerrainQuad("my terrain", patchSize, 513, heightmap.getHeightMap());
  
+        TerrainLodControl control = new TerrainLodControl(terrain, camera);
+        control.setLodCalculator( new DistanceLodCalculator(65, 2.7f) ); // patch size, and a multiplier
+        terrain.addControl(control);
+        terrain.setModelBound(new BoundingBox());
+        terrain.updateModelBound();
+        
         /** 4. We give the terrain its material, position & scale it, and attach it. */
         terrain.setMaterial(mat_terrain);
         // terrain.setLocalTranslation(0, -100, 0);
@@ -169,7 +181,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     }
 
     private void createStartingPoint() {
-        Spatial startingpoint = assetManager.loadModel("Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
+        Spatial startingpoint = assetManager.loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
         parent.attachChild(startingpoint);
     }
     
