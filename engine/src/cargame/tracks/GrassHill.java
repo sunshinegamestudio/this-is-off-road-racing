@@ -156,8 +156,10 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         AbstractHeightMap heightmap = null;
         // Texture heightMapImage = assetManager.loadTexture(
                 // "Tracks/Grass Hill/Textures/Terrain/splat/mountains512.png");
+        // Texture heightMapImage = assetManager.loadTexture(
+                // "Tracks/Grass Hill/Textures/Terrain/simple/flat.png");
         Texture heightMapImage = assetManager.loadTexture(
-                "Tracks/Grass Hill/Textures/Terrain/simple/flat.png");
+                "Tracks/Grass Hill/Textures/Terrain/simple/terrain_1_node.png");
         heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
         heightmap.load();
         
@@ -174,6 +176,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         terrain.setMaterial(mat_terrain);
         // terrain.setLocalTranslation(0, -100, 0);
         // terrain.setLocalScale(2f, 1f, 2f);
+        terrain.setLocalTranslation(100, 0, 0);
         parent.attachChild(terrain);        
         
         terrain.addControl(new RigidBodyControl(new HeightfieldCollisionShape(terrain.getHeightMap(), terrain.getLocalScale()), 0));
