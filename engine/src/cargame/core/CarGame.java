@@ -254,9 +254,12 @@ public class CarGame extends SimpleApplication {
                         track="Android Test";
                 }
                 */
-                
+
+            // Only load the track that's created in code.
+            if(track.equalsIgnoreCase("Grass Hill"))    {
                 this.enqueue(new ChangeTrackTask(track, this));
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
+            }
 	}
         
         // public void loadGame_return(long lap0, long lap1, long lap2, long lap3) {
