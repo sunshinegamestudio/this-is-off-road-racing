@@ -126,8 +126,6 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Models\ground_simple \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Models\ground_simple\ground_simple.blend1 \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Models\ground_simple\ground_simple.j3o \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Scenes\terrain_1.j3o \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Scenes\terrain_1_org.j3o \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Textures\sand.jpg \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Textures\Sky \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Textures\Terrain \
@@ -172,8 +170,6 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Models\house_1\house_1.blend2 \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Models\house_1\house_1.j3o \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Models\tree_2\tree_2.j3o \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Scenes\terrain_1.j3o \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Terrains\terrain_1_node.j3o \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Sky \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\terrain-alpha \
@@ -242,9 +238,6 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Models\terrain_1\OgreXMLConverter.log \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Models\terrain_1\terrain_1.mesh.j3o \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Models\tree_1\tree_1.mesh.j3o \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Scenes\terrain_1.j3o \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Scenes\terrain_1.jmpdata \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Terrains\terrain_1_node.j3o \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\dirt.jpg \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Sky \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures\Terrain \
