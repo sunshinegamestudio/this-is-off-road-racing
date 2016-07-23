@@ -174,10 +174,19 @@
 <ul>
 <li>V 0.2.8:**</li></ul></li></ul>
 <pre>
- * Upgrade to jME 3.1 beta 1 XBuf snapshot
-   * Add more here from V 0.2.9
-
-
+ * Upgrade to jME 3.1 beta 1 XBuf snapshot _(partially)_
+   * Recreate project _(done)_
+     * Android _(done)_
+       * Set API level to Android 4.1 (OpenAL audio renderer + fragment support + joystick/gamepad support) _(done)_
+   * Solve the remaining issues
+     * MainMenu gives an exception while loading (Android): _(done)_
+       * Change the location of license (strange characters in URL (&...)). _(done)_
+     * Mouse pointer goes only half off the screen (y-axis) (desktop): _(partially)_
+       * Create a temporary menuitem to start the game. _(partially)_
+ * Create tracks from code instead of j3o files _(partially)_
+   * Grass Hill _(partially)_
+       * Load track in code. _(partially)_
+       * Create a similair heightmap in an external program (GIMP). _(partially)_
 </pre>
 <ul>
 <li>
@@ -186,9 +195,6 @@
 <pre>
  * Upgrade to jME 3.1
    * Make audio/OpenAL problem notice in readme
-   * Recreate project
-     * Android
-       * Set API level to Android 4.1 (OpenAL audio renderer + fragment support + joystick/gamepad support) _(done)_
    * Solve the remaining issues
      * Windowed mode is not working from SDK (only full screen) (probally application specific) (desktop).
        * Windows:
@@ -198,10 +204,8 @@
          * Desktop: unknown.
        * Linux:
          * No system available: unknown.
-     * Mouse pointer goes only half off the screen (y-axis) (desktop):
+     * Mouse pointer goes only half off the screen (y-axis) (desktop): _(done)_
        * Create a temporary menuitem to start the game. _(done)_
-     * MainMenu gives an exception while loading (Android): _(done)_
-       * Change the location of license (strange characters in URL (&...)). _(done)_
      * Game gives an exception while loading (Android):
        * Probally due to a bug in jME 3.1 alpha 1 with Bullet and JNI (no native method found for ...).
  * Fix terrain on Android
