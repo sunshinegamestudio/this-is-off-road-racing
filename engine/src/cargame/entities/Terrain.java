@@ -20,7 +20,7 @@ package cargame.entities;
 
 import cargame.appstates.CleanupManualInterface;
 import cargame.core.CarGame;
-import cargame.tracks.GrassHill;
+import cargame.tracks.GrassHill.GrassHill;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
