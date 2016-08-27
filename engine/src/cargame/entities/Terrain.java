@@ -21,6 +21,7 @@ package cargame.entities;
 import cargame.appstates.CleanupManualInterface;
 import cargame.core.CarGame;
 import cargame.tracks.GrassHill.GrassHill;
+import cargame.tracks.BeachResort.BeachResort;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
@@ -54,6 +55,7 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
     private Node terrain_geo;
     private String track;
     private GrassHill grassHill;
+    private BeachResort beachResort;
 
     private boolean cleanedupManual = false;
 
@@ -101,7 +103,10 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         if (track.matches("Grass Hill"))    {
             grassHill = new GrassHill(game, super.getAssetManager(), super.getParent(), super.getPhysicsSpace());
             stateManager.attach(grassHill);
-            
+        }
+        else if (track.matches("Beach Resort")) {
+            beachResort = new BeachResort(game, super.getAssetManager(), super.getParent(), super.getPhysicsSpace());
+            stateManager.attach(beachResort);
         }
         else    {
             terrain = (Node) getAssetManager().loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
@@ -151,6 +156,10 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         if (track.matches("Grass Hill"))    {
             grassHill.cleanupManual();
             stateManager.detach(grassHill);
+        }
+        else if (track.matches("Beach Resort")) {
+            beachResort.cleanupManual();
+            stateManager.detach(beachResort);
         }
         else    {
             try {

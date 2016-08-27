@@ -152,7 +152,7 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
 
         // 1.2) Add GRASS texture into the red layer (Tex1).
         Texture grass = assetManager.loadTexture(
-            "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+            "Tracks/Beach Resort/Textures/Terrain/simple/sand.jpg");
         grass.setWrap(WrapMode.Repeat);
         mat_terrain.setTexture("Tex1", grass);
         mat_terrain.setFloat("Tex1Scale", 64f);

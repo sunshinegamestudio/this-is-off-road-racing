@@ -256,7 +256,7 @@ public class CarGame extends SimpleApplication {
                 */
 
             // Only load the track that's created in code.
-            if(track.equalsIgnoreCase("Grass Hill"))    {
+            if((track.equalsIgnoreCase("Grass Hill")) || (track.equalsIgnoreCase("Beach Resort")))    {
                 this.enqueue(new ChangeTrackTask(track, this));
                 this.enqueue(new ChangeStateTask(trackSelectorState,gameState,viewPort,stateManager));
             }
