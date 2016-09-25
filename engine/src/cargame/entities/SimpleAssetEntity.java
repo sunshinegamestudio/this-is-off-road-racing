@@ -21,6 +21,7 @@ package cargame.entities;
 import cargame.tracks.BeachResort.*;
 import cargame.entities.*;
 import cargame.appstates.CleanupManualInterface;
+import cargame.controls.BoxCollisionShapeControl;
 import cargame.core.CarGame;
 import cargame.tracks.GrassHill.GrassHill;
 import com.jme3.app.Application;
@@ -56,93 +57,33 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
     private Node terrain_geo;
     private String track;
     private GrassHill grassHill;
+    
+    private String assetName;
+    private Node assetNode;
+    private BoxCollisionShapeControl boxCollisionShapeControl;
 
     private boolean cleanedupManual = false;
 
-    public SimpleAssetEntity(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
+    public SimpleAssetEntity(String assetName, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
         super(assetManager, parent, physicsSpace);
 
         this.game = CarGame.getApp();
         this.stateManager = game.getStateManager();
-        this.track = track;
+        this.assetName = assetName;
     }
 
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
         
-        //com.jme3.terrain
-        //BufferGeomap
-
-        /** Create a temperairy ground for Android Test track */
-        //if (track=="Android Test")  {
-        /*
-            Node boxNode = new Node();
-            Box box = new Box( Vector3f.ZERO, 100,1,100);
-            RigidBodyControl rigidBody = new RigidBodyControl();
-            
-            Geometry red = new Geometry("Box", box);
-            Material mat2 = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-            mat2.setColor("Color", ColorRGBA.Red);
-            red.setMaterial(mat2);
-            red.move(0,-2,0);
-            boxNode.attachChild(red);
-            //boxNode.move(new Vector3f(0, -15, 0));
-            
-            BoxCollisionShape boxShape = new BoxCollisionShape(new Vector3f(100,0.1f,100));
-            rigidBody.setCollisionShape(boxShape);
-            rigidBody.setMass(0);
-            boxNode.addControl(rigidBody);
-            
-            getParent().attachChild(boxNode);
-            getPhysicsSpace().addAll(boxNode);
-        */
-        //}
+        // Load selected assetNode
+        assetNode = (Node) getAssetManager().loadModel(assetName);
         
-        // Load selected track
-        if (track.matches("Grass Hill"))    {
-            grassHill = new GrassHill(game, super.getAssetManager(), super.getParent(), super.getPhysicsSpace());
-            stateManager.attach(grassHill);
-            
-        }
-        else    {
-            terrain = (Node) getAssetManager().loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
+        boxCollisionShapeControl = new BoxCollisionShapeControl();
+        assetNode.addControl(boxCollisionShapeControl);
 
-            terrain.setLocalTranslation(new Vector3f(0,-1,10));
-            terrain.updateGeometricState();
-
-            //Material mat3 = new Material(assetManager, "Common/MatDefs/Misc/WireColor.j3md");
-            //Material mat3 = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-            //mat3.setColor("m_Color", ColorRGBA.Red);
-            //terrain.attachDebugShape(mat3);
-
-            getParent().attachChild(terrain);
-            getPhysicsSpace().addAll(terrain);
-        }
-
-        if (CarGame.getApp().getPlatform()=="Android")  {
-            terrain_geo = (Node)getParent().getChild("terrain-terrain_1_node");
-            if(terrain_geo != null)    {
-                Material mat = null;
-                // if (CarGame.getApp().getAndroidApiLevel_System()<14)    {
-                    mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-                    // mat.setColor("Color", ColorRGBA.Red);
-                    String texture_1 = terrain_geo.getUserData("texture_1");
-                    // Texture default_text = assetManager.loadTexture("Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
-                    Texture default_text = getAssetManager().loadTexture(texture_1);
-                    mat.setTexture("ColorMap", default_text);
-                    terrain_geo.setMaterial(mat);
-                // }
-                /*
-                else    {
-                    // mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
-                    // Temperairy fix until a DiffuseMap is added to the material (see error in emulator).
-                    mat = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-                }
-                * Temperairy disabled.
-                */
-                }
-        }
+        getParent().attachChild(assetNode);
+        getPhysicsSpace().addAll(assetNode);
 
         cleanedupManual = false;
     }
@@ -150,18 +91,12 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
     @Override
     public void cleanupManual() {
         // cleanup
-        if (track.matches("Grass Hill"))    {
-            grassHill.cleanupManual();
-            stateManager.detach(grassHill);
-        }
-        else    {
-            try {
-                getPhysicsSpace().removeAll(terrain);
-            } catch(NullPointerException e)    {
+        try {
+            getPhysicsSpace().removeAll(terrain);
+        } catch(NullPointerException e)    {
 
-            }
-            getParent().detachChild(terrain);
         }
+        getParent().detachChild(terrain);
 
         cleanedupManual=true;
     }
