@@ -53,23 +53,21 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
     
     private CarGame game;
     private AppStateManager stateManager;
-    private Node terrain;
-    private Node terrain_geo;
-    private String track;
-    private GrassHill grassHill;
     
     private String assetName;
     private Node assetNode;
     private BoxCollisionShapeControl boxCollisionShapeControl;
+    private Vector3f initialTranslation;
 
     private boolean cleanedupManual = false;
 
-    public SimpleAssetEntity(String assetName, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
+    public SimpleAssetEntity(String assetName, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Vector3f initialTranslation) {
         super(assetManager, parent, physicsSpace);
 
         this.game = CarGame.getApp();
         this.stateManager = game.getStateManager();
         this.assetName = assetName;
+        this.initialTranslation = initialTranslation;
     }
 
     @Override
@@ -79,6 +77,8 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
         // Load selected assetNode
         assetNode = (Node) getAssetManager().loadModel(assetName);
         
+        assetNode.setLocalTranslation(initialTranslation);
+
         boxCollisionShapeControl = new BoxCollisionShapeControl();
         assetNode.addControl(boxCollisionShapeControl);
 
@@ -92,11 +92,11 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
     public void cleanupManual() {
         // cleanup
         try {
-            getPhysicsSpace().removeAll(terrain);
+            getPhysicsSpace().removeAll(assetNode);
         } catch(NullPointerException e)    {
 
         }
-        getParent().detachChild(terrain);
+        getParent().detachChild(assetNode);
 
         cleanedupManual=true;
     }
