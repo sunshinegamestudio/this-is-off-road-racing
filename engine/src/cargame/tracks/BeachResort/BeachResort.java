@@ -79,6 +79,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
 
     private boolean cleanedupManual = false;
     private TerrainQuad terrain;
+    private Trees trees;
+    private BeachHouse beachHouse;
     
     public BeachResort(CarGame game, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
     	this.game = game;
@@ -117,6 +119,10 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     @Override
     public void cleanupManual() {
         // cleanup
+        // ToDo: Add cleanup code.
+        game.getStateManager().detach(trees);
+        game.getStateManager().detach(beachHouse);
+        
         cleanedupManual=true;
     }
 
@@ -194,6 +200,17 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         parent.attachChild(startingpoint);
     }
     
+    private void createTrees()  {
+        trees = new Trees("trees", assetManager, parent, physicsSpace);
+        game.getStateManager().attach(trees);
+    }
+
+    private void createBeachHouse()  {
+        Vector3f initialTranslation = new Vector3f(0, 0, 10);
+        beachHouse = new BeachHouse("beachhouse", assetManager, parent, physicsSpace, initialTranslation);
+        game.getStateManager().attach(beachHouse);
+    }
+
     private void createLight()  {
         // You must add a light to make the model visible
         // Create sun (DirectionalLight) here
