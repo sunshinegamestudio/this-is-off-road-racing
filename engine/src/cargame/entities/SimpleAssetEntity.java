@@ -79,8 +79,14 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
         
         assetNode.setLocalTranslation(initialTranslation);
 
+        /* Maybe change to this again when tracks in j3o files are no longer needed.
         boxCollisionShapeControl = new BoxCollisionShapeControl();
         assetNode.addControl(boxCollisionShapeControl);
+        */
+
+        // Set the UserData in this class.
+        // The BoxCollisionShape is added in BoxCollisionShapeControlState.
+        assetNode.setUserData("boxCollisionShape", "true");
 
         getParent().attachChild(assetNode);
         getPhysicsSpace().addAll(assetNode);
