@@ -51,10 +51,7 @@ public class Trees extends Entity_AppState implements CleanupManualInterface {
     
     private CarGame game;
     private AppStateManager stateManager;
-    private Node terrain;
-    private Node terrain_geo;
-    private String track;
-    private GrassHill grassHill;
+    private Tree tree;
 
     private boolean cleanedupManual = false;
 
@@ -63,16 +60,15 @@ public class Trees extends Entity_AppState implements CleanupManualInterface {
 
         this.game = CarGame.getApp();
         this.stateManager = game.getStateManager();
-        this.track = track;
     }
 
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
-        /*
-            Tree[n].new();
-        */
 
+        Vector3f initialTranslation = new Vector3f(20, 0, -50);
+        tree = new Tree("Tree", getAssetManager(), getParent(), getPhysicsSpace(), initialTranslation);
+    
         cleanedupManual = false;
     }
 

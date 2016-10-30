@@ -56,7 +56,7 @@ public class BeachHouse extends SimpleAssetEntity implements CleanupManualInterf
     private boolean cleanedupManual = false;
 
     public BeachHouse(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Vector3f initialTranslation) {
-        super("BeachHouse", assetManager, parent, physicsSpace, initialTranslation);
+        super("Tracks/Beach Resort/Models/house_1/house_1.j3o", assetManager, parent, physicsSpace, initialTranslation);
 
         this.game = CarGame.getApp();
         this.stateManager = game.getStateManager();

@@ -102,6 +102,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         createSkybox();
         createTerrain();
         createStartingPoint();
+        // createTrees();
+        createBeachHouse();
         createLight();
         
         cleanedupManual = false;
@@ -120,7 +122,10 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     public void cleanupManual() {
         // cleanup
         // ToDo: Add cleanup code.
-        game.getStateManager().detach(trees);
+        // trees.cleanupManual();
+        // game.getStateManager().detach(trees);
+        
+        beachHouse.cleanupManual();
         game.getStateManager().detach(beachHouse);
         
         cleanedupManual=true;
@@ -206,7 +211,7 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     }
 
     private void createBeachHouse()  {
-        Vector3f initialTranslation = new Vector3f(0, 0, 10);
+        Vector3f initialTranslation = new Vector3f(-20, 0, -50);
         beachHouse = new BeachHouse("beachhouse", assetManager, parent, physicsSpace, initialTranslation);
         game.getStateManager().attach(beachHouse);
     }

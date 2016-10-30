@@ -59,7 +59,7 @@ public class Tree extends SimpleAssetEntity implements CleanupManualInterface {
     private boolean cleanedupManual = false;
 
     public Tree(String track, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Vector3f initialTranslation) {
-        super("Tree", assetManager, parent, physicsSpace, initialTranslation);
+        super("Tracks/Beach Resort/Models/tree_2/tree_2.j3o", assetManager, parent, physicsSpace, initialTranslation);
 
         this.game = CarGame.getApp();
         this.stateManager = game.getStateManager();
