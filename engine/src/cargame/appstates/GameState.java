@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.appstates;
 
-import cargame.entities.Terrain;
+import cargame.entities.Track;
 import cargame.entities.Sky;
 import cargame.entities.Sun;
 import cargame.entities.SimpleCarPlayer;
@@ -79,7 +79,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
     private Sun sun;
     //private Sky sky;
-    private Terrain terrain;
+    private Track terrain;
     private StartingPoint startingPoint;
     //private Terrain_node terrain_node;
     //private CarPlayer player;
@@ -197,9 +197,9 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         game.getStateManager().attach(sun);
 
-        // Attach Terrain state to StateManager here !!!
+        // Attach Track state to StateManager here !!!
         String track = game.getTrack();
-        terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        terrain = new Track(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
         game.getStateManager().attach(terrain);
 
         // Attach StartingPoint state to StateManager here !!!
@@ -237,7 +237,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         
         //sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //sky = new Sky(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        //terrain = new Terrain(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        //terrain = new Track(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
         //terrain_node = new Terrain_node(game.getCamera(), game.getAssetManager(), rootNode, game.getPhysicsSpace());
         //player = new CarPlayer(game.getAssetManager(), rootNode, game.getPhysicsSpace());
@@ -320,7 +320,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         startingPointState.cleanupManual();
         game.getStateManager().detach(startingPointState);
 
-        // Cleanup Terrain state to StateManager here !!!
+        // Cleanup Track state to StateManager here !!!
         terrain.cleanupManual();
         game.getStateManager().detach(terrain);
         
