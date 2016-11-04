@@ -42,6 +42,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
+import cargame.tracks.Common.Terrain;
 import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bullet.PhysicsSpace;
@@ -51,7 +52,7 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Spatial;
-import com.jme3.terrain.Terrain;
+// import com.jme3.terrain.Terrain;
 import com.jme3.terrain.geomipmap.TerrainLodControl;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import com.jme3.terrain.geomipmap.lodcalc.DistanceLodCalculator;
@@ -75,6 +76,8 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     private Camera camera;
     
     private Material mat_terrain;
+    
+    private Terrain terrain_node;
 
     private boolean cleanedupManual = false;
     private TerrainQuad terrain;
@@ -116,6 +119,9 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     @Override
     public void cleanupManual() {
         // cleanup
+        // terrain_node.cleanupManual();
+        // game.getStateManager().detach(terrain_node);
+        
         cleanedupManual=true;
     }
 
@@ -186,6 +192,9 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         
         terrain.addControl(new RigidBodyControl(new HeightfieldCollisionShape(terrain.getHeightMap(), terrain.getLocalScale()), 0));
         physicsSpace.add(terrain);
+        
+        // terrain_node = new Terrain(camera, assetManager, parent, physicsSpace);
+        // game.getStateManager().attach(terrain_node);
     }
 
     private void createStartingPoint() {
