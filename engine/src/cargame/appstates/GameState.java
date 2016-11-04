@@ -19,8 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package cargame.appstates;
 
 import cargame.entities.Track;
-import cargame.entities.Sky;
-import cargame.entities.Sun;
+import cargame.tracks.Common.Sky;
+import cargame.tracks.Common.Sun;
 import cargame.entities.SimpleCarPlayer;
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
