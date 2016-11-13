@@ -68,17 +68,19 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
     private Material mat_terrain;
     Material matRock;
     Material matWire;
+    private String text_terrain;
     
     private boolean cleanedupManual = false;
 
-    public Terrain(Camera camera, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
+    public Terrain(Camera camera, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, String text_terrain) {
         super(assetManager, parent, physicsSpace);
         
-    	this.game = game;
+    	this.game = CarGame.getApp();
         this.assetManager = assetManager;
         this.parent = parent;
         this.physicsSpace = physicsSpace;
         this.camera = game.getCamera();
+        this.text_terrain = text_terrain;
     }
 
     @Override
@@ -94,8 +96,10 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         */
 
         // 1.2) Add GRASS texture into the red layer (Tex1).
+        // Texture grass = assetManager.loadTexture(
+            // "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
         Texture grass = assetManager.loadTexture(
-            "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+            text_terrain);
         grass.setWrap(WrapMode.Repeat);
         mat_terrain.setTexture("Tex1", grass);
         mat_terrain.setFloat("Tex1Scale", 64f);

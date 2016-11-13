@@ -77,6 +77,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     
     private Material mat_terrain;
 
+    private cargame.tracks.Common.Terrain terrain_node;
+
     private boolean cleanedupManual = false;
     private TerrainQuad terrain;
     private Trees trees;
@@ -127,6 +129,9 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         
         beachHouse.cleanupManual();
         game.getStateManager().detach(beachHouse);
+
+        terrain_node.cleanupManual();
+        game.getStateManager().detach(terrain_node);
         
         cleanedupManual=true;
     }
@@ -153,51 +158,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     }
 
     private void createTerrain() {
-        // 1. Create terrain material and load four textures into it.
-        mat_terrain = new Material(assetManager, 
-            "Common/MatDefs/Terrain/Terrain.j3md");
-        /* Use this material definition later on (Phong illumination)
-        mat_terrain = new Material(assetManager, 
-            "Common/MatDefs/Terrain/TerrainLighting.j3md");
-        */
-
-        // 1.2) Add GRASS texture into the red layer (Tex1).
-        Texture grass = assetManager.loadTexture(
-            "Tracks/Beach Resort/Textures/Terrain/simple/sand.jpg");
-        grass.setWrap(WrapMode.Repeat);
-        mat_terrain.setTexture("Tex1", grass);
-        mat_terrain.setFloat("Tex1Scale", 64f);
-        // mat_terrain.setFloat("Tex1Scale", 2048f);
-
-        // 2. Create the height map
-        AbstractHeightMap heightmap = null;
-        // Texture heightMapImage = assetManager.loadTexture(
-                // "Tracks/Grass Hill/Textures/Terrain/splat/mountains512.png");
-        // Texture heightMapImage = assetManager.loadTexture(
-                // "Tracks/Grass Hill/Textures/Terrain/simple/flat.png");
-        Texture heightMapImage = assetManager.loadTexture(
-                "Tracks/Grass Hill/Textures/Terrain/simple/terrain_1_node.png");
-        heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
-        heightmap.load();
-        
-        int patchSize = 65;
-        terrain = new TerrainQuad("my terrain", patchSize, 513, heightmap.getHeightMap());
- 
-        TerrainLodControl control = new TerrainLodControl(terrain, camera);
-        control.setLodCalculator( new DistanceLodCalculator(65, 2.7f) ); // patch size, and a multiplier
-        terrain.addControl(control);
-        terrain.setModelBound(new BoundingBox());
-        terrain.updateModelBound();
-        
-        /** 4. We give the terrain its material, position & scale it, and attach it. */
-        terrain.setMaterial(mat_terrain);
-        // terrain.setLocalTranslation(0, -100, 0);
-        // terrain.setLocalScale(2f, 1f, 2f);
-        terrain.setLocalTranslation(100, 0, 0);
-        parent.attachChild(terrain);        
-        
-        terrain.addControl(new RigidBodyControl(new HeightfieldCollisionShape(terrain.getHeightMap(), terrain.getLocalScale()), 0));
-        physicsSpace.add(terrain);
+        terrain_node = new cargame.tracks.Common.Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Beach Resort/Textures/Terrain/simple/sand.jpg");
+        game.getStateManager().attach(terrain_node);
     }
 
     private void createStartingPoint() {
