@@ -18,7 +18,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.tracks.Common;
 
+import cargame.appstates.CleanupManualInterface;
 import cargame.entities.Entity;
+import cargame.entities.Entity_AppState;
+import com.jme3.app.Application;
+import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bullet.PhysicsSpace;
@@ -27,6 +31,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.bullet.collision.shapes.CompoundCollisionShape;
 //import com.jme3.bullet.nodes.PhysicsNode;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.renderer.Camera;
@@ -47,10 +52,50 @@ import jme3tools.converters.ImageToAwt;
  *
  * @author Sunshine GameStudio
  */
-public class Sky extends Entity {
-    public Sky(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
+public class Sky extends Entity_AppState implements CleanupManualInterface {
+    String texture_west;
+    String texture_east;
+    String texture_north;
+    String texture_south;
+    String texture_top;
+    String texture_bottom;
+    
+    private boolean cleanedupManual = false;
+
+    public Sky(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, String texture_west, String texture_east, String texture_north, String texture_south, String texture_top, String texture_bottom) {
         super(assetManager, parent, physicsSpace);
-            getParent().attachChild(SkyFactory.createSky(assetManager, "Textures/Sky/Bright/BrightSky.dds", false));
+        
+        this.texture_west = texture_west;
+        this.texture_east = texture_east;
+        this.texture_north = texture_north;
+        this.texture_south = texture_south;
+        this.texture_top = texture_top;
+        this.texture_bottom = texture_bottom;
     }
 
+    @Override
+    public void initialize(AppStateManager stateManager, Application app) {
+        super.initialize(stateManager, app);
+
+        // Initialize
+        getParent().attachChild(SkyFactory.createSky(getAssetManager(), "Textures/Sky/Bright/BrightSky.dds", false));
+
+        cleanedupManual = false;
+    }
+
+    @Override
+    public void cleanupManual() {
+        // cleanup
+
+        cleanedupManual=true;
+    }
+
+    @Override
+    public void cleanup()   {
+        super.cleanup();
+
+        if(cleanedupManual == false) {
+            cleanupManual();
+        }
+    }
 }
