@@ -53,24 +53,31 @@ import jme3tools.converters.ImageToAwt;
  * @author Sunshine GameStudio
  */
 public class Sky extends Entity_AppState implements CleanupManualInterface {
-    String texture_west;
-    String texture_east;
-    String texture_north;
-    String texture_south;
-    String texture_top;
-    String texture_bottom;
+    String texture_west_name;
+    String texture_east_name;
+    String texture_north_name;
+    String texture_south_name;
+    String texture_top_name;
+    String texture_bottom_name;
+    
+    Texture texture_west;
+    Texture texture_east;
+    Texture texture_north;
+    Texture texture_south;
+    Texture texture_top;
+    Texture texture_bottom;
     
     private boolean cleanedupManual = false;
 
-    public Sky(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, String texture_west, String texture_east, String texture_north, String texture_south, String texture_top, String texture_bottom) {
+    public Sky(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, String texture_west_name, String texture_east_name, String texture_north_name, String texture_south_name, String texture_top_name, String texture_bottom_name) {
         super(assetManager, parent, physicsSpace);
         
-        this.texture_west = texture_west;
-        this.texture_east = texture_east;
-        this.texture_north = texture_north;
-        this.texture_south = texture_south;
-        this.texture_top = texture_top;
-        this.texture_bottom = texture_bottom;
+        this.texture_west_name = texture_west_name;
+        this.texture_east_name = texture_east_name;
+        this.texture_north_name = texture_north_name;
+        this.texture_south_name = texture_south_name;
+        this.texture_top_name = texture_top_name;
+        this.texture_bottom_name = texture_bottom_name;
     }
 
     @Override
@@ -78,7 +85,17 @@ public class Sky extends Entity_AppState implements CleanupManualInterface {
         super.initialize(stateManager, app);
 
         // Initialize
-        getParent().attachChild(SkyFactory.createSky(getAssetManager(), "Textures/Sky/Bright/BrightSky.dds", false));
+        
+        // getParent().attachChild(SkyFactory.createSky(getAssetManager(), "Textures/Sky/Bright/BrightSky.dds", false));
+
+        texture_west = getAssetManager().loadTexture("texture_west_name");
+        texture_east = getAssetManager().loadTexture("texture_east_name");
+        texture_north = getAssetManager().loadTexture("texture_north_name");
+        texture_south = getAssetManager().loadTexture("texture_south_name");
+        texture_top = getAssetManager().loadTexture("texture_top_name");
+        texture_bottom = getAssetManager().loadTexture("texture_bottom_name");
+
+        getParent().attachChild(SkyFactory.createSky(getAssetManager(), texture_west, texture_east, texture_north, texture_south, texture_top, texture_bottom));
 
         cleanedupManual = false;
     }
