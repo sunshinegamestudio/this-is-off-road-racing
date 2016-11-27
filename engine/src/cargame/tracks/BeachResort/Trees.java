@@ -66,7 +66,7 @@ public class Trees extends Entity_AppState implements CleanupManualInterface {
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
 
-        Vector3f initialTranslation = new Vector3f(20, 0, -50);
+        Vector3f initialTranslation = new Vector3f(-20, 0, -50);
         tree = new Tree("Tree", getAssetManager(), getParent(), getPhysicsSpace(), initialTranslation);
     
         cleanedupManual = false;

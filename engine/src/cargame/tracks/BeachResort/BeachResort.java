@@ -43,6 +43,8 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
+import cargame.tracks.Common.Sky;
+import cargame.tracks.Common.Terrain;
 import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bullet.PhysicsSpace;
@@ -52,7 +54,7 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Spatial;
-import com.jme3.terrain.Terrain;
+// import com.jme3.terrain.Terrain;
 import com.jme3.terrain.geomipmap.TerrainLodControl;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import com.jme3.terrain.geomipmap.lodcalc.DistanceLodCalculator;
@@ -77,12 +79,12 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     
     private Material mat_terrain;
 
-    private cargame.tracks.Common.Terrain terrain_node;
-
-    private boolean cleanedupManual = false;
-    private TerrainQuad terrain;
+    private Sky sky;
+    private Terrain terrain_node;
     private Trees trees;
     private BeachHouse beachHouse;
+
+    private boolean cleanedupManual = false;
     
     public BeachResort(CarGame game, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace) {
     	this.game = game;
@@ -104,7 +106,7 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         createSkybox();
         createTerrain();
         createStartingPoint();
-        // createTrees();
+        createTrees();
         createBeachHouse();
         createLight();
         
@@ -124,14 +126,17 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     public void cleanupManual() {
         // cleanup
         // ToDo: Add cleanup code.
-        // trees.cleanupManual();
-        // game.getStateManager().detach(trees);
-        
         beachHouse.cleanupManual();
         game.getStateManager().detach(beachHouse);
 
+        trees.cleanupManual();
+        game.getStateManager().detach(trees);
+        
         terrain_node.cleanupManual();
         game.getStateManager().detach(terrain_node);
+
+        sky.cleanupManual();
+        game.getStateManager().detach(sky);
         
         cleanedupManual=true;
     }
@@ -146,15 +151,18 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     }
     
     private void createSkybox()  {
-        Texture west = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_w.jpg");
-        Texture east = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_e.jpg");
-        Texture north = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_n.jpg");
-        Texture south = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_s.jpg");
-        Texture top = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_t.jpg");
-        Texture bottom = assetManager.loadTexture("Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_b.jpg");
-        
-        Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, top, bottom);
-        parent.attachChild(sky);
+        sky = new Sky(
+            assetManager,
+            parent,
+            physicsSpace,
+            "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_w.jpg",
+            "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_e.jpg",
+            "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_n.jpg",
+            "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_s.jpg",
+            "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_t.jpg",
+            "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_b.jpg"
+        );
+        game.getStateManager().attach(sky);
     }
 
     private void createTerrain() {

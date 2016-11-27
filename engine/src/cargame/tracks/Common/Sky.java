@@ -88,12 +88,12 @@ public class Sky extends Entity_AppState implements CleanupManualInterface {
         
         // getParent().attachChild(SkyFactory.createSky(getAssetManager(), "Textures/Sky/Bright/BrightSky.dds", false));
 
-        texture_west = getAssetManager().loadTexture("texture_west_name");
-        texture_east = getAssetManager().loadTexture("texture_east_name");
-        texture_north = getAssetManager().loadTexture("texture_north_name");
-        texture_south = getAssetManager().loadTexture("texture_south_name");
-        texture_top = getAssetManager().loadTexture("texture_top_name");
-        texture_bottom = getAssetManager().loadTexture("texture_bottom_name");
+        texture_west = getAssetManager().loadTexture(texture_west_name);
+        texture_east = getAssetManager().loadTexture(texture_east_name);
+        texture_north = getAssetManager().loadTexture(texture_north_name);
+        texture_south = getAssetManager().loadTexture(texture_south_name);
+        texture_top = getAssetManager().loadTexture(texture_top_name);
+        texture_bottom = getAssetManager().loadTexture(texture_bottom_name);
 
         getParent().attachChild(SkyFactory.createSky(getAssetManager(), texture_west, texture_east, texture_north, texture_south, texture_top, texture_bottom));
 
