@@ -43,6 +43,7 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 import cargame.tracks.Common.Sky;
+import cargame.tracks.Common.Sun;
 import cargame.tracks.Common.Terrain;
 import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
@@ -80,6 +81,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     
     private Sky sky;
     private Terrain terrain_node;
+    private Sun sun;
 
     private boolean cleanedupManual = false;
     
@@ -103,7 +105,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         createSkybox();
         createTerrain();
         createStartingPoint();
-        createLight();
+        // createLight();
         
         cleanedupManual = false;
     }
@@ -120,6 +122,9 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     @Override
     public void cleanupManual() {
         // cleanup
+        // sun.cleanupManual();
+        // game.getStateManager().detach(sun);
+        
         terrain_node.cleanupManual();
         game.getStateManager().detach(terrain_node);
         
@@ -167,5 +172,8 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         // You must add a light to make the model visible
         // Create sun (DirectionalLight) here
         // For now in GameState
+        
+        sun = new Sun(assetManager, parent, physicsSpace);
+        game.getStateManager().attach(sun);
     }
 }
