@@ -43,6 +43,7 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 import cargame.tracks.Common.Sky;
+import cargame.tracks.Common.StartingPoint;
 import cargame.tracks.Common.Sun;
 import cargame.tracks.Common.Terrain;
 import com.jme3.asset.AssetManager;
@@ -81,6 +82,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     
     private Sky sky;
     private Terrain terrain_node;
+    private StartingPoint startingPoint; 
     private Sun sun;
 
     private boolean cleanedupManual = false;
@@ -125,6 +127,9 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         // sun.cleanupManual();
         // game.getStateManager().detach(sun);
         
+        // startingPoint.cleanupManual();
+        // game.getStateManager().detach(startingPoint);
+
         terrain_node.cleanupManual();
         game.getStateManager().detach(terrain_node);
         
@@ -166,6 +171,9 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     private void createStartingPoint() {
         Spatial startingpoint = assetManager.loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
         parent.attachChild(startingpoint);
+        
+        // startingPoint = new StartingPoint(assetManager, parent, physicsSpace);
+        // game.getStateManager().attach(startingPoint);
     }
     
     private void createLight()  {
