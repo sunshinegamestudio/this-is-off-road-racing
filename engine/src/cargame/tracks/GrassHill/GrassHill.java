@@ -107,7 +107,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         createSkybox();
         createTerrain();
         createStartingPoint();
-        // createLight();
+        createLight();
         
         cleanedupManual = false;
     }
@@ -124,8 +124,8 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     @Override
     public void cleanupManual() {
         // cleanup
-        // sun.cleanupManual();
-        // game.getStateManager().detach(sun);
+        sun.cleanupManual();
+        game.getStateManager().detach(sun);
         
         // startingPoint.cleanupManual();
         // game.getStateManager().detach(startingPoint);

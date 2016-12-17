@@ -79,7 +79,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
 
     private Sun sun;
     //private Sky sky;
-    private Track terrain;
+    private Track track;
     private StartingPoint startingPoint;
     //private Terrain_node terrain_node;
     //private CarPlayer player;
@@ -193,14 +193,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         fpsState = new FPSState(game);
         game.getStateManager().attach(fpsState);
 
-        // Attach Sun state to StateManager here !!!
-        sun = new Sun(game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        game.getStateManager().attach(sun);
-
         // Attach Track state to StateManager here !!!
         String track = game.getTrack();
-        terrain = new Track(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
-        game.getStateManager().attach(terrain);
+        this.track = new Track(track, game.getAssetManager(), rootNode, game.getPhysicsSpace());
+        game.getStateManager().attach(this.track);
 
         // Attach StartingPoint state to StateManager here !!!
         // startingPointState = new StartingPointState(game);
@@ -321,12 +317,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         game.getStateManager().detach(startingPointState);
 
         // Cleanup Track state to StateManager here !!!
-        terrain.cleanupManual();
-        game.getStateManager().detach(terrain);
-        
-        // Cleanup Sun state to StateManager here !!!
-        sun.cleanupManual();
-        game.getStateManager().detach(sun);
+        track.cleanupManual();
+        game.getStateManager().detach(track);
         
         // Cleanup FPSState here !!!
         game.getStateManager().detach(fpsState);

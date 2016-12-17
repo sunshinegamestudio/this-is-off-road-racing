@@ -44,6 +44,8 @@ import java.util.logging.Level;
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
 import cargame.tracks.Common.Sky;
+import cargame.tracks.Common.StartingPoint;
+import cargame.tracks.Common.Sun;
 import cargame.tracks.Common.Terrain;
 import com.jme3.asset.AssetManager;
 import com.jme3.bounding.BoundingBox;
@@ -81,8 +83,10 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
 
     private Sky sky;
     private Terrain terrain_node;
+    private StartingPoint startingPoint; 
     private Trees trees;
     private BeachHouse beachHouse;
+    private Sun sun;
 
     private boolean cleanedupManual = false;
     
@@ -126,12 +130,18 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     public void cleanupManual() {
         // cleanup
         // ToDo: Add cleanup code.
+        sun.cleanupManual();
+        game.getStateManager().detach(sun);
+
         beachHouse.cleanupManual();
         game.getStateManager().detach(beachHouse);
 
         trees.cleanupManual();
         game.getStateManager().detach(trees);
         
+        // startingPoint.cleanupManual();
+        // game.getStateManager().detach(startingPoint);
+
         terrain_node.cleanupManual();
         game.getStateManager().detach(terrain_node);
 
@@ -190,5 +200,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         // You must add a light to make the model visible
         // Create sun (DirectionalLight) here
         // For now in GameState
+
+        sun = new Sun(assetManager, parent, physicsSpace);
+        game.getStateManager().attach(sun);
     }
 }
