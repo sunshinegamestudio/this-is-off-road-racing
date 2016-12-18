@@ -53,6 +53,8 @@ import jme3tools.converters.ImageToAwt;
  * @author Sunshine GameStudio
  */
 public class Sky extends Entity_AppState implements CleanupManualInterface {
+    Spatial sky;
+    
     String texture_west_name;
     String texture_east_name;
     String texture_north_name;
@@ -95,7 +97,8 @@ public class Sky extends Entity_AppState implements CleanupManualInterface {
         texture_top = getAssetManager().loadTexture(texture_top_name);
         texture_bottom = getAssetManager().loadTexture(texture_bottom_name);
 
-        getParent().attachChild(SkyFactory.createSky(getAssetManager(), texture_west, texture_east, texture_north, texture_south, texture_top, texture_bottom));
+        sky = SkyFactory.createSky(getAssetManager(), texture_west, texture_east, texture_north, texture_south, texture_top, texture_bottom);
+        getParent().attachChild(sky);
 
         cleanedupManual = false;
     }
@@ -103,6 +106,7 @@ public class Sky extends Entity_AppState implements CleanupManualInterface {
     @Override
     public void cleanupManual() {
         // cleanup
+        getParent().detachChild(sky);
 
         cleanedupManual=true;
     }

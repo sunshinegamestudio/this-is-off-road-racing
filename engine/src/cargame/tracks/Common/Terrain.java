@@ -141,6 +141,12 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
     @Override
     public void cleanupManual() {
         // cleanup
+        try {
+            getPhysicsSpace().removeAll(terrain);
+        } catch(NullPointerException e)    {
+
+        }
+        getParent().detachChild(terrain);
 
         cleanedupManual=true;
     }

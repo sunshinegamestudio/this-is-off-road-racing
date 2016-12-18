@@ -57,6 +57,7 @@ public class StartingPoint extends Entity_AppState implements CleanupManualInter
     @Override
     public void cleanupManual() {
         // cleanup
+        getParent().detachChild(startingpoint);
 
         cleanedupManual=true;
     }
