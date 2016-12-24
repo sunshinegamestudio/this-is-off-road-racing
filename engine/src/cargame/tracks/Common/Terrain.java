@@ -88,12 +88,13 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         super.initialize(stateManager, app);
 
         // 1. Create terrain material and load four textures into it.
+        /*
         mat_terrain = new Material(assetManager, 
             "Common/MatDefs/Terrain/Terrain.j3md");
-        /* Use this material definition later on (Phong illumination)
+        */
+        // Use this material definition later on (Phong illumination)
         mat_terrain = new Material(assetManager, 
             "Common/MatDefs/Terrain/TerrainLighting.j3md");
-        */
 
         // 1.2) Add GRASS texture into the red layer (Tex1).
         // Texture grass = assetManager.loadTexture(
@@ -101,9 +102,11 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         Texture grass = assetManager.loadTexture(
             text_terrain);
         grass.setWrap(WrapMode.Repeat);
-        mat_terrain.setTexture("Tex1", grass);
-        mat_terrain.setFloat("Tex1Scale", 64f);
-        // mat_terrain.setFloat("Tex1Scale", 2048f);
+        // mat_terrain.setTexture("Tex1", grass);
+        mat_terrain.setTexture("DiffuseMap", grass);
+        // mat_terrain.setFloat("Tex1Scale", 64f);
+        mat_terrain.setFloat("DiffuseMap_0_scale", 64f);
+        // mat_terrain.setFloat("DiffuseMap_0_scale", 2048f);
 
         // 2. Create the height map
         AbstractHeightMap heightmap = null;
