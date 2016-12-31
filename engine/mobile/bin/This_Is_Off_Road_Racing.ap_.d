@@ -117,7 +117,6 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\MatDefs \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Models \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Scenes \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Textures \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\MatDefs\Terrain \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\MatDefs\Terrain\Terrain.frag \
@@ -154,8 +153,6 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Android Test\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend2.png \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\MatDefs \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Models \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Scenes \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Terrains \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\MatDefs\Terrain \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\MatDefs\Terrain\Terrain.frag \
@@ -186,6 +183,7 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\simple \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\splat \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\simple\sand.jpg \
+H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\simple\terrain_1_node.png \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\splat\alphamap.png \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\splat\dirt.jpg \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\Terrain\splat\grass.jpg \
@@ -197,8 +195,6 @@ H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Beach Resort\Textures\terrain-alpha\terrain_1_node-terrain-terrain_1_node-alphablend2.png \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\MatDefs \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Models \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Scenes \
-H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Terrains \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\Textures \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\MatDefs\Misc \
 H:\Development\GameDev\jMP\CarGame\master\this-is-off-road-racing\engine\mobile\assets\Tracks\Grass Hill\MatDefs\Terrain \

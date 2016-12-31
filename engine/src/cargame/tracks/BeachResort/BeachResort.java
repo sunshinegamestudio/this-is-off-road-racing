@@ -176,7 +176,7 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     }
 
     private void createTerrain() {
-        terrain_node = new cargame.tracks.Common.Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Beach Resort/Textures/Terrain/simple/sand.jpg");
+        terrain_node = new cargame.tracks.Common.Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Beach Resort/Textures/Terrain/simple/sand.jpg", "Tracks/Beach Resort/Textures/Terrain/simple/terrain_1_node.png");
         game.getStateManager().attach(terrain_node);
     }
 

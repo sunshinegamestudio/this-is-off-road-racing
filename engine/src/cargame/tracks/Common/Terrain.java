@@ -69,10 +69,11 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
     Material matRock;
     Material matWire;
     private String text_terrain;
+    private String heightmap_terrain;
     
     private boolean cleanedupManual = false;
 
-    public Terrain(Camera camera, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, String text_terrain) {
+    public Terrain(Camera camera, AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, String text_terrain, String heightmap_terrain) {
         super(assetManager, parent, physicsSpace);
         
     	this.game = CarGame.getApp();
@@ -81,6 +82,7 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         this.physicsSpace = physicsSpace;
         this.camera = game.getCamera();
         this.text_terrain = text_terrain;
+        this.heightmap_terrain = heightmap_terrain;
     }
 
     @Override
@@ -114,8 +116,10 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
                 // "Tracks/Grass Hill/Textures/Terrain/splat/mountains512.png");
         // Texture heightMapImage = assetManager.loadTexture(
                 // "Tracks/Grass Hill/Textures/Terrain/simple/flat.png");
+        // Texture heightMapImage = assetManager.loadTexture(
+                // "Tracks/Grass Hill/Textures/Terrain/simple/terrain_1_node.png");
         Texture heightMapImage = assetManager.loadTexture(
-                "Tracks/Grass Hill/Textures/Terrain/simple/terrain_1_node.png");
+                heightmap_terrain);
         heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
         heightmap.load();
         

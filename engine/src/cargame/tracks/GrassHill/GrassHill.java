@@ -164,7 +164,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     }
 
     private void createTerrain() {
-        terrain_node = new Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg");
+        terrain_node = new Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg", "Tracks/Grass Hill/Textures/Terrain/simple/terrain_1_node.png");
         game.getStateManager().attach(terrain_node);
     }
 
