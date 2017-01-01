@@ -100,6 +100,7 @@ public class ThirdPersonCameraState extends AbstractAppState implements CleanupM
                 float zDirection = direction.z;
 
                 Vector3f camLocation = new Vector3f(player_node.getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+4f, player.getNode().getWorldTranslation().z + (zDirection*10));
+                // Vector3f camLocation = new Vector3f(player_node.getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+34f, player.getNode().getWorldTranslation().z + (zDirection*60));
 
                 game.getCamera().setLocation(camLocation);
                 game.getCamera().lookAt(player_node.getWorldTranslation(), Vector3f.UNIT_Y);
