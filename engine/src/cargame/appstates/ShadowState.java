@@ -64,7 +64,7 @@ public class ShadowState extends AbstractAppState implements CleanupManualInterf
 
     private boolean cleanedupManual = false;
     
-    public ShadowState(CarGame game, ViewPort viewPort, Light light, DirectionalLight directionalLight) {
+    public ShadowState(CarGame game, ViewPort viewPort, DirectionalLight directionalLight) {
     	this.game = game;
         this.viewPort = viewPort;
         this.directionalLight = directionalLight;
@@ -101,6 +101,8 @@ public class ShadowState extends AbstractAppState implements CleanupManualInterf
     @Override
     public void cleanupManual() {
         // cleanup
+        viewPort.removeProcessor(dlsr);
+
         cleanedupManual=true;
     }
     

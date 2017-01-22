@@ -70,4 +70,8 @@ public class Sun extends Entity_AppState implements CleanupManualInterface {
             cleanupManual();
         }
     }
+    
+    public DirectionalLight getLight()  {
+        return sun;
+    }
 }

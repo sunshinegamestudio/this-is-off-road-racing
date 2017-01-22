@@ -63,7 +63,10 @@ import cargame.other.PhysicsSpacePrinter;
 import cargame.other.SceneGraphPrinter;
 import cargame.other.Time;
 import cargame.other.TrackStatistics;
+import com.jme3.light.DirectionalLight;
+import com.jme3.light.Light;
 import com.jme3.niftygui.NiftyJmeDisplay;
+import com.jme3.renderer.ViewPort;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.ScreenController;
 
@@ -77,7 +80,7 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     // protected FlyByCamera flyCam;
     // protected ChaseCamera chaseCam;
 
-    private Sun sun;
+    //private Sun sun;
     //private Sky sky;
     private Track track;
     private StartingPoint startingPoint;
@@ -97,6 +100,8 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
     private ThirdPersonCameraState thirdPersonCameraState;
     private CheckEndOfRaceState checkEndOfRaceState;
     private ExitMenuState exitMenuState;
+    
+    private ShadowState shadowState ;
     
     private PhysicsSpacePrinter physicsSpacePrinter;
     private SceneGraphPrinter sceneGraphPrinter;
@@ -223,6 +228,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
         checkEndOfRaceState = new CheckEndOfRaceState(game);
         game.getStateManager().attach(checkEndOfRaceState);
         
+        // Attach shadowState to StateManager here !!!
+        // shadowState = new ShadowState(game, game.getViewPort(), game.getStateManager().getState(Sun.class).getLight());
+        // game.getStateManager().attach(shadowState);
+        
         physicsSpacePrinter = new PhysicsSpacePrinter(game);
 
         sceneGraphPrinter = new SceneGraphPrinter();
@@ -292,6 +301,10 @@ public class GameState extends AbstractAppState implements ActionListener, Analo
             game.getGUIViewPort().removeProcessor(niftyDisplay);
         }
 
+        // Cleanup shadowState to StateManager here !!!
+        // shadowState.cleanupManual();
+        // game.getStateManager().detach(shadowState);
+        
         // Cleanup check end of race to StateManager here !!!
         checkEndOfRaceState.cleanupManual();
         game.getStateManager().detach(checkEndOfRaceState);
