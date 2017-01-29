@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package gui.nifty.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -40,7 +40,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 
-public class MainMenuState extends AbstractAppState implements ActionListener{
+public class ExitMenuState extends AbstractAppState implements ActionListener{
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -55,13 +55,13 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
     
     private CarGame game = null;
     
-    public MainMenuState(CarGame game) {
+    public ExitMenuState(CarGame game) {
     	this.game = game;
 
         rootNode = this.game.getRootNode();
-        guiNode = this.game.getGuiNode();
-
-        this.game.getLogger().log(Level.SEVERE, "MainMenuState created.");
+	guiNode = this.game.getGuiNode();
+        
+        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
     
     public void onAction(String name, boolean value, float tpf) {
@@ -69,6 +69,17 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
             return;
         // Load other state
         // game.loadGame("Default");
+        
+        /*
+            if(exit=="Yes")
+            {
+                CarGame.getApp().loadControllerSelector_return(exit);
+            }
+            else
+            {
+                
+            }
+        */
     }
 
     public void start() {
@@ -88,7 +99,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/MainMenu.xml", "MainMenuScreen");
+        nifty.fromXml("General/Interface/ExitMenu.xml", "ExitScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
@@ -132,7 +143,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
     @Override
     public void render(RenderManager rm) {
     }
-
+    
     @Override
     public void cleanup() {
         super.cleanup();

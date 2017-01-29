@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.appstates;
 
+import gui.nifty.systems.ExitMenuState;
 import cargame.entities.Track;
 import cargame.tracks.Common.Sky;
 import cargame.tracks.Common.Sun;

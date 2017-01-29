@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package gui.nifty.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -40,7 +40,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 
-public class LicenseAcceptanceState extends AbstractAppState implements ActionListener{
+public class InGameMenuState extends AbstractAppState implements ActionListener{
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -55,13 +55,13 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
     
     private CarGame game = null;
     
-    public LicenseAcceptanceState(CarGame game) {
+    public InGameMenuState(CarGame game) {
     	this.game = game;
-        
-        rootNode = this.game.getRootNode();
-        guiNode = this.game.getGuiNode();
 
-        this.game.getLogger().log(Level.SEVERE, "LicenceAcceptanceState created.");
+        rootNode = this.game.getRootNode();
+	guiNode = this.game.getGuiNode();
+
+        this.game.getLogger().log(Level.SEVERE, "InGameMenuState created.");
     }
     
     public void onAction(String name, boolean value, float tpf) {
@@ -88,7 +88,7 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/LicenseAcceptanceMenu.xml", "LicenseAcceptanceMenuScreen");
+        nifty.fromXml("General/Interface/InGameMenu.xml", "InGameMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
@@ -112,6 +112,7 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
         }
 
         game.getInputManager().addListener(this, "CARGAME_Exit1");
+
         if(niftyDisplay != null)    {
             game.getGUIViewPort().addProcessor(niftyDisplay);
         }
@@ -124,10 +125,10 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
     @Override
     public void update(float tpf) {
         super.update(tpf);
-       
+
         menuText.setText("Press [Escape] to go to the Game-State");
     }
-
+    
     @Override
     public void render(RenderManager rm) {
     }
