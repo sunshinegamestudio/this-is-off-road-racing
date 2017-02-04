@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package gui.nifty.systems;
+package cargame.gui.nifty.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -40,7 +40,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 
-public class LicenseViewMenuState extends AbstractAppState implements ActionListener{
+public class InGameMenuState extends AbstractAppState implements ActionListener{
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -55,13 +55,13 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
     
     private CarGame game = null;
     
-    public LicenseViewMenuState(CarGame game) {
+    public InGameMenuState(CarGame game) {
     	this.game = game;
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
-        
-        this.game.getLogger().log(Level.SEVERE, "LicenceAcceptanceState created.");
+
+        this.game.getLogger().log(Level.SEVERE, "InGameMenuState created.");
     }
     
     public void onAction(String name, boolean value, float tpf) {
@@ -88,7 +88,7 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/LicenseViewMenu.xml", "LicenseViewMenuScreen");
+        nifty.fromXml("General/Interface/InGameMenu.xml", "InGameMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
@@ -112,6 +112,7 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         }
 
         game.getInputManager().addListener(this, "CARGAME_Exit1");
+
         if(niftyDisplay != null)    {
             game.getGUIViewPort().addProcessor(niftyDisplay);
         }
@@ -131,7 +132,7 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
     @Override
     public void render(RenderManager rm) {
     }
-    
+
     @Override
     public void cleanup() {
         super.cleanup();
@@ -143,5 +144,4 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         // game.getViewPort().detachScene(rootNode);
         // game.getGUIViewPort().detachScene(guiNode);
     }
-    
 }

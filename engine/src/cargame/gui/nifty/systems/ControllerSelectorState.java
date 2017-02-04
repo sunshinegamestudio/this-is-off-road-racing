@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package gui.nifty.systems;
+package cargame.gui.nifty.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -40,7 +40,7 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 
-public class ExitMenuState extends AbstractAppState implements ActionListener{
+public class ControllerSelectorState extends AbstractAppState implements ActionListener{
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -55,7 +55,7 @@ public class ExitMenuState extends AbstractAppState implements ActionListener{
     
     private CarGame game = null;
     
-    public ExitMenuState(CarGame game) {
+    public ControllerSelectorState(CarGame game) {
     	this.game = game;
 
         rootNode = this.game.getRootNode();
@@ -69,17 +69,6 @@ public class ExitMenuState extends AbstractAppState implements ActionListener{
             return;
         // Load other state
         // game.loadGame("Default");
-        
-        /*
-            if(exit=="Yes")
-            {
-                CarGame.getApp().loadControllerSelector_return(exit);
-            }
-            else
-            {
-                
-            }
-        */
     }
 
     public void start() {
@@ -99,7 +88,7 @@ public class ExitMenuState extends AbstractAppState implements ActionListener{
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/ExitMenu.xml", "ExitScreen");
+        nifty.fromXml("General/Interface/ControllerSelectorMenu.xml", "ControllerSelectorScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);

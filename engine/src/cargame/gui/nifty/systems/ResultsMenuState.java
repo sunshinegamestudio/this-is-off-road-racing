@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package gui.nifty.systems;
+package cargame.gui.nifty.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -39,8 +39,9 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
+import cargame.gui.ResultsMenuScreenController;
 
-public class ControllerSelectorState extends AbstractAppState implements ActionListener{
+public class ResultsMenuState extends AbstractAppState implements ActionListener{
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -52,16 +53,27 @@ public class ControllerSelectorState extends AbstractAppState implements ActionL
 
     private NiftyJmeDisplay niftyDisplay = null;
     private Nifty nifty = null;
+    private ResultsMenuScreenController resultsMenuScreenController;
+
+    // private long lapTimes[];
+    private float lapTimes[];
+    private int maxLaps = 4;
     
     private CarGame game = null;
     
-    public ControllerSelectorState(CarGame game) {
+    public ResultsMenuState(CarGame game) {
     	this.game = game;
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
         
-        this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
+        // lapTimes = new long[10];
+        lapTimes = new float[10];
+        for(int i=0; i<maxLaps; i++)    {
+            lapTimes[i] = 0;
+        }
+        
+        this.game.getLogger().log(Level.SEVERE, "MainMenuState created.");
     }
     
     public void onAction(String name, boolean value, float tpf) {
@@ -88,10 +100,13 @@ public class ControllerSelectorState extends AbstractAppState implements ActionL
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/ControllerSelectorMenu.xml", "ControllerSelectorScreen");
-
+        nifty.fromXml("General/Interface/ResultsMenu.xml", "ResultsMenuScreen");
+        resultsMenuScreenController = (ResultsMenuScreenController)(ScreenController)nifty.getScreen("ResultsMenuScreen").getScreenController();
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
+    
+        long timerResolution = game.getTimer().getResolution();
+        resultsMenuScreenController.setLapTimes(lapTimes[0], lapTimes[1], lapTimes[2], lapTimes[3], timerResolution);
     }
 
     @Override
@@ -132,7 +147,7 @@ public class ControllerSelectorState extends AbstractAppState implements ActionL
     @Override
     public void render(RenderManager rm) {
     }
-    
+
     @Override
     public void cleanup() {
         super.cleanup();
@@ -143,5 +158,13 @@ public class ControllerSelectorState extends AbstractAppState implements ActionL
     	
         // game.getViewPort().detachScene(rootNode);
         // game.getGUIViewPort().detachScene(guiNode);
+    }
+    
+    // public void setLapTimes (long lap0, long lap1, long lap2, long lap3)    {
+    public void setLapTimes (float lap0, float lap1, float lap2, float lap3)    {
+        lapTimes[0]=lap0;
+        lapTimes[1]=lap1;
+        lapTimes[2]=lap2;
+        lapTimes[3]=lap3;
     }
 }

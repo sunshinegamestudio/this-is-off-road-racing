@@ -25,7 +25,7 @@ import com.jme3.renderer.ViewPort;
 import java.util.concurrent.Callable;
 
 import cargame.core.CarGame;
-import gui.nifty.systems.ResultsMenuState;
+import cargame.gui.nifty.systems.ResultsMenuState;
 
 public class ChangeResultsLapTimesTask implements Callable
 {
