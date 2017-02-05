@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package cargame.ecs.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -33,8 +33,6 @@ import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.queue.RenderQueue.Bucket;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial.CullHint;
-import com.jme3.renderer.queue.RenderQueue.ShadowMode;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.*;
@@ -42,32 +40,27 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.SimpleCarPlayer;
-import com.jme3.light.DirectionalLight;
-import com.jme3.light.Light;
-import com.jme3.renderer.ViewPort;
+import cargame.ecs.entities.StartingPoint;
+import cargame.ecs.entities.SimpleCarPlayer;
 
-public class ShadowState extends AbstractAppState implements CleanupManualInterface    {
+public class StartingPointState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
     // protected Node guiNode = new Node("Gui Node");
     private Node guiNode;
 
-    private SimpleCarPlayer player;
-    private Node player_node;
     private CarGame game = null;
 
-    private DirectionalLightShadowRenderer dlsr;
-    private ViewPort viewPort;
-    private DirectionalLight directionalLight;
-
-    private boolean cleanedupManual = false;
+    private StartingPoint startingPoint;
+    private SimpleCarPlayer player;
     
-    public ShadowState(CarGame game, ViewPort viewPort, DirectionalLight directionalLight) {
+    private boolean isOnStartingPoint = true;
+    
+    private boolean cleanedupManual = false;
+
+    public StartingPointState(CarGame game) {
     	this.game = game;
-        this.viewPort = viewPort;
-        this.directionalLight = directionalLight;
 
         rootNode = this.game.getRootNode();
 	guiNode = this.game.getGuiNode();
@@ -79,12 +72,8 @@ public class ShadowState extends AbstractAppState implements CleanupManualInterf
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
 
-        final int SHADOWMAP_SIZE=1024;
-        dlsr = new DirectionalLightShadowRenderer(game.getAssetManager(), SHADOWMAP_SIZE, 3);
-        dlsr.setLight(directionalLight);
-        viewPort.addProcessor(dlsr);
-
-        rootNode.setShadowMode(ShadowMode.Off);
+        startingPoint = new StartingPoint(game.getAssetManager(), rootNode, game.getPhysicsSpace(), game.getCamera());
+        startingPoint.initialize();
 
         cleanedupManual = false;
     }
@@ -92,6 +81,13 @@ public class ShadowState extends AbstractAppState implements CleanupManualInterf
     @Override
     public void update(float tpf) {
         super.update(tpf);
+
+        // Set isOnStartingPoint to false, only if the player was already on startingPoint
+        if(isOnStartingPoint == true)   {
+            if(startingPoint.isOnStartinPoint() == false)  {
+                isOnStartingPoint = false;
+            }
+        }
     }
     
     @Override
@@ -101,7 +97,7 @@ public class ShadowState extends AbstractAppState implements CleanupManualInterf
     @Override
     public void cleanupManual() {
         // cleanup
-        viewPort.removeProcessor(dlsr);
+        startingPoint.cleanup();
 
         cleanedupManual=true;
     }
@@ -112,6 +108,15 @@ public class ShadowState extends AbstractAppState implements CleanupManualInterf
 
         if(cleanedupManual == false) {
             cleanupManual();
+        }
+    }
+
+    public boolean checkForNewLap()   {
+        if((isOnStartingPoint == false) && (startingPoint.isOnStartinPoint() == true))    {
+            isOnStartingPoint = true;
+            return true;
+        }   else    {
+            return false;
         }
     }
 }

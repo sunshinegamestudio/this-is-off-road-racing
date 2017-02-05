@@ -18,9 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.tracks.Common;
 
-import cargame.appstates.CleanupManualInterface;
-import cargame.entities.Entity;
-import cargame.entities.Entity_AppState;
+import cargame.ecs.systems.CleanupManualInterface;
+import cargame.ecs.entities.Entity;
+import cargame.ecs.entities.Entity_AppState;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;

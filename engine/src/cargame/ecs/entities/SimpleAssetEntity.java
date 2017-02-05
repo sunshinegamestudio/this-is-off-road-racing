@@ -16,11 +16,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.entities;
+package cargame.ecs.entities;
 
 import cargame.tracks.BeachResort.*;
-import cargame.entities.*;
-import cargame.appstates.CleanupManualInterface;
+import cargame.ecs.systems.CleanupManualInterface;
 import cargame.controls.BoxCollisionShapeControl;
 import cargame.core.CarGame;
 import cargame.tracks.GrassHill.GrassHill;

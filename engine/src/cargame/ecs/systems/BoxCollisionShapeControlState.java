@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package cargame.ecs.systems;
 
 import cargame.controls.BoxCollisionShapeControl;
 import com.jme3.app.Application;
@@ -41,8 +41,8 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.PassThroughZoneDetection;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.PassThroughZoneDetection;
+import cargame.ecs.entities.SimpleCarPlayer;
 import com.jme3.scene.SceneGraphVisitor;
 import com.jme3.scene.Spatial;
 

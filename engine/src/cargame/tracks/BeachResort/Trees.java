@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.tracks.BeachResort;
 
-import cargame.entities.*;
-import cargame.appstates.CleanupManualInterface;
+import cargame.ecs.entities.Entity_AppState;
+import cargame.ecs.systems.CleanupManualInterface;
 import cargame.core.CarGame;
 import cargame.tracks.GrassHill.GrassHill;
 import com.jme3.app.Application;

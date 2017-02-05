@@ -26,7 +26,7 @@ import de.lessvoid.nifty.screen.ScreenController;
 import de.lessvoid.nifty.elements.render.TextRenderer;
 
 import cargame.core.CarGame;
-import cargame.appstates.GameState;
+import cargame.ecs.systems.GameState;
 import cargame.other.Time;
 
 /**

@@ -16,9 +16,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.inputcontrollers;
+package cargame.ecs.systems.inputcontrollers;
 
-import cargame.appstates.*;
+import cargame.ecs.systems.CleanupManualInterface;
+import cargame.ecs.systems.GameState;
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
@@ -40,15 +41,12 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.SimpleCarPlayer;
 import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Analog;
 import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Digital;
 
-public class TouchScreenInputController extends AbstractAppState implements ActionListener, CleanupManualInterface  {
+public class KeyboardInputController extends AbstractAppState implements ActionListener, CleanupManualInterface {
 
-    private NiftyJmeDisplay niftyDisplay = null;
-    private Nifty nifty = null;
-    
     private CarGame game = null;
     private GameState gamestate;
     private SimpleCarPlayer player;
@@ -70,7 +68,7 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
 
     private boolean cleanedupManual = false;
 
-    public TouchScreenInputController(CarGame game) {
+    public KeyboardInputController(CarGame game) {
     	this.game = game;
         gamestate = game.getStateManager().getState(GameState.class);
         player=gamestate.getPlayer();
@@ -92,7 +90,7 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
             else if (name.equals("Rights")) {
                 if (isPressed)  {
                     player.addSteering(-steer_dig_v);
-                }   else    { 
+                }   else    {
                     player.addSteering(-steer_dig_nv);
                 }
                 player.processSteering();
@@ -109,7 +107,8 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
                 if (isPressed)  {
                     player.brake(brake_dig_v);
                 }   else    {
-                    player.brake(brake_dig_nv);   }
+                    player.brake(brake_dig_nv);
+                }
             }
             else if (name.equals("Gears")) {
                 if (isPressed)  {
@@ -130,30 +129,10 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         }
     }
 
-    private void loadMenu() {
-        niftyDisplay = game.getNiftyDisplay();
-        nifty = niftyDisplay.getNifty();
-
-        /*
-        nifty.fromXml("General/Interface/GameHUD_Analog.xml", "GameHUD");
-        GameHUDScreenController_Analog gameHUDScreenController_Analog = (GameHUDScreenController_Analog)nifty.getScreen("GameHUD").getScreenController();
-        gameHUDScreenController_Analog.setGameState(gamestate);
-        */
-
-        nifty.fromXml("General/Interface/Nifty/GameHUD_Digital.xml", "GameHUD");
-        GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
-        gameHUDScreenController_Digital.setGameState(gamestate);
-
-            // attach the nifty display to the gui view port as a processor
-        // game.getGUIViewPort().addProcessor(niftyDisplay);
-    }
-
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
         
-        loadMenu();
-
         // Init input
         /*
         if (game.getInputManager() != null){
@@ -163,12 +142,19 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         game.getInputManager().addListener(this, "CARGAME_Exit1");
         */
 
-        if(niftyDisplay != null)    {
-            game.getGUIViewPort().addProcessor(niftyDisplay);
-        }
-        
         // Initialise/setup input bindings here?
-        // ...
+        game.getInputManager().addMapping("Lefts",  new KeyTrigger(KeyInput.KEY_LEFT));
+        game.getInputManager().addMapping("Rights", new KeyTrigger(KeyInput.KEY_RIGHT));
+        game.getInputManager().addMapping("Ups",    new KeyTrigger(KeyInput.KEY_UP));
+        game.getInputManager().addMapping("Downs",  new KeyTrigger(KeyInput.KEY_DOWN));
+        game.getInputManager().addMapping("Gears",  new KeyTrigger(KeyInput.KEY_R));
+        game.getInputManager().addMapping("Jumps",  new KeyTrigger(KeyInput.KEY_SPACE));
+        game.getInputManager().addListener(this, "Lefts");
+        game.getInputManager().addListener(this, "Rights");
+        game.getInputManager().addListener(this, "Ups");
+        game.getInputManager().addListener(this, "Downs");
+        game.getInputManager().addListener(this, "Gears");
+        game.getInputManager().addListener(this, "Jumps");
 
         cleanedupManual = false;
     }
@@ -185,7 +171,6 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
     @Override
     public void cleanupManual() {
         // cleanup
-        game.getGUIViewPort().removeProcessor(niftyDisplay);
         game.getInputManager().removeListener(this);
 
         cleanedupManual=true;

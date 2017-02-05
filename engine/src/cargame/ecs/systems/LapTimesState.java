@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package cargame.ecs.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -40,8 +40,8 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.StartingPoint;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.StartingPoint;
+import cargame.ecs.entities.SimpleCarPlayer;
 import cargame.other.Time;
 
 public class LapTimesState extends AbstractAppState implements CleanupManualInterface    {

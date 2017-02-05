@@ -16,13 +16,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package cargame.ecs.systems;
 
+import cargame.ecs.entities.StartingPoint;
 import cargame.gui.nifty.systems.ExitMenuState;
-import cargame.entities.Track;
+import cargame.ecs.entities.Track;
 import cargame.tracks.Common.Sky;
 import cargame.tracks.Common.Sun;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.SimpleCarPlayer;
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
@@ -54,12 +55,11 @@ import jme3tools.savegame.SaveGame;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.*;
 import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Analog;
 import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Digital;
-import cargame.inputcontrollers.JoystickInputController;
-import cargame.inputcontrollers.KeyboardInputController;
-import cargame.inputcontrollers.TouchScreenInputController;
+import cargame.ecs.systems.inputcontrollers.JoystickInputController;
+import cargame.ecs.systems.inputcontrollers.KeyboardInputController;
+import cargame.ecs.systems.inputcontrollers.TouchScreenInputController;
 import cargame.other.PhysicsSpacePrinter;
 import cargame.other.SceneGraphPrinter;
 import cargame.other.Time;

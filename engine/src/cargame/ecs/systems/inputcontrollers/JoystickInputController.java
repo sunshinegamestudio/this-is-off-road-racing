@@ -16,9 +16,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.inputcontrollers;
+package cargame.ecs.systems.inputcontrollers;
 
-import cargame.appstates.*;
+import cargame.ecs.systems.CleanupManualInterface;
+import cargame.ecs.systems.GameState;
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
@@ -43,7 +44,7 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.SimpleCarPlayer;
 import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Analog;
 import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Digital;
 import com.jme3.input.controls.ActionListener;

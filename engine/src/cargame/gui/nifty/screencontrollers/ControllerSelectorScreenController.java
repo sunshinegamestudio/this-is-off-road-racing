@@ -28,7 +28,7 @@ import de.lessvoid.nifty.elements.render.TextRenderer;
 import de.lessvoid.xml.xpp3.Attributes;
 
 import cargame.core.CarGame;
-import cargame.appstates.GameState;
+import cargame.ecs.systems.GameState;
 
 /**
  *

@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package cargame.ecs.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -40,9 +40,9 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.SimpleCarPlayer;
 
-public class FPSState extends AbstractAppState implements CleanupManualInterface    {
+public class ThirdPersonCameraState extends AbstractAppState implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -50,15 +50,12 @@ public class FPSState extends AbstractAppState implements CleanupManualInterface
     private Node guiNode;
 
     private SimpleCarPlayer player;
+    private Node player_node;
     private CarGame game = null;
-
-    private BitmapFont guiFont;
-    private BitmapText fpsText;
-    private BitmapText menuText;
 
     private boolean cleanedupManual = false;
     
-    public FPSState(CarGame game) {
+    public ThirdPersonCameraState(CarGame game) {
     	this.game = game;
 
         rootNode = this.game.getRootNode();
@@ -70,19 +67,6 @@ public class FPSState extends AbstractAppState implements CleanupManualInterface
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
-        
-        guiFont = game.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        fpsText = new BitmapText(guiFont, false);
-        fpsText.setSize(guiFont.getCharSet().getRenderedSize());
-        fpsText.setLocalTranslation(0, fpsText.getLineHeight(), 0);
-        //fpsText.setText("Frames per second");
-        guiNode.attachChild(fpsText);
-        
-        menuText = new BitmapText(guiFont, false);
-        menuText.setSize(guiFont.getCharSet().getRenderedSize());
-        menuText.setLocalTranslation(0, (game.getContext().getSettings().getHeight()/2f)-(menuText.getLineHeight()/2f), 0);
-        menuText.setText("Press [M] to go back to the Menu");
-        guiNode.attachChild(menuText);
 
         cleanedupManual = false;
     }
@@ -91,20 +75,49 @@ public class FPSState extends AbstractAppState implements CleanupManualInterface
     public void update(float tpf) {
         super.update(tpf);
 
-        int fps = (int) game.getTimer().getFrameRate();
-        fpsText.setText("Frames per second: "+fps);
+        // Replace flyCam with ChaseCamera (see example TestChaseCamera.jave) !!!!!!!!!!!!!!!!!!!1
+
+        player = game.getStateManager().getState(GameState.class).getPlayer();
+
+        if(player != null)  {
+            player_node = player.getNode();
+            if(player_node != null) {
+                /*
+                Vector3f camDir = flyCam.getDirection().clone().multLocal(0.6f);
+                Vector3f camLeft = flyCam.getLeft().clone().multLocal(0.4f);
+                flyCam.setLocation(player.getNode().getLocalTranslation());
+                 * Some methods don't work. Find another way for this or ask tutorial writer for correction.
+                 */
+
+                this.game.getLogger().log(Level.INFO, "GameState-update: begin update nodes.");
+
+                // Place the camera behind the player
+                Vector3f direction = player_node.getLocalRotation().getRotationColumn(2);
+                Vector3f direction2 = player_node.getLocalRotation().getRotationColumn(1);
+
+                float yDirection = direction2.y;
+                float xDirection = direction.x;
+                float zDirection = direction.z;
+
+                Vector3f camLocation = new Vector3f(player_node.getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+4f, player.getNode().getWorldTranslation().z + (zDirection*10));
+                // Vector3f camLocation = new Vector3f(player_node.getWorldTranslation().x+(xDirection*10), player.getNode().getWorldTranslation().y+34f, player.getNode().getWorldTranslation().z + (zDirection*60));
+
+                game.getCamera().setLocation(camLocation);
+                game.getCamera().lookAt(player_node.getWorldTranslation(), Vector3f.UNIT_Y);
+            }
+        }
     }
     
     @Override
     public void render(RenderManager rm) {
     }
-    
+
     @Override
     public void cleanupManual() {
         // cleanup
         cleanedupManual=true;
     }
-
+    
     @Override
     public void cleanup() {
         super.cleanup();

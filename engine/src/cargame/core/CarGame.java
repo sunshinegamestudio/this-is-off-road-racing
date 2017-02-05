@@ -46,7 +46,7 @@ import cargame.gui.nifty.systems.LicenseViewMenuState;
 import cargame.gui.nifty.systems.ControllerSelectorState;
 import cargame.gui.nifty.systems.TrackSelectorState;
 import cargame.gui.nifty.systems.InGameMenuState;
-import cargame.appstates.GameState;
+import cargame.ecs.systems.GameState;
 import cargame.gui.nifty.systems.LicenseAcceptanceState;
 import cargame.gui.nifty.systems.ResultsMenuState;
 import cargame.core.statetasks.ChangeStateTask;

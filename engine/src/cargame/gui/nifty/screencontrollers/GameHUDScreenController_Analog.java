@@ -25,7 +25,7 @@ import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 
 import cargame.core.CarGame;
-import cargame.appstates.GameState;
+import cargame.ecs.systems.GameState;
 import com.jme3.input.controls.ActionListener;
 
 /**

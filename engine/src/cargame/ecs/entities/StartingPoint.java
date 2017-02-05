@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * This code is based on MonkeyZone -> svn/  trunk/ src/ com/ jme3/ monkeyzone/ controls/ ManualCharacterControl.java
  */
 
-package cargame.entities;
+package cargame.ecs.entities;
 
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
@@ -78,9 +78,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jme3tools.converters.ImageToAwt;
 
-import cargame.appstates.CleanupManualInterface;
 import cargame.controls.PassThroughZoneDetectionControl;
-
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.collision.shapes.HullCollisionShape;
@@ -90,41 +88,32 @@ import com.jme3.bullet.control.GhostControl;
  *
  * @author Sunshine GameStudio
  */
-public class PassThroughZoneDetection extends Entity_AppState   implements CleanupManualInterface   {
+public class StartingPoint extends Entity  {
 static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.HALF_PI, Vector3f.UNIT_Y);
     //camera
     private Camera cam;
 
-    //private Spatial passThroughZone_geo;
-    private Node passThroughZone_geo;
-    private String geo_name;
+    //private Spatial startingpoint_geo;
+    private Node startingpoint_geo;
 
     private RigidBodyControl rigidBodyControl;
 
     private GhostControl ghostControl;
     private PassThroughZoneDetectionControl passThroughZoneDetectionControl;
-
-    private boolean cleanedupManual = false;
     
-    public PassThroughZoneDetection(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam, String geo_name) {
+    public StartingPoint(AssetManager assetManager, Node parent, PhysicsSpace physicsSpace, Camera cam) {
         super(assetManager, parent, physicsSpace);
 
-        this.geo_name = geo_name;
-    }
-       
-    @Override
-    public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
-
         this.cam = cam;
+    }
 
+    public void initialize() {
         //startingpoint_geo = getParent().getChild("startingpoint_1-ogremesh");
-        // passThroughZone_geo = (Node)getParent().getChild("startingpoint_1-ogremesh");
-        passThroughZone_geo = (Node)getParent().getChild(geo_name);
-        if(passThroughZone_geo != null)    {
+        startingpoint_geo = (Node)getParent().getChild("startingpoint_1-ogremesh");
+        if(startingpoint_geo != null)    {
             // RigidBodyControl for collision with startingpoint
             /*
-            HullCollisionShape hullCollisionShape = new HullCollisionShape(passThroughZone_geo.getMesh());
+            HullCollisionShape hullCollisionShape = new HullCollisionShape(startingpoint_geo.getMesh());
             rigidBodyControl = new RigidBodyControl(hullCollisionShape);
             rigidBodyControl.setMass(0);
              * Temperary disabled
@@ -132,8 +121,7 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
             
             // GhostControl for new lap detection
             BoxCollisionShape boxCollisionShape = new BoxCollisionShape(new Vector3f(5.0f, 5.0f, 5.0f));
-            // BoxCollisionShape boxCollisionShape = new BoxCollisionShape(passThroughZone_geo.getLocalScale());
-            //BoxCollisionShape boxCollisionShape = new BoxCollisionShape(new Vector3f(passThroughZone_geo.getWorldBound().getVolume(), passThroughZone_geo.getWorldBound().getVolume(), passThroughZone_geo.getWorldBound().getVolume()));
+            //BoxCollisionShape boxCollisionShape = new BoxCollisionShape(new Vector3f(startingpoint_geo.getWorldBound().getVolume(), startingpoint_geo.getWorldBound().getVolume(), startingpoint_geo.getWorldBound().getVolume()));
             ghostControl = new GhostControl(boxCollisionShape);
 
             ghostControl.setCollisionGroup(PhysicsCollisionObject.COLLISION_GROUP_01);
@@ -141,58 +129,30 @@ static final Quaternion ROTATE_LEFT = new Quaternion().fromAngleAxis(-FastMath.H
             ghostControl.removeCollideWithGroup(PhysicsCollisionObject.COLLISION_GROUP_01);
 
             getPhysicsSpace().add(ghostControl);
-            passThroughZone_geo.addControl(ghostControl);
+            startingpoint_geo.addControl(ghostControl);
         
             passThroughZoneDetectionControl = new PassThroughZoneDetectionControl(getPhysicsSpace());
             //startingpoint_geo.addControl(passThroughZoneDetectionControl);
 
             getPhysicsSpace().addTickListener(passThroughZoneDetectionControl);
             getPhysicsSpace().addCollisionListener(passThroughZoneDetectionControl);
-
-            cleanedupManual = false;
         }
     }
 
-    @Override
-    public void cleanupManual() {
-        // cleanup
+    public void cleanup() {
         getPhysicsSpace().removeTickListener(passThroughZoneDetectionControl);
         getPhysicsSpace().removeCollisionListener(passThroughZoneDetectionControl);
 
         try {
             getPhysicsSpace().remove(ghostControl);
-        }
-        catch(Exception e)  {
-        }
-        try {
-            passThroughZone_geo.removeControl(ghostControl);
-        }
-        catch(Exception e)  {
-        }
-        
-        cleanedupManual=true;
-    }
-    
-    @Override
-    public void cleanup() {
-        super.cleanup();
-        
-        if(cleanedupManual == false) {
-            cleanupManual();
-        }
-    }
-    
-    public boolean isOnPassThroughDetectionZone()    {
-        return passThroughZoneDetectionControl.isOnPassThroughDetectionZone();
+        } catch(NullPointerException e)    {
 
-        /*
-        if(passThroughZoneDetectionControl != null) {
-            return passThroughZoneDetectionControl.isOnPassThroughDetectionZone();
-        }   else  {
-            return false;
-            // return true;
         }
-        */
+        startingpoint_geo.removeControl(ghostControl);
+    }
+    
+    public boolean isOnStartinPoint()    {
+        return passThroughZoneDetectionControl.isOnPassThroughDetectionZone();
     }
         /*
     public Node getNode()   {

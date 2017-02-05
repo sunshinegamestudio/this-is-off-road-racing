@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.tracks.BeachResort;
 
+import cargame.ecs.systems.CleanupManualInterface;
 import cargame.tracks.BeachResort.*;
-import cargame.appstates.*;
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
@@ -42,7 +42,7 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.entities.SimpleCarPlayer;
+import cargame.ecs.entities.SimpleCarPlayer;
 import cargame.tracks.Common.Sky;
 import cargame.tracks.Common.StartingPoint;
 import cargame.tracks.Common.Sun;

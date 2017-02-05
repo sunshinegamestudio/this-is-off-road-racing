@@ -16,9 +16,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.entities;
+package cargame.ecs.entities;
 
-import cargame.appstates.CleanupManualInterface;
+import cargame.ecs.systems.CleanupManualInterface;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
