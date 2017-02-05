@@ -88,7 +88,7 @@ public class ControllerSelectorState extends AbstractAppState implements ActionL
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/ControllerSelectorMenu.xml", "ControllerSelectorScreen");
+        nifty.fromXml("General/Interface/Nifty/ControllerSelectorMenu.xml", "ControllerSelectorScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);

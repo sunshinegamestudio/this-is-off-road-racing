@@ -140,7 +140,7 @@ public class TouchScreenInputController extends AbstractAppState implements Acti
         gameHUDScreenController_Analog.setGameState(gamestate);
         */
 
-        nifty.fromXml("General/Interface/GameHUD_Digital.xml", "GameHUD");
+        nifty.fromXml("General/Interface/Nifty/GameHUD_Digital.xml", "GameHUD");
         GameHUDScreenController_Digital gameHUDScreenController_Digital = (GameHUDScreenController_Digital)nifty.getScreen("GameHUD").getScreenController();
         gameHUDScreenController_Digital.setGameState(gamestate);
 

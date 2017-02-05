@@ -44,7 +44,7 @@ import com.jme3.app.state.AbstractAppState;
 import cargame.gui.nifty.systems.MainMenuState;
 import cargame.gui.nifty.systems.LicenseViewMenuState;
 import cargame.gui.nifty.systems.ControllerSelectorState;
-import cargame.appstates.TrackSelectorState;
+import cargame.gui.nifty.systems.TrackSelectorState;
 import cargame.gui.nifty.systems.InGameMenuState;
 import cargame.appstates.GameState;
 import cargame.gui.nifty.systems.LicenseAcceptanceState;

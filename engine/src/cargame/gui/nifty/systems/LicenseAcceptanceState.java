@@ -88,7 +88,7 @@ public class LicenseAcceptanceState extends AbstractAppState implements ActionLi
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/LicenseAcceptanceMenu.xml", "LicenseAcceptanceMenuScreen");
+        nifty.fromXml("General/Interface/Nifty/LicenseAcceptanceMenu.xml", "LicenseAcceptanceMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);

@@ -88,7 +88,7 @@ public class LicenseViewMenuState extends AbstractAppState implements ActionList
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/LicenseViewMenu.xml", "LicenseViewMenuScreen");
+        nifty.fromXml("General/Interface/Nifty/LicenseViewMenu.xml", "LicenseViewMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);

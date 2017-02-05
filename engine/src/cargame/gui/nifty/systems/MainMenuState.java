@@ -88,7 +88,7 @@ public class MainMenuState extends AbstractAppState implements ActionListener{
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/MainMenu.xml", "MainMenuScreen");
+        nifty.fromXml("General/Interface/Nifty/MainMenu.xml", "MainMenuScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);

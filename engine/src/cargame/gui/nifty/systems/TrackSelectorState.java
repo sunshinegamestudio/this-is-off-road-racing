@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.appstates;
+package cargame.gui.nifty.systems;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
@@ -88,7 +88,7 @@ public class TrackSelectorState extends AbstractAppState implements ActionListen
         niftyDisplay = game.getNiftyDisplay();
         nifty = niftyDisplay.getNifty();
 
-        nifty.fromXml("General/Interface/TrackSelectorMenu.xml", "TrackSelectorScreen");
+        nifty.fromXml("General/Interface/Nifty/TrackSelectorMenu.xml", "TrackSelectorScreen");
 
         // attach the nifty display to the gui view port as a processor
         // game.getGUIViewPort().addProcessor(niftyDisplay);
