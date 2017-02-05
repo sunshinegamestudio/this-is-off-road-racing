@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.gui;
+package cargame.gui.nifty.screencontrollers;
 
 import com.jme3.app.state.AppState;
 
@@ -26,13 +26,14 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 import cargame.core.CarGame;
 import cargame.appstates.GameState;
+import com.jme3.app.state.AbstractAppState;
 import com.jme3.input.controls.ActionListener;
 
 /**
  *
  * @author Sunshine GameStudio
  */
-    public class GameHUDScreenController_Analog implements ScreenController   {
+    public class GameHUDScreenController_Digital implements ScreenController   {
         private float accelerate;
         private int acceleratePos;
         private float brake;
@@ -53,7 +54,7 @@ import com.jme3.input.controls.ActionListener;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
-
+            
             touchScreenInputController = (ActionListener)gameState.getInputController();
         }
 
@@ -68,98 +69,63 @@ import com.jme3.input.controls.ActionListener;
         }
 
         public void accelerate_onClick(int x, int y)   {
-            System.out.println("accelerate_onClick: " + x + " "+ y);
-            acceleratePos = y;
-            accelerate = 0;
-            gameState.onAnalog("LeftStick Up", accelerate, 0);
+            // gameState.onAction("Ups", true, 0);
+            touchScreenInputController.onAction("Ups", true, 0.0f);
         }
 
-        public void accelerate_onClickMouseMove(int x, int y)   {
-            System.out.println("accelerate_onClickMouseMove: " + x + " "+ y);
-
-            if (y < acceleratePos) {
-                accelerate = acceleratePos - y;
-                gameState.onAnalog("LeftStick Up", accelerate, 0);
-            }
+        public void accelerate_onClickRepeat(int x, int y)   {
+            // gameState.onAction("Ups", true, 0);
+            touchScreenInputController.onAction("Ups", true, 0);
         }
 
         public void accelerate_onRelease()   {
-            System.out.println("accelerate_onRelease");
-            acceleratePos = 0;
-            accelerate = 0;
-            gameState.onAnalog("LeftStick Up", accelerate, 0);
+            // gameState.onAction("Ups", false, 0);
+            touchScreenInputController.onAction("Ups", false, 0);
         }
 
         public void brake_onClick(int x, int y)   {
-            System.out.println("brake_onClick: " + x + " "+ y);
-            brakePos = y;
-            brake = 0;
-            gameState.onAnalog("LeftStick Down", brake, 0);
+            // gameState.onAction("Downs", true, 0);
+            touchScreenInputController.onAction("Downs", true, 0);
         }
 
-        public void brake_onClickMouseMove(int x, int y)   {
-            System.out.println("brake_onClickMouseMove: " + x + " "+ y);
-
-            if (y > brakePos) {
-                brake = y - brakePos;
-                gameState.onAnalog("LeftStick Up", brake, 0);
-            }
+        public void brake_onClickRepeat(int x, int y)   {
+            // gameState.onAction("Downs", true, 0);
+            touchScreenInputController.onAction("Downs", true, 0);
         }
 
         public void brake_onRelease()   {
-            System.out.println("brake_onRelease");
-            brakePos = 0;
-            brake = 0;
-            gameState.onAnalog("LeftStick Down", brake, 0);
+            // gameState.onAction("Downs", false, 0);
+            touchScreenInputController.onAction("Downs", false, 0);
         }
         
         public void steerLeft_onClick(int x, int y) {
-            System.out.println("steerLeft_onClick: " + x + " "+ y);
-            steerLeftPos = x;
-            steerLeft = 0;
-            gameState.onAnalog("RightStick Left", steerLeft, 0);
+            // gameState.onAction("Lefts", true, 0);
+            touchScreenInputController.onAction("Lefts", true, 0);
         }
 
-        public void steerLeft_onClickMouseMove(int x, int y) {
-            System.out.println("steerLeft_onClickMouseMove: " + x + " "+ y);
-
-            if (x < steerLeftPos) {
-                steerLeft = x - steerLeftPos;
-                gameState.onAnalog("RightStick Left", steerLeft, 0);
-            }
+        public void steerLeft_onClickRepeat(int x, int y) {
+            // gameState.onAction("Lefts", true, 0);
+            touchScreenInputController.onAction("Lefts", true, 0);
         }
 
         public void steerLeft_onRelease() {
-            System.out.println("steerLeft_onRelease");
-            steerLeftPos = 0;
-            steerLeft = 0;
-            gameState.onAnalog("RightStick Left", steerLeft, 0);
+            // gameState.onAction("Lefts", false, 0);
+            touchScreenInputController.onAction("Lefts", false, 0);
         }
 
         public void steerRight_onClick(int x, int y) {
-            System.out.println("steerRight_onClick: " + x + " "+ y);
-            steerRightPos = x;
-            steerRight = 0;
-            gameState.onAnalog("RightStick Right", steerLeft, 0);
+            // gameState.onAction("Rights", true, 0);
+            touchScreenInputController.onAction("Rights", true, 0);
         }
 
-        public void steerRight_onClickMouseMove(int x, int y) {
-            System.out.println("steerRight_onClickMouseMove: " + x + " "+ y);
-
-            if (x < steerRightPos) {
-                steerRight = steerRightPos - x;
-                gameState.onAnalog("RightStick Right", steerRight, 0);
-            }
-            
-            steerRight = steerRightPos - x;
-            gameState.onAnalog("RightStick Right", steerLeft, 0);
+        public void steerRight_onClickRepeat(int x, int y) {
+            // gameState.onAction("Rights", true, 0);
+            touchScreenInputController.onAction("Rights", true, 0);
         }
 
         public void steerRight_onRelease() {
-            System.out.println("steerRight_onRelease");
-            steerRightPos = 0;
-            steerRight = 0;
-            gameState.onAnalog("RightStick Right", steerRight, 0);
+            // gameState.onAction("Rights", false, 0);
+            touchScreenInputController.onAction("Rights", false, 0);
         }
 
         public void gearbox() {

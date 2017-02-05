@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.gui;
+package cargame.gui.nifty.screencontrollers;
 
 import com.jme3.app.state.AppState;
 

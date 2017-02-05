@@ -4,7 +4,7 @@
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
   <!-- start screen -->
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
-  <screen id="TrackSelectorScreen" controller="cargame.gui.TrackSelectorScreenController">
+  <screen id="TrackSelectorScreen" controller="cargame.gui.nifty.screencontrollers.TrackSelectorScreenController">
     <layer id="layer" backgroundColor="#003f" childLayout="vertical">
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <effect>

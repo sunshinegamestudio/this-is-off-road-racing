@@ -41,8 +41,8 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.SimpleCarPlayer;
-import cargame.gui.GameHUDScreenController_Analog;
-import cargame.gui.GameHUDScreenController_Digital;
+import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Analog;
+import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Digital;
 
 public class TouchScreenInputController extends AbstractAppState implements ActionListener, CleanupManualInterface  {
 

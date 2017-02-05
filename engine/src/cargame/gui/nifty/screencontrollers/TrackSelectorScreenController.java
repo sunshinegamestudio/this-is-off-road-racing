@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.gui;
+package cargame.gui.nifty.screencontrollers;
 
 import com.jme3.app.state.AppState;
 
@@ -34,7 +34,7 @@ import cargame.appstates.GameState;
  *
  * @author Sunshine GameStudio
  */
-    public class ControllerSelectorScreenController implements ScreenController   {
+    public class TrackSelectorScreenController implements ScreenController   {
         private Screen screen;
         private Element textLoading;
         private Attributes attributesPanelLoading = null;
@@ -60,9 +60,9 @@ import cargame.appstates.GameState;
             System.out.println("onScreenEnd");
         }
 
-        public void start(String controller) {
+        public void start(String track) {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("start: " + controller);
+            System.out.println("start: " + track);
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate
@@ -72,12 +72,12 @@ import cargame.appstates.GameState;
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
             
-            CarGame.getApp().loadControllerSelector_return(controller);
+            CarGame.getApp().loadGame(track);
         }
 
-        public void back()  {
+        public void exit()  {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("back");
-            CarGame.getApp().loadControllerSelector_return("");
+            System.out.println("exit");
+            CarGame.getApp().stop();
         }
     }

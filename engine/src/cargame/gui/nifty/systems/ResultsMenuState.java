@@ -39,7 +39,7 @@ import de.lessvoid.nifty.screen.*;
 import java.util.logging.Level;
 
 import cargame.core.CarGame;
-import cargame.gui.ResultsMenuScreenController;
+import cargame.gui.nifty.screencontrollers.ResultsMenuScreenController;
 
 public class ResultsMenuState extends AbstractAppState implements ActionListener{
 

@@ -4,7 +4,7 @@
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
   <!-- start screen -->
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
-  <screen id="ExitScreen" controller="cargame.gui.ControllerSelectorScreenController">
+  <screen id="ExitScreen" controller="cargame.gui.nifty.screencontrollers.ControllerSelectorScreenController">
     <layer id="layer" backgroundColor="#003f" childLayout="vertical">
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <effect>

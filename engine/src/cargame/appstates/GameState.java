@@ -55,8 +55,8 @@ import java.util.logging.Level;
 
 import cargame.core.CarGame;
 import cargame.entities.*;
-import cargame.gui.GameHUDScreenController_Analog;
-import cargame.gui.GameHUDScreenController_Digital;
+import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Analog;
+import cargame.gui.nifty.screencontrollers.GameHUDScreenController_Digital;
 import cargame.inputcontrollers.JoystickInputController;
 import cargame.inputcontrollers.KeyboardInputController;
 import cargame.inputcontrollers.TouchScreenInputController;

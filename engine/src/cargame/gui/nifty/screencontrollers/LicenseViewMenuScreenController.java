@@ -16,28 +16,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package cargame.gui;
+package cargame.gui.nifty.screencontrollers;
 
 import com.jme3.app.state.AppState;
+import com.jme3.app.state.AbstractAppState;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
-import de.lessvoid.nifty.elements.Element;
-import de.lessvoid.nifty.elements.render.TextRenderer;
-import de.lessvoid.xml.xpp3.Attributes;
 
 import cargame.core.CarGame;
-import cargame.appstates.GameState;
 
-/**
- *
- * @author Sunshine GameStudio
- */
-    public class ExitMenuScreenController implements ScreenController   {
-        private Screen screen;
-        private Element textLoading;
-        private Attributes attributesPanelLoading = null;
+    public class LicenseViewMenuScreenController implements ScreenController   {
+        private AbstractAppState licenseAcceptanceState;
         
         public void MainMenuScreenController()  {
             // With this constructor implemented, this class can be implemented in MainMenuState !!!
@@ -47,7 +38,6 @@ import cargame.appstates.GameState;
         public void bind(Nifty nifty, Screen screen) {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("bind");
-            this.screen=screen;
         }
 
         public void onStartScreen() {
@@ -60,9 +50,9 @@ import cargame.appstates.GameState;
             System.out.println("onScreenEnd");
         }
 
-        public void start(String exit) {
+        public void start() {
             //throw new UnsupportedOperationException("Not supported yet.");
-            System.out.println("start: " + exit);
+            System.out.println("start");
             /*
             GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
              * Start new game from CarGame instead of directly from gamestate
@@ -71,13 +61,26 @@ import cargame.appstates.GameState;
             /*
              * Switch appstate with a Callable object (see jME forum + Desktop)
              */
-            
-            // exitMenuState.action("exit", true, 0);
+            // CarGame.getApp().loadLicenseAcceptanceState_return();
         }
 
-        public void back()  {
+        public void back() {
             //throw new UnsupportedOperationException("Not supported yet.");
             System.out.println("back");
-            CarGame.getApp().loadControllerSelector_return("");
+            /*
+            GameState<AppState> gameState = CarGame.getApp().getStateManager().getState(GameState<AppState>gameState);
+             * Start new game from CarGame instead of directly from gamestate
+             */
+
+            /*
+             * Switch appstate with a Callable object (see jME forum + Desktop)
+             */
+            CarGame.getApp().loadLicenseViewMenuState_return();
+        }
+
+        public void exit()  {
+            //throw new UnsupportedOperationException("Not supported yet.");
+            System.out.println("exit");
+            CarGame.getApp().stop();
         }
     }

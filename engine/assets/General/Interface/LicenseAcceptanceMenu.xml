@@ -4,7 +4,7 @@
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
   <!-- start screen -->
   <!-- +++++++++++++++++++++++++++++++++++++++ -->
-  <screen id="LicenseAcceptanceMenuScreen" controller="cargame.gui.LicenseAcceptanceMenuScreenController">
+  <screen id="LicenseAcceptanceMenuScreen" controller="cargame.gui.nifty.screencontrollers.LicenseAcceptanceMenuScreenController">
     <layer id="layer" backgroundColor="#003f" childLayout="vertical">
       <panel id="panel" height="25%" width="35%" align="center" valign="center" backgroundColor="#f60f" childLayout="center" visibleToMouse="true">
         <interact onClick="resume()"/>
