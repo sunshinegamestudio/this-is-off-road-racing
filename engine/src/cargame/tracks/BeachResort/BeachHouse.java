@@ -60,6 +60,8 @@ public class BeachHouse extends SimpleAssetEntity implements CleanupManualInterf
 
         this.game = CarGame.getApp();
         this.stateManager = game.getStateManager();
+        
+        super.initialize(stateManager, game);
     }
 
     @Override

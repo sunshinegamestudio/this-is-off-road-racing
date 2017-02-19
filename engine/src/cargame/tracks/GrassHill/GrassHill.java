@@ -125,16 +125,18 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
     public void cleanupManual() {
         // cleanup
         sun.cleanupManual();
-        game.getStateManager().detach(sun);
+        // game.getStateManager().detach(sun);
+        sun.cleanupManual();
         
         // startingPoint.cleanupManual();
         // game.getStateManager().detach(startingPoint);
 
         terrain_node.cleanupManual();
-        game.getStateManager().detach(terrain_node);
+        // game.getStateManager().detach(terrain_node);
         
         sky.cleanupManual();
-        game.getStateManager().detach(sky);
+        // game.getStateManager().detach(sky);
+        sky.cleanupManual();
 
         cleanedupManual=true;
     }
@@ -160,12 +162,14 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
             "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_t.jpg",
             "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_b.jpg"
         );
-        game.getStateManager().attach(sky);
+        // game.getStateManager().attach(sky);
+        sky.initialize(game.getStateManager(), game);
     }
 
     private void createTerrain() {
         terrain_node = new Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Grass Hill/Textures/Terrain/simple/grass.jpg", "Tracks/Grass Hill/Textures/Terrain/simple/terrain_1_node.png");
-        game.getStateManager().attach(terrain_node);
+        // game.getStateManager().attach(terrain_node);
+        terrain_node.initialize(game.getStateManager(), game);
     }
 
     private void createStartingPoint() {
@@ -182,6 +186,7 @@ public class GrassHill extends AbstractAppState implements CleanupManualInterfac
         // For now in GameState
         
         sun = new Sun(assetManager, parent, physicsSpace);
-        game.getStateManager().attach(sun);
+        // game.getStateManager().attach(sun);
+        sun.initialize(game.getStateManager(), game);
     }
 }

@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.tracks.Common;
 
+import cargame.ecs.entities.Entity;
 import cargame.ecs.systems.CleanupManualInterface;
 import cargame.ecs.entities.Entity_AppState;
 import com.jme3.app.Application;
@@ -33,7 +34,8 @@ import com.jme3.scene.Node;
  *
  * @author Sunshine GameStudio
  */
-public class Sun extends Entity_AppState implements CleanupManualInterface {
+// public class Sun extends Entity_AppState implements CleanupManualInterface {
+public class Sun extends Entity implements CleanupManualInterface {
     DirectionalLight sun;
     
     private boolean cleanedupManual = false;
@@ -43,9 +45,9 @@ public class Sun extends Entity_AppState implements CleanupManualInterface {
 
     }
 
-    @Override
+    // @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
+        // super.initialize(stateManager, app);
 
         sun = new DirectionalLight();
         sun.setDirection(new Vector3f(-0.1f, -0.7f, -1).normalizeLocal());
@@ -54,7 +56,7 @@ public class Sun extends Entity_AppState implements CleanupManualInterface {
         cleanedupManual = false;
     }
 
-    @Override
+    // @Override
     public void cleanupManual() {
         // cleanup
         getParent().removeLight(sun);
@@ -62,9 +64,9 @@ public class Sun extends Entity_AppState implements CleanupManualInterface {
         cleanedupManual=true;
     }
     
-    @Override
+    // @Override
     public void cleanup()   {
-        super.cleanup();
+        // super.cleanup();
 
         if(cleanedupManual == false) {
             cleanupManual();

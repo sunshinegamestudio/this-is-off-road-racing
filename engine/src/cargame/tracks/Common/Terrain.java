@@ -20,6 +20,7 @@ package cargame.tracks.Common;
 
 import cargame.ecs.systems.CleanupManualInterface;
 import cargame.core.CarGame;
+import cargame.ecs.entities.Entity;
 import cargame.ecs.entities.Entity_AppState;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
@@ -54,7 +55,8 @@ import jme3tools.converters.ImageToAwt;
  *
  * @author Sunshine GameStudio
  */
-public class Terrain extends Entity_AppState implements CleanupManualInterface {
+// public class Terrain extends Entity_AppState implements CleanupManualInterface {
+public class Terrain extends Entity implements CleanupManualInterface {
     private CarGame game = null;
     private AssetManager assetManager = null;
     private Node parent = null;
@@ -85,9 +87,9 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         this.heightmap_terrain = heightmap_terrain;
     }
 
-    @Override
+    // @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
+        // super.initialize(stateManager, app);
 
         // 1. Create terrain material and load four textures into it.
         /*
@@ -158,9 +160,9 @@ public class Terrain extends Entity_AppState implements CleanupManualInterface {
         cleanedupManual=true;
     }
     
-    @Override
+    // @Override
     public void cleanup()   {
-        super.cleanup();
+        // super.cleanup();
         
         if(cleanedupManual == false) {
             cleanupManual();

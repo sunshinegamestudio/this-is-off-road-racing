@@ -48,7 +48,8 @@ import com.jme3.texture.Texture;
  *
  * @author Sunshine GameStudio
  */
-public class SimpleAssetEntity extends Entity_AppState implements CleanupManualInterface {
+// public class SimpleAssetEntity extends Entity_AppState implements CleanupManualInterface {
+public class SimpleAssetEntity extends Entity implements CleanupManualInterface {
     
     private CarGame game;
     private AppStateManager stateManager;
@@ -69,9 +70,9 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
         this.initialTranslation = initialTranslation;
     }
 
-    @Override
+    // @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
+        // super.initialize(stateManager, app);
         
         // Load selected assetNode
         assetNode = (Node) getAssetManager().loadModel(assetName);
@@ -106,9 +107,9 @@ public class SimpleAssetEntity extends Entity_AppState implements CleanupManualI
         cleanedupManual=true;
     }
     
-    @Override
+    // @Override
     public void cleanup()   {
-        super.cleanup();
+        // super.cleanup();
         
         if(cleanedupManual == false) {
             cleanupManual();

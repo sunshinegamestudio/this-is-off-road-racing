@@ -131,10 +131,11 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         // cleanup
         // ToDo: Add cleanup code.
         sun.cleanupManual();
-        game.getStateManager().detach(sun);
+        // game.getStateManager().detach(sun);
+        sun.cleanupManual();
 
         beachHouse.cleanupManual();
-        game.getStateManager().detach(beachHouse);
+        // game.getStateManager().detach(beachHouse);
 
         trees.cleanupManual();
         game.getStateManager().detach(trees);
@@ -143,10 +144,12 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         // game.getStateManager().detach(startingPoint);
 
         terrain_node.cleanupManual();
-        game.getStateManager().detach(terrain_node);
+        // game.getStateManager().detach(terrain_node);
+        terrain_node.cleanupManual();
 
         sky.cleanupManual();
-        game.getStateManager().detach(sky);
+        // game.getStateManager().detach(sky);
+        sky.cleanupManual();
         
         cleanedupManual=true;
     }
@@ -172,12 +175,14 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
             "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_t.jpg",
             "Tracks/Grass Hill/Textures/Sky/Bright_2/bright_1_b.jpg"
         );
-        game.getStateManager().attach(sky);
+        // game.getStateManager().attach(sky);
+        sky.initialize(game.getStateManager(), game);
     }
 
     private void createTerrain() {
         terrain_node = new cargame.tracks.Common.Terrain(camera, assetManager, parent, physicsSpace, "Tracks/Beach Resort/Textures/Terrain/simple/sand.jpg", "Tracks/Beach Resort/Textures/Terrain/simple/terrain_1_node.png");
-        game.getStateManager().attach(terrain_node);
+        // game.getStateManager().attach(terrain_node);
+        terrain_node.initialize(game.getStateManager(), game);
     }
 
     private void createStartingPoint() {
@@ -193,7 +198,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     private void createBeachHouse()  {
         Vector3f initialTranslation = new Vector3f(-20, 0, -50);
         beachHouse = new BeachHouse("beachhouse", assetManager, parent, physicsSpace, initialTranslation);
-        game.getStateManager().attach(beachHouse);
+        // game.getStateManager().attach(beachHouse);
+        beachHouse.initialize(game.getStateManager(), game);
     }
 
     private void createLight()  {
@@ -202,6 +208,7 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         // For now in GameState
 
         sun = new Sun(assetManager, parent, physicsSpace);
-        game.getStateManager().attach(sun);
+        // game.getStateManager().attach(sun);
+        sun.initialize(game.getStateManager(), game);
     }
 }
