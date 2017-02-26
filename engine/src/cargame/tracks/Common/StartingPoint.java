@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package cargame.tracks.Common;
 
+import cargame.ecs.entities.Entity;
 import cargame.ecs.systems.CleanupManualInterface;
 import cargame.ecs.entities.Entity_AppState;
 import com.jme3.app.Application;
@@ -34,7 +35,8 @@ import com.jme3.scene.Spatial;
  *
  * @author Sunshine GameStudio
  */
-public class StartingPoint extends Entity_AppState implements CleanupManualInterface {
+// public class StartingPoint extends Entity_AppState implements CleanupManualInterface {
+public class StartingPoint extends Entity implements CleanupManualInterface {
     Spatial startingpoint;
     
     private boolean cleanedupManual = false;
@@ -44,9 +46,9 @@ public class StartingPoint extends Entity_AppState implements CleanupManualInter
 
     }
 
-    @Override
+    // @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
+        // super.initialize(stateManager, app);
 
         startingpoint = getAssetManager().loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
         getParent().attachChild(startingpoint);
@@ -54,7 +56,7 @@ public class StartingPoint extends Entity_AppState implements CleanupManualInter
         cleanedupManual = false;
     }
 
-    @Override
+    // @Override
     public void cleanupManual() {
         // cleanup
         getParent().detachChild(startingpoint);
@@ -62,9 +64,9 @@ public class StartingPoint extends Entity_AppState implements CleanupManualInter
         cleanedupManual=true;
     }
     
-    @Override
+    // @Override
     public void cleanup()   {
-        super.cleanup();
+        // super.cleanup();
 
         if(cleanedupManual == false) {
             cleanupManual();
