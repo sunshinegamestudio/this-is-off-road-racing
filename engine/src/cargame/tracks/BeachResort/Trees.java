@@ -21,6 +21,7 @@ package cargame.tracks.BeachResort;
 import cargame.ecs.entities.Entity_AppState;
 import cargame.ecs.systems.CleanupManualInterface;
 import cargame.core.CarGame;
+import cargame.ecs.entities.Entity;
 import cargame.tracks.GrassHill.GrassHill;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
@@ -47,7 +48,8 @@ import com.jme3.texture.Texture;
  *
  * @author Sunshine GameStudio
  */
-public class Trees extends Entity_AppState implements CleanupManualInterface {
+// public class Trees extends Entity_AppState implements CleanupManualInterface {
+public class Trees extends Entity implements CleanupManualInterface {
     
     private CarGame game;
     private AppStateManager stateManager;
@@ -62,9 +64,9 @@ public class Trees extends Entity_AppState implements CleanupManualInterface {
         this.stateManager = game.getStateManager();
     }
 
-    @Override
+    // @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
+        // super.initialize(stateManager, app);
 
         Vector3f initialTranslation = new Vector3f(-20, 0, -50);
         tree = new Tree("Tree", getAssetManager(), getParent(), getPhysicsSpace(), initialTranslation);
@@ -72,7 +74,7 @@ public class Trees extends Entity_AppState implements CleanupManualInterface {
         cleanedupManual = false;
     }
 
-    @Override
+    // @Override
     public void cleanupManual() {
         // cleanup
         /*
@@ -82,9 +84,9 @@ public class Trees extends Entity_AppState implements CleanupManualInterface {
         cleanedupManual=true;
     }
     
-    @Override
+    // @Override
     public void cleanup()   {
-        super.cleanup();
+        // super.cleanup();
         
         if(cleanedupManual == false) {
             cleanupManual();

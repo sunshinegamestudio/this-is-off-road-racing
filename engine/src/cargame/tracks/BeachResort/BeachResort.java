@@ -138,7 +138,7 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         // game.getStateManager().detach(beachHouse);
 
         trees.cleanupManual();
-        game.getStateManager().detach(trees);
+        // game.getStateManager().detach(trees);
         
         // startingPoint.cleanupManual();
         // game.getStateManager().detach(startingPoint);
@@ -192,7 +192,8 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
     
     private void createTrees()  {
         trees = new Trees("trees", assetManager, parent, physicsSpace);
-        game.getStateManager().attach(trees);
+        // game.getStateManager().attach(trees);
+        trees.initialize(game.getStateManager(), game);
     }
 
     private void createBeachHouse()  {
