@@ -102,11 +102,13 @@ public class Track extends Entity_AppState implements CleanupManualInterface {
         // Load selected track
         if (track.matches("Grass Hill"))    {
             grassHill = new GrassHill(game, super.getAssetManager(), super.getParent(), super.getPhysicsSpace());
-            stateManager.attach(grassHill);
+            // stateManager.attach(grassHill);
+            grassHill.initialize(stateManager, app);
         }
         else if (track.matches("Beach Resort")) {
             beachResort = new BeachResort(game, super.getAssetManager(), super.getParent(), super.getPhysicsSpace());
-            stateManager.attach(beachResort);
+            // stateManager.attach(beachResort);
+            beachResort.initialize(stateManager, app);
         }
         else    {
             terrain = (Node) getAssetManager().loadModel("Tracks/" + track + "/Scenes/terrain_1.j3o");
@@ -155,11 +157,11 @@ public class Track extends Entity_AppState implements CleanupManualInterface {
         // cleanup
         if (track.matches("Grass Hill"))    {
             grassHill.cleanupManual();
-            stateManager.detach(grassHill);
+            // stateManager.detach(grassHill);
         }
         else if (track.matches("Beach Resort")) {
             beachResort.cleanupManual();
-            stateManager.detach(beachResort);
+            // stateManager.detach(beachResort);
         }
         else    {
             try {

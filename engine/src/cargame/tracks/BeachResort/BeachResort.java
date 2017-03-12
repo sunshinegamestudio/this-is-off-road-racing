@@ -66,7 +66,8 @@ import com.jme3.texture.Texture;
 import com.jme3.texture.Texture.WrapMode;
 import com.jme3.util.SkyFactory;
 
-public class BeachResort extends AbstractAppState implements CleanupManualInterface    {
+// public class BeachResort extends AbstractAppState implements CleanupManualInterface    {
+public class BeachResort implements CleanupManualInterface    {
 
     // protected Node rootNode = new Node("Root Node");
     private Node rootNode;
@@ -103,9 +104,9 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         this.game.getLogger().log(Level.SEVERE, "TrackSelectorState created.");
     }
     
-    @Override
+    // @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        super.initialize(stateManager, app);
+        // super.initialize(stateManager, app);
         
         createSkybox();
         createTerrain();
@@ -117,16 +118,16 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         cleanedupManual = false;
     }
 
-    @Override
+    // @Override
     public void update(float tpf) {
-        super.update(tpf);
+        // super.update(tpf);
     }
     
-    @Override
+    // @Override
     public void render(RenderManager rm) {
     }
     
-    @Override
+    // @Override
     public void cleanupManual() {
         // cleanup
         // ToDo: Add cleanup code.
@@ -154,9 +155,9 @@ public class BeachResort extends AbstractAppState implements CleanupManualInterf
         cleanedupManual=true;
     }
 
-    @Override
+    // @Override
     public void cleanup() {
-        super.cleanup();
+        // super.cleanup();
 
         if(cleanedupManual == false) {
             cleanupManual();
