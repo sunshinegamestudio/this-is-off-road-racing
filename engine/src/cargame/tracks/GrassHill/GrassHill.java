@@ -127,9 +127,9 @@ public class GrassHill implements CleanupManualInterface    {
         // cleanup
         sun.cleanupManual();
         // game.getStateManager().detach(sun);
-        sun.cleanupManual();
+        // sun.cleanupManual();
         
-        // startingPoint.cleanupManual();
+        startingPoint.cleanupManual();
         // game.getStateManager().detach(startingPoint);
 
         terrain_node.cleanupManual();
@@ -174,11 +174,12 @@ public class GrassHill implements CleanupManualInterface    {
     }
 
     private void createStartingPoint() {
-        Spatial startingpoint = assetManager.loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
-        parent.attachChild(startingpoint);
+        // Spatial startingpoint = assetManager.loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
+        // parent.attachChild(startingpoint);
         
-        // startingPoint = new StartingPoint(assetManager, parent, physicsSpace);
+        startingPoint = new StartingPoint(assetManager, parent, physicsSpace);
         // game.getStateManager().attach(startingPoint);
+        startingPoint.initialize(game.getStateManager(), game);
     }
     
     private void createLight()  {

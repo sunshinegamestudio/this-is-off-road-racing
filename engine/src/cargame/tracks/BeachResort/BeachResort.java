@@ -133,7 +133,7 @@ public class BeachResort implements CleanupManualInterface    {
         // ToDo: Add cleanup code.
         sun.cleanupManual();
         // game.getStateManager().detach(sun);
-        sun.cleanupManual();
+        // sun.cleanupManual();
 
         beachHouse.cleanupManual();
         // game.getStateManager().detach(beachHouse);
@@ -141,7 +141,7 @@ public class BeachResort implements CleanupManualInterface    {
         trees.cleanupManual();
         // game.getStateManager().detach(trees);
         
-        // startingPoint.cleanupManual();
+        startingPoint.cleanupManual();
         // game.getStateManager().detach(startingPoint);
 
         terrain_node.cleanupManual();
@@ -187,8 +187,11 @@ public class BeachResort implements CleanupManualInterface    {
     }
 
     private void createStartingPoint() {
-        Spatial startingpoint = assetManager.loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
-        parent.attachChild(startingpoint);
+        // Spatial startingpoint = assetManager.loadModel("Tracks/Grass Hill/Models/startingpoint_1/startingpoint_1.j3o");
+        
+        startingPoint = new StartingPoint(assetManager, parent, physicsSpace);
+        // parent.attachChild(startingpoint);
+        startingPoint.initialize(game.getStateManager(), game);
     }
     
     private void createTrees()  {
