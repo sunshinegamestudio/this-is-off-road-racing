@@ -124,6 +124,7 @@ public class Terrain extends Entity implements CleanupManualInterface {
                 heightmap_terrain);
         heightmap = new ImageBasedHeightMap(heightMapImage.getImage());
         heightmap.load();
+        heightmap.smooth(0.2f);
         
         int patchSize = 65;
         terrain = new TerrainQuad("my terrain", patchSize, 513, heightmap.getHeightMap());
